@@ -41,6 +41,7 @@
     <link rel="stylesheet" href="{{asset('/css/jquery.fancybox.css')}}">
     <link rel="stylesheet" href="{{asset('/css/chosen.min.css')}}">
     <link rel="stylesheet" href="{{asset('/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/custom.css')}}">
     @yield('css')
 </head>
 <body>
