@@ -25,7 +25,7 @@
             <div class="col-lg-3 responsive-column">
                 <div class="footer-item">
                     <div class="footer-logo">
-                        <a href="index.html" class="foot-logo"><img src="{{asset('/images/logo-black.png')}}"
+                        <a href="index.html" class="foot-logo"><img src="{{asset('/images/nebraskalisting-logo.png')}}"
                                                                     alt="logo"></a>
                     </div><!-- end footer-logo -->
                     <ul class="list-items contact-links pt-3">
