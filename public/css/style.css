@@ -12455,3 +12455,8 @@ div.datedropper .picker .pick-lg-b li {
 .copy-right .copy__desc a:hover {
     color: #7b68ee
 }
+
+/*Custom Css*/
+.logo img{
+    width: 10rem;
+}

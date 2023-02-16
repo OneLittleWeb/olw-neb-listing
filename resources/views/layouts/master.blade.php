@@ -48,12 +48,12 @@
 @include('partials.header')
 
 <main id="main">
-    <div class="loader-container">
+   {{-- <div class="loader-container">
         <div class="loader-ripple">
             <div></div>
             <div></div>
         </div>
-    </div>
+    </div>--}}
     @yield('content')
 </main>
 
