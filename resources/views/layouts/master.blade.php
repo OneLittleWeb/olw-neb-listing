@@ -18,16 +18,14 @@
     <meta property="og:image:width" content="968">
     <meta property="og:image:height" content="504">
     <meta property="og:title" content="@yield('title')"/>
-    <meta property="og:description"
-          content="@yield('meta_description')"/>
+    <meta property="og:description" content="@yield('meta_description')"/>
     <meta property="og:type" content="website"/>
     <meta data-rh="true" property="og:url" content="{{url()->current()}}"/>
     <meta data-rh="true" property="og:site_name" content="speedycalculator"/>
     <meta data-rh="true" property="twitter:domain" content="{{url()->current()}}"/>
     <meta data-rh="true" property="twitter:url" content="{{url()->current()}}"/>
     <meta data-rh="true" name="twitter:title" content="@yield('title')"/>
-    <meta data-rh="true" name="twitter:description"
-          content="@yield('meta_description')"/>
+    <meta data-rh="true" name="twitter:description" content="@yield('meta_description')"/>
     <meta data-rh="true" name="twitter:image:src" content="@yield('sharingimg')"/>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam:wght@100;300;400;500;600;700;800&display=swap"
           rel="stylesheet">
@@ -48,6 +46,7 @@
 
 @include('partials.header')
 
+@include('partials.hero-wrapper')
 <main id="main">
    {{-- <div class="loader-container">
         <div class="loader-ripple">
@@ -57,7 +56,6 @@
     </div>--}}
     @yield('content')
 </main>
-
 @include('partials.footer')
 <a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 <script src="{{asset('/js/jquery-3.4.1.min.js')}}"></script>
