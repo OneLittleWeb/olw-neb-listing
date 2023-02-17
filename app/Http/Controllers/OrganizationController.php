@@ -10,4 +10,9 @@ class OrganizationController extends Controller
     {
         return view('county.index');
     }
+
+    public function allCity()
+    {
+        return view('city.index');
+    }
 }

@@ -19,3 +19,4 @@ Route::get('/', function () {
 });
 
 Route::get('/counties', [OrganizationController::class, 'index'])->name('counties.index');
+Route::get('/cities', [OrganizationController::class, 'allCity'])->name('city.index');
