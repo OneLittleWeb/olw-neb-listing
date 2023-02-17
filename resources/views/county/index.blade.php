@@ -3,7 +3,7 @@
 @section('meta_description', "add")
 @section('meta_keywords',"add")
 @section('content')
-    <section class="category-area section--padding">
+    <section class="category-area section--padding margin-top-50px">
         <div class="container">
             <div class="row">
                 <div class="col-lg-3 responsive-column">

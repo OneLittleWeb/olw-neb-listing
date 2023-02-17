@@ -46,7 +46,6 @@
 
 @include('partials.header')
 
-@include('partials.hero-wrapper')
 <main id="main">
    {{-- <div class="loader-container">
         <div class="loader-ripple">

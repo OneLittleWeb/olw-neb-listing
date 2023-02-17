@@ -5028,7 +5028,8 @@ div.datedropper .picker .pick-lg-b li {
     position: absolute;
     top: 0;
     width: 100%;
-    z-index: 1010
+    z-index: 1010;
+    background-color: #333f57;
 }
 
 @media (max-width: 1199px) {
