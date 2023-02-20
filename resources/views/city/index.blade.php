@@ -16,7 +16,7 @@
                                 </div>
                                 <div class="cat-content">
                                     <h4 class="cat__title mb-3">Restaurants</h4>
-                                    <span class="badge">12 Cities</span>
+                                    <span class="badge">12 Places</span>
                                 </div>
                             </a>
                         </div>
@@ -32,7 +32,7 @@
                                 </div>
                                 <div class="cat-content">
                                     <h4 class="cat__title mb-3">Travels</h4>
-                                    <span class="badge">55 Cities</span>
+                                    <span class="badge">55 Places</span>
                                 </div>
                             </a>
                         </div>
@@ -48,7 +48,7 @@
                                 </div>
                                 <div class="cat-content">
                                     <h4 class="cat__title mb-3">Hotels</h4>
-                                    <span class="badge">44 Cities</span>
+                                    <span class="badge">44 Places</span>
                                 </div>
                             </a>
                         </div>
@@ -64,7 +64,7 @@
                                 </div>
                                 <div class="cat-content">
                                     <h4 class="cat__title mb-3">Events</h4>
-                                    <span class="badge">33 Cities</span>
+                                    <span class="badge">33 Places</span>
                                 </div>
                             </a>
                         </div>
@@ -80,7 +80,7 @@
                                 </div>
                                 <div class="cat-content">
                                     <h4 class="cat__title mb-3">Restaurants</h4>
-                                    <span class="badge">12 Cities</span>
+                                    <span class="badge">12 Places</span>
                                 </div>
                             </a>
                         </div>
@@ -96,7 +96,7 @@
                                 </div>
                                 <div class="cat-content">
                                     <h4 class="cat__title mb-3">Travels</h4>
-                                    <span class="badge">55 Cities</span>
+                                    <span class="badge">55 Places</span>
                                 </div>
                             </a>
                         </div>
@@ -112,7 +112,7 @@
                                 </div>
                                 <div class="cat-content">
                                     <h4 class="cat__title mb-3">Hotels</h4>
-                                    <span class="badge">44 Cities</span>
+                                    <span class="badge">44 Places</span>
                                 </div>
                             </a>
                         </div>
@@ -128,7 +128,7 @@
                                 </div>
                                 <div class="cat-content">
                                     <h4 class="cat__title mb-3">Events</h4>
-                                    <span class="badge">33 Cities</span>
+                                    <span class="badge">33 Places</span>
                                 </div>
                             </a>
                         </div>
@@ -144,7 +144,7 @@
                                 </div>
                                 <div class="cat-content">
                                     <h4 class="cat__title mb-3">Shops</h4>
-                                    <span class="badge">66 Cities</span>
+                                    <span class="badge">66 Places</span>
                                 </div>
                             </a>
                         </div>
@@ -160,7 +160,7 @@
                                 </div>
                                 <div class="cat-content">
                                     <h4 class="cat__title mb-3">Fitness</h4>
-                                    <span class="badge">33 Cities</span>
+                                    <span class="badge">33 Places</span>
                                 </div>
                             </a>
                         </div>
@@ -176,7 +176,7 @@
                                 </div>
                                 <div class="cat-content">
                                     <h4 class="cat__title mb-3">Food & Drink</h4>
-                                    <span class="badge">44 Cities</span>
+                                    <span class="badge">44 Places</span>
                                 </div>
                             </a>
                         </div>
@@ -192,7 +192,7 @@
                                 </div>
                                 <div class="cat-content">
                                     <h4 class="cat__title mb-3">Art & Design</h4>
-                                    <span class="badge">11 Cities</span>
+                                    <span class="badge">11 Places</span>
                                 </div>
                             </a>
                         </div>

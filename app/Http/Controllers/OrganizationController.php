@@ -15,4 +15,9 @@ class OrganizationController extends Controller
     {
         return view('city.index');
     }
+
+    public function importExcelData()
+    {
+        dd('ok');
+    }
 }
