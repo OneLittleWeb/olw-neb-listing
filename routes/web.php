@@ -21,4 +21,5 @@ Route::get('/', function () {
 Route::get('/counties', [OrganizationController::class, 'index'])->name('counties.index');
 Route::get('/cities', [OrganizationController::class, 'allCity'])->name('city.index');
 
-Route::get('/import', [OrganizationController::class, 'importExcelData'])->name('import.data');
+Route::get('/file-import', [OrganizationController::class, 'importView'])->name('import-view');
+Route::post('/import', [OrganizationController::class, 'import'])->name('import');
