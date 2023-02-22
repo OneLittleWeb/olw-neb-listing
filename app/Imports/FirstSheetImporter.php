@@ -25,11 +25,10 @@ class FirstSheetImporter implements ToModel, WithStartRow
      *
      * @return \Illuminate\Database\Eloquent\Model|null
      */
-    
+
     public function model(array $row)
     {
         return new Organization([
-            'slug' => 'abie',
             'county' => 'Nebraska',
             'city' => $this->city_name,
             'gmaps_link' => (!empty($row[1])) ? $row[1] : ' ',
