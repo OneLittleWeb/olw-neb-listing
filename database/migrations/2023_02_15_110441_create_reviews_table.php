@@ -15,21 +15,20 @@ class CreateReviewsTable extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('OrganizationId')->nullable();
-            $table->string('OrganizationGUID')->nullable();
-            $table->string('OrganizationGMapsId')->nullable();
-            $table->string('ReviewId')->nullable();
-            $table->string('ReviewerName')->nullable();
-            $table->string('ReviewerReviewsCount')->nullable();
-            $table->string('ReviewDate')->nullable();
-            $table->string('ReviewRateStars')->nullable();
-            $table->string('ReviewTextOriginal')->nullable();
-            $table->text('ReviewTextTranslated')->nullable();
-            $table->text('ReviewPhotosFiles')->nullable();
+            $table->string('organization_guid')->nullable();
+            $table->text('organization_gmaps_id')->nullable();
+            $table->string('review_id')->nullable();
+            $table->string('reviewer_name')->nullable();
+            $table->text('reviewer_profile_link')->nullable();
+            $table->string('reviewer_reviews_count')->nullable();
+            $table->string('review_date')->nullable();
+            $table->string('review_rate_stars')->nullable();
+            $table->text('review_text_original')->nullable();
+            $table->text('reviewer_avatar_url')->nullable();
+            $table->text('review_photos_files')->nullable();
+            $table->text('review_photos_urls')->nullable();
+            $table->string('review_thumbs_up_value')->nullable();
             $table->timestamps();
-
-            $table->foreign('OrganizationId')
-                ->references('id')->on('organizations')->onDelete('cascade');
         });
     }
 
