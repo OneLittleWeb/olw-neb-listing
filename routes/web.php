@@ -22,4 +22,4 @@ Route::get('/counties', [OrganizationController::class, 'index'])->name('countie
 Route::get('/cities', [OrganizationController::class, 'allCity'])->name('city.index');
 
 Route::get('/file-import', [OrganizationController::class, 'importView'])->name('import-view');
-Route::post('/import', [OrganizationController::class, 'import'])->name('import');
+Route::get('/import', [OrganizationController::class, 'import'])->name('import');

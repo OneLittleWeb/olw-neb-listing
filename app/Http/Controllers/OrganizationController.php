@@ -6,6 +6,7 @@ use App\Imports\ImportOrganization;
 use App\Models\Organization;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Facades\File;
 
 class OrganizationController extends Controller
 {
@@ -26,9 +27,12 @@ class OrganizationController extends Controller
 
     public function import(Request $request)
     {
-        $file_path = $request->file('file');
+        $folders = File::directories('F:\nebraska');
 
-        Excel::import(new ImportOrganization, $file_path);
+        foreach ($folders as $folder) {
+            $files = File::files($folder);
+            Excel::import(new ImportOrganization, $files[0]);
+        }
 
         return redirect()->back();
     }
