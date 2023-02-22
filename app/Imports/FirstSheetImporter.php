@@ -13,17 +13,25 @@ class FirstSheetImporter implements ToModel, WithStartRow
         return 2;
     }
 
+    protected $city_name;
+
+    public function __construct($city_name)
+    {
+        $this->city_name = $city_name;
+    }
+
     /**
      * @param array $row
      *
      * @return \Illuminate\Database\Eloquent\Model|null
      */
+    
     public function model(array $row)
     {
         return new Organization([
             'slug' => 'abie',
-            'county' => 'nebraska',
-            'city' => 'abie',
+            'county' => 'Nebraska',
+            'city' => $this->city_name,
             'gmaps_link' => (!empty($row[1])) ? $row[1] : ' ',
             'organization_name' => (!empty($row[2])) ? $row[2] : ' ',
             'organization_gmaps_id' => (!empty($row[3])) ? $row[3] : ' ',
@@ -49,7 +57,7 @@ class FirstSheetImporter implements ToModel, WithStartRow
             'organization_youTube' => (!empty($row[27])) ? $row[27] : ' ',
             'organization_yelp' => (!empty($row[29])) ? $row[29] : ' ',
             'organization_trip_advisor' => (!empty($row[30])) ? $row[30] : ' ',
-            'organization_search_request' => (!empty($row[31])) ? $row[32] : ' ',
+            'organization_search_request' => (!empty($row[31])) ? $row[31] : ' ',
             'embed_map_code' => (!empty($row[34])) ? $row[34] : ' ',
             'organization_skype' => (!empty($row[35])) ? $row[35] : ' ',
             'organization_telegram' => (!empty($row[36])) ? $row[36] : ' ',
