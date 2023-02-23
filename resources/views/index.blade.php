@@ -81,7 +81,7 @@
                             <div class="hero-category-item hero-category--item">
                                 <a href="#" class="d-block hero-cat-link hover-y">
                                     <span class="icon-element bg-3 mx-auto"><i class="la la-plane"></i></span>
-                                    Travel
+                                    Plumbers
                                 </a>
                             </div>
                         </div>
