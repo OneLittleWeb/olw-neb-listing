@@ -3,9 +3,6 @@
 @section('meta_description', "add")
 @section('meta_keywords',"add")
 @section('content')
-    <!-- ================================
-    START HERO-WRAPPER AREA
-================================= -->
     <section class="hero-wrapper hero-bg-2 pb-0 overflow-hidden">
         <div class="overlay"></div><!-- end overlay -->
         <span class="line-bg line-bg1"></span>
@@ -20,7 +17,8 @@
                     <div class="hero-heading text-center">
                         <div class="section-heading">
                             <h2 class="sec__title">Find The Best Places in your city</h2>
-                            <p class="sec__desc">Listhub  helps you find out whats happening in your city, Let's explore.</p>
+                            <p class="sec__desc">Nebraskalisting helps you find out whats happening in your city, Let's
+                                explore.</p>
                         </div>
                     </div><!-- end hero-heading -->
                     <div class="main-search-input main-search-input-2 position-relative z-index-2">
@@ -55,7 +53,9 @@
                         </div><!-- end main-search-input-item -->
                         <div class="main-search-input-item">
                             <label class="label-text">Search Activities</label>
-                            <button class="theme-btn gradient-btn border-0 w-100" type="submit"><i class="la la-search mr-2"></i>Search Now</button>
+                            <button class="theme-btn gradient-btn border-0 w-100" type="submit"><i
+                                    class="la la-search mr-2"></i>Search Now
+                            </button>
                         </div><!-- end main-search-input-item -->
                     </div><!-- end main-search-input -->
                 </div><!-- end col-lg-12 -->
@@ -66,34 +66,21 @@
                 <div class="row">
                     <div class="highlighted-categories highlighted-categories-2 pb-5 mx-auto mt-0 padding-top-130px">
                         <div class="highlight-lists d-flex justify-content-center mt-4">
-                            <div class="hero-category-item hero-category--item">
-                                <a href="#" class="d-block hero-cat-link hover-y">
-                                    <span class="icon-element bg-2 mx-auto"><i class="la la-cutlery"></i></span>
-                                    Restaurants
-                                </a>
-                            </div>
-                            <div class="hero-category-item hero-category--item">
-                                <a href="#" class="d-block hero-cat-link hover-y">
-                                    <span class="icon-element bg-1 mx-auto"><i class="fas fa-dog"></i></span>
-                                    <span class="">Dog Grooming</span>
-                                </a>
-                            </div>
-                            <div class="hero-category-item hero-category--item">
-                                <a href="#" class="d-block hero-cat-link hover-y">
-                                    <span class="icon-element bg-3 mx-auto"><i class="la la-plane"></i></span>
-                                    Plumbers
-                                </a>
-                            </div>
+                            @foreach($categories as $category)
+                                <div class="hero-category-item hero-category--item">
+                                    <a href="#" class="d-block hero-cat-link hover-y">
+                                        <span class="icon-element mx-auto {{ $category->background }}"><i
+                                                class="{{ $category->icon }}"></i></span>
+                                        {{ $category->name }}
+                                    </a>
+                                </div>
+                            @endforeach
                         </div>
                     </div><!-- end highlighted-categories -->
                 </div>
             </div>
         </div>
     </section><!-- end hero-wrapper -->
-    <!-- ================================
-        END HERO-WRAPPER AREA
-    ================================= -->
-
     <!-- ====START CATEGORY AREA==== -->
     <section class="category-area bg-gray arrow-down-shape position-relative section-padding">
         <div class="container">
@@ -140,10 +127,10 @@
                                 </g>
                         </svg>
                         </div>
-                        <h2 class="sec__title">Most Popular County</h2>
-                        <p class="sec__desc">
-                            Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, <br>
-                            a feugiat eros. Nunc ut lacinia tortors.
+                        <h2 class="sec__title">Most Popular Cities</h2>
+                        <p class="sec__desc">Nebraska is a Midwestern state with many cities, including the largest
+                            city, Omaha. Lincoln is the state capital. Each city offers unique attractions and
+                            characteristics.
                         </p>
                     </div><!-- end section-heading -->
                 </div><!-- end col-lg-12 -->

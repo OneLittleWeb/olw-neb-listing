@@ -18,9 +18,9 @@ class CategorySeeder extends Seeder
         DB::table('categories')->delete();
 
         $categories = [
-            ['name' => 'Dog Grooming'],
-            ['name' => 'Restaurants'],
-            ['name' => 'Plumbers'],
+            ['name' => 'Restaurants', 'icon' => 'fa-solid fa-dog', 'background' => 'bg-1'],
+            ['name' => 'Dog Grooming', 'icon' => 'fa-solid fa-utensils', 'background' => 'bg-2'],
+            ['name' => 'Plumbers', 'icon' => 'fa-solid fa-wrench', 'background' => 'bg-3'],
         ];
         Category::insert($categories);
     }
