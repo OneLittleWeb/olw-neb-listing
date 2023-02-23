@@ -15,9 +15,10 @@ class CreateOrganizationsTable extends Migration
     {
         Schema::create('organizations', function (Blueprint $table) {
             $table->id();
-            $table->string('slug')->nullable();
+            $table->integer('category_id');
             $table->string('county')->nullable();
             $table->string('city')->nullable();
+            $table->string('slug')->nullable();
             $table->text('gmaps_link')->nullable();
             $table->string('organization_name')->nullable();
             $table->string('Organization_gmaps_id')->nullable();

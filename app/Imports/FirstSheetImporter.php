@@ -36,6 +36,7 @@ class FirstSheetImporter implements ToCollection, WithStartRow
             Organization::updateOrCreate([
                 'organization_guid' => $row[38],
             ], [
+                'category_id' => 1,
                 'county' => $this->county_name,
                 'city' => $this->city_name,
                 'gmaps_link' => (!empty($row[1])) ? $row[1] : ' ',
