@@ -6452,8 +6452,8 @@ div.datedropper .picker .pick-lg-b li {
 }
 
 .hero-wrapper {
-    background-size: cover;
-    background-position: center;
+    /*background-size: cover;*/
+    /*background-position: center;*/
     position: relative;
     width: 100%;
     z-index: 1;
