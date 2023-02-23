@@ -27,15 +27,19 @@ class OrganizationController extends Controller
 
     public function import()
     {
-        $folders = File::directories('F:\nebraska');
+        $county_directories = File::directories('F:\nebraska');
 
-        foreach ($folders as $folder) {
+        foreach ($county_directories as $county_directory) {
+            $county_name = basename($county_directory);
 
-            $directory_name = basename($folder);
-            $city_name = trim(str_replace("Nebraska US", '', $directory_name));
-            $files = File::files($folder);
+            foreach (File::directories($county_directory) as $city_directory) {
 
-            Excel::import(new ImportOrganization($city_name), $files[0]);
+                $directory_name = basename($city_directory);
+                $city_name = trim(str_replace("Nebraska US", '', $directory_name));
+                $files = File::files($city_directory);
+
+                Excel::import(new ImportOrganization($county_name, $city_name), $files[0]);
+            }
         }
 
         return redirect()->back();

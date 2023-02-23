@@ -15,13 +15,9 @@ class CreatePicturesTable extends Migration
     {
         Schema::create('pictures', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('OrganizationId')->nullable();
-            $table->string('OrganizationGUID')->nullable();
-            $table->string('PictureFile')->nullable();
+            $table->string('Organization_guid')->nullable();
+            $table->string('picture_file')->nullable();
             $table->timestamps();
-
-            $table->foreign('OrganizationId')
-                ->references('id')->on('organizations')->onDelete('cascade');
         });
     }
 
