@@ -128,7 +128,8 @@
                         </svg>
                         </div>
                         <h2 class="sec__title">Major Cities</h2>
-                        <p class="sec__desc">Nebraska has four major cities: Omaha, Lincoln, Bellevue and Grand Island. Omaha is the
+                        <p class="sec__desc">Nebraska has four major cities: Omaha, Lincoln, Bellevue and Grand Island.
+                            Omaha is the
                             largest and serves as the state's economic hub, while Lincoln is the capital and home to the
                             University of Nebraska. Bellevue is a smaller city located just south of Omaha.
                         </p>
@@ -212,142 +213,22 @@
                 </div><!-- end col-lg-12 -->
             </div><!-- end row -->
             <div class="row mt-5">
-                <div class="col-lg-3 responsive-column">
-                    <div class="category-item overflow-hidden">
-                        <img src="{{asset('/images/cat-img-2.jpg')}}" data-src="{{asset('/images/cat-img-2.jpg')}}"
-                             alt="category-image" class="lazy cat-img">
-                        <div class="category-content d-flex align-items-center justify-content-center">
-                            <a href="#" class="category-link d-flex flex-column justify-content-center w-100 h-100">
-                                <div class="icon-element mb-3 mx-auto">
-                                    <span class="la la-cutlery"></span>
-                                </div>
-                                <div class="cat-content">
-                                    <h4 class="cat__title mb-3">Restaurants</h4>
-                                    <span class="badge">12 Listings</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div><!-- end category-item -->
-                </div><!-- end col-lg-3 -->
-                <div class="col-lg-3 responsive-column">
-                    <div class="category-item overflow-hidden">
-                        <img src="{{asset('/images/cat-img-2.jpg')}}" data-src="{{asset('/images/cat-img-2.jpg')}}"
-                             alt="category-image" class="lazy cat-img">
-                        <div class="category-content d-flex align-items-center justify-content-center">
-                            <a href="#" class="category-link d-flex flex-column justify-content-center w-100 h-100">
-                                <div class="icon-element mb-3 mx-auto">
-                                    <span class="la la-plane"></span>
-                                </div>
-                                <div class="cat-content">
-                                    <h4 class="cat__title mb-3">Travels</h4>
-                                    <span class="badge">55 Listings</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div><!-- end category-item -->
-                </div><!-- end col-lg-3 -->
-                <div class="col-lg-3 responsive-column">
-                    <div class="category-item overflow-hidden">
-                        <img src="{{asset('/images/cat-img-2.jpg')}}" data-src="{{asset('/images/cat-img-2.jpg')}}"
-                             alt="category-image" class="lazy cat-img">
-                        <div class="category-content d-flex align-items-center justify-content-center">
-                            <a href="#" class="category-link d-flex flex-column justify-content-center w-100 h-100">
-                                <div class="icon-element mb-3 mx-auto">
-                                    <span class="la la-hotel"></span>
-                                </div>
-                                <div class="cat-content">
-                                    <h4 class="cat__title mb-3">Hotels</h4>
-                                    <span class="badge">44 Listings</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div><!-- end category-item -->
-                </div><!-- end col-lg-3 -->
-                <div class="col-lg-3 responsive-column">
-                    <div class="category-item overflow-hidden">
-                        <img src="{{asset('/images/cat-img-2.jpg')}}" data-src="{{asset('/images/cat-img-2.jpg')}}"
-                             alt="category-image" class="lazy cat-img">
-                        <div class="category-content d-flex align-items-center justify-content-center">
-                            <a href="#" class="category-link d-flex flex-column justify-content-center w-100 h-100">
-                                <div class="icon-element mb-3 mx-auto">
-                                    <span class="la la-music"></span>
-                                </div>
-                                <div class="cat-content">
-                                    <h4 class="cat__title mb-3">Events</h4>
-                                    <span class="badge">33 Listings</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div><!-- end category-item -->
-                </div><!-- end col-lg-3 -->
-                <div class="col-lg-3 responsive-column">
-                    <div class="category-item overflow-hidden">
-                        <img src="{{asset('/images/cat-img-2.jpg')}}" data-src="{{asset('/images/cat-img-2.jpg')}}"
-                             alt="category-image" class="lazy cat-img">
-                        <div class="category-content d-flex align-items-center justify-content-center">
-                            <a href="#" class="category-link d-flex flex-column justify-content-center w-100 h-100">
-                                <div class="icon-element mb-3 mx-auto">
-                                    <span class="la la-shopping-cart"></span>
-                                </div>
-                                <div class="cat-content">
-                                    <h4 class="cat__title mb-3">Shops</h4>
-                                    <span class="badge">66 Listings</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div><!-- end category-item -->
-                </div><!-- end col-lg-3 -->
-                <div class="col-lg-3 responsive-column">
-                    <div class="category-item overflow-hidden">
-                        <img src="{{asset('/images/cat-img-2.jpg')}}" data-src="{{asset('/images/cat-img-2.jpg')}}"
-                             alt="category-image" class="lazy cat-img">
-                        <div class="category-content d-flex align-items-center justify-content-center">
-                            <a href="#" class="category-link d-flex flex-column justify-content-center w-100 h-100">
-                                <div class="icon-element mb-3 mx-auto">
-                                    <span class="la la-dumbbell"></span>
-                                </div>
-                                <div class="cat-content">
-                                    <h4 class="cat__title mb-3">Fitness</h4>
-                                    <span class="badge">33 Listings</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div><!-- end category-item -->
-                </div><!-- end col-lg-3 -->
-                <div class="col-lg-3 responsive-column">
-                    <div class="category-item overflow-hidden">
-                        <img src="{{asset('/images/cat-img-2.jpg')}}" data-src="{{asset('/images/cat-img-2.jpg')}}"
-                             alt="category-image" class="lazy cat-img">
-                        <div class="category-content d-flex align-items-center justify-content-center">
-                            <a href="#" class="category-link d-flex flex-column justify-content-center w-100 h-100">
-                                <div class="icon-element mb-3 mx-auto">
-                                    <span class="la la-glass"></span>
-                                </div>
-                                <div class="cat-content">
-                                    <h4 class="cat__title mb-3">Food & Drink</h4>
-                                    <span class="badge">44 Listings</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div><!-- end category-item -->
-                </div><!-- end col-lg-3 -->
-                <div class="col-lg-3 responsive-column">
-                    <div class="category-item overflow-hidden">
-                        <img src="{{asset('/images/cat-img-2.jpg')}}" data-src="{{asset('/images/cat-img-2.jpg')}}"
-                             alt="category-image" class="lazy cat-img">
-                        <div class="category-content d-flex align-items-center justify-content-center">
-                            <a href="#" class="category-link d-flex flex-column justify-content-center w-100 h-100">
-                                <div class="icon-element mb-3 mx-auto">
-                                    <span class="la la-paint-brush"></span>
-                                </div>
-                                <div class="cat-content">
-                                    <h4 class="cat__title mb-3">Art & Design</h4>
-                                    <span class="badge">11 Listings</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div><!-- end category-item -->
-                </div><!-- end col-lg-3 -->
+                @foreach($popular_cities as $popular_city)
+                    <div class="col-lg-3 responsive-column">
+                        <div class="category-item overflow-hidden">
+                            <img src="{{asset('images/' . $popular_city->background_image)}}" data-src="{{asset('images/' . $popular_city->background_image)}}"
+                                 alt="category-image" class="lazy cat-img">
+                            <div class="category-content d-flex align-items-center justify-content-center">
+                                <a href="#" class="category-link d-flex flex-column justify-content-center w-100 h-100">
+                                    <div class="cat-content">
+                                        <h4 class="cat__title mb-3">{{ $popular_city->name }}</h4>
+{{--                                        <span class="badge">12 Listings</span>--}}
+                                    </div>
+                                </a>
+                            </div>
+                        </div><!-- end category-item -->
+                    </div><!-- end col-lg-3 -->
+                @endforeach
             </div><!-- end row -->
             <div class="more-btn-box pt-3 text-center">
                 <a href="{{ route('counties.index') }}" class="btn-gray hover-scale-2">Browse All City <i

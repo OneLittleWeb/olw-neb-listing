@@ -17,6 +17,7 @@ class CreateCitiesTable extends Migration
             $table->id();
             $table->string('name');
             $table->boolean('is_major')->default(0);
+            $table->integer('population')->nullable();
             $table->text('background_image')->nullable();
             $table->timestamps();
         });

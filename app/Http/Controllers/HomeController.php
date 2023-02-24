@@ -13,7 +13,8 @@ class HomeController extends Controller
     {
         $categories = Category::all();
         $major_cities = City::where('is_major',1)->get();
+        $popular_cities = City::take(8)->orderByDesc('population')->get();
 
-        return view('home',compact('categories','major_cities'));
+        return view('home',compact('categories','major_cities','popular_cities'));
     }
 }
