@@ -11,7 +11,7 @@
                         <div class="category-item overflow-hidden">
                             <img src="#" data-src="images/cat-img-2.jpg" alt="category-image" class="cat-img lazy">
                             <div class="category-content d-flex align-items-center justify-content-center">
-                                <a href="#" class="category-link d-flex flex-column justify-content-center w-100 h-100">
+                                <a href="{{ route('city.category', $city->slug) }}" class="category-link d-flex flex-column justify-content-center w-100 h-100">
 {{--                                    <div class="icon-element mb-3 mx-auto">--}}
 {{--                                        <span class="la la-cutlery"></span>--}}
 {{--                                    </div>--}}

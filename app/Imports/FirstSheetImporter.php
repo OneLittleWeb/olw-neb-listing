@@ -2,9 +2,11 @@
 
 namespace App\Imports;
 
+use App\Models\Category;
 use App\Models\Organization;
 use App\Models\Picture;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Str;
 use Maatwebsite\Excel\Concerns\WithStartRow;
 use Maatwebsite\Excel\Concerns\ToCollection;
 
@@ -33,10 +35,19 @@ class FirstSheetImporter implements ToCollection, WithStartRow
     public function collection(Collection $rows)
     {
         foreach ($rows as $row) {
+            $search_request = Str::lower(str_replace("+", ' ', $row[31]));
+            $categories = Category::all();
+            $category_id = null;
+            foreach ($categories as $category) {
+                if (Str::contains($search_request, $category->name)) {
+                    $category_id = $category->id;
+                }
+            }
+
             Organization::updateOrCreate([
                 'organization_guid' => $row[38],
             ], [
-                'category_id' => 1,
+                'category_id' => $category_id,
                 'county' => $this->county_name,
                 'city_id' => $this->city_id,
                 'gmaps_link' => (!empty($row[1])) ? $row[1] : ' ',
