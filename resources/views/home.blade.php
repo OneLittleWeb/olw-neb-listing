@@ -231,7 +231,7 @@
                 @endforeach
             </div><!-- end row -->
             <div class="more-btn-box pt-3 text-center">
-                <a href="{{ route('counties.index') }}" class="btn-gray hover-scale-2">Browse All City <i
+                <a href="{{ route('city.index') }}" class="btn-gray hover-scale-2">Browse All City <i
                         class="la la-arrow-right ml-2"></i></a>
             </div>
         </div><!-- end container -->
@@ -378,7 +378,7 @@
                                 <span class="ribbon ribbon-lg">Working Process</span>
                             </div>
                             <h2 class="sec__title line-height-50 text-white">
-                                Get Started With <span class="text-color-16">Listhub</span> It's Very Easy to Start.
+                                Get Started With <span class="text-color-16">Nebraskalisting</span> It's Very Easy to Start.
                             </h2>
                             <p class="sec__desc text-white-50">
                                 Omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut
@@ -643,7 +643,7 @@
                                 <span class="counter">40,000</span>
                                 <span class="count-symbol">+</span>
                             </h3>
-                            <p class="counter__title">Listings Pages</p>
+                            <p class="counter__title">Nebraskalisting Pages</p>
                         </div><!-- end counter-content -->
                     </div><!-- end counter-item -->
                 </div><!-- end col-lg-3 -->
@@ -968,7 +968,7 @@
                                 <span class="ribbon ribbon-lg">Join with us</span>
                             </div>
                             <h2 class="sec__title mb-4 font-size-45 line-height-60 text-white">
-                                Grow Your Marketing With <span class="text-color-16">Listhub</span> and <br>
+                                Grow Your Marketing With <span class="text-color-16">Nebraskalisting</span> and <br>
                                 Be Happy With Your Business.
                             </h2>
                             <p class="sec__desc text-white line-height-35 mb-3">
