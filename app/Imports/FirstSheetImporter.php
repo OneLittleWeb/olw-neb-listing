@@ -16,12 +16,12 @@ class FirstSheetImporter implements ToCollection, WithStartRow
     }
 
     protected $county_name;
-    protected $city_name;
+    protected $city_id;
 
-    public function __construct($county_name, $city_name)
+    public function __construct($county_name, $city_id)
     {
         $this->county_name = $county_name;
-        $this->city_name = $city_name;
+        $this->city_id = $city_id;
     }
 
     /**
@@ -38,7 +38,7 @@ class FirstSheetImporter implements ToCollection, WithStartRow
             ], [
                 'category_id' => 1,
                 'county' => $this->county_name,
-                'city' => $this->city_name,
+                'city_id' => $this->city_id,
                 'gmaps_link' => (!empty($row[1])) ? $row[1] : ' ',
                 'organization_name' => (!empty($row[2])) ? $row[2] : ' ',
                 'organization_gmaps_id' => (!empty($row[3])) ? $row[3] : ' ',

@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Imports\ImportOrganization;
+use App\Models\City;
 use App\Models\Organization;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\File;
 
@@ -13,11 +15,6 @@ class OrganizationController extends Controller
     public function index()
     {
         return view('county.index');
-    }
-
-    public function allCity()
-    {
-        return view('city.index');
     }
 
     public function importView()
@@ -35,10 +32,12 @@ class OrganizationController extends Controller
             foreach (File::directories($county_directory) as $city_directory) {
 
                 $directory_name = basename($city_directory);
-                $city_name = trim(str_replace("Nebraska US", '', $directory_name));
+                $city_name = Str::lower(trim(str_replace("Nebraska US", '', $directory_name)));
+                $city_id = City::where('name', $city_name)->first()->id;
+
                 $files = File::files($city_directory);
 
-                Excel::import(new ImportOrganization($county_name, $city_name), $files[0]);
+                Excel::import(new ImportOrganization($county_name, $city_id), $files[0]);
             }
         }
 

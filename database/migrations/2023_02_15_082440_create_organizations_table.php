@@ -17,7 +17,7 @@ class CreateOrganizationsTable extends Migration
             $table->id();
             $table->integer('category_id');
             $table->string('county')->nullable();
-            $table->string('city')->nullable();
+            $table->integer('city_id')->nullable();
             $table->string('slug')->nullable();
             $table->text('gmaps_link')->nullable();
             $table->string('organization_name')->nullable();
