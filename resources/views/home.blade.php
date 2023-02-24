@@ -231,7 +231,7 @@
                 @endforeach
             </div><!-- end row -->
             <div class="more-btn-box pt-3 text-center">
-                <a href="{{ route('city.index') }}" class="btn-gray hover-scale-2">Browse All City <i
+                <a href="{{ route('city.index') }}" class="btn-gray hover-scale-2">Browse all cities <i
                         class="la la-arrow-right ml-2"></i></a>
             </div>
         </div><!-- end container -->

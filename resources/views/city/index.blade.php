@@ -17,7 +17,7 @@
 {{--                                    </div>--}}
                                     <div class="cat-content">
                                         <h4 class="cat__title mb-3">{{ $city->name }}</h4>
-                                        <span class="badge">12 Organizations</span>
+{{--                                        <span class="badge">12 Organizations</span>--}}
                                     </div>
                                 </a>
                             </div>
