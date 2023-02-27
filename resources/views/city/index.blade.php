@@ -11,13 +11,10 @@
                         <div class="category-item overflow-hidden">
                             <img src="#" data-src="images/cat-img-2.jpg" alt="category-image" class="cat-img lazy">
                             <div class="category-content d-flex align-items-center justify-content-center">
-                                <a href="{{ route('city.category', $city->slug) }}" class="category-link d-flex flex-column justify-content-center w-100 h-100">
-{{--                                    <div class="icon-element mb-3 mx-auto">--}}
-{{--                                        <span class="la la-cutlery"></span>--}}
-{{--                                    </div>--}}
+                                <a href="{{ route('city.category', $city->slug) }}"
+                                   class="category-link d-flex flex-column justify-content-center w-100 h-100">
                                     <div class="cat-content">
                                         <h4 class="cat__title mb-3">{{ $city->name }}</h4>
-{{--                                        <span class="badge">12 Organizations</span>--}}
                                     </div>
                                 </a>
                             </div>

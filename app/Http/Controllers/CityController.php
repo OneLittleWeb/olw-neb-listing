@@ -21,8 +21,7 @@ class CityController extends Controller
         $city = City::where('slug', $slug)->first();
         $categories = Category::all();
 
-        $organizations  = Organization::where('city_id', $city->id)->get();
-
-        return view('city.category', compact('city', 'categories'));
+        $organizations  = Organization::where('city_id', $city->id)->get()->groupBy('organization_category');
+        return view('city.category', compact('city', 'categories','organizations'));
     }
 }

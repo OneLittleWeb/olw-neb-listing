@@ -19,6 +19,7 @@ class CreateCategoriesTable extends Migration
             $table->string('slug');
             $table->string('icon')->nullable();
             $table->string('background')->nullable();
+            $table->text('background_image')->nullable();
             $table->timestamps();
         });
     }

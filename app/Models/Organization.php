@@ -12,12 +12,6 @@ class Organization extends Model
 
     protected $guarded = [];
 
-//    public function setOrganizationNameAttribute($value)
-//    {
-//        $this->attributes['organization_name'] = $value;
-//        $this->attributes['slug'] = Str::slug($value);
-//    }
-
     protected static function boot()
     {
         parent::boot();
@@ -45,5 +39,15 @@ class Organization extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function getReviewsTotalCountAttribute($value)
+    {
+        return strtoupper($value);
+    }
+
+    public function pictures()
+    {
+        return $this->hasMany(Picture::class,'Organization_guid');
     }
 }
