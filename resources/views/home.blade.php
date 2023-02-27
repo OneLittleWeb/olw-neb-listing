@@ -144,10 +144,9 @@
                                  data-src="{{asset('images/' . $major_city->background_image)}}"
                                  alt="category-image" class="lazy cat-img">
                             <div class="category-content d-flex align-items-center justify-content-center">
-                                <a href="#" class="category-link d-flex flex-column justify-content-center w-100 h-100">
+                                <a href="{{ route('city.category', $major_city->slug) }}" class="category-link d-flex flex-column justify-content-center w-100 h-100">
                                     <div class="cat-content">
                                         <h4 class="cat__title mb-3">{{ $major_city->name }}</h4>
-                                        {{--                                        <span class="badge">12 Listings</span>--}}
                                     </div>
                                 </a>
                             </div>
