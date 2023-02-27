@@ -15,8 +15,8 @@
             </div>
             <div class="col-lg-8">
                 <ul class="list-items term-list text-right">
-                    <li><a href="terms-and-conditions.html">Terms & Conditions</a></li>
-                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="#">Terms & Conditions</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
                 </ul>
             </div>
         </div>
@@ -25,7 +25,7 @@
             <div class="col-lg-3 responsive-column">
                 <div class="footer-item">
                     <div class="footer-logo">
-                        <a href="index.html" class="foot-logo"><img src="{{asset('/images/nebraskalisting-logo.png')}}"
+                        <a href="{{ route('home') }}" class="foot-logo"><img src="{{asset('/images/nebraskalisting-logo.png')}}"
                                                                     alt="logo"></a>
                     </div><!-- end footer-logo -->
                     <ul class="list-items contact-links pt-3">
@@ -46,9 +46,9 @@
                     <h4 class="footer__title">Company</h4>
                     <div class="stroke-shape mb-3"></div>
                     <ul class="list-items">
-                        <li><a href="about.html">About Us</a></li>
-                        <li><a href="career.html">Careers</a></li>
-                        <li><a href="blog-grid.html">Press</a></li>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
                         <li><a href="#">Investor Relations</a></li>
                         <li><a href="#">Content Guidelines</a></li>
                         <li><a href="#">Ad Choices</a></li>
@@ -60,18 +60,18 @@
                     <h4 class="footer__title">Discover</h4>
                     <div class="stroke-shape mb-3"></div>
                     <ul class="list-items">
-                        <li><a href="#">Listhub Project Cost Guides</a></li>
-                        <li><a href="#">The Local Listhub</a></li>
+                        <li><a href="#">Nebraskalisting Project Cost Guides</a></li>
+                        <li><a href="#">The Local Nebraskalisting</a></li>
                         <li><a href="#">Collections</a></li>
-                        <li><a href="#">Listhub Mobile</a></li>
-                        <li><a href="blog-grid.html">Listhub Blog</a></li>
-                        <li><a href="contact.html">Support</a></li>
+                        <li><a href="#">Nebraskalisting Mobile</a></li>
+                        <li><a href="#">Nebraskalisting Blog</a></li>
+                        <li><a href="#">Support</a></li>
                     </ul>
                 </div><!-- end footer-item -->
             </div><!-- end col-lg-3 -->
             <div class="col-lg-3 responsive-column">
                 <div class="footer-item">
-                    <h4 class="footer__title">Listhub for Business</h4>
+                    <h4 class="footer__title">Nebraskalisting for Business</h4>
                     <div class="stroke-shape mb-3"></div>
                     <ul class="list-items">
                         <li><a href="#">Claim your Business</a></li>
