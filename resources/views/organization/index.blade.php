@@ -27,7 +27,7 @@
                                     </div>
                                     <div class="card-content">
                                         <h4 class="card-title">
-                                            <a href="#">{{ $organization->organization_name }}</a>
+                                            <a href="{{ route('city.wise.organization', ['city_slug' => $organization->city->slug, 'organization_slug' => $organization->slug]) }}">{{ $organization->organization_name }}</a>
                                         </h4>
                                         <p class="card-sub"><a href="#"><i
                                                     class="la la-map-marker mr-1 text-color-2"></i>{{ $organization->organization_address }}

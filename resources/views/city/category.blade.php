@@ -13,7 +13,7 @@
                                  data-src="{{asset('images/' . $category->background_image)}}"
                                  alt="{{ $category->name }}" class="cat-img lazy">
                             <div class="category-content d-flex align-items-center justify-content-center">
-                                <a href="{{ route('city.wise.organization', ['city_slug' => $city->slug, 'category_slug' => $category->slug]) }}"
+                                <a href="{{ route('city.wise.organizations', ['city_slug' => $city->slug, 'category_slug' => $category->slug]) }}"
                                    class="category-link d-flex flex-column justify-content-center w-100 h-100">
                                     <div class="icon-element mb-3 mx-auto">
                                         <span class="{{ $category->icon }}"></span>

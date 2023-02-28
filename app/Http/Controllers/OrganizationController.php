@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\File;
 
 class OrganizationController extends Controller
 {
-    public function cityWiseOrganization($city_slug, $category_slug)
+    public function cityWiseOrganizations($city_slug, $category_slug)
     {
         $city = City::where('slug', $city_slug)->first();
         $category = Category::where('slug', $category_slug)->first();
@@ -21,6 +21,20 @@ class OrganizationController extends Controller
         if ($city && $category) {
             $organizations = Organization::where('city_id', $city->id)->where('category_id', $category->id)->paginate(10)->onEachSide(0);
             return view('organization.index', compact('organizations', 'city', 'category'));
+        }
+
+        abort(404);
+    }
+
+    public function cityWiseOrganization($city_slug, $organization_slug)
+    {
+        $city = City::where('slug', $city_slug)->first();
+        $organization = Organization::where('slug', $organization_slug)->first();
+
+//        dd($organization);
+
+        if ($city && $organization) {
+            return view('organization.show', compact('organization', 'city'));
         }
 
         abort(404);

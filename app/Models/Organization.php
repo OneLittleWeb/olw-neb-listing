@@ -50,4 +50,9 @@ class Organization extends Model
     {
         return $this->hasMany(Picture::class,'Organization_guid');
     }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
 }
