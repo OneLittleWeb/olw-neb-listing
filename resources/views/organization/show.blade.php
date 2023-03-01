@@ -83,7 +83,10 @@
                             </p>
                             <div class="d-flex flex-wrap align-items-center">
                                 <div class="star-rating-wrap d-flex align-items-center">
-                                    <div class="organization_rating" data-rating="{{ $organization->rate_stars }}"></div>
+                                    @if($organization->rate_stars)
+                                        <div class="organization_rating"
+                                             data-rating="{{ $organization->rate_stars }}"></div>
+                                    @endif
                                     <p class="font-size-14 pl-2 font-weight-medium">{{ $organization->reviews_total_count }}
                                         reviews</p>
                                 </div>
@@ -153,7 +156,8 @@
                                     @if($organization->organization_website)
                                         <li><span class="text-color"><i
                                                     class="la la-globe mr-2 text-color-2 font-size-18"></i>Website:</span><a
-                                                href="{{ 'https://' . $organization->organization_website }}">{{ $organization->organization_website }}</a>
+                                                href="{{ 'https://' . $organization->organization_website }}"
+                                                target="_blank">{{ $organization->organization_website }}</a>
                                         </li>
                                     @endif
                                 </ul>
@@ -209,21 +213,18 @@
                                                 </div>
                                                 <p class="comment-desc">{{ $review->review_text_original }}</p>
 
-                                                <div
-                                                    class="review-photos d-flex flex-wrap align-items-center ml-n1 mb-3">
-                                                    <a href="images/single-listing-img1.jpg" class="d-inline-block"
-                                                       data-fancybox="gallery">
-                                                        <img class="lazy" src="images/img-loading.png"
-                                                             data-src="images/single-listing-img1.jpg"
-                                                             alt="review image">
-                                                    </a>
-                                                    <a href="images/single-listing-img2.jpg" class="d-inline-block"
-                                                       data-fancybox="gallery">
-                                                        <img class="lazy" src="images/img-loading.png"
-                                                             data-src="images/single-listing-img2.jpg"
-                                                             alt="review image">
-                                                    </a>
-                                                </div><!-- end review-photos -->
+                                                @if ($review->review_photos_urls)
+                                                    <div
+                                                        class="review-photos d-flex flex-wrap align-items-center ml-n1 mb-3">
+                                                        @foreach(explode(',', $review->review_photos_urls) as $photo_url)
+                                                            <a href="{{ $photo_url }}" class="d-inline-block"
+                                                               data-fancybox="gallery">
+                                                                <img class="lazy" src="{{ $photo_url }}"
+                                                                     data-src="{{ $photo_url }}" alt="review image">
+                                                            </a>
+                                                        @endforeach
+                                                    </div><!-- end review-photos -->
+                                                @endif
 
                                                 @if($review->review_thumbs_up_value)
                                                     <div

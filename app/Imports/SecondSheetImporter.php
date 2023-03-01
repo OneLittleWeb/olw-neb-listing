@@ -36,7 +36,7 @@ class SecondSheetImporter implements ToCollection, WithStartRow
                 'review_text_original' => $row[7],
                 'reviewer_avatar_url' => $row[9],
                 'review_photos_files' => $row[10],
-                'review_photos_urls' => $row[7],
+                'review_photos_urls' => $row[11],
                 'review_thumbs_up_value' => $row[14],
             ]);
         }

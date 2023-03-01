@@ -47,14 +47,9 @@ class Organization extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function getReviewsTotalCountAttribute($value)
-    {
-        return strtoupper($value);
-    }
-
     public function pictures()
     {
-        return $this->hasMany(Picture::class, 'Organization_guid');
+        return $this->hasMany(Picture::class, 'organization_guid');
     }
 
     public function city()
