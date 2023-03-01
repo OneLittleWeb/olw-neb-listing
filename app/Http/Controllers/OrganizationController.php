@@ -34,7 +34,15 @@ class OrganizationController extends Controller
         if ($city && $organization) {
 
             $organization->incrementViewCount();
-            return view('organization.show', compact('organization', 'city'));
+            $five_star_reviews = $organization->reviews()->where('review_rate_stars', 5)->count();
+            $four_star_reviews = $organization->reviews()->where('review_rate_stars', 4)->count();
+            $three_star_reviews = $organization->reviews()->where('review_rate_stars', 3)->count();
+            $two_star_reviews = $organization->reviews()->where('review_rate_stars', 2)->count();
+            $one_star_reviews = $organization->reviews()->where('review_rate_stars', 1)->count();
+
+            $organization->reviews_paginator = $organization->reviews()->paginate(5)->onEachSide(0);
+
+            return view('organization.show', compact('organization', 'city','five_star_reviews','four_star_reviews','three_star_reviews','two_star_reviews','one_star_reviews'));
         }
 
         abort(404);

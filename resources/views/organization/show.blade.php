@@ -82,14 +82,18 @@
                             </span>
                             </p>
                             <div class="d-flex flex-wrap align-items-center">
-                                <div class="star-rating-wrap d-flex align-items-center">
-                                    @if($organization->rate_stars)
-                                        <div class="organization_rating"
-                                             data-rating="{{ $organization->rate_stars }}"></div>
-                                    @endif
-                                    <p class="font-size-14 pl-2 font-weight-medium">{{ $organization->reviews_total_count }}
-                                        reviews</p>
-                                </div>
+                                @if($organization->rate_stars && $organization->reviews_total_count)
+                                    <div class="star-rating-wrap d-flex align-items-center">
+                                        @if($organization->rate_stars)
+                                            <div class="organization_rating"
+                                                 data-rating="{{ $organization->rate_stars }}"></div>
+                                        @endif
+                                        @if($organization->reviews_total_count)
+                                            <p class="font-size-14 pl-2 font-weight-medium">{{ $organization->reviews_total_count }}
+                                                reviews</p>
+                                        @endif
+                                    </div>
+                                @endif
                             </div>
                             <div class="btn-box pt-3">
                                 <a href="#review" class="btn-gray mr-1"><i class="la la-star mr-1"></i>Write a
@@ -188,97 +192,242 @@
                         </div><!-- end block-card -->
                         <div class="block-card mb-4">
                             <div class="block-card-header">
-                                <h2 class="widget-title">Reviews <span class="ml-1 text-color-2">({{ $organization->reviews->count() }})</span>
-                                </h2>
+                                <h2 class="widget-title">Rating Stats</h2>
                                 <div class="stroke-shape"></div>
                             </div><!-- end block-card-header -->
                             <div class="block-card-body">
-                                <div class="comments-list">
-                                    @foreach($organization->reviews as $review)
-                                        <div class="comment">
-                                            <div class="user-thumb user-thumb-lg flex-shrink-0">
-                                                <img src="{{ $review->reviewer_avatar_url }}" alt="author-img">
-                                            </div>
-                                            <div class="comment-body">
-                                                <div
-                                                    class="meta-data d-flex align-items-center justify-content-between">
-                                                    <div>
-                                                        <h4 class="comment__title">{{ $review->reviewer_name }}</h4>
-                                                    </div>
-                                                    <div class="star-rating-wrap text-center">
-                                                        <div class="users_review_ratings"
-                                                             data-rating="{{ $review->review_rate_stars }}"></div>
-                                                        <p class="font-size-13 font-weight-medium">{{ $review->review_date }}</p>
-                                                    </div>
-                                                </div>
-                                                <p class="comment-desc">{{ $review->review_text_original }}</p>
+                                <div class="review-content d-flex flex-wrap align-items-center">
+                                    <div class="review-rating-summary">
+                                    <span class="stats-average__count">
+                                       {{ $organization->rate_stars }}
+                                    </span><!-- end stats-average__count -->
+                                        <div class="star-rating-wrap">
+                                            <p class="font-size-14 font-weight-medium">out of 5.0</p>
+                                            <div class="organization_rating"
+                                                 data-rating="{{ $organization->rate_stars }}"></div>
+                                        </div>
 
-                                                @if ($review->review_photos_urls)
-                                                    <div
-                                                        class="review-photos d-flex flex-wrap align-items-center ml-n1 mb-3">
-                                                        @foreach(explode(',', $review->review_photos_urls) as $photo_url)
-                                                            <a href="{{ $photo_url }}" class="d-inline-block"
-                                                               data-fancybox="gallery">
-                                                                <img class="lazy" src="{{ $photo_url }}"
-                                                                     data-src="{{ $photo_url }}" alt="review image">
-                                                            </a>
-                                                        @endforeach
-                                                    </div><!-- end review-photos -->
-                                                @endif
-
-                                                @if($review->review_thumbs_up_value)
-                                                    <div
-                                                        class="comment-action d-flex align-items-center justify-content-between float-right">
-                                                        <p class="feedback-box ">
-                                                            <button type="button" class="btn-gray btn-gray-sm mr-1">
-                                                                <i class="fa-solid fa-thumbs-up"></i> <span
-                                                                    class="text-color font-weight-semi-bold">{{ $review->review_thumbs_up_value }}</span>
-                                                            </button>
-                                                        </p>
-                                                    </div>
-                                                @endif
+                                    </div><!-- end review-rating-summary -->
+                                    <div class="review-bars d-flex flex-row flex-wrap flex-grow-1 align-items-center">
+                                        <div class="review-bars-item">
+                                            <span class="review-bars-name">{{ $five_star_reviews }} reviews</span>
+                                            <div class="review-bars-inner d-flex w-100 align-items-center"
+                                                 style="color: #0b2e13">
+                                            <span class="review-bars-review" data-rating="5.0">
+                                                <span class="review-bars-review-inner"></span>
+                                            </span>
+                                                <span class="pill">5.0</span>
                                             </div>
-                                        </div><!-- end comment -->
-                                    @endforeach
-                                </div>
-                                <div class="text-center">
-                                    <div class="pagination-wrapper d-inline-block">
-                                        <div class="section-pagination">
-                                            <nav aria-label="Page navigation">
-                                                <ul class="pagination flex-wrap justify-content-center">
-                                                    <li class="page-item">
-                                                        <a class="page-link page-link-first" href="#"><i
-                                                                class="la la-long-arrow-left mr-1"></i> First</a>
-                                                    </li>
-                                                    <li class="page-item">
-                                                        <a class="page-link" href="#" aria-label="Previous">
-                                                            <span aria-hidden="true"><i
-                                                                    class="la la-angle-left"></i></span>
-                                                            <span class="sr-only">Previous</span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                                    <li class="page-item"><a class="page-link page-link-active"
-                                                                             href="#">2</a></li>
-                                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                                    <li class="page-item">
-                                                        <a class="page-link" href="#" aria-label="Next">
-                                                            <span aria-hidden="true"><i
-                                                                    class="la la-angle-right"></i></span>
-                                                            <span class="sr-only">Next</span>
-                                                        </a>
-                                                    </li>
-                                                    <li class="page-item">
-                                                        <a class="page-link page-link-last" href="#">Last <i
-                                                                class="la la-long-arrow-right ml-1"></i></a>
-                                                    </li>
-                                                </ul>
-                                            </nav>
-                                        </div><!-- end section-pagination -->
-                                    </div>
-                                </div>
+                                        </div><!-- end review-bars-item -->
+                                        <div class="review-bars-item">
+                                            <span class="review-bars-name">{{ $four_star_reviews }} reviews</span>
+                                            <div class="review-bars-inner d-flex w-100 align-items-center">
+                                            <span class="review-bars-review" data-rating="4.0">
+                                                <span class="review-bars-review-inner"></span>
+                                            </span>
+                                                <span class="pill">4.0</span>
+                                            </div>
+                                        </div><!-- end review-bars-item -->
+                                        <div class="review-bars-item">
+                                            <span class="review-bars-name">{{ $three_star_reviews }} reviews</span>
+                                            <div class="review-bars-inner d-flex w-100 align-items-center">
+                                            <span class="review-bars-review" data-rating="3.0">
+                                                <span class="review-bars-review-inner"></span>
+                                            </span>
+                                                <span class="pill">3.0</span>
+                                            </div>
+                                        </div><!-- end review-bars-item -->
+                                        <div class="review-bars-item">
+                                            <span class="review-bars-name">{{ $two_star_reviews }} reviews</span>
+                                            <div class="review-bars-inner d-flex w-100 align-items-center">
+                                            <span class="review-bars-review" data-rating="2.0">
+                                                <span class="review-bars-review-inner"></span>
+                                            </span>
+                                                <span class="pill">2.0</span>
+                                            </div>
+                                        </div><!-- end review-bars-item -->
+                                        <div class="review-bars-item">
+                                            <span class="review-bars-name">{{ $one_star_reviews }} reviews</span>
+                                            <div class="review-bars-inner d-flex w-100 align-items-center">
+                                            <span class="review-bars-review" data-rating="1.0">
+                                                <span class="review-bars-review-inner"></span>
+                                            </span>
+                                                <span class="pill">1.0</span>
+                                            </div>
+                                        </div><!-- end review-bars-item -->
+                                    </div><!-- end review-bars -->
+                                </div><!-- end review-content -->
                             </div><!-- end block-card-body -->
                         </div><!-- end block-card -->
+                        @if($organization->reviews->count())
+                            <div class="block-card mb-4">
+                                <div class="block-card-header">
+                                    <h2 class="widget-title">Reviews <span class="ml-1 text-color-2">({{ $organization->reviews->count() }})</span>
+                                    </h2>
+                                    <div class="stroke-shape"></div>
+                                </div><!-- end block-card-header -->
+                                <div class="block-card-body">
+                                    <div class="comments-list">
+                                        @foreach($organization->reviews_paginator as $review)
+                                            <div class="comment">
+                                                <div class="user-thumb user-thumb-lg flex-shrink-0">
+                                                    <img src="{{ $review->reviewer_avatar_url }}" alt="author-img">
+                                                </div>
+                                                <div class="comment-body">
+                                                    <div
+                                                        class="meta-data d-flex align-items-center justify-content-between">
+                                                        <div>
+                                                            <h4 class="comment__title">{{ $review->reviewer_name }}</h4>
+                                                        </div>
+                                                        <div class="star-rating-wrap text-center">
+                                                            <div class="users_review_ratings"
+                                                                 data-rating="{{ $review->review_rate_stars }}"></div>
+                                                            <p class="font-size-13 font-weight-medium">{{ $review->review_date }}</p>
+                                                        </div>
+                                                    </div>
+                                                    <p class="comment-desc">{{ $review->review_text_original }}</p>
+
+                                                    @if ($review->review_photos_urls)
+                                                        <div
+                                                            class="review-photos d-flex flex-wrap align-items-center ml-n1 mb-3">
+                                                            @foreach(explode(',', $review->review_photos_urls) as $photo_url)
+                                                                <a href="{{ $photo_url }}" class="d-inline-block"
+                                                                   data-fancybox="gallery">
+                                                                    <img class="lazy" src="{{ $photo_url }}"
+                                                                         data-src="{{ $photo_url }}" alt="review image">
+                                                                </a>
+                                                            @endforeach
+                                                        </div><!-- end review-photos -->
+                                                    @endif
+
+                                                    @if($review->review_thumbs_up_value)
+                                                        <div
+                                                            class="comment-action d-flex align-items-center justify-content-between float-right">
+                                                            <p class="feedback-box ">
+                                                                <button type="button" class="btn-gray btn-gray-sm mr-1">
+                                                                    <i class="fa-solid fa-thumbs-up"></i> <span
+                                                                        class="text-color font-weight-semi-bold">{{ $review->review_thumbs_up_value }}</span>
+                                                                </button>
+                                                            </p>
+                                                        </div>
+                                                    @endif
+                                                </div>
+                                            </div><!-- end comment -->
+                                        @endforeach
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="pagination-wrapper d-inline-block">
+                                            <div class="section-pagination">
+                                                @if ($organization->reviews_paginator->hasPages())
+                                                    <nav aria-label="Page navigation">
+                                                        <ul class="pagination flex-wrap justify-content-center">
+                                                            {{-- First Page Link --}}
+                                                            @if ($organization->reviews_paginator->onFirstPage())
+                                                                <li class="page-item disabled" aria-disabled="true">
+                                                                    <a class="page-link page-link-first" href="#"
+                                                                       aria-hidden="true"><i
+                                                                            class="la la-long-arrow-left mr-1"
+                                                                            aria-hidden="true"></i> First</a>
+                                                                </li>
+                                                            @else
+                                                                <li class="page-item">
+                                                                    <a class="page-link page-link-first"
+                                                                       href="{{ $organization->reviews_paginator->url(1) }}"
+                                                                       rel="first"><i
+                                                                            class="la la-long-arrow-left mr-1"></i>
+                                                                        First</a>
+                                                                </li>
+                                                            @endif
+                                                            {{-- Previous Page Link --}}
+                                                            @if ($organization->reviews_paginator->onFirstPage())
+                                                                <li class="page-item disabled" aria-disabled="true">
+                                                                    <a class="page-link" href="#" aria-label="Previous">
+                                                            <span aria-hidden="true"><i
+                                                                    class="la la-angle-left"></i></span>
+                                                                        <span class="sr-only"
+                                                                              aria-hidden="true">Previous</span>
+                                                                    </a>
+                                                                </li>
+                                                            @else
+                                                                <li class="page-item">
+                                                                    <a class="page-link"
+                                                                       href="{{ $organization->reviews_paginator->previousPageUrl() }}"
+                                                                       aria-label="Previous" rel="prev">
+                                                            <span aria-hidden="true"><i
+                                                                    class="la la-angle-left"></i></span>
+                                                                        <span class="sr-only">Previous</span>
+                                                                    </a>
+                                                                </li>
+                                                            @endif
+                                                            {{-- Pagination Elements --}}
+                                                            @foreach ($organization->reviews_paginator->links()->elements as $element)
+                                                                {{-- "Three Dots" Separator --}}
+                                                                @if (is_string($element))
+                                                                    <li class="page-item disabled"
+                                                                        aria-disabled="true"><span
+                                                                            class="page-link">{{ $element }}</span></li>
+                                                                @endif
+                                                                {{-- Array Of Links --}}
+                                                                @if (is_array($element))
+                                                                    @foreach ($element as $page => $url)
+                                                                        @if ($page == $organization->reviews_paginator->currentPage())
+                                                                            <li class="page-item active"
+                                                                                aria-current="page"><span
+                                                                                    class="page-link">{{ $page }}</span>
+                                                                            </li>
+                                                                        @else
+                                                                            <li class="page-item"><a class="page-link"
+                                                                                                     href="{{ $url }}">{{ $page }}</a>
+                                                                            </li>
+                                                                        @endif
+                                                                    @endforeach
+                                                                @endif
+                                                            @endforeach
+                                                            {{-- Next Page Link --}}
+                                                            @if ($organization->reviews_paginator->hasMorePages())
+                                                                <li class="page-item">
+                                                                    <a class="page-link"
+                                                                       href="{{ $organization->reviews_paginator->nextPageUrl() }}"
+                                                                       aria-label="Next" rel="next">
+                                                        <span aria-hidden="true"><i
+                                                                class="la la-angle-right"></i></span>
+                                                                        <span class="sr-only">Next</span>
+                                                                    </a>
+                                                                </li>
+                                                            @else
+                                                                <li class="page-item disabled" aria-disabled="true">
+                                                        <span class="page-link" aria-hidden="true"><i
+                                                                class="la la-angle-right"></i></span>
+                                                                    <span class="sr-only">Next</span>
+                                                                </li>
+                                                            @endif
+                                                            {{-- Last Page Link --}}
+                                                            @if ($organization->reviews_paginator->hasMorePages())
+                                                                <li class="page-item">
+                                                                    <a class="page-link page-link-last"
+                                                                       href="{{ $organization->reviews_paginator->url($organization->reviews_paginator->lastPage()) }}"
+                                                                       rel="last">Last <i
+                                                                            class="la la-long-arrow-right ml-1"></i></a>
+                                                                </li>
+                                                            @else
+                                                                <li class="page-item disabled" aria-disabled="true">
+                                                                    <a class="page-link page-link-last" href="#"
+                                                                       aria-hidden="true">Last
+                                                                        <i
+                                                                            class="la la-long-arrow-right ml-1"
+                                                                            aria-hidden="true"></i></a>
+                                                                </li>
+                                                            @endif
+
+                                                        </ul>
+                                                    </nav>
+                                                @endif
+                                            </div><!-- end section-pagination -->
+                                        </div>
+                                    </div>
+                                </div><!-- end block-card-body -->
+                            </div><!-- end block-card -->
+                        @endif
                         <div class="block-card" id="review">
                             <div class="block-card-header">
                                 <h2 class="widget-title pb-1">Add a Review</h2>
@@ -427,20 +576,23 @@
                                         Directions</a></li>
                             </ul>
                         </div><!-- end sidebar-widget -->
-                        <div class="sidebar-widget">
-                            <h3 class="widget-title">Opening Hours</h3>
-                            <div class="stroke-shape mb-4"></div>
-                            <ul class="list-items">
-                                <li class="d-flex justify-content-between">Monday <span>9am - 5pm</span></li>
-                                <li class="d-flex justify-content-between">Tuesday <span>9am - 5pm</span></li>
-                                <li class="d-flex justify-content-between">Wednesday <span>9am - 5pm</span></li>
-                                <li class="d-flex justify-content-between">Thursday <span>9am - 5pm</span></li>
-                                <li class="d-flex justify-content-between">Friday <span>9am - 5am</span></li>
-                                <li class="d-flex justify-content-between">Saturday <span>9am - 5am</span></li>
-                                <li class="d-flex justify-content-between">Sunday <span
-                                        class="text-color-2">Closed</span></li>
-                            </ul>
-                        </div><!-- end sidebar-widget -->
+                        @if($organization->organization_work_time)
+                            <div class="sidebar-widget">
+                                <h3 class="widget-title">Opening Hours</h3>
+                                <div class="stroke-shape mb-4"></div>
+                                <ul class="list-items">
+                                    @foreach(explode(';', $organization->organization_work_time) as $work_times)
+                                        @php
+                                            $modified_work_time = str_replace('. Hide open hours for the week', '', $work_times);
+                                            $updated_work_time = str_replace(', Hours might differ', '', $modified_work_time);
+                                            $exploded_work_time = explode(',', $updated_work_time);
+                                        @endphp
+                                        <li class="d-flex justify-content-between">{{ $exploded_work_time[0] }}
+                                            <span>{{ $exploded_work_time[1] }}</span></li>
+                                    @endforeach
+                                </ul>
+                            </div><!-- end sidebar-widget -->
+                        @endif
                     </div><!-- end sidebar -->
                 </div><!-- end col-lg-4 -->
             </div><!-- end row -->
@@ -463,7 +615,7 @@
 
         $(".organization_rating").starRating({
             totalStars: 5,
-            starSize: 20,
+            starSize: 18,
             emptyColor: 'lightgray',
             activeColor: '#f9b851',
             readOnly: true,
