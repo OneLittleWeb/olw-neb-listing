@@ -36,6 +36,12 @@ class Organization extends Model
         return $slug;
     }
 
+    public function incrementViewCount()
+    {
+        $this->views++;
+        return $this->save();
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class);
@@ -48,11 +54,16 @@ class Organization extends Model
 
     public function pictures()
     {
-        return $this->hasMany(Picture::class,'Organization_guid');
+        return $this->hasMany(Picture::class, 'Organization_guid');
     }
 
     public function city()
     {
         return $this->belongsTo(City::class);
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany(Review::class, 'organization_guid', 'organization_guid');
     }
 }

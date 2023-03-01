@@ -31,9 +31,9 @@ class OrganizationController extends Controller
         $city = City::where('slug', $city_slug)->first();
         $organization = Organization::where('slug', $organization_slug)->first();
 
-//        dd($organization);
-
         if ($city && $organization) {
+
+            $organization->incrementViewCount();
             return view('organization.show', compact('organization', 'city'));
         }
 

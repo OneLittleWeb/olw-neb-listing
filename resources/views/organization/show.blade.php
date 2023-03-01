@@ -83,20 +83,9 @@
                             </p>
                             <div class="d-flex flex-wrap align-items-center">
                                 <div class="star-rating-wrap d-flex align-items-center">
-                                    <div class="star-rating text-color-5 font-size-18">
-                                        <span><i class="la la-star"></i></span>
-                                        <span class="ml-n1"><i class="la la-star"></i></span>
-                                        <span class="ml-n1"><i class="la la-star"></i></span>
-                                        <span class="ml-n1"><i class="la la-star"></i></span>
-                                        <span class="ml-n1"><i class="la la-star"></i></span>
-                                    </div>
+                                    <div class="organization_rating" data-rating="{{ $organization->rate_stars }}"></div>
                                     <p class="font-size-14 pl-2 font-weight-medium">{{ $organization->reviews_total_count }}
                                         reviews</p>
-                                </div>
-                                <div
-                                    class="timestamp font-weight-medium ml-3 pl-3 border-left border-left-color line-height-20">
-                                    <span class="text-color-4 mr-2">Open:</span>
-                                    <span>11:00 AM - 8:00 PM</span>
                                 </div>
                             </div>
                             <div class="btn-box pt-3">
@@ -105,7 +94,7 @@
                             </div>
                         </div>
                         <div class="btn-box d-flex align-items-center">
-                            <span class="btn-gray mr-2"><i class="la la-eye mr-1"></i>Viewed - 255</span>
+                            <span class="btn-gray mr-2"><i class="la la-eye mr-1"></i>Viewed - {{ $organization->views }}</span>
                         </div>
                     </div><!-- end breadcrumb-content -->
                 </div><!-- end col-lg-12 -->
@@ -169,154 +158,87 @@
                                     @endif
                                 </ul>
                                 <ul class="social-profile social-profile-styled">
-                                    <li><a href="#" class="facebook-bg" data-toggle="tooltip" data-placement="top"
-                                           title="Facebook"><i class="lab la-facebook-f"></i></a></li>
-                                    <li><a href="#" class="twitter-bg" data-toggle="tooltip" data-placement="top"
-                                           title="Twitter"><i class="lab la-twitter"></i></a></li>
-                                    <li><a href="#" class="instagram-bg" data-toggle="tooltip" data-placement="top"
-                                           title="Instagram"><i class="lab la-instagram"></i></a></li>
-                                    <li><a href="#" class="youtube-bg" data-toggle="tooltip" data-placement="top"
-                                           title="Youtube"><i class="la la-youtube"></i></a></li>
-                                    <li><a href="#" class="behance-bg" data-toggle="tooltip" data-placement="top"
-                                           title="Behance"><i class="la la-behance"></i></a></li>
-                                    <li><a href="#" class="dribbble-bg" data-toggle="tooltip" data-placement="top"
-                                           title="Dribbble"><i class="la la-dribbble"></i></a></li>
+                                    @if($organization->organization_facebook)
+                                        <li><a href="{{ $organization->organization_facebook }}" class="facebook-bg"
+                                               data-toggle="tooltip" data-placement="top"
+                                               title="Facebook" target="_blank"><i class="lab la-facebook-f"></i></a>
+                                        </li>
+                                    @endif
+                                    @if($organization->organization_twitter)
+                                        <li><a href="{{ $organization->organization_twitter }}" class="twitter-bg"
+                                               data-toggle="tooltip" data-placement="top"
+                                               title="Twitter"><i class="lab la-twitter"></i></a></li>
+                                    @endif
+                                    @if($organization->organization_instagram)
+                                        <li><a href="{{ $organization->organization_instagram }}" class="instagram-bg"
+                                               data-toggle="tooltip" data-placement="top"
+                                               title="Instagram"><i class="lab la-instagram"></i></a></li>
+                                    @endif
+                                    @if($organization->organization_youTube)
+                                        <li><a href="{{ $organization->organization_youTube }}" class="youtube-bg"
+                                               data-toggle="tooltip" data-placement="top"
+                                               title="Youtube"><i class="la la-youtube"></i></a></li>
+                                    @endif
                                 </ul>
                             </div><!-- end block-card-body -->
                         </div><!-- end block-card -->
                         <div class="block-card mb-4">
                             <div class="block-card-header">
-                                <h2 class="widget-title">Reviews <span class="ml-1 text-color-2">(5)</span></h2>
+                                <h2 class="widget-title">Reviews <span class="ml-1 text-color-2">({{ $organization->reviews->count() }})</span>
+                                </h2>
                                 <div class="stroke-shape"></div>
                             </div><!-- end block-card-header -->
                             <div class="block-card-body">
                                 <div class="comments-list">
-                                    <div class="comment">
-                                        <div class="user-thumb user-thumb-lg flex-shrink-0">
-                                            <img src="images/avatar-img.jpg" alt="author-img">
-                                        </div>
-                                        <div class="comment-body">
-                                            <div class="meta-data d-flex align-items-center justify-content-between">
-                                                <div>
-                                                    <h4 class="comment__title">Adam Smith</h4>
-                                                    <span class="comment__meta">San Francisco, CA</span>
-                                                </div>
-                                                <div class="star-rating-wrap text-center">
-                                                    <div class="star-rating text-color-5 font-size-18">
-                                                        <span><i class="la la-star"></i></span>
-                                                        <span class="ml-n1"><i class="la la-star"></i></span>
-                                                        <span class="ml-n1"><i class="la la-star"></i></span>
-                                                        <span class="ml-n1"><i class="la la-star"></i></span>
-                                                        <span class="ml-n1"><i class="la la-star"></i></span>
+                                    @foreach($organization->reviews as $review)
+                                        <div class="comment">
+                                            <div class="user-thumb user-thumb-lg flex-shrink-0">
+                                                <img src="{{ $review->reviewer_avatar_url }}" alt="author-img">
+                                            </div>
+                                            <div class="comment-body">
+                                                <div
+                                                    class="meta-data d-flex align-items-center justify-content-between">
+                                                    <div>
+                                                        <h4 class="comment__title">{{ $review->reviewer_name }}</h4>
                                                     </div>
-                                                    <p class="font-size-13 font-weight-medium">04/10/2020</p>
-                                                </div>
-                                            </div>
-                                            <p class="comment-desc">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                                Ut enim ad minim veniam, quis nostrud exercitation.
-                                            </p>
-                                            <div class="review-photos d-flex flex-wrap align-items-center ml-n1 mb-3">
-                                                <a href="images/single-listing-img1.jpg" class="d-inline-block"
-                                                   data-fancybox="gallery">
-                                                    <img class="lazy" src="images/img-loading.png"
-                                                         data-src="images/single-listing-img1.jpg" alt="review image">
-                                                </a>
-                                                <a href="images/single-listing-img2.jpg" class="d-inline-block"
-                                                   data-fancybox="gallery">
-                                                    <img class="lazy" src="images/img-loading.png"
-                                                         data-src="images/single-listing-img2.jpg" alt="review image">
-                                                </a>
-                                            </div><!-- end review-photos -->
-                                            <div
-                                                class="comment-action d-flex align-items-center justify-content-between">
-                                                <a class="btn-gray btn-gray-sm" href="#" data-toggle="modal"
-                                                   data-target="#replayModal">
-                                                    <i class="la la-reply mr-1"></i>Reply
-                                                </a>
-                                                <p class="feedback-box">
-                                                    <button type="button" class="btn-gray btn-gray-sm mr-1">
-                                                        <i class="la la-thumbs-o-up mr-1"></i>Useful <span
-                                                            class="text-color font-weight-semi-bold">2</span>
-                                                    </button>
-                                                    <button type="button" class="btn-gray btn-gray-sm">
-                                                        <i class="la la-smile-o mr-1"></i>Funny
-                                                    </button>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div><!-- end comment -->
-                                    <div class="comment comment-reply">
-                                        <div class="user-thumb user-thumb-lg flex-shrink-0">
-                                            <img src="images/avatar-img2.jpg" alt="author-img">
-                                        </div>
-                                        <div class="comment-body">
-                                            <div class="meta-data d-flex align-items-center justify-content-between">
-                                                <div>
-                                                    <h4 class="comment__title">Comment from Jeremiah. of Super Duper
-                                                        Burgers</h4>
-                                                    <span class="comment__meta">Business Manager</span>
-                                                    <span class="comment__meta">4/12/2020</span>
-                                                </div>
-                                            </div>
-                                            <p class="comment-desc">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                            </p>
-                                        </div>
-                                    </div><!-- end comment -->
-                                    <div class="comment">
-                                        <div class="user-thumb user-thumb-lg flex-shrink-0">
-                                            <img src="images/avatar-img3.jpg" alt="author-img">
-                                        </div>
-                                        <div class="comment-body">
-                                            <div class="meta-data d-flex align-items-center justify-content-between">
-                                                <div>
-                                                    <h4 class="comment__title">Mark Hardson</h4>
-                                                    <span class="comment__meta">Los Angeles, CA</span>
-                                                </div>
-                                                <div class="star-rating-wrap text-center">
-                                                    <div class="star-rating text-color-5 font-size-18">
-                                                        <span><i class="la la-star"></i></span>
-                                                        <span class="ml-n1"><i class="la la-star"></i></span>
-                                                        <span class="ml-n1"><i class="la la-star"></i></span>
-                                                        <span class="ml-n1"><i class="la la-star"></i></span>
-                                                        <span class="ml-n1"><i class="la la-star-o"></i></span>
+                                                    <div class="star-rating-wrap text-center">
+                                                        <div class="users_review_ratings"
+                                                             data-rating="{{ $review->review_rate_stars }}"></div>
+                                                        <p class="font-size-13 font-weight-medium">{{ $review->review_date }}</p>
                                                     </div>
-                                                    <p class="font-size-13 font-weight-medium">02/8/2020</p>
                                                 </div>
+                                                <p class="comment-desc">{{ $review->review_text_original }}</p>
+
+                                                <div
+                                                    class="review-photos d-flex flex-wrap align-items-center ml-n1 mb-3">
+                                                    <a href="images/single-listing-img1.jpg" class="d-inline-block"
+                                                       data-fancybox="gallery">
+                                                        <img class="lazy" src="images/img-loading.png"
+                                                             data-src="images/single-listing-img1.jpg"
+                                                             alt="review image">
+                                                    </a>
+                                                    <a href="images/single-listing-img2.jpg" class="d-inline-block"
+                                                       data-fancybox="gallery">
+                                                        <img class="lazy" src="images/img-loading.png"
+                                                             data-src="images/single-listing-img2.jpg"
+                                                             alt="review image">
+                                                    </a>
+                                                </div><!-- end review-photos -->
+
+                                                @if($review->review_thumbs_up_value)
+                                                    <div
+                                                        class="comment-action d-flex align-items-center justify-content-between float-right">
+                                                        <p class="feedback-box ">
+                                                            <button type="button" class="btn-gray btn-gray-sm mr-1">
+                                                                <i class="fa-solid fa-thumbs-up"></i> <span
+                                                                    class="text-color font-weight-semi-bold">{{ $review->review_thumbs_up_value }}</span>
+                                                            </button>
+                                                        </p>
+                                                    </div>
+                                                @endif
                                             </div>
-                                            <p class="comment-desc">
-                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                                                Ut enim ad minim veniam, quis nostrud exercitation.
-                                            </p>
-                                            <div class="review-photos d-flex flex-wrap align-items-center ml-n1 mb-3">
-                                                <a href="images/single-listing-img1.jpg" class="d-inline-block"
-                                                   data-fancybox="gallery">
-                                                    <img class="lazy" src="images/img-loading.png"
-                                                         data-src="images/single-listing-img3.jpg" alt="review image">
-                                                </a>
-                                            </div><!-- end review-photos -->
-                                            <div
-                                                class="comment-action d-flex align-items-center justify-content-between">
-                                                <a class="btn-gray btn-gray-sm" href="#" data-toggle="modal"
-                                                   data-target="#replayModal">
-                                                    <i class="la la-reply mr-1"></i>Reply
-                                                </a>
-                                                <p class="feedback-box">
-                                                    <button type="button" class="btn-gray btn-gray-sm mr-1">
-                                                        <i class="la la-thumbs-o-up mr-1"></i>Useful <span
-                                                            class="text-color font-weight-semi-bold">2</span>
-                                                    </button>
-                                                    <button type="button" class="btn-gray btn-gray-sm">
-                                                        <i class="la la-smile-o mr-1"></i>Funny
-                                                    </button>
-                                                </p>
-                                            </div>
-                                        </div>
-                                    </div><!-- end comment -->
+                                        </div><!-- end comment -->
+                                    @endforeach
                                 </div>
                                 <div class="text-center">
                                     <div class="pagination-wrapper d-inline-block">
@@ -524,4 +446,27 @@
         </div><!-- end container -->
     </section><!-- end listing-detail-area -->
     <!-- =======END LISTING DETAIL  AREA======= -->
+@endsection
+
+@section('js')
+    <script src="{{asset('plugins/ratings/src/jquery.star-rating-svg.js')}}"></script>
+    <script>
+        $(".users_review_ratings").starRating({
+            totalStars: 5,
+            starSize: 18,
+            emptyColor: 'lightgray',
+            activeColor: '#FFA718',
+            readOnly: true,
+            useGradient: false
+        });
+
+        $(".organization_rating").starRating({
+            totalStars: 5,
+            starSize: 20,
+            emptyColor: 'lightgray',
+            activeColor: '#f9b851',
+            readOnly: true,
+            useGradient: false
+        });
+    </script>
 @endsection

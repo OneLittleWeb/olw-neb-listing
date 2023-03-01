@@ -51,6 +51,8 @@ class CreateOrganizationsTable extends Migration
             $table->string('organization_phone_from_the_website')->nullable();
             $table->string('organization_guid')->nullable();
             $table->string('organization_tiktok')->nullable();
+            $table->boolean('is_claim')->default(0);
+            $table->bigInteger('views')->unsigned()->default(0)->index();
             $table->timestamps();
         });
     }

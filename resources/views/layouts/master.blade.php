@@ -41,6 +41,8 @@
     <link rel="stylesheet" href="{{asset('/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('/css/custom.css')}}">
 
+    <link rel="stylesheet" href="{{asset('plugins/ratings/src/css/star-rating-svg.css')}}">
+
 {{--    font awesome cdn--}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     @yield('css')
@@ -76,5 +78,8 @@
 <script src="{{asset('/js/tilt.jquery.min.js')}}"></script>
 <script src="{{asset('/js/jquery.lazy.min.js')}}"></script>
 <script src="{{asset('/js/main.js')}}"></script>
+
+@yield('js')
+
 </body>
 </html>
