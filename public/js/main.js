@@ -161,6 +161,8 @@
             e(".login-form, .recover-form").modal("hide"), e(".signup-form").modal("show")
         }), t.on("click", ".lost-pass-btn", function () {
             e(".login-form").modal("hide"), e(".recover-form").modal("show")
+        }),S(".review-bars-review"), e(window).on("resize", function () {
+            S(".review-bars-review")
         });
         // e("#map").length && initMap("map", 40.717499, -74.044113, "images/map-marker.png"), S(".review-bars-review"), e(window).on("resize", function () {
         //     S(".review-bars-review")
