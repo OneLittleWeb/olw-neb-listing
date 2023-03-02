@@ -19,6 +19,7 @@ class CreateReviewsTable extends Migration
             $table->text('organization_gmaps_id')->nullable();
             $table->string('review_id')->nullable();
             $table->string('reviewer_name')->nullable();
+            $table->string('reviewer_email')->nullable();
             $table->text('reviewer_profile_link')->nullable();
             $table->string('reviewer_reviews_count')->nullable();
             $table->string('review_date')->nullable();

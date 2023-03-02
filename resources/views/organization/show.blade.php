@@ -84,14 +84,10 @@
                             <div class="d-flex flex-wrap align-items-center">
                                 @if($organization->rate_stars && $organization->reviews_total_count)
                                     <div class="star-rating-wrap d-flex align-items-center">
-                                        @if($organization->rate_stars)
-                                            <div class="organization_rating"
-                                                 data-rating="{{ $organization->rate_stars }}"></div>
-                                        @endif
-                                        @if($organization->reviews_total_count)
-                                            <p class="font-size-14 pl-2 font-weight-medium">{{ $organization->reviews_total_count }}
-                                                reviews</p>
-                                        @endif
+                                        <div class="organization_rating"
+                                             data-rating="{{ $organization->rate_stars }}"></div>
+                                        <p class="font-size-14 pl-2 font-weight-medium">{{ $organization->reviews_total_count }}
+                                            reviews</p>
                                     </div>
                                 @endif
                             </div>
@@ -190,75 +186,76 @@
                                 </ul>
                             </div><!-- end block-card-body -->
                         </div><!-- end block-card -->
-                        <div class="block-card mb-4">
-                            <div class="block-card-header">
-                                <h2 class="widget-title">Rating Stats</h2>
-                                <div class="stroke-shape"></div>
-                            </div><!-- end block-card-header -->
-                            <div class="block-card-body">
-                                <div class="review-content d-flex flex-wrap align-items-center">
-                                    <div class="review-rating-summary">
+                        @if($organization->rate_stars && $organization->reviews_total_count)
+                            <div class="block-card mb-4">
+                                <div class="block-card-header">
+                                    <h2 class="widget-title">Rating Stats</h2>
+                                    <div class="stroke-shape"></div>
+                                </div><!-- end block-card-header -->
+                                <div class="block-card-body">
+                                    <div class="review-content d-flex flex-wrap align-items-center">
+                                        <div class="review-rating-summary">
                                     <span class="stats-average__count">
                                        {{ $organization->rate_stars }}
                                     </span><!-- end stats-average__count -->
-                                        <div class="star-rating-wrap">
-                                            <p class="font-size-14 font-weight-medium">out of 5.0</p>
-                                            <div class="organization_rating"
-                                                 data-rating="{{ $organization->rate_stars }}"></div>
-                                        </div>
-
-                                    </div><!-- end review-rating-summary -->
-                                    <div class="review-bars d-flex flex-row flex-wrap flex-grow-1 align-items-center">
-                                        <div class="review-bars-item">
-                                            <span class="review-bars-name">{{ $five_star_reviews }} reviews</span>
-                                            <div class="review-bars-inner d-flex w-100 align-items-center"
-                                                 style="color: #0b2e13">
+                                            <div class="star-rating-wrap">
+                                                <p class="font-size-14 font-weight-medium">out of 5.0</p>
+                                                <div class="organization_rating"
+                                                     data-rating="{{ $organization->rate_stars }}"></div>
+                                            </div>
+                                        </div><!-- end review-rating-summary -->
+                                        <div
+                                            class="review-bars d-flex flex-row flex-wrap flex-grow-1 align-items-center">
+                                            <div class="review-bars-item">
+                                                <span class="review-bars-name">{{ $five_star_reviews }} reviews</span>
+                                                <div class="review-bars-inner d-flex w-100 align-items-center">
                                             <span class="review-bars-review" data-rating="5.0">
                                                 <span class="review-bars-review-inner"></span>
                                             </span>
-                                                <span class="pill">5.0</span>
-                                            </div>
-                                        </div><!-- end review-bars-item -->
-                                        <div class="review-bars-item">
-                                            <span class="review-bars-name">{{ $four_star_reviews }} reviews</span>
-                                            <div class="review-bars-inner d-flex w-100 align-items-center">
+                                                    <span class="pill">5.0</span>
+                                                </div>
+                                            </div><!-- end review-bars-item -->
+                                            <div class="review-bars-item">
+                                                <span class="review-bars-name">{{ $four_star_reviews }} reviews</span>
+                                                <div class="review-bars-inner d-flex w-100 align-items-center">
                                             <span class="review-bars-review" data-rating="4.0">
                                                 <span class="review-bars-review-inner"></span>
                                             </span>
-                                                <span class="pill">4.0</span>
-                                            </div>
-                                        </div><!-- end review-bars-item -->
-                                        <div class="review-bars-item">
-                                            <span class="review-bars-name">{{ $three_star_reviews }} reviews</span>
-                                            <div class="review-bars-inner d-flex w-100 align-items-center">
+                                                    <span class="pill">4.0</span>
+                                                </div>
+                                            </div><!-- end review-bars-item -->
+                                            <div class="review-bars-item">
+                                                <span class="review-bars-name">{{ $three_star_reviews }} reviews</span>
+                                                <div class="review-bars-inner d-flex w-100 align-items-center">
                                             <span class="review-bars-review" data-rating="3.0">
                                                 <span class="review-bars-review-inner"></span>
                                             </span>
-                                                <span class="pill">3.0</span>
-                                            </div>
-                                        </div><!-- end review-bars-item -->
-                                        <div class="review-bars-item">
-                                            <span class="review-bars-name">{{ $two_star_reviews }} reviews</span>
-                                            <div class="review-bars-inner d-flex w-100 align-items-center">
+                                                    <span class="pill">3.0</span>
+                                                </div>
+                                            </div><!-- end review-bars-item -->
+                                            <div class="review-bars-item">
+                                                <span class="review-bars-name">{{ $two_star_reviews }} reviews</span>
+                                                <div class="review-bars-inner d-flex w-100 align-items-center">
                                             <span class="review-bars-review" data-rating="2.0">
                                                 <span class="review-bars-review-inner"></span>
                                             </span>
-                                                <span class="pill">2.0</span>
-                                            </div>
-                                        </div><!-- end review-bars-item -->
-                                        <div class="review-bars-item">
-                                            <span class="review-bars-name">{{ $one_star_reviews }} reviews</span>
-                                            <div class="review-bars-inner d-flex w-100 align-items-center">
+                                                    <span class="pill">2.0</span>
+                                                </div>
+                                            </div><!-- end review-bars-item -->
+                                            <div class="review-bars-item">
+                                                <span class="review-bars-name">{{ $one_star_reviews }} reviews</span>
+                                                <div class="review-bars-inner d-flex w-100 align-items-center">
                                             <span class="review-bars-review" data-rating="1.0">
                                                 <span class="review-bars-review-inner"></span>
                                             </span>
-                                                <span class="pill">1.0</span>
-                                            </div>
-                                        </div><!-- end review-bars-item -->
-                                    </div><!-- end review-bars -->
-                                </div><!-- end review-content -->
-                            </div><!-- end block-card-body -->
-                        </div><!-- end block-card -->
+                                                    <span class="pill">1.0</span>
+                                                </div>
+                                            </div><!-- end review-bars-item -->
+                                        </div><!-- end review-bars -->
+                                    </div><!-- end review-content -->
+                                </div><!-- end block-card-body -->
+                            </div><!-- end block-card -->
+                        @endif
                         @if($organization->reviews->count())
                             <div class="block-card mb-4">
                                 <div class="block-card-header">
