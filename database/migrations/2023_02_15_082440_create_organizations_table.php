@@ -21,7 +21,7 @@ class CreateOrganizationsTable extends Migration
             $table->string('slug')->nullable();
             $table->text('gmaps_link')->nullable();
             $table->string('organization_name')->nullable();
-            $table->string('Organization_gmaps_id')->nullable();
+            $table->string('organization_gmaps_id')->nullable();
             $table->string('rate_stars')->nullable();
             $table->string('reviews_total_count')->nullable();
             $table->text('organization_category')->nullable();

@@ -3,7 +3,8 @@
 @section('meta_description', "add")
 @section('meta_keywords',"add")
 @section('content')
-    <!-- ========START FULL SCREEN SLIDER======= -->
+
+    <!-- =======START FULL SCREEN SLIDER======= -->
     <section class="full-screen-slider-area" style="padding-top: 98px">
         <div class="full-screen-slider owl-trigger-action owl-trigger-action-2">
             <a href="images/single-listing-img1.jpg" class="fs-slider-item d-block" data-fancybox="gallery"
@@ -267,9 +268,15 @@
                                     <div class="comments-list">
                                         @foreach($organization->reviews_paginator as $review)
                                             <div class="comment">
-                                                <div class="user-thumb user-thumb-lg flex-shrink-0">
-                                                    <img src="{{ $review->reviewer_avatar_url }}" alt="author-img">
-                                                </div>
+                                                @if($review->reviewer_avatar_url)
+                                                    <div class="user-thumb user-thumb-lg flex-shrink-0">
+                                                        <img src="{{ $review->reviewer_avatar_url }}" alt="author-img">
+                                                    </div>
+                                                @else
+                                                    <div class="user-thumb user-thumb-lg flex-shrink-0">
+                                                        <img src="{{ asset('images/bb.png') }}" alt="author-img">
+                                                    </div>
+                                                @endif
                                                 <div class="comment-body">
                                                     <div
                                                         class="meta-data d-flex align-items-center justify-content-between">
@@ -295,8 +302,20 @@
                                                                 </a>
                                                             @endforeach
                                                         </div><!-- end review-photos -->
+                                                    @elseif($review->review_photos_files)
+                                                        <div
+                                                            class="review-photos d-flex flex-wrap align-items-center ml-n1 mb-3">
+                                                            @foreach(explode(',', $review->review_photos_files) as $photo_file)
+                                                                <a href="{{ asset('images/reviews/' . $photo_file) }}"
+                                                                   class="d-inline-block" data-fancybox="gallery">
+                                                                    <img class="lazy"
+                                                                         src="{{ asset('images/reviews/' . $photo_file) }}"
+                                                                         data-src="{{ asset('images/reviews/' . $photo_file) }}"
+                                                                         alt="review image">
+                                                                </a>
+                                                            @endforeach
+                                                        </div><!-- end review-photos -->
                                                     @endif
-
                                                     @if($review->review_thumbs_up_value)
                                                         <div
                                                             class="comment-action d-flex align-items-center justify-content-between float-right">
@@ -312,10 +331,10 @@
                                             </div><!-- end comment -->
                                         @endforeach
                                     </div>
-                                    <div class="text-center">
-                                        <div class="pagination-wrapper d-inline-block">
-                                            <div class="section-pagination">
-                                                @if ($organization->reviews_paginator->hasPages())
+                                    @if ($organization->reviews_paginator->hasPages())
+                                        <div class="text-center">
+                                            <div class="pagination-wrapper d-inline-block">
+                                                <div class="section-pagination">
                                                     <nav aria-label="Page navigation">
                                                         <ul class="pagination flex-wrap justify-content-center">
                                                             {{-- First Page Link --}}
@@ -418,124 +437,93 @@
 
                                                         </ul>
                                                     </nav>
-                                                @endif
-                                            </div><!-- end section-pagination -->
+                                                </div><!-- end section-pagination -->
+                                            </div>
                                         </div>
-                                    </div>
+                                    @endif
+
                                 </div><!-- end block-card-body -->
                             </div><!-- end block-card -->
                         @endif
                         <div class="block-card" id="review">
                             <div class="block-card-header">
                                 <h2 class="widget-title pb-1">Add a Review</h2>
-                                <p>Your email address will not be published. Required fields are marked *</p>
+                                <p>Your email address will not be published. Required fields are marked <span
+                                        class="required">*</span></p>
                             </div><!-- end block-card-header -->
                             <div class="block-card-body">
                                 <div
-                                    class="add-rating-bars review-bars d-flex flex-row flex-wrap flex-grow-1 align-items-center justify-content-between">
-                                    <div class="review-bars-item mx-0 mt-0">
-                                        <span class="review-bars-name">Service</span>
-                                        <div class="review-bars-inner pt-1">
-                                            <form class="leave-rating">
-                                                <input type="radio" name="rating" id="rating-1" value="1">
-                                                <label for="rating-1" class="fa fa-star"></label>
-                                                <input type="radio" name="rating" id="rating-2" value="2">
-                                                <label for="rating-2" class="fa fa-star"></label>
-                                                <input type="radio" name="rating" id="rating-3" value="3">
-                                                <label for="rating-3" class="fa fa-star"></label>
-                                                <input type="radio" name="rating" id="rating-4" value="4">
-                                                <label for="rating-4" class="fa fa-star"></label>
-                                                <input type="radio" name="rating" id="rating-5" value="5">
-                                                <label for="rating-5" class="fa fa-star"></label>
-                                            </form>
+                                    class="add-rating-bars review-bars d-flex flex-row flex-wrap flex-grow-1 align-items-center">
+                                    <span class="review-bars-name pr-3">Rate this business! <span
+                                            class="required">*</span></span>
+                                    <section class='rating-widget'>
+                                        <!-- Rating Stars Box -->
+                                        <div class='rating-stars text-center'>
+                                            <ul id='stars'>
+                                                <li class='star' title='Poor' data-value='1'>
+                                                    <i class='fa fa-star fa-fw'></i>
+                                                </li>
+                                                <li class='star' title='Fair' data-value='2'>
+                                                    <i class='fa fa-star fa-fw'></i>
+                                                </li>
+                                                <li class='star' title='Good' data-value='3'>
+                                                    <i class='fa fa-star fa-fw'></i>
+                                                </li>
+                                                <li class='star' title='Excellent' data-value='4'>
+                                                    <i class='fa fa-star fa-fw'></i>
+                                                </li>
+                                                <li class='star' title='WOW!!!' data-value='5'>
+                                                    <i class='fa fa-star fa-fw'></i>
+                                                </li>
+                                            </ul>
                                         </div>
-                                    </div><!-- end review-bars-item -->
-                                    <div class="review-bars-item mx-0 mt-0">
-                                        <span class="review-bars-name">Value for Money</span>
-                                        <div class="review-bars-inner pt-1">
-                                            <form class="leave-rating">
-                                                <input type="radio" name="rating" id="rating-6" value="1">
-                                                <label for="rating-6" class="fa fa-star"></label>
-                                                <input type="radio" name="rating" id="rating-7" value="2">
-                                                <label for="rating-7" class="fa fa-star"></label>
-                                                <input type="radio" name="rating" id="rating-8" value="3">
-                                                <label for="rating-8" class="fa fa-star"></label>
-                                                <input type="radio" name="rating" id="rating-9" value="4">
-                                                <label for="rating-9" class="fa fa-star"></label>
-                                                <input type="radio" name="rating" id="rating-10" value="5">
-                                                <label for="rating-10" class="fa fa-star"></label>
-                                            </form>
-                                        </div>
-                                    </div><!-- end review-bars-item -->
-                                    <div class="review-bars-item mx-0 mt-0">
-                                        <span class="review-bars-name">Quality</span>
-                                        <div class="review-bars-inner pt-1">
-                                            <form class="leave-rating">
-                                                <input type="radio" name="rating" id="rating-11" value="1">
-                                                <label for="rating-11" class="fa fa-star"></label>
-                                                <input type="radio" name="rating" id="rating-12" value="2">
-                                                <label for="rating-12" class="fa fa-star"></label>
-                                                <input type="radio" name="rating" id="rating-13" value="3">
-                                                <label for="rating-13" class="fa fa-star"></label>
-                                                <input type="radio" name="rating" id="rating-14" value="4">
-                                                <label for="rating-14" class="fa fa-star"></label>
-                                                <input type="radio" name="rating" id="rating-15" value="5">
-                                                <label for="rating-15" class="fa fa-star"></label>
-                                            </form>
-                                        </div>
-                                    </div><!-- end review-bars-item -->
-                                    <div class="review-bars-item mx-0 mt-0">
-                                        <span class="review-bars-name">Location</span>
-                                        <div class="review-bars-inner pt-1">
-                                            <form class="leave-rating">
-                                                <input type="radio" name="rating" id="rating-16" value="1">
-                                                <label for="rating-16" class="fa fa-star"></label>
-                                                <input type="radio" name="rating" id="rating-17" value="2">
-                                                <label for="rating-17" class="fa fa-star"></label>
-                                                <input type="radio" name="rating" id="rating-18" value="3">
-                                                <label for="rating-18" class="fa fa-star"></label>
-                                                <input type="radio" name="rating" id="rating-19" value="4">
-                                                <label for="rating-19" class="fa fa-star"></label>
-                                                <input type="radio" name="rating" id="rating-20" value="5">
-                                                <label for="rating-20" class="fa fa-star"></label>
-                                            </form>
-                                        </div>
-                                    </div><!-- end review-bars-item -->
+                                    </section>
                                 </div><!-- end review-bars -->
-                                <form method="post" class="form-box row pt-3">
+                                <form method="post" action="{{ route('review.store') }}" class="form-box row pt-3"
+                                      enctype="multipart/form-data">
+                                    @csrf
+                                    <input type="hidden" name="review_rate_stars" id="review_rate_stars">
+                                    <input type="hidden" name="organization_guid"
+                                           value="{{ $organization->organization_guid }}">
                                     <div class="col-lg-6">
                                         <div class="input-box">
-                                            <label class="label-text">Name</label>
+                                            <label class="label-text" for="reviewer_name">Name <span
+                                                    class="required">*</span></label>
                                             <div class="form-group">
                                                 <span class="la la-user form-icon"></span>
-                                                <input class="form-control" type="text" name="name"
-                                                       placeholder="Your Name">
+                                                <input class="form-control" type="text" name="reviewer_name"
+                                                       id="reviewer_name"
+                                                       placeholder="Your Name" value="{{ old('reviewer_name') }}"
+                                                       required>
                                             </div>
                                         </div>
                                     </div><!-- end col-lg-6 -->
                                     <div class="col-lg-6">
                                         <div class="input-box">
-                                            <label class="label-text">Email</label>
+                                            <label class="label-text" for="reviewer_email">Email</label>
                                             <div class="form-group">
                                                 <span class="la la-envelope-o form-icon"></span>
-                                                <input class="form-control" type="email" name="email"
-                                                       placeholder="Email Address">
+                                                <input class="form-control" type="email" name="reviewer_email"
+                                                       id="reviewer_email"
+                                                       placeholder="Email Address" value="{{ old('reviewer_email') }}">
                                             </div>
                                         </div>
                                     </div><!-- end col-lg-6 -->
                                     <div class="col-lg-12">
                                         <div class="input-box">
-                                            <label class="label-text">Review</label>
+                                            <label class="label-text" for="review_text_original">Review</label>
                                             <div class="form-group">
                                                 <span class="la la-pencil form-icon"></span>
-                                                <textarea class="message-control form-control" name="message"
-                                                          placeholder="Tell about your experience or leave a tip for others"></textarea>
+                                                <textarea class="message-control form-control"
+                                                          name="review_text_original"
+                                                          id="review_text_original"
+                                                          placeholder="Tell about your experience or leave a tip for others">{{ old('review_text_original') }}</textarea>
                                             </div>
                                         </div>
                                     </div><!-- end col-lg-12 -->
                                     <div class="col-lg-12">
                                         <div class="file-upload-wrap file-upload-wrap-2">
-                                            <input type="file" name="files[]"
+                                            <input type="file" name="review_photos_files[]"
                                                    class="multi file-upload-input with-preview" multiple>
                                             <span class="file-upload-text"><i
                                                     class="la la-photo mr-2"></i>Add Photos</span>
@@ -604,6 +592,7 @@
         $(".users_review_ratings").starRating({
             totalStars: 5,
             starSize: 18,
+            starShape: 'rounded',
             emptyColor: 'lightgray',
             activeColor: '#FFA718',
             readOnly: true,
@@ -613,10 +602,60 @@
         $(".organization_rating").starRating({
             totalStars: 5,
             starSize: 18,
+            starShape: 'rounded',
             emptyColor: 'lightgray',
-            activeColor: '#f9b851',
+            activeColor: '#FFA718',
             readOnly: true,
             useGradient: false
+        });
+
+        $(".my-rating-9").starRating({
+            initialRating: 3,
+            disableAfterRate: false,
+            onHover: function (currentIndex, currentRating, $el) {
+                $('.live-rating').text(currentIndex);
+            },
+            onLeave: function (currentIndex, currentRating, $el) {
+                $('.live-rating').text(currentRating);
+            }
+        });
+
+        $(document).ready(function () {
+            /* 1. Visualizing things on Hover - See next part for action on click */
+            $('#stars li').on('mouseover', function () {
+                let onStar = parseInt($(this).data('value'), 10); // The star currently mouse on
+
+                // Now highlight all the stars that's not after the current hovered star
+                $(this).parent().children('li.star').each(function (e) {
+                    if (e < onStar) {
+                        $(this).addClass('hover');
+                    } else {
+                        $(this).removeClass('hover');
+                    }
+                });
+
+            }).on('mouseout', function () {
+                $(this).parent().children('li.star').each(function (e) {
+                    $(this).removeClass('hover');
+                });
+            });
+
+            /* 2. Action to perform on click */
+            $('#stars li').on('click', function () {
+                let onStar = parseInt($(this).data('value'), 10); // The star currently selected
+                let stars = $(this).parent().children('li.star');
+
+                for (let i = 0; i < stars.length; i++) {
+                    $(stars[i]).removeClass('selected');
+                }
+
+                for (let i = 0; i < onStar; i++) {
+                    $(stars[i]).addClass('selected');
+                }
+                // JUST RESPONSE (Not needed)
+                let ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
+                document.getElementById('review_rate_stars').value = ratingValue;
+            });
         });
     </script>
 @endsection

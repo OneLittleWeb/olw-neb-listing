@@ -1,6 +1,63 @@
-.logo img{
+.logo img {
     width: 10rem;
 }
-.footer-logo img{
+
+.footer-logo img {
     width: 11rem;
+}
+
+.review-bars-name {
+    color: #333f57 !important;
+    font-weight: 500;
+}
+
+.required {
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+/* Rating Star Widgets Style */
+.rating-stars ul {
+    list-style-type: none;
+    padding: 0;
+
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
+.rating-stars ul > li.star {
+    display: inline-block;
+}
+
+#profile {
+    width: 255px;
+    height: 75px;
+    border-radius: 50%;
+    background: #512DA8;
+    font-size: 35px;
+    color: #fff;
+    text-align: center;
+    line-height: 100px;
+    margin: 20px 0;
+}
+
+#profile span{
+    padding-bottom: 10px !important;
+}
+
+/* Idle State of the stars */
+.rating-stars ul > li.star > i.fa {
+    font-size: 2.5em; /* Change the size of the stars */
+    color: #ccc; /* Color on idle state */
+}
+
+/* Hover state of the stars */
+.rating-stars ul > li.star.hover > i.fa {
+    color: #FFA718;
+}
+
+/* Selected state of the stars */
+.rating-stars ul > li.star.selected > i.fa {
+    color: #FFA718;
 }

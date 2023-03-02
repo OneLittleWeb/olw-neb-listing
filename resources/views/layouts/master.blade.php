@@ -40,7 +40,6 @@
     <link rel="stylesheet" href="{{asset('/css/chosen.min.css')}}">
     <link rel="stylesheet" href="{{asset('/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('/css/custom.css')}}">
-
     <link rel="stylesheet" href="{{asset('plugins/ratings/src/css/star-rating-svg.css')}}">
 
 {{--    font awesome cdn--}}

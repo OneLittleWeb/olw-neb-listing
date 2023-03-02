@@ -25,19 +25,19 @@ class SecondSheetImporter implements ToCollection, WithStartRow
             Review::updateOrCreate([
                 'review_id' => $row[1],
             ], [
-                'organization_guid' => $row[13],
-                'organization_gmaps_id' => $row[12],
+                'organization_guid' => (!empty($row[13])) ? $row[13] : null,
+                'organization_gmaps_id' => (!empty($row[12])) ? $row[12] : null,
                 'review_id' => $row[1],
-                'reviewer_name' => $row[2],
-                'reviewer_profile_link' => $row[3],
-                'reviewer_reviews_count' => $row[4],
-                'review_date' => $row[5],
-                'review_rate_stars' => $row[6],
-                'review_text_original' => $row[7],
-                'reviewer_avatar_url' => $row[9],
-                'review_photos_files' => $row[10],
-                'review_photos_urls' => $row[11],
-                'review_thumbs_up_value' => $row[14],
+                'reviewer_name' => (!empty($row[2])) ? $row[2] : null,
+                'reviewer_profile_link' => (!empty($row[3])) ? $row[3] : null,
+                'reviewer_reviews_count' => (!empty($row[4])) ? $row[4] : null,
+                'review_date' => (!empty($row[5])) ? $row[5] : null,
+                'review_rate_stars' => (!empty($row[6])) ? $row[6] : null,
+                'review_text_original' => (!empty($row[7])) ? $row[7] : null,
+                'reviewer_avatar_url' => (!empty($row[9])) ? $row[9] : null,
+                'review_photos_files' => (!empty($row[10])) ? $row[10] : null,
+                'review_photos_urls' => (!empty($row[11])) ? $row[11] : null,
+                'review_thumbs_up_value' => (!empty($row[14])) ? $row[14] : null,
             ]);
         }
     }
