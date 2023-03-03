@@ -122,3 +122,9 @@
         </div><!-- end row -->
     </div><!-- end container -->
 </section><!-- end footer-area -->
+
+<!-- start back-to-top -->
+<div id="back-to-top">
+    <i class="la la-arrow-up" title="Go top"></i>
+</div>
+<!-- end back-to-top -->

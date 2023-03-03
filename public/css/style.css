@@ -3660,11 +3660,11 @@ div.datedropper .picker .pick-lg-b li {
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
-    background-color: #fff;
+    background-color: #7b68ee;
     -webkit-box-shadow: 0 10px 40px rgba(82, 85, 90, 0.2);
     -moz-box-shadow: 0 10px 40px rgba(82, 85, 90, 0.2);
     box-shadow: 0 10px 40px rgba(82, 85, 90, 0.2);
-    color: #333f57;
+    color: #fff;
     font-size: 16px;
     -webkit-transition: all .4s;
     -moz-transition: all .4s;
