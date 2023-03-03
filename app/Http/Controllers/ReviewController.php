@@ -40,6 +40,7 @@ class ReviewController extends Controller
             }
             $review->save();
         }
+
         alert()->success('success', 'Review submitted successfully.');
 
         return redirect()->back();

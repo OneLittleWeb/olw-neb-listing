@@ -42,7 +42,7 @@ class OrganizationController extends Controller
 
             $organization->reviews_paginator = $organization->reviews()->orderByDesc('id')->paginate(5)->onEachSide(0);
 
-            return view('organization.show', compact('organization', 'city','five_star_reviews','four_star_reviews','three_star_reviews','two_star_reviews','one_star_reviews'));
+            return view('organization.show', compact('organization', 'city', 'five_star_reviews', 'four_star_reviews', 'three_star_reviews', 'two_star_reviews', 'one_star_reviews'));
         }
 
         abort(404);
@@ -67,6 +67,28 @@ class OrganizationController extends Controller
                 Excel::import(new ImportOrganization($county_name, $city_id), $files[0]);
             }
         }
+
+        return redirect()->back();
+    }
+
+    public function copyPast()
+    {
+        $category_directories = File::directories('H:\scraped data');
+
+        foreach ($category_directories as $category_directory) {
+            foreach (File::directories($category_directory) as $category) {
+                $sourcePath = File::glob($category . '/media/*');
+
+                foreach ($sourcePath as $source) {
+                    $destinationPath = 'F:\laragon\www\nebraskalisting\public\images\business';
+                    $file = basename($source);
+                    $destinationPath = $destinationPath . '/' . $file;
+                    File::copy($source, $destinationPath);
+                }
+            }
+        }
+
+        alert()->success('success', 'Image copy and past successfully completed.');
 
         return redirect()->back();
     }
