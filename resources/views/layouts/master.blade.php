@@ -79,6 +79,7 @@
 <script src="{{asset('/js/main.js')}}"></script>
 
 @yield('js')
+@include('sweetalert::alert')
 
 </body>
 </html>

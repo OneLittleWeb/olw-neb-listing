@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Organization;
 use App\Models\Review;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -37,11 +36,12 @@ class ReviewController extends Controller
                     $image->move($destinationPath, $name);
                     $files[] = $name;
                 }
+                $review->review_photos_files = implode(',', $files);
             }
-            $review->review_photos_files = implode(',', $files);
             $review->save();
         }
+        alert()->success('success', 'Review submitted successfully.');
 
-        return redirect()->back()->with('success', 'Review submitted successfully.');
+        return redirect()->back();
     }
 }
