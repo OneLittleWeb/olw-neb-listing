@@ -11,6 +11,7 @@
         <span class="line-bg line-bg4"></span>
         <span class="line-bg line-bg5"></span>
         <span class="line-bg line-bg6"></span>
+
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -21,46 +22,56 @@
                                 explore.</p>
                         </div>
                     </div><!-- end hero-heading -->
-                    <div class="main-search-input main-search-input-2 position-relative z-index-2">
-                        <div class="main-search-input-item">
-                            <form action="#" class="form-box">
-                                <div class="input-box">
-                                    <label class="label-text">What are you</label>
-                                    <div class="form-group mb-0">
-                                        <span class="la la-search form-icon"></span>
-                                        <input class="form-control" type="search" placeholder="looking for?">
+                    <form action="{{ route('search') }}" enctype="multipart/form-data">
+                        @csrf
+                        <div class="main-search-input main-search-input-2 position-relative z-index-2">
+                            <div class="main-search-input-item">
+                                <div class="form-box">
+                                    <div class="input-box">
+                                        <label class="label-text" for="looking_for">What are you <span
+                                                class="required">*</span></label>
+                                        <div class="form-group mb-0">
+                                            <span class="la la-search form-icon"></span>
+                                            <input class="form-control" type="search" name="looking_for"
+                                                   id="looking_for"
+                                                   placeholder="looking for?" required>
+                                        </div>
                                     </div>
                                 </div>
-                            </form>
-                        </div><!-- end main-search-input-item -->
-                        <div class="main-search-input-item user-chosen-select-container">
-                            <label class="label-text">Where to look?</label>
-                            <select class="user-chosen-select">
-                                <option value="0">Select a Location</option>
-                                <option value="AF">Afghanistan</option>
-                                <option value="AX">Åland Islands</option>
-                                <option value="AL">Albania</option>
-                            </select>
-                        </div><!-- end main-search-input-item -->
-                        <div class="main-search-input-item user-chosen-select-container">
-                            <label class="label-text">What Category?</label>
-                            <select class="user-chosen-select">
-                                <option value="0">Select a Category</option>
-                                <option value="1">Shops</option>
-                                <option value="2">Hotels</option>
-                                <option value="3">Foods & Restaurants</option>
-                            </select>
-                        </div><!-- end main-search-input-item -->
-                        <div class="main-search-input-item">
-                            <label class="label-text">Search Activities</label>
-                            <button class="theme-btn gradient-btn border-0 w-100" type="submit"><i
-                                    class="la la-search mr-2"></i>Search Now
-                            </button>
-                        </div><!-- end main-search-input-item -->
-                    </div><!-- end main-search-input -->
+                            </div><!-- end main-search-input-item -->
+                            <div class="main-search-input-item user-chosen-select-container">
+                                <label class="label-text" for="search_location">Where to look? <span
+                                        class="required">*</span></label>
+                                <select class="user-chosen-select" name="search_location" id="search_location" required>
+                                    <option value="">Select a Location</option>
+                                    @foreach($cities as $city)
+                                        <option
+                                                value="{{ $city->id }}">{{ $city->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div><!-- end main-search-input-item -->
+                            <div class="main-search-input-item user-chosen-select-container">
+                                <label class="label-text" for="search_category">What Category?</label>
+                                <select class="user-chosen-select" name="search_category" id="search_category">
+                                    <option value="">Select a Category</option>
+                                    @foreach($categories as $category)
+                                        <option class="text-capitalize"
+                                                value="{{ $category->id }}">{{ $category->name }}</option>
+                                    @endforeach
+                                </select>
+                            </div><!-- end main-search-input-item -->
+                            <div class="main-search-input-item">
+                                <label class="label-text">Search</label>
+                                <button class="theme-btn gradient-btn border-0 w-100" type="submit"><i
+                                        class="la la-search mr-2"></i>Search Now
+                                </button>
+                            </div><!-- end main-search-input-item -->
+                        </div><!-- end main-search-input -->
+                    </form>
                 </div><!-- end col-lg-12 -->
             </div><!-- end row -->
         </div><!-- end container -->
+
         <div class="bg-white position-relative z-index-1 pb-4">
             <div class="container">
                 <div class="row">
@@ -68,7 +79,8 @@
                         <div class="highlight-lists d-flex justify-content-center mt-4">
                             @foreach($categories as $category)
                                 <div class="hero-category-item hero-category--item">
-                                    <a href="#" class="d-block hero-cat-link hover-y">
+                                    <a href="{{ route('category.business', $category->slug) }}"
+                                       class="d-block hero-cat-link hover-y">
                                         <span class="icon-element mx-auto {{ $category->background }}"><i
                                                 class="{{ $category->icon }}"></i></span>
                                         {{ $category->name }}
@@ -144,7 +156,8 @@
                                  data-src="{{asset('images/' . $major_city->background_image)}}"
                                  alt="category-image" class="lazy cat-img">
                             <div class="category-content d-flex align-items-center justify-content-center">
-                                <a href="{{ route('city.category', $major_city->slug) }}" class="category-link d-flex flex-column justify-content-center w-100 h-100">
+                                <a href="{{ route('city.category', $major_city->slug) }}"
+                                   class="category-link d-flex flex-column justify-content-center w-100 h-100">
                                     <div class="cat-content">
                                         <h4 class="cat__title mb-3">{{ $major_city->name }}</h4>
                                     </div>
@@ -215,10 +228,12 @@
                 @foreach($popular_cities as $popular_city)
                     <div class="col-lg-3 responsive-column">
                         <div class="category-item overflow-hidden">
-                            <img src="{{asset('images/' . $popular_city->background_image)}}" data-src="{{asset('images/' . $popular_city->background_image)}}"
+                            <img src="{{asset('images/' . $popular_city->background_image)}}"
+                                 data-src="{{asset('images/' . $popular_city->background_image)}}"
                                  alt="category-image" class="lazy cat-img">
                             <div class="category-content d-flex align-items-center justify-content-center">
-                                <a href="{{ route('city.category', $popular_city->slug) }}" class="category-link d-flex flex-column justify-content-center w-100 h-100">
+                                <a href="{{ route('city.category', $popular_city->slug) }}"
+                                   class="category-link d-flex flex-column justify-content-center w-100 h-100">
                                     <div class="cat-content">
                                         <h4 class="cat__title mb-3">{{ $popular_city->name }}</h4>
                                     </div>
@@ -376,7 +391,8 @@
                                 <span class="ribbon ribbon-lg">Working Process</span>
                             </div>
                             <h2 class="sec__title line-height-50 text-white">
-                                Get Started With <span class="text-color-16">Nebraskalisting</span> It's Very Easy to Start.
+                                Get Started With <span class="text-color-16">Nebraskalisting</span> It's Very Easy to
+                                Start.
                             </h2>
                             <p class="sec__desc text-white-50">
                                 Omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut

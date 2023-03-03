@@ -5,9 +5,12 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\CategoryController;
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/search', [HomeController::class, 'search'])->name('search');
+Route::get('/category/{slug}', [CategoryController::class, 'categoryBusiness'])->name('category.business');
 
 Route::get('/file-import', [OrganizationController::class, 'importView'])->name('import-view');
 Route::get('/import', [OrganizationController::class, 'import'])->name('import');
