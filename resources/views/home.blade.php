@@ -72,29 +72,53 @@
             </div><!-- end row -->
         </div><!-- end container -->
 
-        <div class="bg-white position-relative z-index-1 pb-4">
+{{--        <div class="category-area position-relative bg-gray section--padding">--}}
+{{--            <div class="container">--}}
+{{--                <div class="row">--}}
+{{--                    <div class="highlighted-categories highlighted-categories-2 pb-5 mx-auto mt-0 padding-top-130px">--}}
+{{--                        <div class="highlight-lists d-flex justify-content-center mt-4">--}}
+{{--                            @foreach($categories as $category)--}}
+{{--                                <div class="hero-category-item hero-category--item">--}}
+{{--                                    <a href="{{ route('category.business', $category->slug) }}"--}}
+{{--                                       class="d-block hero-cat-link hover-y">--}}
+{{--                                        <span class="icon-element mx-auto {{ $category->background }}"><i--}}
+{{--                                                class="{{ $category->icon }}"></i></span>--}}
+{{--                                        {{ $category->name }}--}}
+{{--                                    </a>--}}
+{{--                                </div>--}}
+{{--                            @endforeach--}}
+{{--                        </div>--}}
+{{--                    </div><!-- end highlighted-categories -->--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+
+
+        <!-- ================================
+    START CATEGORY AREA
+================================= -->
+        <section class="category-area position-relative bg-gray section--padding">
             <div class="container">
-                <div class="row">
-                    <div class="highlighted-categories highlighted-categories-2 pb-5 mx-auto mt-0 padding-top-130px">
-                        <div class="highlight-lists d-flex justify-content-center mt-4">
-                            @foreach($categories as $category)
-                                <div class="hero-category-item hero-category--item">
-                                    <a href="{{ route('category.business', $category->slug) }}"
-                                       class="d-block hero-cat-link hover-y">
-                                        <span class="icon-element mx-auto {{ $category->background }}"><i
-                                                class="{{ $category->icon }}"></i></span>
-                                        {{ $category->name }}
-                                    </a>
-                                </div>
-                            @endforeach
+                <div class="row highlighted-categories justify-content-center">
+                    @foreach($categories as $category)
+                    <div class="col-lg-2 col-sm-6">
+                        <div class="hero-category-item hero-category-item-layout-2">
+                            <a href="{{ route('category.business', $category->slug) }}" class="d-block hero-cat-link">
+                                <span class="icon-element mx-auto {{ $category->background }}"><i class="{{ $category->icon }}"></i></span>
+                                {{ $category->name }}
+                            </a>
                         </div>
-                    </div><!-- end highlighted-categories -->
+                    </div><!-- end col-lg-2 -->
+                    @endforeach
                 </div>
-            </div>
-        </div>
+            </div><!-- end container -->
+        </section><!-- end category-area -->
+        <!-- ================================
+            END CATEGORY AREA
+        ================================= -->
     </section><!-- end hero-wrapper -->
     <!-- ====START MAJOR CITY AREA==== -->
-    <section class="category-area bg-gray arrow-down-shape position-relative section-padding">
+    <section class="category-area bg-white arrow-down-shape position-relative section-padding">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -1004,236 +1028,4 @@
     <!-- ================================
         END CTA AREA
     ================================= -->
-
-    {{--start back-to-top--}}
-    <div id="back-to-top">
-        <i class="la la-arrow-up" title="Go top"></i>
-    </div>
-    {{--end back-to-top--}}
-
-
-    {{--Modal--}}
-    <div class="modal fade modal-container login-form" id="loginModal" tabindex="-1" role="dialog"
-         aria-labelledby="loginModalTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header align-items-center mh-bg">
-                    <h5 class="modal-title" id="loginModalTitle">Hey, Welcome back!</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true" class="la la-times-circle"></span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form method="post" class="form-box">
-                        <div class="input-box">
-                            <label class="label-text">Username or email</label>
-                            <div class="form-group">
-                                <span class="la la-user form-icon"></span>
-                                <input class="form-control form-control-styled" type="text" name="text"
-                                       placeholder="Username or email address">
-                            </div>
-                        </div>
-                        <div class="input-box">
-                            <label class="label-text">Password</label>
-                            <div class="form-group">
-                                <span class="la la-lock form-icon"></span>
-                                <input class="form-control form-control-styled" type="text" name="text"
-                                       placeholder="Enter password">
-                            </div>
-                        </div>
-                        <div class="input-box d-flex align-items-center justify-content-between pb-4 user-action-meta">
-                            <div class="custom-checkbox">
-                                <input type="checkbox" id="keepMeSignedChb">
-                                <label for="keepMeSignedChb" class="font-size-14">Keep me signed in</label>
-                            </div>
-                            <a href="javascript:void(0)" class="margin-bottom-10px lost-pass-btn font-size-14">Lost
-                                Password?</a>
-                        </div>
-                        <div class="btn-box">
-                            <button type="submit" class="theme-btn gradient-btn w-100">
-                                <i class="la la-sign-in mr-1"></i> Login to Account
-                            </button>
-                            <p class="sub-text-box text-right pt-1 font-weight-medium font-size-14">
-                                New to Listhub? <a class="text-color-2 signup-btn" href="javascript:void(0)">Create
-                                    account</a>
-                            </p>
-                        </div>
-                        <div class="icon-element font-size-16 font-weight-semi-bold mt-5 mb-4 mx-auto">
-                            OR
-                        </div>
-                        <div class="text-center">
-                            <p class="font-size-15 font-weight-medium">Login with your social network</p>
-                            <ul class="social-profile social-profile-colored py-3">
-                                <li>
-                                    <a href="#" class="google-bg mx-1" data-toggle="tooltip" data-placement="top"
-                                       title="Google">
-                                        <i class="lab la-google"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="facebook-bg mx-1" data-toggle="tooltip" data-placement="top"
-                                       title="Facebook">
-                                        <i class="lab la-facebook-f"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="twitter-bg mx-1" data-toggle="tooltip" data-placement="top"
-                                       title="Twitter">
-                                        <i class="lab la-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="instagram-bg mx-1" data-toggle="tooltip" data-placement="top"
-                                       title="Instagram">
-                                        <i class="lab la-instagram"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {{--Modal--}}
-    <div class="modal fade modal-container signup-form" id="signUpModal" tabindex="-1" role="dialog"
-         aria-labelledby="signUpModalTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header align-items-center mh-bg-2">
-                    <h5 class="modal-title" id="signUpModalTitle">Welcome! create your listhub account</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true" class="la la-times-circle"></span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form method="post" class="form-box">
-                        <div class="input-box">
-                            <label class="label-text">Username</label>
-                            <div class="form-group">
-                                <span class="la la-user form-icon"></span>
-                                <input class="form-control form-control-styled" type="text" name="text"
-                                       placeholder="Username">
-                            </div>
-                        </div>
-                        <div class="input-box">
-                            <label class="label-text">Email</label>
-                            <div class="form-group">
-                                <span class="la la-envelope form-icon"></span>
-                                <input class="form-control form-control-styled" type="email" name="text"
-                                       placeholder="Email address">
-                            </div>
-                        </div>
-                        <div class="input-box">
-                            <label class="label-text">Password</label>
-                            <div class="form-group">
-                                <span class="la la-lock form-icon"></span>
-                                <input class="form-control form-control-styled" type="text" name="text"
-                                       placeholder="Enter password">
-                            </div>
-                            <p class="font-size-14 mt-n2">Your password must be at least 6 characters long and must
-                                contain
-                                letters, numbers and special characters. Cannot contain whitespace.</p>
-                        </div>
-                        <div class="input-box py-4 user-action-meta">
-                            <div class="custom-checkbox">
-                                <input type="checkbox" id="agreeChb">
-                                <label for="agreeChb" class="font-size-14">By signing up, you agree to our <a
-                                        href="#" class="text-color-2">Privacy Policy.</a></label>
-                            </div>
-                        </div>
-                        <div class="btn-box">
-                            <button type="submit" class="theme-btn gradient-btn w-100">
-                                <i class="la la-user-plus mr-1"></i> Register Account
-                            </button>
-                            <p class="sub-text-box text-right pt-1 font-weight-medium font-size-14">
-                                Already on Listhub? <a class="text-color-2 login-btn" href="javascript:void(0)">Log
-                                    in</a>
-                            </p>
-                        </div>
-                        <div class="icon-element font-size-16 font-weight-semi-bold mt-5 mb-4 mx-auto">
-                            OR
-                        </div>
-                        <div class="text-center">
-                            <p class="font-size-15 font-weight-medium">Connect with social network</p>
-                            <ul class="social-profile social-profile-colored py-3">
-                                <li>
-                                    <a href="#" class="google-bg mx-1" data-toggle="tooltip" data-placement="top"
-                                       title="Google">
-                                        <i class="lab la-google"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="facebook-bg mx-1" data-toggle="tooltip" data-placement="top"
-                                       title="Facebook">
-                                        <i class="lab la-facebook-f"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="twitter-bg mx-1" data-toggle="tooltip" data-placement="top"
-                                       title="Twitter">
-                                        <i class="lab la-twitter"></i>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#" class="instagram-bg mx-1" data-toggle="tooltip" data-placement="top"
-                                       title="Instagram">
-                                        <i class="lab la-instagram"></i>
-                                    </a>
-                                </li>
-                            </ul>
-                            <p class="font-size-15 pb-3">Don't worry, we never any post to your social profile.</p>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    {{--Modal--}}
-    <div class="modal fade modal-container recover-form" id="recoverModal" tabindex="-1" role="dialog"
-         aria-labelledby="recoverModalTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header align-items-center mh-bg">
-                    <h5 class="modal-title" id="recoverModalTitle">Reset password</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true" class="la la-times-circle"></span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p class="font-size-15 font-weight-medium pb-3">
-                        Enter your username or email to reset your password.
-                        You will receive an email with instructions on how to reset your password. If you are
-                        experiencing
-                        problems
-                        resetting your password <a href="#" class="text-color-2">contact us</a> or <a
-                            href="#"
-                            class="text-color-2">send
-                            us an email</a>
-                    </p>
-                    <form method="post" class="form-box">
-                        <div class="input-box">
-                            <label class="label-text">Username or email</label>
-                            <div class="form-group">
-                                <span class="la la-user form-icon"></span>
-                                <input class="form-control form-control-styled" type="text" name="text"
-                                       placeholder="Username or email address">
-                            </div>
-                        </div>
-                        <div class="btn-box">
-                            <button type="submit" class="theme-btn gradient-btn w-100">
-                                Get New Password <i class="la la-arrow-right ml-1"></i>
-                            </button>
-                            <p class="sub-text-box text-right pt-1 font-weight-medium font-size-14">
-                                Not a member? <a class="text-color-2 signup-btn" href="javascript:void(0)">Create
-                                    account</a>
-                            </p>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 @endsection

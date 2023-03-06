@@ -82,7 +82,8 @@ class OrganizationController extends Controller
                 $sourcePath = File::glob($category . '/media/*');
 
                 foreach ($sourcePath as $source) {
-                    $destinationPath = 'F:\laragon\www\nebraskalisting\public\images\business';
+
+                    $destinationPath = 'H:\images';
                     $file = basename($source);
                     $destinationPath = $destinationPath . '/' . $file;
                     File::copy($source, $destinationPath);
@@ -90,7 +91,7 @@ class OrganizationController extends Controller
             }
         }
 
-        alert()->success('success', 'Image copy and past successfully completed.');
+        alert()->success('success', 'Images copy and past successfully completed.');
 
         return redirect()->back();
     }
