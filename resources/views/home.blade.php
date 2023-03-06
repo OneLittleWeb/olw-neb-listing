@@ -290,7 +290,7 @@
                             </p>
                         </div><!-- end section-heading -->
                         <div class="more-btn-box pt-4">
-                            <a href="all-locations.html" class="theme-btn gradient-btn">View All Destination <i
+                            <a href="#" class="theme-btn gradient-btn">View All Destination <i
                                     class="la la-arrow-right ml-2"></i></a>
                         </div><!-- end more-btn-box -->
                     </div>
@@ -805,7 +805,7 @@
                                 </li>
                             </ul>
                             <h4 class="card-title pt-2">
-                                <a href="blog-single.html">The Best SPA Salons For Your Relaxation</a>
+                                <a href="#">The Best SPA Salons For Your Relaxation</a>
                             </h4>
                             <div class="avatar-photos pt-4">
                                 <a href="#" class="user-thumb" data-toggle="tooltip" data-placement="top"
@@ -840,7 +840,7 @@
                                 </li>
                             </ul>
                             <h4 class="card-title pt-2">
-                                <a href="blog-single.html">Rocko Band in Marquee Club</a>
+                                <a href="#">Rocko Band in Marquee Club</a>
                             </h4>
                             <div class="avatar-photos pt-4">
                                 <a href="#" class="user-thumb" data-toggle="tooltip" data-placement="top"
@@ -871,7 +871,7 @@
                                 </li>
                             </ul>
                             <h4 class="card-title pt-2">
-                                <a href="blog-single.html">5 things to know about advertising on Dirto</a>
+                                <a href="#">5 things to know about advertising on Dirto</a>
                             </h4>
                             <div class="avatar-photos pt-4">
                                 <a href="#" class="user-thumb" data-toggle="tooltip" data-placement="top"
@@ -906,7 +906,7 @@
                                 </li>
                             </ul>
                             <h4 class="card-title pt-2">
-                                <a href="blog-single.html">The top yoga studio in every state offering virtual
+                                <a href="#">The top yoga studio in every state offering virtual
                                     classes</a>
                             </h4>
                             <div class="avatar-photos pt-4">
@@ -938,7 +938,7 @@
                                 </li>
                             </ul>
                             <h4 class="card-title pt-2">
-                                <a href="blog-single.html">Latin Street Food Tour Across North America</a>
+                                <a href="#">Latin Street Food Tour Across North America</a>
                             </h4>
                             <div class="avatar-photos pt-4">
                                 <a href="#" class="user-thumb" data-toggle="tooltip" data-placement="top"
@@ -959,7 +959,7 @@
                     <h4 class="pb-2 font-weight-semi-bold">Stay in the loop.</h4>
                     <p>View all blog posts and read more about topics you care about</p>
                 </div>
-                <a href="blog-grid.html" class="theme-btn gradient-btn">Read More Post<i
+                <a href="#" class="theme-btn gradient-btn">Read More Post<i
                         class="la la-arrow-right ml-2"></i></a>
             </div>
         </div><!-- end container -->
@@ -1140,7 +1140,7 @@
                             <div class="custom-checkbox">
                                 <input type="checkbox" id="agreeChb">
                                 <label for="agreeChb" class="font-size-14">By signing up, you agree to our <a
-                                        href="privacy-policy.html" class="text-color-2">Privacy Policy.</a></label>
+                                        href="#" class="text-color-2">Privacy Policy.</a></label>
                             </div>
                         </div>
                         <div class="btn-box">
@@ -1208,7 +1208,7 @@
                         You will receive an email with instructions on how to reset your password. If you are
                         experiencing
                         problems
-                        resetting your password <a href="contact.html" class="text-color-2">contact us</a> or <a
+                        resetting your password <a href="#" class="text-color-2">contact us</a> or <a
                             href="#"
                             class="text-color-2">send
                             us an email</a>
