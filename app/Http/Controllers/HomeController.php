@@ -11,7 +11,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $categories = Category::all();
+        $categories = Category::orderByDesc('id')->get();
         $major_cities = City::where('is_major', 1)->get();
         $popular_cities = City::take(8)->orderByDesc('population')->get();
         $cities = City::all();
