@@ -116,7 +116,6 @@
                         <span class="la la-heart-o"></span> by <a
                             href="#">OlwDevs</a>
                     </p>
-
                 </div><!-- end copy-right -->
             </div><!-- end col-lg-12 -->
         </div><!-- end row -->

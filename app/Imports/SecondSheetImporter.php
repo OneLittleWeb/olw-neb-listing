@@ -2,6 +2,7 @@
 
 namespace App\Imports;
 
+use App\Models\Picture;
 use App\Models\Review;
 use Illuminate\Support\Collection;
 use Maatwebsite\Excel\Concerns\WithStartRow;
@@ -39,6 +40,20 @@ class SecondSheetImporter implements ToCollection, WithStartRow
                 'review_photos_urls' => (!empty($row[11])) ? $row[11] : null,
                 'review_thumbs_up_value' => (!empty($row[14])) ? $row[14] : null,
             ]);
+
+            $photo_paths = $row[10];
+            $photo_path_array = explode(',', $photo_paths);
+
+            foreach ($photo_path_array as $photo_path) {
+                if ($photo_path) {
+                    Picture::updateOrCreate([
+                        'picture_file' => $photo_path
+                    ], [
+                        'organization_guid' => $row[13],
+                        'review_id' => $row[1],
+                    ]);
+                }
+            }
         }
     }
 }

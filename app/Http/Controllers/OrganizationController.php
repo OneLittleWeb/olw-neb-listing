@@ -68,6 +68,8 @@ class OrganizationController extends Controller
             }
         }
 
+        alert()->success('success', 'Data imported successfully.');
+
         return redirect()->back();
     }
 
