@@ -187,47 +187,6 @@
                     <div class="col-lg-4">
                         <div class="sidebar mb-0">
                             <div class="sidebar-widget">
-                                <h3 class="widget-title">Search</h3>
-                                <div class="stroke-shape mb-4"></div>
-                                <form action="#" class="form-box">
-                                    <div class="form-group">
-                                        <span class="la la-search form-icon"></span>
-                                        <input class="form-control" type="search"
-                                               placeholder="What are you looking for?">
-                                    </div>
-                                    <div class="form-group user-chosen-select-container">
-                                        <select class="user-chosen-select">
-                                            <option value="0">Select a Location</option>
-                                            <option value="AF">Afghanistan</option>
-                                            <option value="AX">Åland Islands</option>
-                                        </select>
-                                    </div><!-- end form-group -->
-                                    <div class="form-group user-chosen-select-container">
-                                        <select class="user-chosen-select">
-                                            <option value="0">Select a category</option>
-                                            <option value="1">All Category</option>
-                                            <option value="2">Shops</option>
-                                            <option value="3">Hotels</option>
-                                            <option value="4">Foods & Restaurants</option>
-                                        </select>
-                                    </div><!-- end form-group -->
-                                    <div class="form-group user-chosen-select-container">
-                                        <select class="user-chosen-select">
-                                            <option value="0">Price Range</option>
-                                            <option value="1">$ Inexpensive</option>
-                                            <option value="2">$$ Moderate</option>
-                                            <option value="3">$$$ Pricey</option>
-                                            <option value="4">$$$$ Ultra High</option>
-                                        </select>
-                                    </div><!-- end form-group -->
-                                    <div class="btn-box">
-                                        <button type="submit" class="theme-btn gradient-btn border-0 w-100 mt-3">
-                                            <i class="la la-search mr-2"></i>Search Now
-                                        </button>
-                                    </div><!-- end btn-box -->
-                                </form>
-                            </div><!-- end sidebar-widget -->
-                            <div class="sidebar-widget">
                                 <h3 class="widget-title">Filter by Category</h3>
                                 <div class="stroke-shape mb-4"></div>
                                 <div class="category-list">

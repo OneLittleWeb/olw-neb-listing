@@ -25,12 +25,14 @@ class HomeController extends Controller
         $search_location = $request->search_location;
         $search_category = $request->search_category;
 
+        $categories = Category::orderByDesc('id')->get();
+
         $organizations = Organization::where('organization_name', 'like', '%' . $search . '%')
             ->orWhere('organization_category', 'like', '%' . $search . '%')
             ->where('city_id', 'like', '%' . $search_location . '%')
             ->where('category_id', 'like', '%' . $search_category . '%')
             ->paginate(20)->withQueryString()->onEachSide(0);
 
-        return view('organization.index', compact('organizations', 'search'));
+        return view('organization.index', compact('organizations', 'search','categories'));
     }
 }

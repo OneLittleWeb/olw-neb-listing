@@ -609,8 +609,7 @@
                     $(stars[i]).addClass('selected');
                 }
                 // JUST RESPONSE (Not needed)
-                let ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
-                document.getElementById('review_rate_stars').value = ratingValue;
+                document.getElementById('review_rate_stars').value = parseInt($('#stars li.selected').last().data('value'), 10);
             });
         });
     </script>

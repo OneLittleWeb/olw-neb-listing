@@ -77,6 +77,7 @@
 <script src="{{asset('/js/tilt.jquery.min.js')}}"></script>
 <script src="{{asset('/js/jquery.lazy.min.js')}}"></script>
 <script src="{{asset('/js/main.js')}}"></script>
+<script src="{{asset('/js/custom.js')}}"></script>
 
 @yield('js')
 @include('sweetalert::alert')
