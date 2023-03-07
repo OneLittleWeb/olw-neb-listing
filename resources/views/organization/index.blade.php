@@ -22,8 +22,8 @@
                                             <a href="{{ route('city.wise.organization', ['city_slug' => $organization->city->slug, 'organization_slug' => $organization->slug]) }}"
                                                class="d-block">
                                                 <img
-                                                    src="{{ asset('images/' . $organization->organization_head_photo_file) }}"
-                                                    data-src="{{ asset('images/' . $organization->organization_head_photo_file) }}"
+                                                    src="{{ asset('images/business/' . $organization->organization_head_photo_file) }}"
+                                                    data-src="{{ asset('images/business/' . $organization->organization_head_photo_file) }}"
                                                     class="card__img lazy" alt="">
                                             </a>
                                         </div>
@@ -55,7 +55,7 @@
                                                 <li class="d-flex align-items-center">
                                                     <i class="{{ $organization->category->icon }}"></i>&nbsp;&nbsp;
                                                     <a href="#"
-                                                       class="listing-cat-link">{{ $organization->organization_category }}</a>
+                                                       class="listing-cat-link text-capitalize">{{ $organization->organization_category ? $organization->organization_category : $organization->category->name }}</a>
                                                 </li>
                                             </ul>
                                             <ul class="info-list padding-top-20px">
@@ -173,7 +173,7 @@
                                                             <a class="page-link page-link-last" href="#"
                                                                aria-hidden="true">Last
                                                                 <i class="la la-long-arrow-right ml-1"
-                                                                    aria-hidden="true"></i></a>
+                                                                   aria-hidden="true"></i></a>
                                                         </li>
                                                     @endif
                                                 </ul>
@@ -231,70 +231,30 @@
                                 <h3 class="widget-title">Filter by Category</h3>
                                 <div class="stroke-shape mb-4"></div>
                                 <div class="category-list">
-                                    <a href="#" class="generic-img-card d-block hover-y overflow-hidden mb-3">
-                                        <img src="images/img-loading.png" data-src="images/generic-small-img.jpg"
-                                             alt="image" class="generic-img-card-img lazy">
-                                        <div
-                                            class="generic-img-card-content d-flex align-items-center justify-content-between">
-                                            <span class="badge">Restaurants</span>
-                                            <span class="generic-img-card-counter">238</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="generic-img-card d-block hover-y overflow-hidden mb-3">
-                                        <img src="images/img-loading.png" data-src="images/generic-small-img-2.jpg"
-                                             alt="image" class="generic-img-card-img lazy">
-                                        <div
-                                            class="generic-img-card-content d-flex align-items-center justify-content-between">
-                                            <span class="badge">Food</span>
-                                            <span class="generic-img-card-counter">111</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="generic-img-card d-block hover-y overflow-hidden mb-3">
-                                        <img src="images/img-loading.png" data-src="images/generic-small-img-3.jpg"
-                                             alt="image" class="generic-img-card-img lazy">
-                                        <div
-                                            class="generic-img-card-content d-flex align-items-center justify-content-between">
-                                            <span class="badge">Hotel</span>
-                                            <span class="generic-img-card-counter">222</span>
-                                        </div>
-                                    </a>
-                                    <a href="#" class="generic-img-card d-block hover-y overflow-hidden mb-3">
-                                        <img src="images/img-loading.png" data-src="images/generic-small-img-4.jpg"
-                                             alt="image" class="generic-img-card-img lazy">
-                                        <div
-                                            class="generic-img-card-content d-flex align-items-center justify-content-between">
-                                            <span class="badge">Events</span>
-                                            <span class="generic-img-card-counter">123</span>
-                                        </div>
-                                    </a>
+                                    @foreach($categories->take(5) as $category)
+                                        <a href="{{ route('category.business', $category->slug) }}" class="generic-img-card d-block hover-y overflow-hidden mb-3">
+                                            <img src="/images/sm-img.jpg" data-src="/images/sm-img.jpg"
+                                                 alt="image" class="generic-img-card-img lazy">
+                                            <div
+                                                class="generic-img-card-content d-flex align-items-center justify-content-between">
+                                                <span class="badge text-capitalize">{{ $category->name }}</span>
+                                                <span
+                                                    class="generic-img-card-counter">{{ $category->organizations->count() }}</span>
+                                            </div>
+                                        </a>
+                                    @endforeach
                                     <div class="collapse collapse-content" id="showMoreOptionCollapse2">
-                                        <a href="#" class="generic-img-card d-block hover-y overflow-hidden mb-3">
-                                            <img src="images/img-loading.png" data-src="images/generic-small-img-5.jpg"
-                                                 alt="image" class="generic-img-card-img lazy">
-                                            <div
-                                                class="generic-img-card-content d-flex align-items-center justify-content-between">
-                                                <span class="badge">Shopping</span>
-                                                <span class="generic-img-card-counter">321</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="generic-img-card d-block hover-y overflow-hidden mb-3">
-                                            <img src="images/img-loading.png" data-src="images/generic-small-img-6.jpg"
-                                                 alt="image" class="generic-img-card-img lazy">
-                                            <div
-                                                class="generic-img-card-content d-flex align-items-center justify-content-between">
-                                                <span class="badge">Travel</span>
-                                                <span class="generic-img-card-counter">12</span>
-                                            </div>
-                                        </a>
-                                        <a href="#" class="generic-img-card d-block hover-y overflow-hidden mb-3">
-                                            <img src="images/img-loading.png" data-src="images/generic-small-img-7.jpg"
-                                                 alt="image" class="generic-img-card-img lazy">
-                                            <div
-                                                class="generic-img-card-content d-flex align-items-center justify-content-between">
-                                                <span class="badge">Jobs</span>
-                                                <span class="generic-img-card-counter">133</span>
-                                            </div>
-                                        </a>
+                                        @foreach($categories->skip(5) as $category)
+                                            <a href="{{ route('category.business', $category->slug) }}" class="generic-img-card d-block hover-y overflow-hidden mb-3">
+                                                <img src="/images/sm-img.jpg" data-src="/images/sm-img.jpg"
+                                                     alt="image" class="generic-img-card-img lazy">
+                                                <div
+                                                    class="generic-img-card-content d-flex align-items-center justify-content-between">
+                                                    <span class="badge text-capitalize">{{ $category->name }}</span>
+                                                    <span class="generic-img-card-counter">{{ $category->organizations->count() }}</span>
+                                                </div>
+                                            </a>
+                                        @endforeach
                                     </div>
                                     <a class="collapse-btn" data-toggle="collapse" href="#showMoreOptionCollapse2"
                                        role="button" aria-expanded="false" aria-controls="showMoreOptionCollapse2">

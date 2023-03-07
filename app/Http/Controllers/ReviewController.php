@@ -32,7 +32,7 @@ class ReviewController extends Controller
                 $images = $request->file('review_photos_files');
                 foreach ($images as $image) {
                     $name = Str::slug($request->reviewer_name) . '-' . mt_rand(1000000, 9999999) . '.' . $image->getClientOriginalExtension();
-                    $destinationPath = public_path('/images/reviews');
+                    $destinationPath = public_path('/images/business');
                     $image->move($destinationPath, $name);
                     $files[] = $name;
                 }

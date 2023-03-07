@@ -46,6 +46,10 @@
     padding-bottom: 10px !important;
 }
 
+.owl-stage-outer {
+    /*height: 265px !important;*/
+}
+
 /* Idle State of the stars */
 .rating-stars ul > li.star > i.fa {
     font-size: 2.5em; /* Change the size of the stars */

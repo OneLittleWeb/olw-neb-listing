@@ -13,10 +13,10 @@ class CategoryController extends Controller
         $category = Category::where('slug', $slug)->first();
 
         if ($category) {
-
+            $categories = Category::all();
             $organizations = Organization::where('category_id', $category->id)->paginate(10)->onEachSide(0);
 
-            return view('organization.index', compact('organizations', 'category'));
+            return view('organization.index', compact('organizations', 'category','categories'));
         }
 
         abort(404);

@@ -19,8 +19,9 @@ class OrganizationController extends Controller
         $category = Category::where('slug', $category_slug)->first();
 
         if ($city && $category) {
+            $categories = Category::all();
             $organizations = Organization::where('city_id', $city->id)->where('category_id', $category->id)->paginate(10)->onEachSide(0);
-            return view('organization.index', compact('organizations', 'city', 'category'));
+            return view('organization.index', compact('organizations', 'city', 'category','categories'));
         }
 
         abort(404);

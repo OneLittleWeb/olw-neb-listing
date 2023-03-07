@@ -7,46 +7,13 @@
     <!-- =======START FULL SCREEN SLIDER======= -->
     <section class="full-screen-slider-area" style="padding-top: 98px">
         <div class="full-screen-slider owl-trigger-action owl-trigger-action-2">
-            <a href="images/single-listing-img1.jpg" class="fs-slider-item d-block" data-fancybox="gallery"
-               data-caption="Showing image - 01">
-                <img src="{{asset('images/photo_1ef21e70-a7f3-4a9b-9677-11e24cffb702.jpg')}}"
-                     alt="single listing image">
+            @foreach(explode(',', $organization->organization_photos_files) as $photo_file)
+            <a href="{{ asset('images/business/' . $photo_file) }}" class="fs-slider-item d-block" data-fancybox="gallery"
+               data-caption="Showing image - {{ $photo_file }}">
+                <img src="{{ asset('images/business/' . $photo_file) }}"
+                     alt="single listing image" style="height: 355px">
             </a><!-- end fs-slider-item -->
-            <a href="images/single-listing-img2.jpg" class="fs-slider-item d-block" data-fancybox="gallery"
-               data-caption="Showing image - 02">
-                <img src="{{asset('images/photo_1ef21e70-a7f3-4a9b-9677-11e24cffb702.jpg')}}"
-                     alt="single listing image">
-            </a><!-- end fs-slider-item -->
-            <a href="images/single-listing-img3.jpg" class="fs-slider-item d-block" data-fancybox="gallery"
-               data-caption="Showing image - 03">
-                <img src="{{asset('images/photo_1ef21e70-a7f3-4a9b-9677-11e24cffb702.jpg')}}"
-                     alt="single listing image">
-            </a><!-- end fs-slider-item -->
-            <a href="images/single-listing-img4.jpg" class="fs-slider-item d-block" data-fancybox="gallery"
-               data-caption="Showing image - 04">
-                <img src="{{asset('images/photo_1ef21e70-a7f3-4a9b-9677-11e24cffb702.jpg')}}"
-                     alt="single listing image">
-            </a><!-- end fs-slider-item -->
-            <a href="images/single-listing-img5.jpg" class="fs-slider-item d-block" data-fancybox="gallery"
-               data-caption="Showing image - 05">
-                <img src="{{asset('images/photo_1ef21e70-a7f3-4a9b-9677-11e24cffb702.jpg')}}"
-                     alt="single listing image">
-            </a><!-- end fs-slider-item -->
-            <a href="images/single-listing-img6.jpg" class="fs-slider-item d-block" data-fancybox="gallery"
-               data-caption="Showing image - 06">
-                <img src="{{asset('images/photo_1ef21e70-a7f3-4a9b-9677-11e24cffb702.jpg')}}"
-                     alt="single listing image">
-            </a><!-- end fs-slider-item -->
-            <a href="images/single-listing-img7.jpg" class="fs-slider-item d-block" data-fancybox="gallery"
-               data-caption="Showing image - 07">
-                <img src="{{asset('images/photo_1ef21e70-a7f3-4a9b-9677-11e24cffb702.jpg')}}"
-                     alt="single listing image">
-            </a><!-- end fs-slider-item -->
-            <a href="images/single-listing-img8.jpg" class="fs-slider-item d-block" data-fancybox="gallery"
-               data-caption="Showing image - 08">
-                <img src="{{asset('images/photo_1ef21e70-a7f3-4a9b-9677-11e24cffb702.jpg')}}"
-                     alt="single listing image">
-            </a><!-- end fs-slider-item -->
+            @endforeach
         </div>
     </section><!-- end full-screen-slider-area -->
     <!-- =====END FULL SCREEN SLIDER======= -->
@@ -291,26 +258,15 @@
                                                     </div>
                                                     <p class="comment-desc">{{ $review->review_text_original }}</p>
 
-                                                    @if ($review->review_photos_urls)
-                                                        <div
-                                                            class="review-photos d-flex flex-wrap align-items-center ml-n1 mb-3">
-                                                            @foreach(explode(',', $review->review_photos_urls) as $photo_url)
-                                                                <a href="{{ $photo_url }}" class="d-inline-block"
-                                                                   data-fancybox="gallery">
-                                                                    <img class="lazy" src="{{ $photo_url }}"
-                                                                         data-src="{{ $photo_url }}" alt="review image">
-                                                                </a>
-                                                            @endforeach
-                                                        </div><!-- end review-photos -->
-                                                    @elseif($review->review_photos_files)
+                                                    @if($review->review_photos_files)
                                                         <div
                                                             class="review-photos d-flex flex-wrap align-items-center ml-n1 mb-3">
                                                             @foreach(explode(',', $review->review_photos_files) as $photo_file)
-                                                                <a href="{{ asset('images/reviews/' . $photo_file) }}"
+                                                                <a href="{{ asset('images/business/' . $photo_file) }}"
                                                                    class="d-inline-block" data-fancybox="gallery">
                                                                     <img class="lazy"
-                                                                         src="{{ asset('images/reviews/' . $photo_file) }}"
-                                                                         data-src="{{ asset('images/reviews/' . $photo_file) }}"
+                                                                         src="{{ asset('images/business/' . $photo_file) }}"
+                                                                         data-src="{{ asset('images/business/' . $photo_file) }}"
                                                                          alt="review image">
                                                                 </a>
                                                             @endforeach
