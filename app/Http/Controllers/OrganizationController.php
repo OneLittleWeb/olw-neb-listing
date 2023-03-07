@@ -51,12 +51,14 @@ class OrganizationController extends Controller
 
     public function import()
     {
-        $county_directories = File::directories('F:\nebraska');
+        $category_directories = File::directories('H:\scraped data');
 
-        foreach ($county_directories as $county_directory) {
-            $county_name = basename($county_directory);
+        foreach ($category_directories as $category_directory) {
 
-            foreach (File::directories($county_directory) as $city_directory) {
+            $category_name = basename($category_directory);
+            $category_id = Category::where('name', Str::lower($category_name))->first()->id;
+
+            foreach (File::directories($category_directory) as $city_directory) {
 
                 $directory_name = basename($city_directory);
                 $city_name = Str::lower(trim(str_replace("Nebraska US", '', $directory_name)));
@@ -64,7 +66,7 @@ class OrganizationController extends Controller
 
                 $files = File::files($city_directory);
 
-                Excel::import(new ImportOrganization($county_name, $city_id), $files[0]);
+                Excel::import(new ImportOrganization($category_id, $city_id), $files[0]);
             }
         }
 

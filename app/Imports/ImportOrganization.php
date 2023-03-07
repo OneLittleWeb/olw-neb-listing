@@ -7,12 +7,12 @@ use Maatwebsite\Excel\Concerns\WithMultipleSheets;
 
 class ImportOrganization implements WithMultipleSheets
 {
-    protected $county_name;
+    protected $category_id;
     protected $city_id;
 
-    public function __construct($county_name, $city_id)
+    public function __construct($category_id, $city_id)
     {
-        $this->county_name = $county_name;
+        $this->category_id = $category_id;
         $this->city_id = $city_id;
     }
 
@@ -25,7 +25,7 @@ class ImportOrganization implements WithMultipleSheets
     public function sheets(): array
     {
         return [
-            new FirstSheetImporter($this->county_name, $this->city_id),
+            new FirstSheetImporter($this->category_id, $this->city_id),
             new SecondSheetImporter(),
         ];
     }

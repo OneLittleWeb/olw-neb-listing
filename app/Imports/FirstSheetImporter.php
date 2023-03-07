@@ -17,12 +17,12 @@ class FirstSheetImporter implements ToCollection, WithStartRow
         return 2;
     }
 
-    protected $county_name;
+    protected $category_id;
     protected $city_id;
 
-    public function __construct($county_name, $city_id)
+    public function __construct($category_id, $city_id)
     {
-        $this->county_name = $county_name;
+        $this->category_id = $category_id;
         $this->city_id = $city_id;
     }
 
@@ -35,20 +35,11 @@ class FirstSheetImporter implements ToCollection, WithStartRow
     public function collection(Collection $rows)
     {
         foreach ($rows as $row) {
-            $search_request = Str::lower(str_replace("+", ' ', $row[31]));
-            $categories = Category::all();
-            $category_id = null;
-            foreach ($categories as $category) {
-                if (Str::contains($search_request, $category->name)) {
-                    $category_id = $category->id;
-                }
-            }
-
             Organization::updateOrCreate([
                 'organization_guid' => $row[38],
             ], [
-                'category_id' => $category_id,
-                'county' => $this->county_name,
+                'category_id' => $this->category_id,
+                'county_id' => null,
                 'city_id' => $this->city_id,
                 'gmaps_link' => (!empty($row[1])) ? $row[1] : null,
                 'organization_name' => (!empty($row[2])) ? $row[2] : null,
