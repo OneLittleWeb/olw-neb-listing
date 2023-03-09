@@ -7,6 +7,13 @@ use App\Http\Controllers\CityController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\CategoryController;
 
+//Admin Panel
+Route::prefix('admin')->name('admin.')->group(function () {
+    Route::get('dashboard', [\App\Http\Controllers\admin\HomeController::class, 'adminDashboard'])->name('dashboard');
+    Route::resource('category', \App\Http\Controllers\admin\CategoryController::class)->except(['show','edit','create']);
+    Route::resource('city', \App\Http\Controllers\admin\CityController::class)->except(['show','edit','create']);
+    Route::resource('organization', \App\Http\Controllers\admin\OrganizationController::class)->except(['show']);
+});
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/search', [HomeController::class, 'search'])->name('search');
