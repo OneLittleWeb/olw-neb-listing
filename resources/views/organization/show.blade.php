@@ -5,16 +5,18 @@
 @section('content')
     <!-- =======START FULL SCREEN SLIDER======= -->
     <section class="full-screen-slider-area" style="padding-top: 98px">
-        <div class="full-screen-slider owl-trigger-action owl-trigger-action-2">
-            @foreach(explode(',', $organization->organization_photos_files) as $photo_file)
-                <a href="{{ asset('images/business/' . $photo_file) }}" class="fs-slider-item d-block"
-                   data-fancybox="gallery"
-                   data-caption="Showing image - {{ $photo_file }}">
-                    <img src="{{ asset('images/business/' . $photo_file) }}"
-                         alt="single listing image" style="height: 355px">
-                </a><!-- end fs-slider-item -->
-            @endforeach
-        </div>
+        @if($organization->organization_photos_files)
+            <div class="full-screen-slider owl-trigger-action owl-trigger-action-2">
+                @foreach(explode(',', $organization->organization_photos_files) as $photo_file)
+                    <a href="{{ asset('images/business/' . $photo_file) }}" class="fs-slider-item d-block"
+                       data-fancybox="gallery"
+                       data-caption="Showing image - {{ $photo_file }}">
+                        <img src="{{ asset('images/business/' . $photo_file) }}"
+                             alt="single listing image" style="height: 355px">
+                    </a><!-- end fs-slider-item -->
+                @endforeach
+            </div>
+        @endif
     </section><!-- end full-screen-slider-area -->
     <!-- =====END FULL SCREEN SLIDER======= -->
 
