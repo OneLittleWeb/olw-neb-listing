@@ -176,11 +176,11 @@
                 @foreach($major_cities as $major_city)
                     <div class="col-lg-3 responsive-column">
                         <div class="category-item overflow-hidden">
-                            <img src="{{asset('images/' . $major_city->background_image)}}"
-                                 data-src="{{asset('images/' . $major_city->background_image)}}"
+                            <img src="{{asset('images/city/' . $major_city->background_image)}}"
+                                 data-src="{{asset('images/city/' . $major_city->background_image)}}"
                                  alt="category-image" class="lazy cat-img">
                             <div class="category-content d-flex align-items-center justify-content-center">
-                                <a href="{{ route('city.category', $major_city->slug) }}"
+                                <a href="{{ route('category.index', $major_city->slug) }}"
                                    class="category-link d-flex flex-column justify-content-center w-100 h-100">
                                     <div class="cat-content">
                                         <h4 class="cat__title mb-3">{{ $major_city->name }}</h4>
@@ -252,11 +252,11 @@
                 @foreach($popular_cities as $popular_city)
                     <div class="col-lg-3 responsive-column">
                         <div class="category-item overflow-hidden">
-                            <img src="{{asset('images/' . $popular_city->background_image)}}"
-                                 data-src="{{asset('images/' . $popular_city->background_image)}}"
+                            <img src="{{asset('images/city/' . $popular_city->background_image)}}"
+                                 data-src="{{asset('images/city/' . $popular_city->background_image)}}"
                                  alt="category-image" class="lazy cat-img">
                             <div class="category-content d-flex align-items-center justify-content-center">
-                                <a href="{{ route('city.category', $popular_city->slug) }}"
+                                <a href="{{ route('category.index', $popular_city->slug) }}"
                                    class="category-link d-flex flex-column justify-content-center w-100 h-100">
                                     <div class="cat-content">
                                         <h4 class="cat__title mb-3">{{ $popular_city->name }}</h4>

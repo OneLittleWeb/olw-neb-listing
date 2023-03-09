@@ -20,7 +20,7 @@ Route::get('/{city_slug}/{category_slug}', [OrganizationController::class, 'city
 Route::get('/{city_slug}/nls/{organization_slug}', [OrganizationController::class, 'cityWiseOrganization'])->name('city.wise.organization');
 
 Route::get('/cities', [CityController::class, 'index'])->name('city.index');
-Route::get('/{slug}', [CityController::class, 'cityCategory'])->name('city.category');
+Route::get('/{slug}', [CategoryController::class, 'index'])->name('category.index');
 
 Route::post('/store-review', [ReviewController::class, 'store'])->name('review.store');
 
