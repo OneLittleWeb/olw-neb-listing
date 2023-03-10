@@ -31,8 +31,8 @@
                                     <th>No</th>
                                     <th>Name</th>
                                     <th>Slug</th>
-                                    <th>Icon</th>
-                                    <th>Background</th>
+                                    <th>Claimed?</th>
+                                    <th>Last Updated on</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>

@@ -9763,9 +9763,9 @@ div.datedropper .picker .pick-lg-b li {
     background-color: #e4e4e4 !important
 }
 
-.dashboard-card .user-chosen-select-container .chosen-container {
+/*.dashboard-card .user-chosen-select-container .chosen-container {
     width: 140px !important
-}
+}*/
 
 .dashboard-card .user-chosen-select-container .user-chosen-select, .dashboard-card .user-chosen-select-container .chosen-single {
     padding: 8px 14px

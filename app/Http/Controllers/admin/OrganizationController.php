@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\City;
 use App\Models\Organization;
 use Illuminate\Http\Request;
 
@@ -28,7 +29,8 @@ class OrganizationController extends Controller
     public function create()
     {
         $categories = Category::orderBy('name', 'asc')->get();
-        return view('admin.organization.create', compact('categories'));
+        $cities = City::orderBy('name', 'asc')->get();
+        return view('admin.organization.create', compact('categories', 'cities'));
     }
 
     /**
