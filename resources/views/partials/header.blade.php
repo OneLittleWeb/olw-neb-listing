@@ -25,13 +25,15 @@
                                 <form action="#" class="w-100">
                                     <div class="header-search position-relative">
                                         <i class="la la-search form-icon"></i>
-                                        <input type="search" placeholder="What are you looking for?">
-                                        <div class="instant-results">
-                                            <ul class="instant-results-list">
-                                                <li><a href="#" class="d-flex align-items-center">Dog Grooming</a></li>
-                                                <li><a href="#" class="d-flex align-items-center">Restaurants</a></li>
-                                            </ul>
-                                        </div>
+                                        <input type="search" name="looking_for"
+                                               id="looking_for" placeholder="What are you looking for?"
+                                               autocomplete="off">
+                                        {{--                                        <div class="instant-results">--}}
+                                        {{--                                            <ul class="instant-results-list">--}}
+                                        {{--                                                <li><a href="#" class="d-flex align-items-center">Dog Grooming</a></li>--}}
+                                        {{--                                                <li><a href="#" class="d-flex align-items-center">Restaurants</a></li>--}}
+                                        {{--                                            </ul>--}}
+                                        {{--                                        </div>--}}
                                     </div>
                                 </form>
                             </div><!-- end quick-search-form -->
@@ -66,3 +68,20 @@
         </div><!-- end container-fluid -->
     </div><!-- end header-menu-wrapper -->
 </header>
+
+@section('js')
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
+    <script type="text/javascript">
+        var path = "{{ route('autocomplete.search') }}";
+
+        $('#looking_for').typeahead({
+            source: function (query, process) {
+                return $.get(path, {term: query}, function (data) {
+                    return process(data);
+                });
+            }
+        });
+    </script>
+@endsection

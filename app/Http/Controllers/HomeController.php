@@ -21,7 +21,7 @@ class HomeController extends Controller
 
     public function autocomplete(Request $request)
     {
-        $query = $request->get('query');
+        $query = $request->get('looking_for');
 
         return Organization::where('organization_name', 'like', "%{$query}%")->orWhere('organization_category', 'like', "%{$query}%")->groupBy('organization_name')
             ->pluck('organization_name');
@@ -46,5 +46,13 @@ class HomeController extends Controller
             return view('organization.index', compact('organizations', 'search', 'categories', 'cities', 'city'));
         }
         abort(404);
+    }
+
+    public function autocompleteSearch(Request $request)
+    {
+        $query = $request->get('looking_for');
+
+        return Category::where('name', 'like', "%{$query}%")
+            ->pluck('name');
     }
 }
