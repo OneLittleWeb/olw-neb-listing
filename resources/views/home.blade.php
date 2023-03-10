@@ -32,11 +32,12 @@
                                                 class="required">*</span></label>
                                         <div class="form-group mb-0">
                                             <span class="la la-search form-icon"></span>
-                                            <input class="form-control" type="search" name="looking_for"
+                                            <input class="typeahead form-control" type="search" name="looking_for"
                                                    id="looking_for"
-                                                   placeholder="looking for?" required>
+                                                   placeholder="looking for?" required autocomplete="off">
                                         </div>
                                     </div>
+
                                 </div>
                             </div><!-- end main-search-input-item -->
                             <div class="main-search-input-item user-chosen-select-container">
@@ -45,8 +46,7 @@
                                 <select class="user-chosen-select" name="search_location" id="search_location" required>
                                     <option value="">Select a Location</option>
                                     @foreach($cities as $city)
-                                        <option
-                                                value="{{ $city->id }}">{{ $city->name }}</option>
+                                        <option value="{{ $city->id }}">{{ $city->name }}</option>
                                     @endforeach
                                 </select>
                             </div><!-- end main-search-input-item -->
@@ -1028,4 +1028,20 @@
     <!-- ================================
         END CTA AREA
     ================================= -->
+@endsection
+
+@section('js')
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
+
+    <script>
+        let path = "{{ route('autocomplete')}}";
+        $('#looking_for').typeahead({
+            source:  function (query, process) {
+                return $.get(path, { term: query }, function (data) {
+                    return process(data);
+                });
+            }
+        });
+    </script>
 @endsection

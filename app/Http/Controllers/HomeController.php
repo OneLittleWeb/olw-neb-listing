@@ -19,20 +19,32 @@ class HomeController extends Controller
         return view('home', compact('categories', 'major_cities', 'popular_cities', 'cities'));
     }
 
+    public function autocomplete(Request $request)
+    {
+        $query = $request->get('query');
+
+        return Organization::where('organization_name', 'like', "%{$query}%")->orWhere('organization_category', 'like', "%{$query}%")->groupBy('organization_name')
+            ->pluck('organization_name');
+    }
+
     public function search(Request $request)
     {
         $search = $request->looking_for;
-        $search_location = $request->search_location;
-        $search_category = $request->search_category;
+        if ($search) {
+            $search_location = $request->search_location;
+            $search_category = $request->search_category;
+            $cities = null;
+            $city = null;
 
-        $categories = Category::orderByDesc('id')->get();
+            $categories = Category::orderByDesc('id')->get();
 
-        $organizations = Organization::where('organization_name', 'like', '%' . $search . '%')
-            ->orWhere('organization_category', 'like', '%' . $search . '%')
-            ->where('city_id', 'like', '%' . $search_location . '%')
-            ->where('category_id', 'like', '%' . $search_category . '%')
-            ->paginate(20)->withQueryString()->onEachSide(0);
+            $organizations = Organization::where('organization_name', 'like', '%' . $search . '%')
+                ->orWhere('city_id', 'like', '%' . $search_location . '%')
+                ->orWhere('category_id', 'like', '%' . $search_category . '%')
+                ->paginate(20)->withQueryString()->onEachSide(0);
 
-        return view('organization.index', compact('organizations', 'search','categories'));
+            return view('organization.index', compact('organizations', 'search', 'categories', 'cities', 'city'));
+        }
+        abort(404);
     }
 }
