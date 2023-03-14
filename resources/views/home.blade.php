@@ -37,7 +37,6 @@
                                                    placeholder="looking for?" required autocomplete="off">
                                         </div>
                                     </div>
-
                                 </div>
                             </div><!-- end main-search-input-item -->
                             <div class="main-search-input-item user-chosen-select-container">
@@ -1031,7 +1030,6 @@
 @endsection
 
 @section('js')
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
 
     <script>
