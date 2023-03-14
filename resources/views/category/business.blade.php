@@ -54,7 +54,7 @@
                                                 </li>
                                                 <li class="d-flex align-items-center">
                                                     <i class="{{ $organization->category->icon }}"></i>&nbsp;&nbsp;
-                                                    <a href="{{ route('category.business', $organization->organization_category ? $organization->organization_category : $organization->category->slug) }}"
+                                                    <a href="{{ route('category.business', $organization->organization_category ? $organization->organization_category : $organization->category->name) }}"
                                                        class="listing-cat-link text-capitalize">{{ $organization->organization_category ? $organization->organization_category : $organization->category->name }}</a>
                                                 </li>
                                             </ul>
@@ -194,7 +194,8 @@
                                         @foreach($cities->take(6) as $f_city)
                                             <a href="{{ route('city.wise.organizations', ['city_slug' => $f_city->slug, 'category_slug' => $category->slug]) }}"
                                                class="generic-img-card d-block hover-y overflow-hidden mb-3">
-                                                <img src="{{ asset('images/city/' . $f_city->background_image) }}" data-src="{{ asset('images/city/' . $f_city->background_image) }}"
+                                                <img src="{{ asset('images/city/' . $f_city->background_image) }}"
+                                                     data-src="{{ asset('images/city/' . $f_city->background_image) }}"
                                                      alt="image" class="generic-img-card-img filter-image lazy">
                                                 <div
                                                     class="generic-img-card-content d-flex align-items-center justify-content-between">
@@ -206,7 +207,8 @@
                                             @foreach($cities->skip(6) as $f_city)
                                                 <a href="{{ route('city.wise.organizations', ['city_slug' => $f_city->slug, 'category_slug' => $category->slug]) }}"
                                                    class="generic-img-card d-block hover-y overflow-hidden mb-3">
-                                                    <img src="{{ asset('images/city/' . $f_city->background_image) }}" data-src="{{ asset('images/city/' . $f_city->background_image) }}"
+                                                    <img src="{{ asset('images/city/' . $f_city->background_image) }}"
+                                                         data-src="{{ asset('images/city/' . $f_city->background_image) }}"
                                                          alt="image" class="generic-img-card-img filter-image lazy">
                                                     <div
                                                         class="generic-img-card-content d-flex align-items-center justify-content-between">
@@ -225,6 +227,7 @@
                                     </div>
                                 </div><!-- end sidebar-widget -->
                             @endif
+
                             @if($city != null)
                                 <div class="sidebar-widget">
                                     <h3 class="widget-title">Filter by Category</h3>
@@ -233,7 +236,8 @@
                                         @foreach($categories->take(5) as $category)
                                             <a href="{{ route('city.wise.organizations', ['city_slug' => $city->slug, 'category_slug' => $category->slug]) }}"
                                                class="generic-img-card d-block hover-y overflow-hidden mb-3">
-                                                <img src="{{ asset('images/category/' . $category->background_image) }}" data-src="{{ asset('images/category/' . $category->background_image) }}"
+                                                <img src="{{ asset('images/category/' . $category->background_image) }}"
+                                                     data-src="{{ asset('images/category/' . $category->background_image) }}"
                                                      alt="image" class="generic-img-card-img filter-image lazy">
                                                 <div
                                                     class="generic-img-card-content d-flex align-items-center justify-content-between">
@@ -247,8 +251,10 @@
                                             @foreach($categories->skip(5) as $category)
                                                 <a href="{{ route('city.wise.organizations', ['city_slug' => $city->slug, 'category_slug' => $category->slug]) }}"
                                                    class="generic-img-card d-block hover-y overflow-hidden mb-3">
-                                                    <img src="{{ asset('images/category/' . $category->background_image) }}" data-src="{{ asset('images/category/' . $category->background_image) }}"
-                                                         alt="image" class="generic-img-card-img filter-image lazy">
+                                                    <img
+                                                        src="{{ asset('images/category/' . $category->background_image) }}"
+                                                        data-src="{{ asset('images/category/' . $category->background_image) }}"
+                                                        alt="image" class="generic-img-card-img filter-image lazy">
                                                     <div
                                                         class="generic-img-card-content d-flex align-items-center justify-content-between">
                                                         <span class="badge text-capitalize">{{ $category->name }}</span>

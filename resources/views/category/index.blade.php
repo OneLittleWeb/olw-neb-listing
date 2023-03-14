@@ -9,8 +9,8 @@
                 @foreach($categories as $category)
                     <div class="col-lg-3 responsive-column">
                         <div class="category-item overflow-hidden">
-                            <img src="{{asset('images/' . $category->background_image)}}"
-                                 data-src="{{asset('images/' . $category->background_image)}}"
+                            <img src="{{asset('images/category/' . $category->background_image)}}"
+                                 data-src="{{asset('images/category/' . $category->background_image)}}"
                                  alt="{{ $category->name }}" class="cat-img lazy">
                             <div class="category-content d-flex align-items-center justify-content-center">
                                 <a href="{{ route('city.wise.organizations', ['city_slug' => $city->slug, 'category_slug' => $category->slug]) }}"

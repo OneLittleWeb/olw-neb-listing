@@ -16,6 +16,8 @@ Route::prefix('admin')->name('admin.')->group(function () {
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/autocomplete', [HomeController::class, 'autocomplete'])->name('autocomplete');
+Route::get('/autocomplete-search', [HomeController::class, 'autocompleteSearch'])->name('autocomplete.search');
 Route::get('/search', [HomeController::class, 'search'])->name('search');
 Route::get('/category/{slug}', [CategoryController::class, 'categoryBusiness'])->name('category.business');
 
@@ -27,7 +29,7 @@ Route::get('/{city_slug}/{category_slug}', [OrganizationController::class, 'city
 Route::get('/{city_slug}/nls/{organization_slug}', [OrganizationController::class, 'cityWiseOrganization'])->name('city.wise.organization');
 
 Route::get('/cities', [CityController::class, 'index'])->name('city.index');
-Route::get('/{slug}', [CityController::class, 'cityCategory'])->name('city.category');
+Route::get('/{slug}', [CategoryController::class, 'index'])->name('category.index');
 
 Route::post('/store-review', [ReviewController::class, 'store'])->name('review.store');
 

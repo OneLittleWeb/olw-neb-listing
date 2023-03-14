@@ -3,18 +3,20 @@
 @section('meta_description', "add")
 @section('meta_keywords',"add")
 @section('content')
-
     <!-- =======START FULL SCREEN SLIDER======= -->
     <section class="full-screen-slider-area" style="padding-top: 98px">
-        <div class="full-screen-slider owl-trigger-action owl-trigger-action-2">
-            @foreach(explode(',', $organization->organization_photos_files) as $photo_file)
-            <a href="{{ asset('images/business/' . $photo_file) }}" class="fs-slider-item d-block" data-fancybox="gallery"
-               data-caption="Showing image - {{ $photo_file }}">
-                <img src="{{ asset('images/business/' . $photo_file) }}"
-                     alt="single listing image" style="height: 355px">
-            </a><!-- end fs-slider-item -->
-            @endforeach
-        </div>
+        @if($organization->organization_photos_files)
+            <div class="full-screen-slider owl-trigger-action owl-trigger-action-2">
+                @foreach(explode(',', $organization->organization_photos_files) as $photo_file)
+                    <a href="{{ asset('images/business/' . $photo_file) }}" class="fs-slider-item d-block"
+                       data-fancybox="gallery"
+                       data-caption="Showing image - {{ $photo_file }}">
+                        <img src="{{ asset('images/business/' . $photo_file) }}"
+                             alt="single listing image" style="height: 355px">
+                    </a><!-- end fs-slider-item -->
+                @endforeach
+            </div>
+        @endif
     </section><!-- end full-screen-slider-area -->
     <!-- =====END FULL SCREEN SLIDER======= -->
 
@@ -23,8 +25,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div
-                        class="breadcrumb-content breadcrumb-content-2 d-flex flex-wrap align-items-end justify-content-between">
+                    <div class="breadcrumb-content breadcrumb-content-2 d-flex flex-wrap align-items-end justify-content-between">
                         <div class="section-heading">
                             <ul class="list-items bread-list bread-list-2 bg-transparent rounded-0 p-0 text-capitalize">
                                 <li><a href="{{ route('home') }}">Home</a></li>
@@ -36,9 +37,11 @@
                             <div class="d-flex align-items-center pt-1">
                                 <h2 class="sec__title mb-0">{{ $organization->organization_name }}</h2>
                             </div>
-                            <p class="sec__desc py-2 font-size-17"><i
-                                    class="la la-map-marker mr-1 text-color-2"></i>{{ $organization->organization_address }}
-                            </p>
+                            @if($organization->organization_address)
+                                <p class="sec__desc py-2 font-size-17"><i
+                                        class="la la-map-marker mr-1 text-color-2"></i>{{ $organization->organization_address }}
+                                </p>
+                            @endif
                             <p class="pb-2 font-weight-medium">
                             <span class="price-range mr-1 text-color font-size-16" data-toggle="tooltip"
                                   data-placement="top" title="Moderate">
@@ -609,8 +612,7 @@
                     $(stars[i]).addClass('selected');
                 }
                 // JUST RESPONSE (Not needed)
-                let ratingValue = parseInt($('#stars li.selected').last().data('value'), 10);
-                document.getElementById('review_rate_stars').value = ratingValue;
+                document.getElementById('review_rate_stars').value = parseInt($('#stars li.selected').last().data('value'), 10);
             });
         });
     </script>
