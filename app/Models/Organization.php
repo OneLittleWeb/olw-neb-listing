@@ -61,4 +61,9 @@ class Organization extends Model
     {
         return $this->hasMany(Review::class, 'organization_guid', 'organization_guid');
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

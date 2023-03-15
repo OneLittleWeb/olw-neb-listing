@@ -4,31 +4,17 @@
     <meta name="robots" content="noindex,nofollow">
     <meta name="googlebot" content="noindex,nofollow">
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta name="author" content="SerpKick">
+    <meta name="author" content="TechyDevs">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>@yield('title') - {{base_path()}} Admin</title>
     <!-- Favicon -->
-    <link rel="icon" href="{{asset('/images/favicon.png')}}">
+    <link rel="icon" href="images/favicon.png">
+
     <!-- Google Fonts -->
-    <title>@yield('title')</title>
-    <meta name="description" content="@yield('meta_description')"/>
-    <meta name="keywords" content="@yield('meta_keywords')">
-    <link rel="canonical" href="{{url()->current()}}"/>
-    <meta property="og:image" content="@yield('sharingimg')">
-    <meta property="og:image:width" content="968">
-    <meta property="og:image:height" content="504">
-    <meta property="og:title" content="@yield('title')"/>
-    <meta property="og:description" content="@yield('meta_description')"/>
-    <meta property="og:type" content="website"/>
-    <meta data-rh="true" property="og:url" content="{{url()->current()}}"/>
-    <meta data-rh="true" property="og:site_name" content="speedycalculator"/>
-    <meta data-rh="true" property="twitter:domain" content="{{url()->current()}}"/>
-    <meta data-rh="true" property="twitter:url" content="{{url()->current()}}"/>
-    <meta data-rh="true" name="twitter:title" content="@yield('title')"/>
-    <meta data-rh="true" name="twitter:description" content="@yield('meta_description')"/>
-    <meta data-rh="true" name="twitter:image:src" content="@yield('sharingimg')"/>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam:wght@100;300;400;500;600;700;800&display=swap"
           rel="stylesheet">
+
     <!-- Template CSS Files -->
     <link rel="stylesheet" href="{{asset('/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('/css/line-awesome.min.css')}}">
@@ -39,28 +25,41 @@
     <link rel="stylesheet" href="{{asset('/css/jquery.fancybox.css')}}">
     <link rel="stylesheet" href="{{asset('/css/chosen.min.css')}}">
     <link rel="stylesheet" href="{{asset('/css/style.css')}}">
-    <link rel="stylesheet" href="{{asset('/css/custom.css')}}">
-    <link rel="stylesheet" href="{{asset('plugins/ratings/src/css/star-rating-svg.css')}}">
+    <link rel="stylesheet" href="{{asset('/css/admin.css')}}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.css">
 
-{{--    font awesome cdn--}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     @yield('css')
 </head>
 <body>
 
-@include('partials.header')
+<!-- ================================
+    START DASHBOARD AREA
+================================= -->
+<section class="dashboard-wrap d-flex">
+    @include('admin.partials.sidebar')
+    <div class="dashboard-body d-flex flex-column">
+        <div class="dashboard-inner-body flex-grow-1">
+            @include('admin.partials.header')
+            @yield('content')
 
-<main id="main">
-   {{-- <div class="loader-container">
-        <div class="loader-ripple">
-            <div></div>
-            <div></div>
+        </div><!-- end dashboard-inner-body -->
+        <div class="dashboard-footer bg-white">
+            <div class="container-fluid">
+                <div class="copy-right d-flex align-items-center justify-content-between">
+                    <p class="copy__desc">
+                        &copy; Copyright SerpKick {{date('Y')}} . Made with
+                        <span class="la la-heart-o"></span>
+                    </p>
+                </div>
+            </div>
         </div>
-    </div>--}}
-    @yield('content')
-</main>
-@include('partials.footer')
-<a href="#" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+    </div><!-- end dashboard-body -->
+</section>
+<!-- ================================
+    START DASHBOARD AREA
+================================= -->
+
+<!-- Template JS Files -->
 <script src="{{asset('/js/jquery-3.4.1.min.js')}}"></script>
 <script src="{{asset('/js/jquery-ui.js')}}"></script>
 <script src="{{asset('/js/popper.min.js')}}"></script>
@@ -77,10 +76,8 @@
 <script src="{{asset('/js/tilt.jquery.min.js')}}"></script>
 <script src="{{asset('/js/jquery.lazy.min.js')}}"></script>
 <script src="{{asset('/js/main.js')}}"></script>
-<script src="{{asset('/js/custom.js')}}"></script>
-
+<script src="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.js"></script>
+{!! Toastr::message() !!}
 @yield('js')
-@include('sweetalert::alert')
-
 </body>
 </html>

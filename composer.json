@@ -6,8 +6,11 @@
     "license": "MIT",
     "require": {
         "php": "^7.3|^8.0",
+        "brian2694/laravel-toastr": "^5.57",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "intervention/image": "^2.7",
+        "laravel/fortify": "^1.16",
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
@@ -16,6 +19,7 @@
         "realrashid/sweet-alert": "^6.0"
     },
     "require-dev": {
+        "barryvdh/laravel-debugbar": "3.6.5",
         "facade/ignition": "^2.5",
         "fakerphp/faker": "^1.9.1",
         "laravel/sail": "^1.0.1",
