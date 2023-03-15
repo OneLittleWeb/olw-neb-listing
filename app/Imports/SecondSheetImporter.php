@@ -30,14 +30,11 @@ class SecondSheetImporter implements ToCollection, WithStartRow
                 'organization_gmaps_id' => (!empty($row[12])) ? $row[12] : null,
                 'review_id' => $row[1],
                 'reviewer_name' => (!empty($row[2])) ? $row[2] : null,
-                'reviewer_profile_link' => (!empty($row[3])) ? $row[3] : null,
                 'reviewer_reviews_count' => (!empty($row[4])) ? $row[4] : null,
                 'review_date' => (!empty($row[5])) ? $row[5] : null,
                 'review_rate_stars' => (!empty($row[6])) ? $row[6] : null,
                 'review_text_original' => (!empty($row[7])) ? $row[7] : null,
-                'reviewer_avatar_url' => (!empty($row[9])) ? $row[9] : null,
                 'review_photos_files' => (!empty($row[10])) ? $row[10] : null,
-                'review_photos_urls' => (!empty($row[11])) ? $row[11] : null,
                 'review_thumbs_up_value' => (!empty($row[14])) ? $row[14] : null,
             ]);
 

@@ -25,7 +25,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="breadcrumb-content breadcrumb-content-2 d-flex flex-wrap align-items-end justify-content-between">
+                    <div
+                        class="breadcrumb-content breadcrumb-content-2 d-flex flex-wrap align-items-end justify-content-between">
                         <div class="section-heading">
                             <ul class="list-items bread-list bread-list-2 bg-transparent rounded-0 p-0 text-capitalize">
                                 <li><a href="{{ route('home') }}">Home</a></li>
@@ -238,9 +239,11 @@
                                     <div class="comments-list">
                                         @foreach($organization->reviews_paginator as $review)
                                             <div class="comment">
-                                                @if($review->reviewer_avatar_url)
+                                                @if($review->reviewer_name)
                                                     <div class="user-thumb user-thumb-lg flex-shrink-0">
-                                                        <img src="{{ $review->reviewer_avatar_url }}" alt="author-img">
+                                                        <img
+                                                            src="{{ Avatar::create($review->reviewer_name)->toBase64() }}"
+                                                            alt="author-img">
                                                     </div>
                                                 @else
                                                     <div class="user-thumb user-thumb-lg flex-shrink-0">
@@ -255,8 +258,13 @@
                                                         </div>
                                                         <div class="star-rating-wrap text-center">
                                                             <div class="users_review_ratings"
-                                                                 data-rating="{{ $review->review_rate_stars }}"></div>
-                                                            <p class="font-size-13 font-weight-medium">{{ $review->review_date }}</p>
+                                                                 data-rating="{{ $review->review_rate_stars }}">
+                                                            </div>
+                                                            @if($review->review_date)
+                                                                <p class="font-size-13 font-weight-medium">{{ $review->review_date }}</p>
+                                                            @else
+                                                                <p class="font-size-13 font-weight-medium">{{ \Carbon\Carbon::parse($review->created_at)->diffForHumans() }}</p>
+                                                            @endif
                                                         </div>
                                                     </div>
                                                     <p class="comment-desc">{{ $review->review_text_original }}</p>
