@@ -46,10 +46,10 @@
                                         <a href="/">home</a>
                                     </li>
                                     <li>
-                                        <a href="#">listings</a>
+                                        <a href="{{ route('all.categories') }}">categories</a>
                                     </li>
                                     <li>
-                                        <a href="#">pages</a>
+                                        <a href="{{ route('city.index') }}">cities</a>
                                     </li>
                                     <li>
                                         <a href="#">blog</a>
@@ -70,7 +70,8 @@
 </header>
 
 @section('js')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
     <script type="text/javascript">
         var path = "{{ route('autocomplete.search') }}";
 

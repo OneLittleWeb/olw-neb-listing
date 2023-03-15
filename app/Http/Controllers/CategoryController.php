@@ -53,4 +53,10 @@ class CategoryController extends Controller
 
         abort(404);
     }
+
+    public function allCategories()
+    {
+        $categories = Category::all();
+        return view('category.all-categories', compact('categories'));
+    }
 }
