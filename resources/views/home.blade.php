@@ -71,31 +71,7 @@
             </div><!-- end row -->
         </div><!-- end container -->
 
-{{--        <div class="category-area position-relative bg-gray section--padding">--}}
-{{--            <div class="container">--}}
-{{--                <div class="row">--}}
-{{--                    <div class="highlighted-categories highlighted-categories-2 pb-5 mx-auto mt-0 padding-top-130px">--}}
-{{--                        <div class="highlight-lists d-flex justify-content-center mt-4">--}}
-{{--                            @foreach($categories as $category)--}}
-{{--                                <div class="hero-category-item hero-category--item">--}}
-{{--                                    <a href="{{ route('category.business', $category->slug) }}"--}}
-{{--                                       class="d-block hero-cat-link hover-y">--}}
-{{--                                        <span class="icon-element mx-auto {{ $category->background }}"><i--}}
-{{--                                                class="{{ $category->icon }}"></i></span>--}}
-{{--                                        {{ $category->name }}--}}
-{{--                                    </a>--}}
-{{--                                </div>--}}
-{{--                            @endforeach--}}
-{{--                        </div>--}}
-{{--                    </div><!-- end highlighted-categories -->--}}
-{{--                </div>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-
-
-        <!-- ================================
-    START CATEGORY AREA
-================================= -->
+        <!-- =======START CATEGORY AREA======= -->
         <section class="category-area position-relative bg-gray section--padding">
             <div class="container">
                 <div class="row highlighted-categories justify-content-center">
