@@ -43,7 +43,9 @@ class OrganizationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
+        $organization = new Organization();
+        $organization->name = $request->name;
     }
 
     /**
