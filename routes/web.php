@@ -16,6 +16,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::resource('organization', \App\Http\Controllers\admin\OrganizationController::class)->except(['show']);
     Route::get('logout', [\App\Http\Controllers\admin\AdminController::class, 'logout'])->name('logout');
     Route::get('reviews', [AdminReviewController::class, 'reviews'])->name('reviews');
+    Route::get('review/business', [AdminReviewController::class, 'reviewBusiness'])->name('reviews.business');
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');

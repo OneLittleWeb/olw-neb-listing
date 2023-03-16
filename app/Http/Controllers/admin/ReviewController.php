@@ -11,8 +11,15 @@ class ReviewController extends Controller
 {
     public function reviews()
     {
-        $organizations = Review::latest()->paginate(10);
+        $reviews = Review::latest()->paginate(10);
 
-        return view('admin.reviews.index',compact('organizations'));
+        return view('admin.reviews.index',compact('reviews'));
+    }
+
+    public function reviewBusiness($id)
+    {
+        $businesses = Organization::latest()->paginate(10);
+
+        return view('admin.reviews.business',compact('businesses'));
     }
 }

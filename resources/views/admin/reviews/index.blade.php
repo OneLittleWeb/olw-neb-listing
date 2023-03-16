@@ -35,21 +35,21 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($organizations as $key => $organization)
+                                @foreach($reviews as $key => $review)
                                     <tr>
                                         <td>{{++$key}}</td>
-                                        <td>{{Str::title($organization->organization->organization_name)}}</td>
-                                        <td>{{Str::title($organization->reviewer_name)}}</td>
-                                        <td>{{$organization->review_date}}</td>
-                                        <td>{{$organization->review_rate_stars}}</td>
-                                        <td>{{$organization->review_thumbs_up_value}}</td>
+                                        <td>{{Str::title($review->organization->organization_name)}}</td>
+                                        <td>{{Str::title($review->reviewer_name)}}</td>
+                                        <td>{{$review->review_date}}</td>
+                                        <td>{{$review->review_rate_stars}}</td>
+                                        <td>{{$review->review_thumbs_up_value}}</td>
                                     </tr>
                                 @endforeach
                                 </tbody>
                             </table>
                         </div>
                     </div><!-- end block-card-body -->
-                    {{$organizations->links()}}
+                    {{$reviews->links()}}
                 </div><!-- end block-card -->
             </div><!-- end col-lg-7 -->
         </div><!-- end row -->
