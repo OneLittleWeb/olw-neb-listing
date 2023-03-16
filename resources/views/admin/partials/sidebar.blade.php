@@ -43,7 +43,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="dashboard-reviews.html">
+        <a class="nav-link" href="{{route('admin.reviews')}}">
             <i class="la la-star-o font-size-18 mr-1"></i>
             <span>Reviews</span>
         </a>
