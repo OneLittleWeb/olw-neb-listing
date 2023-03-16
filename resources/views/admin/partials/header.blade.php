@@ -22,7 +22,7 @@
                     <i class="la la-plus-circle mr-2 text-gray font-size-18"></i>
                     Add Listing
                 </a>
-                <a class="dropdown-item text-color font-size-15" href="index.html">
+                <a class="dropdown-item text-color font-size-15" href="{{route('admin.logout')}}">
                     <i class="la la-power-off mr-2 text-gray font-size-18"></i>
                     Logout
                 </a>
