@@ -43,7 +43,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="{{route('admin.reviews')}}">
+        <a class="nav-link" href="{{route('admin.reviews.business')}}">
             <i class="la la-star-o font-size-18 mr-1"></i>
             <span>Reviews</span>
         </a>

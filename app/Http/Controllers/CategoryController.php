@@ -12,10 +12,13 @@ class CategoryController extends Controller
     public function index($slug)
     {
         $city = City::where('slug', $slug)->first();
-        $categories = Category::all();
+        if ($city) {
+            $categories = Category::all();
+            $organizations = Organization::where('city_id', $city->id)->get()->groupBy('organization_category');
+            return view('category.index', compact('city', 'categories', 'organizations'));
+        }
 
-        $organizations = Organization::where('city_id', $city->id)->get()->groupBy('organization_category');
-        return view('category.index', compact('city', 'categories', 'organizations'));
+        abort(404);
     }
 
     public function categoryBusiness(Request $request, $slug)
@@ -48,7 +51,7 @@ class CategoryController extends Controller
             $business_city = Organization::where('organization_category', $slug)->first();
             $city = City::find($business_city->city_id);
 
-            return view('category.business', compact('organizations','city','cities', 'category','categories'));
+            return view('category.business', compact('organizations', 'city', 'cities', 'category', 'categories'));
         }
 
         abort(404);
