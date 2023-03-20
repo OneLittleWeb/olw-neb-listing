@@ -9,10 +9,37 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div
-                            class="filter-bar d-flex flex-wrap justify-content-between align-items-center margin-bottom-30px">
-                            <p class="result-text font-weight-medium">{{ "Showing " . $organizations->firstItem() . " to " . $organizations->lastItem() . " of " . $organizations->total() . " entries" }}</p>
-                        </div><!-- end filter-bar -->
+                            class="filter-bar d-flex flex-wrap justify-content-between align-items-center margin-bottom-20px">
+                            @if($city == null)
+                                <ul class="list-items bread-list bread-list-2 bg-transparent rounded-0 p-0 text-capitalize">
+                                    <li><a href="{{ route('home') }}">Home</a></li>
+                                    <li>{{ $category->name }}</li>
+                                </ul>
+                            @else
+                                <ul class="list-items bread-list bread-list-2 bg-transparent rounded-0 p-0 text-capitalize">
+                                    <li><a href="{{ route('home') }}">Home</a></li>
+                                    <li><a href="{{ route('category.index', $city->slug) }}">{{ $city->name }}</a></li>
+                                    <li>{{ $category->name }}</li>
+                                </ul>
+                            @endif
+                        </div>
                     </div><!-- end col-lg-12 -->
+                    <div class="col-lg-12">
+                        <div class="d-flex align-items-center pb-4 text-capitalize">
+                            @if($city != null)
+                                <h2 class="sec__title mb-0">{{ $category->name }} in {{ $city->name }}, NE</h2>
+                            @else
+                                <h2 class="sec__title mb-0">{{ $category->name }} in, NE</h2>
+                            @endif
+                        </div>
+                    </div>
+
+                    {{--                    <div class="col-lg-12">--}}
+                    {{--                        <div--}}
+                    {{--                            class="filter-bar d-flex flex-wrap justify-content-between align-items-center margin-bottom-30px">--}}
+                    {{--                            <p class="result-text font-weight-medium">{{ "Showing " . $organizations->firstItem() . " to " . $organizations->lastItem() . " of " . $organizations->total() . " entries" }}</p>--}}
+                    {{--                        </div><!-- end filter-bar -->--}}
+                    {{--                    </div><!-- end col-lg-12 -->--}}
                     <div class="col-lg-8">
                         <div class="row">
                             @foreach($organizations as $organization)
@@ -194,7 +221,8 @@
                                         @foreach($cities->take(6) as $f_city)
                                             <a href="{{ route('city.wise.organizations', ['city_slug' => $f_city->slug, 'category_slug' => $category->slug]) }}"
                                                class="generic-img-card d-block hover-y overflow-hidden mb-3">
-                                                <img src="{{ asset('images/city/' . $f_city->background_image) }}" data-src="{{ asset('images/city/' . $f_city->background_image) }}"
+                                                <img src="{{ asset('images/city/' . $f_city->background_image) }}"
+                                                     data-src="{{ asset('images/city/' . $f_city->background_image) }}"
                                                      alt="image" class="generic-img-card-img filter-image lazy">
                                                 <div
                                                     class="generic-img-card-content d-flex align-items-center justify-content-between">
@@ -206,7 +234,8 @@
                                             @foreach($cities->skip(6) as $f_city)
                                                 <a href="{{ route('city.wise.organizations', ['city_slug' => $f_city->slug, 'category_slug' => $category->slug]) }}"
                                                    class="generic-img-card d-block hover-y overflow-hidden mb-3">
-                                                    <img src="{{ asset('images/city/' . $f_city->background_image) }}" data-src="{{ asset('images/city/' . $f_city->background_image) }}"
+                                                    <img src="{{ asset('images/city/' . $f_city->background_image) }}"
+                                                         data-src="{{ asset('images/city/' . $f_city->background_image) }}"
                                                          alt="image" class="generic-img-card-img filter-image lazy">
                                                     <div
                                                         class="generic-img-card-content d-flex align-items-center justify-content-between">
@@ -233,7 +262,8 @@
                                         @foreach($categories->take(5) as $category)
                                             <a href="{{ route('city.wise.organizations', ['city_slug' => $city->slug, 'category_slug' => $category->slug]) }}"
                                                class="generic-img-card d-block hover-y overflow-hidden mb-3">
-                                                <img src="{{ asset('images/category/' . $category->background_image) }}" data-src="{{ asset('images/category/' . $category->background_image) }}"
+                                                <img src="{{ asset('images/category/' . $category->background_image) }}"
+                                                     data-src="{{ asset('images/category/' . $category->background_image) }}"
                                                      alt="image" class="generic-img-card-img filter-image lazy">
                                                 <div
                                                     class="generic-img-card-content d-flex align-items-center justify-content-between">
@@ -247,8 +277,10 @@
                                             @foreach($categories->skip(5) as $category)
                                                 <a href="{{ route('city.wise.organizations', ['city_slug' => $city->slug, 'category_slug' => $category->slug]) }}"
                                                    class="generic-img-card d-block hover-y overflow-hidden mb-3">
-                                                    <img src="{{ asset('images/category/' . $category->background_image) }}" data-src="{{ asset('images/category/' . $category->background_image) }}"
-                                                         alt="image" class="generic-img-card-img filter-image lazy">
+                                                    <img
+                                                        src="{{ asset('images/category/' . $category->background_image) }}"
+                                                        data-src="{{ asset('images/category/' . $category->background_image) }}"
+                                                        alt="image" class="generic-img-card-img filter-image lazy">
                                                     <div
                                                         class="generic-img-card-content d-flex align-items-center justify-content-between">
                                                         <span class="badge text-capitalize">{{ $category->name }}</span>
