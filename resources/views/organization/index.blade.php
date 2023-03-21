@@ -8,8 +8,7 @@
             @if(count($organizations))
                 <div class="row">
                     <div class="col-lg-12">
-                        <div
-                            class="filter-bar d-flex flex-wrap justify-content-between align-items-center margin-bottom-20px">
+                        <div class="breadcrumb-content breadcrumb-content-2 d-flex flex-wrap align-items-end justify-content-between margin-bottom-20px">
                             @if($city == null)
                                 <ul class="list-items bread-list bread-list-2 bg-transparent rounded-0 p-0 text-capitalize">
                                     <li><a href="{{ route('home') }}">Home</a></li>
@@ -33,7 +32,6 @@
                             @endif
                         </div>
                     </div>
-
                     {{--                    <div class="col-lg-12">--}}
                     {{--                        <div--}}
                     {{--                            class="filter-bar d-flex flex-wrap justify-content-between align-items-center margin-bottom-30px">--}}

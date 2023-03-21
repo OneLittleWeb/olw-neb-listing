@@ -3,8 +3,22 @@
 @section('meta_description', "add")
 @section('meta_keywords',"add")
 @section('content')
-    <section class="category-area section--padding margin-top-50px">
+    <section class="category-area section--padding margin-top-40px">
         <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb-content breadcrumb-content-2 d-flex flex-wrap align-items-end justify-content-between margin-bottom-20px">
+                        <div class="section-heading">
+                            <ul class="list-items bread-list bread-list-2 bg-transparent rounded-0 p-0 text-capitalize">
+                                <li><a href="{{ route('home') }}">Home</a></li>
+                                <li>
+                                    Categories
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
             @if(count($categories))
                 <div class="row">
                     @foreach($categories as $category)
