@@ -57,7 +57,7 @@
         </div><!-- end container -->
 
         <!-- =======START CATEGORY AREA======= -->
-        <section class="category-area position-relative bg-gray section--padding">
+        <section class="category-area position-relative bg-gray section--padding category-section">
             <div class="container">
                 <div class="row highlighted-categories justify-content-center">
                     @foreach($categories as $category)

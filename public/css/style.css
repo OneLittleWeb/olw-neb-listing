@@ -412,8 +412,12 @@ body {
 }
 
 .section--padding {
-    padding-top: 20px;
+    padding-top: 100px;
     padding-bottom: 70px
+}
+
+.category-section {
+    padding-top: 30px !important;
 }
 
 .section--margin {
