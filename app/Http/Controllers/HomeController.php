@@ -23,6 +23,9 @@ class HomeController extends Controller
     {
         $query = $request->get('looking_for');
 
+//        return Organization::join('categories', 'organizations.category_id', '=', 'categories.id')->where('organization_name', 'like', "%{$query}%")->orWhere('categories.name', 'like', "%{$query}%")
+//            ->pluck('organization_name','categories.name');
+
         return Category::where('name', 'like', "%{$query}%")->groupBy('name')
             ->pluck('name');
     }
