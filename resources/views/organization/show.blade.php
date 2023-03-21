@@ -103,7 +103,7 @@
                             <div class="block-card-body">
                                 @if($organization->embed_map_code)
                                     <div class="map-container height-500">
-                                        <div id="map">{!! $organization->embed_map_code !!}</div>
+                                        <div id="map" rel="nofollow">{!! $organization->embed_map_code !!}</div>
                                     </div>
                                 @endif
                                 <ul class="list-items list--items list-items-style-2 py-4">
@@ -524,8 +524,7 @@
                                             href="tel:{{ $organization->organization_phone_number }}">{{ $organization->organization_phone_number }}</a>
                                     </li>
                                 @endif
-                                <li><i class="la la-map-signs mr-2 text-color-2 font-size-18"></i><a
-                                        href="{{ $organization->gmaps_link }}" target="_blank">Get
+                                <li><i class="la la-map-signs mr-2 text-color-2 font-size-18"></i><a rel="nofollow" href="{{ $organization->gmaps_link }}" target="_blank">Get
                                         Directions</a></li>
                             </ul>
                         </div><!-- end sidebar-widget -->
