@@ -15,17 +15,35 @@ class OrganizationController extends Controller
 {
     public function cityWiseOrganizations($city_slug, $category_slug)
     {
-        $city = City::where('slug', $city_slug)->first();
-        $category = Category::where('slug', $category_slug)->first();
+        $city_check = City::where('slug', $city_slug)->exists();
+        $category_check = Category::where('slug', $category_slug)->exists();
 
-        if ($city && $category) {
+        if ($city_check && $category_check) {
+            $city = City::where('slug', $city_slug)->first();
+            $category = Category::where('slug', $category_slug)->first();
+
             $categories = Category::all();
             $cities = City::all();
             $organizations = Organization::where('city_id', $city->id)->where('category_id', $category->id)->paginate(10)->onEachSide(0);
 
-            return view('organization.index', compact('organizations','cities', 'city', 'category','categories'));
+            return view('organization.index', compact('organizations', 'cities', 'city', 'category', 'categories'));
+        } else {
+            return $this->categoryWiseOrganizations($city_slug, $category_slug);
         }
+    }
 
+    public function categoryWiseOrganizations($category_slug, $city_slug)
+    {
+        $category = Category::where('slug', $category_slug)->first();
+        $city = City::where('slug', $city_slug)->first();
+
+        if ($category && $city) {
+            $categories = Category::all();
+            $cities = City::all();
+            $organizations = Organization::where('city_id', $city->id)->where('category_id', $category->id)->paginate(10)->onEachSide(0);
+
+            return view('organization.index', compact('organizations', 'cities', 'city', 'category', 'categories'));
+        }
         abort(404);
     }
 

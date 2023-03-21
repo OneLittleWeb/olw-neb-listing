@@ -5,22 +5,19 @@
 @section('content')
     <section class="category-area section--padding margin-top-50px">
         <div class="container">
-            @if(count($categories))
+            @if(count($cities))
                 <div class="row">
-                    @foreach($categories as $category)
+                    @foreach($cities as $city)
                         <div class="col-lg-3 responsive-column">
                             <div class="category-item overflow-hidden">
-                                <img src="{{asset('images/category/' . $category->background_image)}}"
-                                     data-src="{{asset('images/category/' . $category->background_image)}}"
-                                     alt="{{ $category->name }}" class="cat-img lazy">
+                                <img src="{{ asset('images/city/' . $city->background_image) }}"
+                                     data-src="{{ asset('images/city/' . $city->background_image) }}"
+                                     alt="{{ $city->name }}" class="cat-img lazy">
                                 <div class="category-content d-flex align-items-center justify-content-center">
-                                    <a href="{{ route('category.index', $category->slug) }}"
+                                    <a href="{{ route('city.wise.organizations', ['city_slug' => $category->slug, 'category_slug' => $city->slug]) }}"
                                        class="category-link d-flex flex-column justify-content-center w-100 h-100">
-                                        <div class="icon-element mb-3 mx-auto">
-                                            <span class="{{ $category->icon }}"></span>
-                                        </div>
                                         <div class="cat-content">
-                                            <h4 class="cat__title mb-3">{{ $category->name }}</h4>
+                                            <h4 class="cat__title mb-3">{{ $city->name }}</h4>
                                         </div>
                                     </a>
                                 </div>
@@ -33,7 +30,7 @@
                     <div class="col-lg-12">
                         <div
                             class="filter-bar d-flex flex-wrap margin-bottom-30px">
-                            <p class="result-text font-weight-medium">No Category Found</p>
+                            <p class="result-text font-weight-medium">No City Found</p>
                         </div><!-- end filter-bar -->
                     </div><!-- end col-lg-12 -->
                 </div>

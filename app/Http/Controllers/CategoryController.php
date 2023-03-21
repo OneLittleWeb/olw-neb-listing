@@ -11,17 +11,24 @@ class CategoryController extends Controller
 {
     public function index($slug)
     {
-        $city = City::where('slug', $slug)->first();
+        $city = City::where('slug', $slug)->exists();
+        $category = Category::where('slug', $slug)->exists();
         if ($city) {
+            $city = City::where('slug', $slug)->first();
             $categories = Category::all();
             $organizations = Organization::where('city_id', $city->id)->get()->groupBy('organization_category');
             return view('category.index', compact('city', 'categories', 'organizations'));
+        } elseif ($category) {
+            $category = Category::where('slug', $slug)->first();
+            $cities = City::all();
+
+            return view('city.category-city', compact('category', 'cities'));
         }
 
         abort(404);
     }
 
-    public function categoryBusiness(Request $request, $slug)
+    public function categoryBusiness($slug)
     {
         $category = Category::where('slug', $slug)->first();
 

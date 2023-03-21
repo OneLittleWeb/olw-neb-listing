@@ -78,7 +78,7 @@
                     @foreach($categories as $category)
                     <div class="col-lg-2 col-sm-6">
                         <div class="hero-category-item hero-category-item-layout-2">
-                            <a href="{{ route('category.business', $category->slug) }}" class="d-block hero-cat-link">
+                            <a href="{{ route('category.index', $category->slug) }}" class="d-block hero-cat-link">
                                 <span class="icon-element mx-auto {{ $category->background }}"><i class="{{ $category->icon }}"></i></span>
                                 {{ $category->name }}
                             </a>
