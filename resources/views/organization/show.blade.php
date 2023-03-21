@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', "Nebraskalisting")
+@section('title', "$organization->meta_title")
 @section('meta_description', "add")
 @section('meta_keywords',"add")
 @section('content')

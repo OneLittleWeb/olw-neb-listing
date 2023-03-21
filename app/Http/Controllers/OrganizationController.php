@@ -61,6 +61,13 @@ class OrganizationController extends Controller
             $two_star_reviews = $organization->reviews()->where('review_rate_stars', 2)->count();
             $one_star_reviews = $organization->reviews()->where('review_rate_stars', 1)->count();
 
+            if ($organization->organization_address) {
+                $meta = explode(',', $organization->organization_address);
+                $organization->meta_title = $organization->organization_name . ' -' . $meta[1] . ',' . $meta[2];
+            } else {
+                $organization->meta_title = $organization->organization_name . ' - ' . $city->name . ', ' . 'NE';
+            }
+
             $organization->reviews_paginator = $organization->reviews()->orderByDesc('id')->paginate(10)->onEachSide(0);
 
             return view('organization.show', compact('organization', 'city', 'five_star_reviews', 'four_star_reviews', 'three_star_reviews', 'two_star_reviews', 'one_star_reviews'));
