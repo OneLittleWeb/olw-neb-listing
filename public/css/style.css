@@ -412,7 +412,7 @@ body {
 }
 
 .section--padding {
-    padding-top: 100px;
+    padding-top: 2px;
     padding-bottom: 70px
 }
 
@@ -2614,6 +2614,7 @@ body {
 }
 
 .user-chosen-select-container .chosen-single span {
+    text-transform: capitalize;
     color: #808996
 }
 

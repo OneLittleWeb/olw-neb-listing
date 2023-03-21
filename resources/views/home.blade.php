@@ -13,61 +13,46 @@
         <span class="line-bg line-bg6"></span>
 
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="hero-heading text-center">
-                        <div class="section-heading">
-                            <h2 class="sec__title">Find The Best Places in your city</h2>
-                            <p class="sec__desc">Nebraskalisting helps you find out what's happening in your city, Let's
-                                explore.</p>
-                        </div>
-                    </div><!-- end hero-heading -->
-                    <form action="{{ route('search') }}" enctype="multipart/form-data">
-                        @csrf
-                        <div class="main-search-input main-search-input-2 position-relative z-index-2">
-                            <div class="main-search-input-item">
-                                <div class="form-box">
-                                    <div class="input-box">
-                                        <label class="label-text" for="looking_for">What are you <span
-                                                class="required">*</span></label>
-                                        <div class="form-group mb-0">
-                                            <span class="la la-search form-icon"></span>
-                                            <input class="typeahead form-control" type="search" name="looking_for"
-                                                   id="looking_for"
-                                                   placeholder="looking for?" required autocomplete="off">
-                                        </div>
+            <div class="row align-items-center padding-bottom-30px">
+                <div class="col-lg-5 mr-auto">
+                    <form action="#" class="form-box">
+                        <div class="main-search-input flex-column mt-0">
+                            <div class="main-search-input-item w-100">
+                                <div class="input-box">
+                                    <label class="label-text">What are you</label>
+                                    <div class="form-group">
+                                        <span class="la la-search form-icon"></span>
+                                        <input class="form-control" type="search" id="looking_for" placeholder="looking for?" autocomplete="off">
                                     </div>
                                 </div>
                             </div><!-- end main-search-input-item -->
-                            <div class="main-search-input-item user-chosen-select-container">
-                                <label class="label-text" for="search_location">Where to look? <span
-                                        class="required">*</span></label>
+                            <div class="main-search-input-item user-chosen-select-container w-100 mb-3 ml-0">
+                                <label class="label-text">Where to look?</label>
                                 <select class="user-chosen-select" name="search_location" id="search_location" required>
-                                    <option value="">Select a Location</option>
                                     @foreach($cities as $city)
-                                        <option value="{{ $city->id }}">{{ $city->name }}</option>
-                                    @endforeach
-                                </select>
-                            </div><!-- end main-search-input-item -->
-                            <div class="main-search-input-item user-chosen-select-container">
-                                <label class="label-text" for="search_category">What Category?</label>
-                                <select class="user-chosen-select" name="search_category" id="search_category">
-                                    <option value="">Select a Category</option>
-                                    @foreach($categories as $category)
                                         <option class="text-capitalize"
-                                                value="{{ $category->id }}">{{ $category->name }}</option>
+                                                value="{{ $city->id }}">{{ $city->name }}, NE</option>
                                     @endforeach
                                 </select>
                             </div><!-- end main-search-input-item -->
-                            <div class="main-search-input-item">
-                                <label class="label-text">Search</label>
-                                <button class="theme-btn gradient-btn border-0 w-100" type="submit"><i
+                            <div class="main-search-input-item w-100 ml-0">
+                                <label class="label-text">Search Activities</label>
+                                <button class="theme-btn gradient-btn border-0 w-100 hover-scale-2" type="submit"><i
                                         class="la la-search mr-2"></i>Search Now
                                 </button>
                             </div><!-- end main-search-input-item -->
                         </div><!-- end main-search-input -->
                     </form>
-                </div><!-- end col-lg-12 -->
+                </div><!-- end col-lg-6 -->
+                <div class="col-lg-6">
+                    <div class="hero-heading">
+                        <div class="section-heading">
+                            <h2 class="sec__title font-size-35">Find The Best Places In Your City</h2>
+                            <p class="sec__desc">Nebraskalisting helps you find out what's happening in your city, Let's
+                                explore.</p>
+                        </div>
+                    </div><!-- end hero-heading -->
+                </div><!-- end col-lg-6 -->
             </div><!-- end row -->
         </div><!-- end container -->
 
@@ -76,14 +61,15 @@
             <div class="container">
                 <div class="row highlighted-categories justify-content-center">
                     @foreach($categories as $category)
-                    <div class="col-lg-2 col-sm-6">
-                        <div class="hero-category-item hero-category-item-layout-2">
-                            <a href="{{ route('category.index', $category->slug) }}" class="d-block hero-cat-link">
-                                <span class="icon-element mx-auto {{ $category->background }}"><i class="{{ $category->icon }}"></i></span>
-                                {{ $category->name }}
-                            </a>
-                        </div>
-                    </div><!-- end col-lg-2 -->
+                        <div class="col-lg-2 col-sm-6">
+                            <div class="hero-category-item hero-category-item-layout-2">
+                                <a href="{{ route('category.index', $category->slug) }}" class="d-block hero-cat-link">
+                                    <span class="icon-element mx-auto {{ $category->background }}"><i
+                                            class="{{ $category->icon }}"></i></span>
+                                    {{ $category->name }}
+                                </a>
+                            </div>
+                        </div><!-- end col-lg-2 -->
                     @endforeach
                 </div>
             </div><!-- end container -->
@@ -880,12 +866,11 @@
 
 @section('js')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
-
     <script>
         let path = "{{ route('autocomplete')}}";
         $('#looking_for').typeahead({
-            source:  function (query, process) {
-                return $.get(path, { term: query }, function (data) {
+            source: function (query, process) {
+                return $.get(path, {term: query}, function (data) {
                     return process(data);
                 });
             }

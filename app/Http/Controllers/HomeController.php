@@ -23,8 +23,8 @@ class HomeController extends Controller
     {
         $query = $request->get('looking_for');
 
-        return Organization::where('organization_name', 'like', "%{$query}%")->orWhere('organization_category', 'like', "%{$query}%")->groupBy('organization_name')
-            ->pluck('organization_name');
+        return Category::where('name', 'like', "%{$query}%")->groupBy('name')
+            ->pluck('name');
     }
 
     public function search(Request $request)
