@@ -62,7 +62,8 @@
                                                 @if($organization->organization_website)
                                                     <li>
                                                         <span class="la la-link icon"></span>
-                                                        <a href="{{ 'https://' . $organization->organization_website }}"
+                                                        <a rel="nofollow"
+                                                           href="{{ 'https://' . $organization->organization_website }}"
                                                            target="_blank"> {{ $organization->organization_website }}</a>
                                                     </li>
                                                 @endif

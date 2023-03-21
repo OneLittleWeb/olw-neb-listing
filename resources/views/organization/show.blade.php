@@ -25,7 +25,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="breadcrumb-content breadcrumb-content-2 d-flex flex-wrap align-items-end justify-content-between">
+                    <div
+                        class="breadcrumb-content breadcrumb-content-2 d-flex flex-wrap align-items-end justify-content-between">
                         <div class="section-heading">
                             <ul class="list-items bread-list bread-list-2 bg-transparent rounded-0 p-0 text-capitalize">
                                 <li><a href="{{ route('home') }}">Home</a></li>
@@ -127,6 +128,7 @@
                                     @if($organization->organization_website)
                                         <li><span class="text-color"><i
                                                     class="la la-globe mr-2 text-color-2 font-size-18"></i>Website:</span><a
+                                                rel="nofollow"
                                                 href="{{ 'https://' . $organization->organization_website }}"
                                                 target="_blank">{{ $organization->organization_website }}</a>
                                         </li>
@@ -514,7 +516,7 @@
                             <ul class="list-items list-items-style-2">
                                 @if($organization->organization_website)
                                     <li><i class="la la-external-link mr-2 text-color-2 font-size-18"></i><a
-                                            href="{{ 'https://' . $organization->organization_website }}"
+                                            rel="nofollow" href="{{ 'https://' . $organization->organization_website }}"
                                             target="_blank">{{ $organization->organization_website }}</a></li>
                                 @endif
                                 @if($organization->organization_phone_number)
@@ -538,8 +540,10 @@
                                             $updated_work_time = str_replace(', Hours might differ', '', $modified_work_time);
                                             $exploded_work_time = explode(',', $updated_work_time);
                                         @endphp
-                                        <li class="d-flex justify-content-between">{{ $exploded_work_time[0] }}
-                                            <span>{{ $exploded_work_time[1] }}</span></li>
+                                        @if($exploded_work_time[0] && $exploded_work_time[1])
+                                            <li class="d-flex justify-content-between">{{ $exploded_work_time[0] }}
+                                                <span>{{ $exploded_work_time[1] }}</span></li>
+                                        @endif
                                     @endforeach
                                 </ul>
                             </div><!-- end sidebar-widget -->
