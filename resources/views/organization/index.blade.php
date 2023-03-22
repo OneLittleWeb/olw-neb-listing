@@ -1,11 +1,10 @@
 @extends('layouts.master')
-@section('title', "Nebraskalisting")
+@section('title', "$category->meta_title")
 @if (count($organizations) && $organizations->currentPage() > 1)
     @section('meta')
         <meta name="robots" content="noindex, follow">
     @endsection
 @endif
-
 @section('meta_description', "add")
 @section('meta_keywords',"add")
 @section('content')
@@ -39,12 +38,6 @@
                             @endif
                         </div>
                     </div>
-                    {{--                    <div class="col-lg-12">--}}
-                    {{--                        <div--}}
-                    {{--                            class="filter-bar d-flex flex-wrap justify-content-between align-items-center margin-bottom-30px">--}}
-                    {{--                            <p class="result-text font-weight-medium">{{ "Showing " . $organizations->firstItem() . " to " . $organizations->lastItem() . " of " . $organizations->total() . " entries" }}</p>--}}
-                    {{--                        </div><!-- end filter-bar -->--}}
-                    {{--                    </div><!-- end col-lg-12 -->--}}
                     <div class="col-lg-8">
                         <div class="row">
                             @foreach($organizations as $organization)

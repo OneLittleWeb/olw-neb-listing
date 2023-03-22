@@ -8,6 +8,7 @@ use App\Models\City;
 use App\Models\Organization;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class HomeController extends Controller
 {
@@ -45,16 +46,17 @@ class HomeController extends Controller
             $search_city = $request->search_city;
             $search_source_id = $request->source_id;
             $city = City::find($search_city);
+            $category = Category::find($search_source_id);
+
+            $category->meta_title = Str::title($category->name) . ' in ' . Str::title($city->name) . ', NE | nebraskalisting.com';
 
             if ($source == 'organizations') {
 
-                $organization = Organization::find($search_source_id);
                 $sourceController = new OrganizationController();
-                return $sourceController->cityWiseOrganization($city->slug, $organization->slug);
+                return $sourceController->cityWiseOrganization($city->slug, $category->slug);
 
             } elseif ($source == 'categories') {
 
-                $category = Category::find($search_source_id);
                 $cities = City::all();
                 $categories = Category::all();
                 $organizations = Organization::where('category_id', $search_source_id)

@@ -7,6 +7,7 @@ use App\Models\City;
 use App\Models\Organization;
 use Butschster\Head\Facades\Meta;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class CategoryController extends Controller
 {
@@ -58,6 +59,8 @@ class CategoryController extends Controller
 
             $business_city = Organization::where('organization_category', $slug)->first();
             $city = City::find($business_city->city_id);
+
+            $category->meta_title = Str::title($business_category->organization_category) . ' in ' . Str::title($city->name) . ', NE | nebraskalisting.com';
 
             return view('category.business', compact('organizations', 'city', 'cities', 'category', 'categories'));
         }

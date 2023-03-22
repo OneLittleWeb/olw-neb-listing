@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', "Nebraskalisting")
+@section('title', "$category->meta_title")
 @section('meta_description', "add")
 @section('meta_keywords',"add")
 @section('content')
@@ -9,10 +9,30 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div
-                            class="filter-bar d-flex flex-wrap justify-content-between align-items-center margin-bottom-30px">
-                            <p class="result-text font-weight-medium">{{ "Showing " . $organizations->firstItem() . " to " . $organizations->lastItem() . " of " . $organizations->total() . " entries" }}</p>
-                        </div><!-- end filter-bar -->
+                            class="breadcrumb-content breadcrumb-content-2 d-flex flex-wrap align-items-end justify-content-between margin-bottom-30px">
+                            @if($city == null)
+                                <ul class="list-items bread-list bread-list-2 bg-transparent rounded-0 p-0 text-capitalize">
+                                    <li><a href="{{ route('home') }}">Home</a></li>
+                                    <li>{{ $category->name }}</li>
+                                </ul>
+                            @else
+                                <ul class="list-items bread-list bread-list-2 bg-transparent rounded-0 p-0 text-capitalize">
+                                    <li><a href="{{ route('home') }}">Home</a></li>
+                                    <li><a href="{{ route('category.index', $city->slug) }}">{{ $city->name }}</a></li>
+                                    <li>{{ $category->name }}</li>
+                                </ul>
+                            @endif
+                        </div>
                     </div><!-- end col-lg-12 -->
+                    <div class="col-lg-12">
+                        <div class="d-flex align-items-center pb-4 text-capitalize">
+                            @if($city != null)
+                                <h2 class="sec__title mb-0">{{ $category->name }} in {{ $city->name }}, NE</h2>
+                            @else
+                                <h2 class="sec__title mb-0">{{ $category->name }} in, NE</h2>
+                            @endif
+                        </div>
+                    </div>
                     <div class="col-lg-8">
                         <div class="row">
                             @foreach($organizations as $organization)

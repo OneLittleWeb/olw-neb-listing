@@ -22,6 +22,7 @@ class OrganizationController extends Controller
         if ($city_check && $category_check) {
             $city = City::where('slug', $city_slug)->first();
             $category = Category::where('slug', $category_slug)->first();
+            $category->meta_title = Str::title($category->name) . ' in ' . Str::title($city->name) . ', NE | nebraskalisting.com';
 
             $categories = Category::all();
             $cities = City::all();
@@ -44,6 +45,8 @@ class OrganizationController extends Controller
         $city = City::where('slug', $city_slug)->first();
 
         if ($category && $city) {
+            $category->meta_title = Str::title($category->name) . ' in ' . Str::title($city->name) . ', NE | nebraskalisting.com';
+
             $categories = Category::all();
             $cities = City::all();
 
