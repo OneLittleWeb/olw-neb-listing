@@ -20,7 +20,7 @@
     <meta property="og:description" content="@yield('meta_description')"/>
     <meta property="og:type" content="website"/>
     <meta data-rh="true" property="og:url" content="{!! request()->fullUrl() !!}"/>
-    <meta data-rh="true" property="og:site_name" content="speedycalculator"/>
+    <meta data-rh="true" property="og:site_name" content="nebraskalisting"/>
     <meta data-rh="true" property="twitter:domain" content="{!! request()->fullUrl() !!}"/>
     <meta data-rh="true" property="twitter:url" content="{!! request()->fullUrl() !!}"/>
     <meta data-rh="true" name="twitter:title" content="@yield('title')"/>
@@ -46,6 +46,7 @@
           integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
     @yield('css')
+    @yield('json-ld')
 </head>
 <body>
 
