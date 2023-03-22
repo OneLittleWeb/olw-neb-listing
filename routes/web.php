@@ -21,8 +21,8 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/autocomplete', [HomeController::class, 'autocomplete'])->name('autocomplete');
-Route::get('/autocomplete-search', [HomeController::class, 'autocompleteSearch'])->name('autocomplete.search');
 Route::get('/search', [HomeController::class, 'search'])->name('search');
+Route::get('/autocomplete-search', [HomeController::class, 'autocompleteSearch'])->name('autocomplete.search');
 Route::get('/categories', [CategoryController::class, 'allCategories'])->name('all.categories');
 Route::get('/category/{slug}', [CategoryController::class, 'categoryBusiness'])->name('category.business');
 

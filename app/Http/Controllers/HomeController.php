@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\OrganizationController;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\Organization;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -21,33 +23,50 @@ class HomeController extends Controller
 
     public function autocomplete(Request $request)
     {
-        $query = $request->get('looking_for');
+        $query = $request->search;
 
-//        return Organization::join('categories', 'organizations.category_id', '=', 'categories.id')->where('organization_name', 'like', "%{$query}%")->orWhere('categories.name', 'like', "%{$query}%")
-//            ->pluck('organization_name','categories.name');
+        $organizations = DB::table('organizations')
+            ->select(DB::raw('"organizations" as source'), 'id', 'organization_name')
+            ->where('organization_name', 'like', '%' . $query . '%');
 
-        return Category::where('name', 'like', "%{$query}%")->groupBy('name')
-            ->pluck('name');
+        $categories = DB::table('categories')
+            ->select(DB::raw('"categories" as source'), 'id', 'name')
+            ->where('name', 'like', '%' . $query . '%');
+
+        $results = $categories->union($organizations)->get();
+
+        return response()->json($results);
     }
 
     public function search(Request $request)
     {
-        $search = $request->looking_for;
-        if ($search) {
-            $search_location = $request->search_location;
-            $search_category = $request->search_category;
-            $cities = null;
-            $city = null;
+        if ($request->looking_for) {
+            $source = $request->source_value;
+            $search_city = $request->search_city;
+            $search_source_id = $request->source_id;
+            $city = City::find($search_city);
 
-            $categories = Category::orderByDesc('id')->get();
+            if ($source == 'organizations') {
 
-            $organizations = Organization::where('organization_name', 'like', '%' . $search . '%')
-                ->orWhere('city_id', 'like', '%' . $search_location . '%')
-                ->orWhere('category_id', 'like', '%' . $search_category . '%')
-                ->paginate(20)->withQueryString()->onEachSide(0);
+                $organization = Organization::find($search_source_id);
+                $sourceController = new OrganizationController();
+                return $sourceController->cityWiseOrganization($city->slug, $organization->slug);
 
-            return view('organization.index', compact('organizations', 'search', 'categories', 'cities', 'city'));
+            } elseif ($source == 'categories') {
+
+                $category = Category::find($search_source_id);
+                $cities = City::all();
+                $categories = Category::all();
+                $organizations = Organization::where('category_id', $search_source_id)
+                    ->where('city_id', $search_city)
+                    ->paginate(20)
+                    ->withQueryString()
+                    ->onEachSide(0);
+
+                return view('organization.index', compact('organizations', 'cities', 'city', 'categories', 'category'));
+            }
         }
+
         abort(404);
     }
 

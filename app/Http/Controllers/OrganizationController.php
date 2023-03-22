@@ -24,7 +24,10 @@ class OrganizationController extends Controller
 
             $categories = Category::all();
             $cities = City::all();
-            $organizations = Organization::where('city_id', $city->id)->where('category_id', $category->id)->paginate(10)->onEachSide(0);
+            $organizations = Organization::where('city_id', $city->id)
+                ->where('category_id', $category->id)
+                ->paginate(10)
+                ->onEachSide(0);
 
             return view('organization.index', compact('organizations', 'cities', 'city', 'category', 'categories'));
         } else {
@@ -40,7 +43,10 @@ class OrganizationController extends Controller
         if ($category && $city) {
             $categories = Category::all();
             $cities = City::all();
-            $organizations = Organization::where('city_id', $city->id)->where('category_id', $category->id)->paginate(10)->onEachSide(0);
+            $organizations = Organization::where('city_id', $city->id)
+                ->where('category_id', $category->id)
+                ->paginate(10)
+                ->onEachSide(0);
 
             return view('organization.index', compact('organizations', 'cities', 'city', 'category', 'categories'));
         }

@@ -15,23 +15,29 @@
         <div class="container">
             <div class="row align-items-center padding-bottom-30px">
                 <div class="col-lg-5 mr-auto">
-                    <form action="#" class="form-box">
+                    <form action="{{ route('search') }}" class="form-box">
+                        @csrf
                         <div class="main-search-input flex-column mt-0">
                             <div class="main-search-input-item w-100">
                                 <div class="input-box">
-                                    <label class="label-text">What are you</label>
+                                    <label class="label-text">What are you <span
+                                            class="required">*</span></label>
                                     <div class="form-group">
                                         <span class="la la-search form-icon"></span>
-                                        <input class="form-control" type="search" id="looking_for" placeholder="looking for?" autocomplete="off">
+                                        <input class="form-control" type="search" id="looking_for" name="looking_for"
+                                               placeholder="looking for?" autocomplete="off" required>
                                     </div>
+                                    <input type="hidden" name="source_value" id="source_value">
+                                    <input type="hidden" name="source_id" id="source_id">
                                 </div>
                             </div><!-- end main-search-input-item -->
                             <div class="main-search-input-item user-chosen-select-container w-100 mb-3 ml-0">
                                 <label class="label-text">Where to look?</label>
-                                <select class="user-chosen-select" name="search_location" id="search_location" required>
+                                <select class="user-chosen-select" name="search_city" id="search_city" required>
                                     @foreach($cities as $city)
                                         <option class="text-capitalize"
-                                                value="{{ $city->id }}">{{ $city->name }}, NE</option>
+                                                value="{{ $city->id }}">{{ $city->name }}, NE
+                                        </option>
                                     @endforeach
                                 </select>
                             </div><!-- end main-search-input-item -->
@@ -236,9 +242,7 @@
     </section><!-- end category-area -->
     <!-- =======END MOST POPULAR CITY AREA====== -->
     <div class="section-block"></div>
-    <!-- ================================
-        START HIW AREA
-    ================================= -->
+    <!-- ==START HIW AREA==== -->
     <section class="hiw-area bg-dark pattern-bg padding-top-100px pb-0">
         <div class="container">
             <div class="row align-items-center">
@@ -464,13 +468,9 @@
             </div><!-- end row -->
         </div><!-- end container -->
     </section><!-- end hiw-area -->
-    <!-- ================================
-        END HIW AREA
-    ================================= -->
+    <!-- ====END HIW AREA==== -->
 
-    <!-- ================================
-        START FUN-FACT AREA
-    ================================= -->
+    <!-- ====START FUN-FACT AREA===== -->
     <section class="funfact-area bg-gradient-gray padding-top-150px padding-bottom-70px hiw-bottom-right-round">
         <div class="container">
             <div class="row">
@@ -623,13 +623,9 @@
             </div><!-- end row -->
         </div><!-- end container -->
     </section><!-- end funfact-area -->
-    <!-- ================================
-        END FUN-FACT AREA
-    ================================= -->
+    <!-- ====END FUN-FACT AREA======= -->
 
-    <!-- ================================
-           START BLOG AREA
-    ================================= -->
+    <!-- ====START BLOG AREA===== -->
     <section class="blog-area section-padding">
         <div class="container">
             <div class="row">
@@ -826,9 +822,7 @@
            START BLOG AREA
     ================================= -->
 
-    <!-- ================================
-        START CTA AREA
-    ================================= -->
+    <!-- ======START CTA AREA======= -->
     <section class="cta-area cta-bg bg-fixed section-padding text-center">
         <div class="overlay opacity-9"></div>
         <div class="container">
@@ -859,13 +853,12 @@
             </div><!-- end row -->
         </div><!-- end container -->
     </section><!-- end cta-area -->
-    <!-- ================================
-        END CTA AREA
-    ================================= -->
+    <!-- ===END CTA AREA====== -->
 @endsection
 
 @section('js')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
     <script>
         let path = "{{ route('autocomplete')}}";
         $('#looking_for').typeahead({
@@ -873,6 +866,13 @@
                 return $.get(path, {term: query}, function (data) {
                     return process(data);
                 });
+            },
+            updater: function (item) {
+                let id = item.id; // Replace "id" with the name of your ID field
+                let name = item.source; // Replace "id" with the name of your ID field
+                $('#source_value').val(name);
+                $('#source_id').val(id);
+                return item.name;
             }
         });
     </script>
