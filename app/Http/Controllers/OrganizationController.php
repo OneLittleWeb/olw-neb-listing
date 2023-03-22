@@ -6,6 +6,7 @@ use App\Imports\ImportOrganization;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\Organization;
+use Butschster\Head\Facades\Meta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Facades\Excel;
@@ -24,11 +25,13 @@ class OrganizationController extends Controller
 
             $categories = Category::all();
             $cities = City::all();
+
             $organizations = Organization::where('city_id', $city->id)
                 ->where('category_id', $category->id)
                 ->paginate(10)
                 ->onEachSide(0);
 
+            Meta::setPaginationLinks($organizations);
             return view('organization.index', compact('organizations', 'cities', 'city', 'category', 'categories'));
         } else {
             return $this->categoryWiseOrganizations($city_slug, $category_slug);
@@ -43,10 +46,13 @@ class OrganizationController extends Controller
         if ($category && $city) {
             $categories = Category::all();
             $cities = City::all();
+
             $organizations = Organization::where('city_id', $city->id)
                 ->where('category_id', $category->id)
                 ->paginate(10)
                 ->onEachSide(0);
+
+            Meta::setPaginationLinks($organizations);
 
             return view('organization.index', compact('organizations', 'cities', 'city', 'category', 'categories'));
         }
@@ -75,6 +81,7 @@ class OrganizationController extends Controller
             }
 
             $organization->reviews_paginator = $organization->reviews()->orderByDesc('id')->paginate(10)->onEachSide(0);
+            Meta::setPaginationLinks($organization->reviews_paginator);
 
             return view('organization.show', compact('organization', 'city', 'five_star_reviews', 'four_star_reviews', 'three_star_reviews', 'two_star_reviews', 'one_star_reviews'));
         }

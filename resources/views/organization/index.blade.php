@@ -1,5 +1,11 @@
 @extends('layouts.master')
 @section('title', "Nebraskalisting")
+@if (count($organizations) && $organizations->currentPage() > 1)
+    @section('meta')
+        <meta name="robots" content="noindex, follow">
+    @endsection
+@endif
+
 @section('meta_description', "add")
 @section('meta_keywords',"add")
 @section('content')
@@ -48,13 +54,14 @@
                                             <a href="{{ route('city.wise.organization', ['city_slug' => $organization->city->slug, 'organization_slug' => $organization->slug]) }}"
                                                class="d-block">
                                                 @if($organization->organization_head_photo_file)
-                                                    <img src="{{ asset('images/business/' . $organization->organization_head_photo_file) }}"
+                                                    <img
+                                                        src="{{ asset('images/business/' . $organization->organization_head_photo_file) }}"
                                                         data-src="{{ asset('images/business/' . $organization->organization_head_photo_file) }}"
                                                         class="card__img lazy" alt="">
                                                 @else
                                                     <img src="{{ asset('images/default.jpg') }}"
-                                                        data-src="{{ asset('images/default.jpg') }}"
-                                                        class="card__img lazy" alt="">
+                                                         data-src="{{ asset('images/default.jpg') }}"
+                                                         class="card__img lazy" alt="">
                                                 @endif
                                             </a>
                                         </div>

@@ -1,5 +1,10 @@
 @extends('layouts.master')
 @section('title', "$organization->meta_title")
+@if ($organization->reviews_paginator->currentPage() > 1)
+    @section('meta')
+        <meta name="robots" content="noindex, follow">
+    @endsection
+@endif
 @section('meta_description', "add")
 @section('meta_keywords',"add")
 @section('content')
@@ -25,7 +30,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
-                    <div class="breadcrumb-content breadcrumb-content-2 d-flex flex-wrap align-items-end justify-content-between">
+                    <div
+                        class="breadcrumb-content breadcrumb-content-2 d-flex flex-wrap align-items-end justify-content-between">
                         <div class="section-heading">
                             <ul class="list-items bread-list bread-list-2 bg-transparent rounded-0 p-0 text-capitalize">
                                 <li><a href="{{ route('home') }}">Home</a></li>
@@ -523,7 +529,9 @@
                                             href="tel:{{ $organization->organization_phone_number }}">{{ $organization->organization_phone_number }}</a>
                                     </li>
                                 @endif
-                                <li><i class="la la-map-signs mr-2 text-color-2 font-size-18"></i><a rel="nofollow" href="{{ $organization->gmaps_link }}" target="_blank">Get
+                                <li><i class="la la-map-signs mr-2 text-color-2 font-size-18"></i><a rel="nofollow"
+                                                                                                     href="{{ $organization->gmaps_link }}"
+                                                                                                     target="_blank">Get
                                         Directions</a></li>
                             </ul>
                         </div><!-- end sidebar-widget -->
