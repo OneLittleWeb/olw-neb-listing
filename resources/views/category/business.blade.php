@@ -41,10 +41,16 @@
                                         <div class="card-image">
                                             <a href="{{ route('city.wise.organization', ['city_slug' => $organization->city->slug, 'organization_slug' => $organization->slug]) }}"
                                                class="d-block">
-                                                <img
-                                                    src="{{ asset('images/business/' . $organization->organization_head_photo_file) }}"
-                                                    data-src="{{ asset('images/business/' . $organization->organization_head_photo_file) }}"
-                                                    class="card__img lazy" alt="">
+                                                @if($organization->organization_head_photo_file)
+                                                    <img
+                                                        src="{{ asset('images/business/' . $organization->organization_head_photo_file) }}"
+                                                        data-src="{{ asset('images/business/' . $organization->organization_head_photo_file) }}"
+                                                        class="card__img lazy" alt="{{ $organization->organization_name }}">
+                                                @else
+                                                    <img src="{{ asset('images/default.jpg') }}"
+                                                         data-src="{{ asset('images/default.jpg') }}"
+                                                         class="card__img lazy" alt="{{ $organization->organization_name }}">
+                                                @endif
                                             </a>
                                         </div>
                                         <div class="card-content">
