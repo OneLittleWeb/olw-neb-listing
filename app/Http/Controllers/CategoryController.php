@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\Organization;
+use Butschster\Head\Facades\Meta;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller

@@ -1,29 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    @yield('meta')
     <meta name="robots" content="noindex,nofollow">
     <meta name="googlebot" content="noindex,nofollow">
-    <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <meta name="author" content="SerpKick">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <!-- Favicon -->
-    <link rel="icon" href="{{asset('/images/favicon.png')}}">
-    <!-- Google Fonts -->
+    {{Meta::setContentType('text/html')
+            ->addMeta('X-UA-Compatible', ['content' => 'ie=edge'])
+            ->addMeta('author', ['content' => 'serpkick'])
+            ->setFavicon(asset('/images/favicon.png'))
+            ->setCanonical(request()->fullUrl())
+            }}
     <title>@yield('title')</title>
     <meta name="description" content="@yield('meta_description')"/>
     <meta name="keywords" content="@yield('meta_keywords')">
-    <link rel="canonical" href="{{url()->current()}}"/>
     <meta property="og:image" content="@yield('sharingimg')">
     <meta property="og:image:width" content="968">
     <meta property="og:image:height" content="504">
     <meta property="og:title" content="@yield('title')"/>
     <meta property="og:description" content="@yield('meta_description')"/>
     <meta property="og:type" content="website"/>
-    <meta data-rh="true" property="og:url" content="{{url()->current()}}"/>
+    <meta data-rh="true" property="og:url" content="{!! request()->fullUrl() !!}"/>
     <meta data-rh="true" property="og:site_name" content="speedycalculator"/>
-    <meta data-rh="true" property="twitter:domain" content="{{url()->current()}}"/>
-    <meta data-rh="true" property="twitter:url" content="{{url()->current()}}"/>
+    <meta data-rh="true" property="twitter:domain" content="{!! request()->fullUrl() !!}"/>
+    <meta data-rh="true" property="twitter:url" content="{!! request()->fullUrl() !!}"/>
     <meta data-rh="true" name="twitter:title" content="@yield('title')"/>
     <meta data-rh="true" name="twitter:description" content="@yield('meta_description')"/>
     <meta data-rh="true" name="twitter:image:src" content="@yield('sharingimg')"/>
@@ -42,8 +41,10 @@
     <link rel="stylesheet" href="{{asset('/css/custom.css')}}">
     <link rel="stylesheet" href="{{asset('plugins/ratings/src/css/star-rating-svg.css')}}">
 
-{{--    font awesome cdn--}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {{--    font awesome cdn--}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+          integrity="sha512-SzlrxWUlpfuzQ+pcUCosxcglQRNAq/DZjVsC0lE40xsADsfeQoEypE+enwcOiGjk/bSuGGKHEyjSoQ1zVisanQ=="
+          crossorigin="anonymous" referrerpolicy="no-referrer"/>
     @yield('css')
 </head>
 <body>
@@ -51,12 +52,12 @@
 @include('partials.header')
 
 <main id="main">
-   {{-- <div class="loader-container">
-        <div class="loader-ripple">
-            <div></div>
-            <div></div>
-        </div>
-    </div>--}}
+    {{-- <div class="loader-container">
+         <div class="loader-ripple">
+             <div></div>
+             <div></div>
+         </div>
+     </div>--}}
     @yield('content')
 </main>
 @include('partials.footer')
