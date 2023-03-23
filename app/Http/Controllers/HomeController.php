@@ -46,16 +46,18 @@ class HomeController extends Controller
             $search_city = $request->search_city;
             $search_source_id = $request->source_id;
             $city = City::find($search_city);
-            $category = Category::find($search_source_id);
-
-            $category->meta_title = Str::title($category->name) . ' in ' . Str::title($city->name) . ', NE | nebraskalisting.com';
 
             if ($source == 'organizations') {
 
+                $organization = Organization::find($search_source_id);
+
                 $sourceController = new OrganizationController();
-                return $sourceController->cityWiseOrganization($city->slug, $category->slug);
+                return $sourceController->cityWiseOrganization($city->slug, $organization->slug);
 
             } elseif ($source == 'categories') {
+                $category = Category::find($search_source_id);
+
+                $category->meta_title = Str::title($category->name) . ' in ' . Str::title($city->name) . ', NE | nebraskalisting.com';
 
                 $cities = City::all();
                 $categories = Category::all();
