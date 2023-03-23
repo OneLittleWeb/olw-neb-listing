@@ -257,15 +257,16 @@
                                 Start.
                             </h2>
                             <p class="sec__desc text-white-50">
-                                Omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut
-                                officiis debitis aut rerum necessitatibus saepe eveniet dolor sit amet.
+                                NebraskaListing is an online platform in Nebraska that lets users create listings for
+                                businesses or search for services. Sign up, create your listing, or search for services
+                                today.
                             </p>
                         </div><!-- end section-heading -->
                     </div>
                 </div><!-- end col-lg-6 -->
                 <div class="col-lg-6">
                     <div class="single-video-btn-box text-center">
-                        <a class="icon-element icon-element-lg icon-element-white hover-scale mx-auto"
+                        <a rel="nofollow" class="icon-element icon-element-lg icon-element-white hover-scale mx-auto"
                            href="https://www.youtube.com/watch?v=GlrxcuEDyF8" data-fancybox="" title="Play Video">
                             <i class="la la-play"></i>
                         </a>
