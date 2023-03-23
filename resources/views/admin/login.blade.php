@@ -203,6 +203,16 @@
                                         <strong>{{ $message }}</strong>
                         @enderror
                     </div>
+
+                    @if(!$errors->isEmpty())
+                        <div class="alert alert-red text-danger">
+                            <ul class="list-unstyled">
+                                @foreach($errors->all() as $err)
+                                    <li>{{ $err }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
                     <div class="form-group">
                         <div class="main-checkbox">
                             <input type="checkbox" value="None" id="checkbox1" name="check">
