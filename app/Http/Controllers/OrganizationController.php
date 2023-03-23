@@ -29,6 +29,8 @@ class OrganizationController extends Controller
 
             $organizations = Organization::where('city_id', $city->id)
                 ->where('category_id', $category->id)
+                ->orderByRaw('CAST(reviews_total_count AS SIGNED) DESC')
+                ->orderByRaw('CAST(rate_stars AS SIGNED) DESC')
                 ->paginate(10)
                 ->onEachSide(0);
 
@@ -52,6 +54,8 @@ class OrganizationController extends Controller
 
             $organizations = Organization::where('city_id', $city->id)
                 ->where('category_id', $category->id)
+                ->orderByRaw('CAST(reviews_total_count AS SIGNED) DESC')
+                ->orderByRaw('CAST(rate_stars AS SIGNED) DESC')
                 ->paginate(10)
                 ->onEachSide(0);
 

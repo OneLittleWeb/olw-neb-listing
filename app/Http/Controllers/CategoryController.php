@@ -38,7 +38,11 @@ class CategoryController extends Controller
             $categories = Category::all();
             $cities = City::all();
             $city = null;
-            $organizations = Organization::where('category_id', $category->id)->orderByDesc('rate_stars')->paginate(10)->onEachSide(0);
+            $organizations = Organization::where('category_id', $category->id)
+                ->orderByRaw('CAST(reviews_total_count AS SIGNED) DESC')
+                ->orderByRaw('CAST(rate_stars AS SIGNED) DESC')
+                ->paginate(10)
+                ->onEachSide(0);
 
             return view('organization.index', compact('organizations', 'category', 'categories', 'cities', 'city'));
         } else {
@@ -48,7 +52,11 @@ class CategoryController extends Controller
 
     public function othersCategoriesFromBusiness($slug)
     {
-        $organizations = Organization::where('organization_category', $slug)->orderByDesc('rate_stars')->paginate(20)->onEachSide(0);
+        $organizations = Organization::where('organization_category', $slug)
+            ->orderByRaw('CAST(reviews_total_count AS SIGNED) DESC')
+            ->orderByRaw('CAST(rate_stars AS SIGNED) DESC')
+            ->paginate(20)
+            ->onEachSide(0);
 
         if ($organizations) {
             $cities = City::all();
