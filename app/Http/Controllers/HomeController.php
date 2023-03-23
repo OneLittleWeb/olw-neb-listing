@@ -41,10 +41,12 @@ class HomeController extends Controller
 
     public function search(Request $request)
     {
+        $source = $request->source_value;
+        $search_city = $request->search_city;
+        $search_source_id = $request->source_id;
+
         if ($request->looking_for) {
-            $source = $request->source_value;
-            $search_city = $request->search_city;
-            $search_source_id = $request->source_id;
+
             $city = City::find($search_city);
 
             if ($source == 'organizations') {
