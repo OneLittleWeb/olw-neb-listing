@@ -20,6 +20,9 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('info', function () {
+    phpinfo();
+})->name('info');
 Route::get('/autocomplete', [HomeController::class, 'autocomplete'])->name('autocomplete');
 Route::get('/search', [HomeController::class, 'search'])->name('search');
 Route::get('/categories', [CategoryController::class, 'allCategories'])->name('all.categories');
