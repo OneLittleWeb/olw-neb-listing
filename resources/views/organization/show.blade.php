@@ -570,7 +570,6 @@
     </section><!-- end listing-detail-area -->
     <!-- =======END LISTING DETAIL  AREA======= -->
 @endsection
-
 @section('js')
     <script src="{{asset('plugins/ratings/src/jquery.star-rating-svg.js')}}"></script>
     <script>
@@ -641,5 +640,21 @@
                 document.getElementById('review_rate_stars').value = parseInt($('#stars li.selected').last().data('value'), 10);
             });
         });
+    </script>
+@endsection
+@section('json-ld')
+    <!-- =======Schema======= -->
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org/",
+          "@type": "Organization",
+          "name": "{{$organization->organization_name}}",
+          "description": "{{ $organization->organization_short_description }}",
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "{{ $organization->rate_stars }}",
+            "reviewCount": "{{ $organization->reviews->count() ?? 0}}"
+          }
+        }
     </script>
 @endsection
