@@ -33,7 +33,7 @@
                             </div><!-- end main-search-input-item -->
                             <div class="main-search-input-item user-chosen-select-container w-100 mb-3 ml-0">
                                 <label class="label-text">Where to look?</label>
-                                <select class="user-chosen-select" name="search_city" id="search_city" required>
+                                <select class="user-chosen-select" name="search_city" id="search_city">
                                     @foreach($cities as $city)
                                         <option class="text-capitalize"
                                                 value="{{ $city->id }}">{{ $city->name }}, NE
@@ -858,8 +858,7 @@
 @endsection
 
 @section('js')
-    <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
     <script>
         let path = "{{ route('autocomplete')}}";
         $('#looking_for').typeahead({

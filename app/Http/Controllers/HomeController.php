@@ -75,12 +75,4 @@ class HomeController extends Controller
 
         abort(404);
     }
-
-    public function autocompleteSearch(Request $request)
-    {
-        $query = $request->get('looking_for');
-
-        return Category::where('name', 'like', "%{$query}%")
-            ->pluck('name');
-    }
 }

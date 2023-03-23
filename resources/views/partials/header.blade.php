@@ -21,16 +21,38 @@
                         </div><!-- end logo -->
 
                         @if(Route::currentRouteName() != 'home')
-                            <div class="quick-search-form d-flex align-items-center">
-                                <form action="#" class="w-100">
-                                    <div class="header-search position-relative active">
-                                        <i class="la la-search form-icon"></i>
-                                        <input type="search" name="looking_for"
-                                               id="looking_for" placeholder="What are you looking for?"
-                                               autocomplete="off">
-                                    </div>
-                                </form>
-                            </div><!-- end quick-search-form -->
+                            <form action="{{ route('search') }}"
+                                  class="main-search-input-item quick-search-form form-box d-flex align-items-center">
+                                @csrf
+                                <div class="form-group mb-0">
+                                    <input class="form-control rounded-0 looking-for" type="search" id="looking_for"
+                                           name="looking_for" placeholder="What are you looking for?"
+                                           style="width: 305px; height: 52px;" autocomplete="off" required>
+                                </div>
+                                <input type="hidden" name="source_value" id="source_value">
+                                <input type="hidden" name="source_id" id="source_id">
+                                <div class="main-search-input-item user-chosen-select-container">
+                                    <select class="user-chosen-select" name="search_city" id="search_city">
+                                        @foreach($cities as $search_city)
+                                            @if($city != null)
+                                                <option class="text-capitalize"
+                                                        value="{{ $search_city->id }}" {{ $search_city->id ==  $city->id ? 'selected="selected"' : '' }}>{{ $search_city->name }}, NE
+                                                </option>
+                                            @else
+                                                <option class="text-capitalize"
+                                                        value="{{ $search_city->id }}">{{ $search_city->name }}, NE
+                                                </option>
+                                            @endif
+                                        @endforeach
+                                    </select>
+                                </div><!-- end main-search-input-item -->
+                                <div>
+                                    <button type="submit" class="btn btn-info header-search-button rounded-0">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+
+                            </form><!-- end main-search-input-item -->
                         @endif
 
                         <div class="main-menu-content ml-auto">
@@ -66,14 +88,20 @@
 @section('js')
     <script
         src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
-    <script type="text/javascript">
-        var path = "{{ route('autocomplete.search') }}";
-
+    <script>
+        let path = "{{ route('autocomplete')}}";
         $('#looking_for').typeahead({
             source: function (query, process) {
                 return $.get(path, {term: query}, function (data) {
                     return process(data);
                 });
+            },
+            updater: function (item) {
+                let id = item.id; // Replace "id" with the name of your ID field
+                let name = item.source; // Replace "id" with the name of your ID field
+                $('#source_value').val(name);
+                $('#source_id').val(id);
+                return item.name;
             }
         });
     </script>

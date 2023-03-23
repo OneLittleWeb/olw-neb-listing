@@ -82,9 +82,9 @@
                                     Review</a>
                             </div>
                         </div>
-                        <div class="btn-box d-flex align-items-center">
-                            <span class="btn-gray mr-2"><i class="la la-eye mr-1"></i>Viewed - {{ $organization->views }}</span>
-                        </div>
+{{--                        <div class="btn-box d-flex align-items-center">--}}
+{{--                            <span class="btn-gray mr-2"><i class="la la-eye mr-1"></i>Viewed - {{ $organization->views }}</span>--}}
+{{--                        </div>--}}
                     </div><!-- end breadcrumb-content -->
                 </div><!-- end col-lg-12 -->
             </div><!-- end row -->

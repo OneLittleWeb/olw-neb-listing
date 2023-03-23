@@ -46,6 +46,16 @@
     margin: 20px 0;
 }
 
+.header-search-button{
+    background-color: #9f8fff;
+    border: #9f8fff;
+    padding: 13px;
+}
+.header-search-button:hover{
+    background-color: #8c7ce7;
+    border: #8c7ce7;
+}
+
 #profile span {
     padding-bottom: 10px !important;
 }

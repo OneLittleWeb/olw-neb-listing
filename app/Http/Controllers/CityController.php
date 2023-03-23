@@ -8,7 +8,9 @@ class CityController extends Controller
 {
     public function index()
     {
-        $cities = City::all();
-        return view('city.index', compact('cities'));
+        $cities = City::orderByDesc('id')->get();
+        $city = null;
+        $category = null;
+        return view('city.index', compact('cities', 'city','category'));
     }
 }

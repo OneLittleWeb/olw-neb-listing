@@ -69,6 +69,8 @@ class OrganizationController extends Controller
 
         if ($city && $organization) {
 
+            $cities = City::all();
+
             $organization->incrementViewCount();
             $five_star_reviews = $organization->reviews()->where('review_rate_stars', 5)->count();
             $four_star_reviews = $organization->reviews()->where('review_rate_stars', 4)->count();
@@ -86,7 +88,7 @@ class OrganizationController extends Controller
             $organization->reviews_paginator = $organization->reviews()->orderByDesc('id')->paginate(10)->onEachSide(0);
             Meta::setPaginationLinks($organization->reviews_paginator);
 
-            return view('organization.show', compact('organization', 'city', 'five_star_reviews', 'four_star_reviews', 'three_star_reviews', 'two_star_reviews', 'one_star_reviews'));
+            return view('organization.show', compact('organization', 'city', 'cities' , 'five_star_reviews', 'four_star_reviews', 'three_star_reviews', 'two_star_reviews', 'one_star_reviews'));
         }
 
         abort(404);
