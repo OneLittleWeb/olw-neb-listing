@@ -31,10 +31,10 @@
         }), a.on("resize", function () {
             a.width() > 1200 ? (e(".main-menu-content").show(), e(".dropdown-menu-item").show()) : (e(".main-menu-content").hide(), e(".dropdown-menu-item").hide())
         }), t.on("click", ".header-search", function () {
-            e(this).toggleClass("active")
+            // e(this).toggleClass("active")
         }), t.on("click", function (a) {
-            var t = e(".header-search");
-            t === a.target || t.has(a.target).length || e(".header-search").removeClass("active")
+            // var t = e(".header-search");
+            // t === a.target || t.has(a.target).length || e(".header-search").removeClass("active")
         }), a.on("scroll", function () {
             a.scrollTop() > 10 ? (e(".header-menu-wrapper").addClass("header-fixed"), e(".header-top-bar").hide(200)) : (e(".header-menu-wrapper").removeClass("header-fixed"), e(".header-top-bar").show(200)), a.scrollTop() > 300 ? e(c).addClass("btn-active") : e(c).removeClass("btn-active"), e(".page-scroll").each(function () {
                 e(this).offset().top - e(window).scrollTop() < 20 && (b.removeClass("active"), e("#sticky-content-nav").find('[data-scroll="' + e(this).attr("id") + '"]').addClass("active"))

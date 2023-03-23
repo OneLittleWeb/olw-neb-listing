@@ -5156,7 +5156,7 @@ div.datedropper .picker .pick-lg-b li {
     position: absolute;
     left: 15px;
     top: 20px;
-    color: #fff;
+    color: #333f57;
     font-size: 18px;
     -webkit-transition: all .3s;
     -moz-transition: all .3s;
@@ -5166,13 +5166,13 @@ div.datedropper .picker .pick-lg-b li {
 }
 
 .header-search input {
-    background-color: transparent;
+    background-color: #fff;
     padding: 14px 10px 14px 50px;
     border: none;
     width: 100%;
     font-size: 15px;
     font-weight: 500;
-    color: #fff;
+    color: #333f57;
     -webkit-border-radius: 4px 4px 0 0;
     -moz-border-radius: 4px 4px 0 0;
     border-radius: 4px 4px 0 0;

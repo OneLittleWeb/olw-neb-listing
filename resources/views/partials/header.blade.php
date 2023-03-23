@@ -23,17 +23,11 @@
                         @if(Route::currentRouteName() != 'home')
                             <div class="quick-search-form d-flex align-items-center">
                                 <form action="#" class="w-100">
-                                    <div class="header-search position-relative">
+                                    <div class="header-search position-relative active">
                                         <i class="la la-search form-icon"></i>
                                         <input type="search" name="looking_for"
                                                id="looking_for" placeholder="What are you looking for?"
                                                autocomplete="off">
-                                        {{--                                        <div class="instant-results">--}}
-                                        {{--                                            <ul class="instant-results-list">--}}
-                                        {{--                                                <li><a href="#" class="d-flex align-items-center">Dog Grooming</a></li>--}}
-                                        {{--                                                <li><a href="#" class="d-flex align-items-center">Restaurants</a></li>--}}
-                                        {{--                                            </ul>--}}
-                                        {{--                                        </div>--}}
                                     </div>
                                 </form>
                             </div><!-- end quick-search-form -->
