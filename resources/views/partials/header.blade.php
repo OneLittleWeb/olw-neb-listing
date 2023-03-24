@@ -68,7 +68,7 @@
                                         <a href="{{ route('city.index') }}">cities</a>
                                     </li>
                                     <li>
-                                        <a href="#">blog</a>
+                                        <a href="/blog">blog</a>
                                     </li>
                                 </ul>
                             </nav>
