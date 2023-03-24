@@ -14,15 +14,13 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::resource('category', \App\Http\Controllers\admin\CategoryController::class)->except(['show', 'edit', 'create']);
     Route::resource('city', \App\Http\Controllers\admin\CityController::class)->except(['show', 'edit', 'create']);
     Route::resource('organization', \App\Http\Controllers\admin\OrganizationController::class)->except(['show']);
+    Route::resource('settings', \App\Http\Controllers\admin\SettingController::class)->except(['show']);
     Route::get('logout', [\App\Http\Controllers\admin\AdminController::class, 'logout'])->name('logout');
     Route::get('business/review', [AdminReviewController::class, 'reviewBusiness'])->name('reviews.business');
     Route::get('review/{slug}', [AdminReviewController::class, 'reviews'])->name('reviews');
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('info', function () {
-    phpinfo();
-})->name('info');
 Route::get('/autocomplete', [HomeController::class, 'autocomplete'])->name('autocomplete');
 Route::get('/search', [HomeController::class, 'search'])->name('search');
 Route::get('/categories', [CategoryController::class, 'allCategories'])->name('all.categories');

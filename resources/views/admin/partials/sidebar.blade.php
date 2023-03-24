@@ -32,6 +32,12 @@
             <span>Manage Cities</span>
         </a>
     </li>
+     <li class="nav-item {{ (request()->routeIs('admin.settings.index')) ? 'active' : '' }}">
+        <a class="nav-link" href="{{route('admin.settings.index')}}">
+            <i class="la la-file-text-o font-size-18 mr-1"></i>
+            <span>Site Settings</span>
+        </a>
+    </li>
     <li>
         <hr class="sidebar-divider border-top-color">
     </li>
