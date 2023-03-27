@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title', "Nebraskalisting THE Local Business Directory")
-@section('meta_description', "add")
+@section('meta_description', "Explore every best place and service nearby or anywhere in Nebraska. Photos-business hours-phone numbers-ratings-reviews-service details- all in one place.")
 @section('meta_keywords',"add")
 @section('content')
     <section class="hero-wrapper hero-bg-2 pb-0 overflow-hidden">
@@ -54,8 +54,7 @@
                     <div class="hero-heading">
                         <div class="section-heading">
                             <h2 class="sec__title font-size-35">Find The Best Places In Your City</h2>
-                            <p class="sec__desc">Nebraskalisting helps you find out what's happening in your city, Let's
-                                explore.</p>
+                            <p class="sec__desc">Nebraskalisting helps you find out what's happening in your city. Let’s explore!</p>
                         </div>
                     </div><!-- end hero-heading -->
                 </div><!-- end col-lg-6 -->
