@@ -19,8 +19,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.5.0/css/all.min.css"
           integrity="sha512-QfDd74mlg8afgSqm3Vq2Q65e9b3xMhJB4GZ9OcHDVy1hZ6pqBJPWWnMsKDXM7NINoKqJANNGBuVRIpIJ5dogfA=="
           crossorigin="anonymous" referrerpolicy="no-referrer"/>
-
-
 </head>
 <!-- END: Head-->
 
@@ -229,7 +227,6 @@
 </div>
 <!-- END: Content-->
 
-
 <!-- BEGIN: Vendor JS-->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
         integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -243,5 +240,4 @@
 
 </body>
 <!-- END: Body-->
-
 </html>

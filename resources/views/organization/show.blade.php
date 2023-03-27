@@ -576,7 +576,7 @@
         src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
     <script>
         let path = "{{ route('autocomplete')}}";
-        $('#looking_for').typeahead({
+        $('#search-from-header').typeahead({
             source: function (query, process) {
                 return $.get(path, {term: query}, function (data) {
                     return process(data);

@@ -25,9 +25,8 @@
                                   class="main-search-input-item quick-search-form form-box d-flex align-items-center">
                                 @csrf
                                 <div class="form-group mb-0">
-                                    <input class="form-control rounded-0 looking-for" type="search" id="looking_for"
-                                           name="looking_for" placeholder="What are you looking for?"
-                                           style="width: 305px; height: 52px;" autocomplete="off" required>
+                                    <input class="form-control rounded-0 looking-for" type="search" id="search-from-header"
+                                           name="looking_for" placeholder="What are you looking for?" autocomplete="off" required>
                                 </div>
                                 <input type="hidden" name="source_value" id="source_value">
                                 <input type="hidden" name="source_id" id="source_id">
@@ -90,7 +89,7 @@
         src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
     <script>
         let path = "{{ route('autocomplete')}}";
-        $('#looking_for').typeahead({
+        $('#search-from-header').typeahead({
             source: function (query, process) {
                 return $.get(path, {term: query}, function (data) {
                     return process(data);

@@ -25,8 +25,9 @@
             <div class="col-lg-3 responsive-column">
                 <div class="footer-item">
                     <div class="footer-logo">
-                        <a href="{{ route('home') }}" class="foot-logo"><img src="{{asset('/images/nebraskalisting-logo.png')}}"
-                                                                    alt="logo"></a>
+                        <a href="{{ route('home') }}" class="foot-logo"><img
+                                src="{{asset('/images/nebraskalisting-logo.png')}}"
+                                alt="logo"></a>
                     </div><!-- end footer-logo -->
                     <ul class="list-items contact-links pt-3">
                         <li><span class="d-block text-color mb-1"><i
@@ -46,12 +47,9 @@
                     <h4 class="footer__title">Company</h4>
                     <div class="stroke-shape mb-3"></div>
                     <ul class="list-items">
-                        <li><a href="#">About Us</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Press</a></li>
-                        <li><a href="#">Investor Relations</a></li>
-                        <li><a href="#">Content Guidelines</a></li>
-                        <li><a href="#">Ad Choices</a></li>
+                        <li><a href="{{ route('page.about') }}">About Us</a></li>
+                        <li><a href="{{ route('page.privacy') }}">Privacy Policy</a></li>
+                        <li><a href="{{ route('page.contact') }}">Content Us</a></li>
                     </ul>
                 </div><!-- end footer-item -->
             </div><!-- end col-lg-3 -->
@@ -60,12 +58,8 @@
                     <h4 class="footer__title">Discover</h4>
                     <div class="stroke-shape mb-3"></div>
                     <ul class="list-items">
-                        <li><a href="#">Nebraskalisting Project Cost Guides</a></li>
-                        <li><a href="#">The Local Nebraskalisting</a></li>
-                        <li><a href="#">Collections</a></li>
-                        <li><a href="#">Nebraskalisting Mobile</a></li>
-                        <li><a href="#">Nebraskalisting Blog</a></li>
-                        <li><a href="#">Support</a></li>
+                        <li><a href="/blog">Nebraskalisting Blog</a></li>
+                        <li><a href="{{ route('page.contact') }}">Support</a></li>
                     </ul>
                 </div><!-- end footer-item -->
             </div><!-- end col-lg-3 -->
@@ -75,11 +69,7 @@
                     <div class="stroke-shape mb-3"></div>
                     <ul class="list-items">
                         <li><a href="#">Claim your Business</a></li>
-                        <li><a href="#">Advertise on Dirto</a></li>
                         <li><a href="#">Add Restaurant</a></li>
-                        <li><a href="#">Business Support</a></li>
-                        <li><a href="#">Products for Businesses</a></li>
-                        <li><a href="#">Business Success Stories</a></li>
                     </ul>
                 </div><!-- end footer-item -->
             </div><!-- end col-lg-3 -->
@@ -88,7 +78,7 @@
             <div class="col-lg-12">
                 <div class="cta-content d-flex align-items-center justify-content-between p-0">
                     <div class="section-heading">
-                        <h2 class="sec__title mb-0 font-size-24 line-height-30">Dont't miss your monthly offer</h2>
+                        <h2 class="sec__title mb-0 font-size-24 line-height-30">Don't miss any update!</h2>
                         <p class="sec__desc font-size-16">Subscribe to get latest updates and information.</p>
                     </div><!-- end section-heading -->
                     <form method="post" class="form-box">

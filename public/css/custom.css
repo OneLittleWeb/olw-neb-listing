@@ -17,6 +17,47 @@
     font-size: 20px;
 }
 
+#search-from-header{
+    width: 305px;
+    height: 52px;
+}
+
+@media screen and (max-width: 1450px) {
+    .logo img {
+        width: 12rem;
+    }
+    #search-from-header{
+        width: 230px;
+        height: 52px;
+    }
+}
+
+@media screen and (max-width: 1320px) {
+    .logo img {
+        width: 10rem;
+    }
+    #search-from-header{
+        width: 228px;
+        height: 52px;
+    }
+}
+
+@media screen and (max-width: 1260px) {
+    .logo img {
+        width: 8rem;
+    }
+    #search-from-header{
+        width: 198px;
+        height: 52px;
+    }
+}
+
+@media screen and (max-width: 1198px) {
+    .logo img {
+        width: 15rem;
+    }
+}
+
 /* Rating Star Widgets Style */
 .rating-stars ul {
     list-style-type: none;
