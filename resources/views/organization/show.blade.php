@@ -10,12 +10,12 @@
 @section('content')
 
     <!-- ===LOADER===== -->
-    <div class="loader-container">
-        <div class="loader-ripple">
-            <div></div>
-            <div></div>
-        </div>
-    </div>
+{{--    <div class="loader-container">--}}
+{{--        <div class="loader-ripple">--}}
+{{--            <div></div>--}}
+{{--            <div></div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
     <!-- ===END LOADER===== -->
     <!-- =======START FULL SCREEN SLIDER======= -->
     <section class="full-screen-slider-area" style="padding-top: 98px">
