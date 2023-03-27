@@ -28,7 +28,7 @@ class CitySeeder extends Seeder
             ['name' => 'norfolk', 'is_major' => 0, 'population' => 24964, 'background_image' => 'norfolk.jpg'],
             ['name' => 'columbus', 'is_major' => 0, 'population' => 23954, 'background_image' => 'columbus.jpg'],
             ['name' => 'papillion', 'is_major' => 0, 'population' => 23875, 'background_image' => 'papillion.jpg'],
-            ['name' => 'north platte', 'is_major' => 0, 'population' => 23543, 'background_image' => 'cat-img-2.jpg'],
+            ['name' => 'north platte', 'is_major' => 0, 'population' => 23543, 'background_image' => 'north-platte.jpg'],
         ];
         foreach ($cities as $city) {
             City::create($city);
