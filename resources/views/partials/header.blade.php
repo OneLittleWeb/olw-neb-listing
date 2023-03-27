@@ -74,7 +74,7 @@
                             </nav>
                         </div><!-- end main-menu-content -->
                         <div class="nav-right-content">
-                            <a href="#" class="theme-btn gradient-btn shadow-none add-listing-btn-hide">
+                            <a href="{{ route('login') }}" class="theme-btn gradient-btn shadow-none add-listing-btn-hide">
                                 <i class="la la-plus mr-2"></i> Add Listing
                             </a>
                         </div><!-- end nav-right-content -->
