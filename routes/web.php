@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\ReviewController;
@@ -39,9 +40,9 @@ Route::get('/sitemap', [SitemapController::class, 'sitemapStore'])->name('sitema
 Route::get('/import', [OrganizationController::class, 'import'])->name('import');
 Route::get('/copy-past', [OrganizationController::class, 'copyPast'])->name('copy.past');
 
-Route::view('about-us','about-us')->name('page.about');
-Route::view('privacy-policy','privacy')->name('page.privacy');
-Route::view('contact-us','contact')->name('page.contact');
+Route::get('/about-us',[PageController::class, 'aboutUs'])->name('page.about');
+Route::get('/privacy-policy',[PageController::class, 'privacy'])->name('page.privacy');
+Route::get('/contact-us',[PageController::class, 'contactUs'])->name('page.contact');
 
 Route::get('/{slug}', [CategoryController::class, 'index'])->name('category.index');
 

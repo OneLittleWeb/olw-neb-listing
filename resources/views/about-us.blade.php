@@ -1,9 +1,9 @@
-@extends('layouts.master_new')
+@extends('layouts.master')
 @section('title', "About Us - Nebraskalisting")
 @section('meta_description', "To be added")
 @section('content')
     <section>
-        <div class="container mt-5">
+        <div class="container" style="margin-top: 140px; margin-bottom: 70px">
             <h1 class="text-center">About Us</h1>
             <h2><strong>What is Nebraskalisting?</strong></h2>
 

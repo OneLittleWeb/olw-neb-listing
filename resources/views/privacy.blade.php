@@ -1,9 +1,9 @@
-@extends('layouts.master_new')
+@extends('layouts.master')
 @section('title', "Privacy Policy - Nebraskalisting")
 @section('meta_description', "To be added")
 @section('content')
     <section>
-        <div class="container mt-5">
+        <div class="container" style="margin-top: 140px; margin-bottom: 70px">
             <h1>Privacy Policy</h1>
             <p>Last updated: March 27, 2023</p>
             <p>This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your
