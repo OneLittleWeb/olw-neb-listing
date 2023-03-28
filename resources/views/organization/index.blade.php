@@ -36,9 +36,9 @@
                     <div class="col-lg-12">
                         <div class="d-flex align-items-center pb-4 text-capitalize">
                             @if($city != null)
-                                <h2 class="sec__title mb-0">{{ $category->name }} in {{ $city->name }}, NE</h2>
+                                <h1 class="sec__title mb-0">{{ $category->name }} in {{ $city->name }}, NE</h1>
                             @else
-                                <h2 class="sec__title mb-0">{{ $category->name }} in, NE</h2>
+                                <h1 class="sec__title mb-0">{{ $category->name }} in, NE</h1>
                             @endif
                         </div>
                     </div>
@@ -65,9 +65,9 @@
                                             </a>
                                         </div>
                                         <div class="card-content">
-                                            <h4 class="card-title">
+                                            <h2 class="card-title">
                                                 <a href="{{ route('city.wise.organization', ['city_slug' => $organization->city->slug, 'organization_slug' => $organization->slug]) }}">{{ $organization->organization_name }}</a>
-                                            </h4>
+                                            </h2>
                                             @if($organization->organization_address)
                                                 <p class="card-sub">
                                                     <a href="#">

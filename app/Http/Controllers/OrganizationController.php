@@ -89,7 +89,13 @@ class OrganizationController extends Controller
                 $organization->meta_title = $organization->organization_name . ' - ' . $city->name . ', ' . 'NE';
             }
 
+            //For Restaurants/Resorts/Hotels
+            $restaurant_type = ['restaurant', 'resort', 'hotel'];
+
+//            dd($organization);
+
 //            $organization->meta_description = str_replace("'", "" ,$organization->organization_name) . ' is in ' . Str::title($organization->city->name) . ', NE. '. 'Get photos, business hours, phone numbers, ratings, reviews and service details. Rate and review.';
+
 
             $organization->reviews_paginator = $organization->reviews()->orderByDesc('id')->paginate(10)->onEachSide(0);
             Meta::setPaginationLinks($organization->reviews_paginator);

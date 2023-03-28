@@ -41,7 +41,7 @@
                                 <li>{{ $organization->organization_name }}</li>
                             </ul>
                             <div class="d-flex align-items-center pt-1">
-                                <h2 class="sec__title mb-0">{{ $organization->organization_name }}</h2>
+                                <h1 class="sec__title mb-0">{{ $organization->organization_name }}</h1>
                             </div>
                             @if($organization->organization_address)
                                 <p class="sec__desc py-2 font-size-17"><i
@@ -86,6 +86,18 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="listing-detail-wrap">
+                        <div class="block-card mb-4">
+                            <div class="block-card-header">
+                                <h2 class="widget-title">About</h2>
+                                <div class="stroke-shape"></div>
+                            </div><!-- end block-card-header -->
+                            <div class="block-card-body">
+                                <p class="pb-3 font-weight-medium line-height-30">Sitting at the Breathtaking spot of {{ Str::title($organization->city->name) }} city, restaurant_name is located at location</p>
+                                <p class="pb-3 font-weight-medium line-height-30">Sitting at the Breathtaking spot of {{ Str::title($organization->city->name) }} city, restaurant_name is located at location</p>
+                                <p class="pb-3 font-weight-medium line-height-30">Sitting at the Breathtaking spot of {{ Str::title($organization->city->name) }} city, restaurant_name is located at location</p>
+                            </div><!-- end block-card-body -->
+                        </div><!-- end block-card -->
+
                         @if($organization->organization_short_description)
                             <div class="block-card mb-4">
                                 <div class="block-card-header">
