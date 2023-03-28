@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title', "Nebraskalisting THE Local Business Directory | " . Str::title($category->name))
-@section('meta_description', "add")
+@section('meta_description', "Find the best $category->name in cities around Nebraska. Get photos, business hours, phone numbers, ratings, reviews and service details.")
 @section('meta_keywords',"add")
 @section('content')
     <section class="category-area section--padding margin-top-40px">

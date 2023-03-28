@@ -1,11 +1,11 @@
 @extends('layouts.master')
-@section('title', "$organization->meta_title")
+@section('title', str_replace("'","",$organization->meta_title))
 @if ($organization->reviews_paginator->currentPage() > 1)
     @section('meta')
         <meta name="robots" content="noindex, follow">
     @endsection
 @endif
-@section('meta_description', "add")
+@section('meta_description', str_replace("'","",$organization->organization_name) . " is in Omaha, NE. Get photos, business hours, phone numbers, ratings, reviews and service details. Rate and review.")
 @section('meta_keywords',"add")
 @section('content')
     <!-- =======START FULL SCREEN SLIDER======= -->
@@ -663,5 +663,6 @@
             "reviewCount": "{{ $organization->reviews->count() ?? 0}}"
           }
         }
+
     </script>
 @endsection
