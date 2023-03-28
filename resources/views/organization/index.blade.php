@@ -8,7 +8,7 @@
 @if($city == null)
     @section('meta_description', "Explore the best $category->name in Nebraska. Get photos, business hours, phone numbers, ratings, reviews and service details.")
 @else
-    @section('meta_description', "Explore the best $category->name in $city->name, Nebraska. Get photos, business hours, phone numbers, ratings, reviews and service details.")
+    @section('meta_description', "Explore the best $category->name in " . Str::title($city->name) . ", Nebraska. Get photos, business hours, phone numbers, ratings, reviews and service details.")
 @endif
 @section('meta_keywords',"add")
 @section('content')
