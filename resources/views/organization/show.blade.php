@@ -92,9 +92,8 @@
                                 <div class="stroke-shape"></div>
                             </div><!-- end block-card-header -->
                             <div class="block-card-body">
-                                <p class="pb-3 font-weight-medium line-height-30">Sitting at the Breathtaking spot of {{ Str::title($organization->city->name) }} city, restaurant_name is located at location</p>
-                                <p class="pb-3 font-weight-medium line-height-30">Sitting at the Breathtaking spot of {{ Str::title($organization->city->name) }} city, restaurant_name is located at location</p>
-                                <p class="pb-3 font-weight-medium line-height-30">Sitting at the Breathtaking spot of {{ Str::title($organization->city->name) }} city, restaurant_name is located at location</p>
+                                <p class="pb-3 font-weight-medium line-height-30">{!! $organization->about1 !!}</p>
+                                <p class="pb-3 font-weight-medium line-height-30">{!! $organization->about2 !!}</p>
                             </div><!-- end block-card-body -->
                         </div><!-- end block-card -->
 
@@ -675,6 +674,8 @@
             "reviewCount": "{{ $organization->reviews->count() ?? 0}}"
           }
         }
+
+
 
     </script>
 @endsection

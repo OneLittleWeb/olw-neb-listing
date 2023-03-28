@@ -90,9 +90,36 @@ class OrganizationController extends Controller
             }
 
             //For Restaurants/Resorts/Hotels
-            $restaurant_type = ['restaurant', 'resort', 'hotel'];
+            $restaurant_type = [22, 21, 12];
 
-//            dd($organization);
+
+            //For Gyms/Nail Salons/Hair Salons/Beauty Salons
+            $gym_type = [10, 16, 11, 1];
+
+            //For Landscapers/Physical Therapists/Dentists/Car Wash/Car Detailing/Car Rental
+            $landscaper_type = [14, 19, 6, 4, 2, 3];
+
+            if (in_array($organization->category_id, $restaurant_type)) {
+                if ($organization->organization_address) {
+                    $meta = explode(',', $organization->organization_address);
+                    $organization->about1 = 'Sitting at the Breathtaking spot of ' . Str::title($organization->city->name) . ' city, ' . $organization->organization_name . ' is located at' . $meta[1] . ',' . $meta[2] . '.';
+                } else {
+                    $organization->about1 = 'Sitting at the Breathtaking spot of ' . Str::title($organization->city->name) . ' city, NE';
+                }
+
+                if ($organization->organization_phone_number) {
+                    $organization->about2 = 'The restaurant is open 11 AM. Get a reservation or know necessary information by contacting them at ' . "<strong>$organization->organization_phone_number</strong>" . '.';
+                } elseif ($organization->organization_email) {
+                    $organization->about2 = 'The restaurant is open 11 AM. Get a reservation or know necessary information by contacting them at ' . "<strong>$organization->organization_email</strong>" . '.';
+                } elseif ($organization->organization_address) {
+                    $organization->about2 = 'The restaurant is open 11 AM. Get a reservation or know necessary information by contacting them at ' . "<strong>$organization->organization_address</strong>" . '.';
+                } elseif ($organization->organization_website) {
+                    $organization->about2 = 'The restaurant is open 11 AM. Get a reservation or know necessary information by contacting them at ' . "<strong>$organization->organization_website</strong>" . '.';
+                } else {
+                    $organization->about2 = null;
+                }
+
+            }
 
 //            $organization->meta_description = str_replace("'", "" ,$organization->organization_name) . ' is in ' . Str::title($organization->city->name) . ', NE. '. 'Get photos, business hours, phone numbers, ratings, reviews and service details. Rate and review.';
 
@@ -100,7 +127,7 @@ class OrganizationController extends Controller
             $organization->reviews_paginator = $organization->reviews()->orderByDesc('id')->paginate(10)->onEachSide(0);
             Meta::setPaginationLinks($organization->reviews_paginator);
 
-            return view('organization.show', compact('organization', 'city', 'cities' , 'five_star_reviews', 'four_star_reviews', 'three_star_reviews', 'two_star_reviews', 'one_star_reviews'));
+            return view('organization.show', compact('organization', 'city', 'cities', 'five_star_reviews', 'four_star_reviews', 'three_star_reviews', 'two_star_reviews', 'one_star_reviews'));
         }
 
         abort(404);
