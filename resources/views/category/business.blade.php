@@ -1,6 +1,10 @@
 @extends('layouts.master')
 @section('title', "$category->meta_title")
-@section('meta_description', "add")
+@if($city == null)
+    @section('meta_description', "Explore the best $category->name in Nebraska. Get photos, business hours, phone numbers, ratings, reviews and service details.")
+@else
+    @section('meta_description', "Explore the best $category->name in " . Str::title($city->name) . ", Nebraska. Get photos, business hours, phone numbers, ratings, reviews and service details.")
+@endif
 @section('meta_keywords',"add")
 @section('content')
     <section class="card-area section-padding">
@@ -45,11 +49,13 @@
                                                     <img
                                                         src="{{ asset('images/business/' . $organization->organization_head_photo_file) }}"
                                                         data-src="{{ asset('images/business/' . $organization->organization_head_photo_file) }}"
-                                                        class="card__img lazy" alt="{{ $organization->organization_name }}">
+                                                        class="card__img lazy"
+                                                        alt="{{ $organization->organization_name }}">
                                                 @else
                                                     <img src="{{ asset('images/default.jpg') }}"
                                                          data-src="{{ asset('images/default.jpg') }}"
-                                                         class="card__img lazy" alt="{{ $organization->organization_name }}">
+                                                         class="card__img lazy"
+                                                         alt="{{ $organization->organization_name }}">
                                                 @endif
                                             </a>
                                         </div>
