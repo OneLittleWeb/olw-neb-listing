@@ -502,7 +502,7 @@
                                         <strong>{{ $organization->organization_name }}</strong> is very professional and
                                         always active in customer service. Book their service or clarify things if you
                                         have any query by contacting them
-                                        at {{ $organization->organization_phone_number}}.
+                                        at <a href="tel:{{$organization->organization_phone_number }}">{{ $organization->organization_phone_number}}</a>.
                                     </p>
                                 @endif
                                 @if($organization->organization_website || $organization->organization_facebook)
