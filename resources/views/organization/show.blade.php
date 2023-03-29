@@ -55,8 +55,12 @@
                                 <strong class="font-weight-medium ml-n1">$</strong>
                             </span>
                                 <span class="category-link text-capitalize">
-                                <a href="#">{{ $organization->organization_category }}</a>
-                            </span>
+                                    @if($organization->organization_category)
+                                        <a href="{{ route('category.business', $organization->organization_category ?? $organization->category->slug) }}">{{ $organization->organization_category }}</a>
+                                    @else
+                                        <a href="{{ route('city.wise.organizations', ['city_slug' => $organization->city->slug, 'category_slug' => $organization->category->slug]) }}">{{ $organization->category->name }}</a>
+                                    @endif
+                                </span>
                             </p>
                             <div class="d-flex flex-wrap align-items-center">
                                 @if($organization->rate_stars && $organization->reviews_total_count)
@@ -502,7 +506,8 @@
                                         <strong>{{ $organization->organization_name }}</strong> is very professional and
                                         always active in customer service. Book their service or clarify things if you
                                         have any query by contacting them
-                                        at <a href="tel:{{$organization->organization_phone_number }}">{{ $organization->organization_phone_number}}</a>.
+                                        at <a
+                                            href="tel:{{$organization->organization_phone_number }}">{{ $organization->organization_phone_number}}</a>.
                                     </p>
                                 @endif
                                 @if($organization->organization_website || $organization->organization_facebook)
