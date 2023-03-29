@@ -94,6 +94,7 @@
                             <div class="block-card-body">
                                 <p class="pb-3 font-weight-medium line-height-30">{!! $organization->about1 !!}</p>
                                 <p class="pb-3 font-weight-medium line-height-30">{!! $organization->about2 !!}</p>
+                                <p class="pb-3 font-weight-medium line-height-30">{!! $organization->about3 !!}</p>
                             </div><!-- end block-card-body -->
                         </div><!-- end block-card -->
 
@@ -426,6 +427,7 @@
                                 </div><!-- end block-card-body -->
                             </div><!-- end block-card -->
                         @endif
+
                         <div class="block-card" id="review">
                             <div class="block-card-header">
                                 <h2 class="widget-title pb-1">Add a Review</h2>
@@ -674,6 +676,7 @@
             "reviewCount": "{{ $organization->reviews->count() ?? 0}}"
           }
         }
+
 
 
 

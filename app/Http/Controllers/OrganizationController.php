@@ -102,22 +102,27 @@ class OrganizationController extends Controller
             if (in_array($organization->category_id, $restaurant_type)) {
                 if ($organization->organization_address) {
                     $meta = explode(',', $organization->organization_address);
-                    $organization->about1 = 'Sitting at the Breathtaking spot of ' . Str::title($organization->city->name) . ' city, ' . $organization->organization_name . ' is located at' . $meta[1] . ',' . $meta[2] . '.';
+                    $organization->about1 = 'Sitting at the Breathtaking spot of ' . Str::title($organization->city->name) . ' city, ' . "<strong>$organization->organization_name</strong>" . ' is located at' . $meta[1] . ',' . $meta[2] . '.';
                 } else {
                     $organization->about1 = 'Sitting at the Breathtaking spot of ' . Str::title($organization->city->name) . ' city, NE';
                 }
 
                 if ($organization->organization_phone_number) {
-                    $organization->about2 = 'The restaurant is open 11 AM. Get a reservation or know necessary information by contacting them at ' . "<strong>$organization->organization_phone_number</strong>" . '.';
+                    $organization->about2 = 'Get a reservation or know necessary information by contacting them at ' . "<strong class='text-primary'><u>$organization->organization_phone_number</u></strong>" . '.';
                 } elseif ($organization->organization_email) {
-                    $organization->about2 = 'The restaurant is open 11 AM. Get a reservation or know necessary information by contacting them at ' . "<strong>$organization->organization_email</strong>" . '.';
+                    $organization->about2 = 'Get a reservation or know necessary information by contacting them at ' . "<strong>$organization->organization_email</strong>" . '.';
                 } elseif ($organization->organization_address) {
-                    $organization->about2 = 'The restaurant is open 11 AM. Get a reservation or know necessary information by contacting them at ' . "<strong>$organization->organization_address</strong>" . '.';
+                    $organization->about2 = 'Get a reservation or know necessary information by contacting them at ' . "<strong>$organization->organization_address</strong>" . '.';
                 } elseif ($organization->organization_website) {
-                    $organization->about2 = 'The restaurant is open 11 AM. Get a reservation or know necessary information by contacting them at ' . "<strong>$organization->organization_website</strong>" . '.';
+                    $organization->about2 = 'Get a reservation or know necessary information by contacting them at ' . "<strong>$organization->organization_website</strong>" . '.';
                 } else {
                     $organization->about2 = null;
                 }
+
+                $organization->rate_stars = $organization->rate_stars ?? 0;
+                $organization->reviews_total_count = $organization->reviews_total_count ?? 0;
+
+                $organization->about3 = "<strong>$organization->organization_name</strong>" . ' has a ' . "<strong>$organization->rate_stars</strong>" . '-star rating and ' . "<strong>$organization->reviews_total_count</strong>" . ' reviews. Check out the photos and customer reviews to make an image in your mind about what to expect there.';
 
             }
 
