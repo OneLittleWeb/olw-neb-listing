@@ -108,7 +108,7 @@ class OrganizationController extends Controller
                 }
 
                 if ($organization->organization_phone_number) {
-                    $organization->about2 = 'Get a reservation or know necessary information by contacting them at ' . "<strong class='text-primary'><u>$organization->organization_phone_number</u></strong>" . '.';
+                    $organization->about2 = 'Get a reservation or know necessary information by contacting them at ' . "<a href='tel:$organization->organization_phone_number'>$organization->organization_phone_number</a>" . '.';
                 } elseif ($organization->organization_email) {
                     $organization->about2 = 'Get a reservation or know necessary information by contacting them at ' . "<strong>$organization->organization_email</strong>" . '.';
                 } elseif ($organization->organization_address) {
@@ -132,7 +132,7 @@ class OrganizationController extends Controller
             $organization->reviews_paginator = $organization->reviews()->orderByDesc('id')->paginate(10)->onEachSide(0);
             Meta::setPaginationLinks($organization->reviews_paginator);
 
-            return view('organization.show', compact('organization', 'city', 'cities', 'five_star_reviews', 'four_star_reviews', 'three_star_reviews', 'two_star_reviews', 'one_star_reviews'));
+            return view('organization.show', compact('organization', 'city', 'cities', 'five_star_reviews', 'four_star_reviews', 'three_star_reviews', 'two_star_reviews', 'one_star_reviews','restaurant_type','gym_type','landscaper_type'));
         }
 
         abort(404);

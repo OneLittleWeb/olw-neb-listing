@@ -428,6 +428,99 @@
                             </div><!-- end block-card -->
                         @endif
 
+                        <div class="block-card mb-4">
+                            <div class="block-card-header">
+                                <h2 class="widget-title pb-1">Frequently Asked Questions</h2>
+                            </div>
+                            <div class="pt-4">
+                                <h3 class="widget-title pb-0">1. How busy is this place?</h3>
+                                <p class="text-dark"><span class="font-weight-bold">Ans.</span> Except the peak hours,
+                                    this place remains quite free or moderately crowded.</p>
+                            </div>
+                            <div class="pt-4">
+                                <h3 class="widget-title pb-0">2. What is the rating of this business?</h3>
+                                <p class="text-dark"><span class="font-weight-bold">Ans.</span> This business has a
+                                    rating of {{ $organization->rate_stars }}-star.</p>
+                            </div>
+                            <div class="pt-4">
+                                <h3 class="widget-title pb-0">3. How many reviews does this business have?</h3>
+                                <p class="text-dark"><span class="font-weight-bold">Ans.</span> This business
+                                    has {{ $organization->reviews_total_count }} reviews.</p>
+                            </div>
+                            @if($organization->organization_address)
+                                <div class="pt-4">
+                                    <h3 class="widget-title pb-0">4. What is the address of this place?</h3>
+                                    <p class="text-dark"><span class="font-weight-bold">Ans.</span> The address
+                                        is: {{ $organization->organization_address }}.</p>
+                                </div>
+                            @endif
+                            <div class="pt-4">
+                                <h3 class="widget-title pb-0">5. What is the contact number of this service?</h3>
+                                @if($organization->organization_phone_number)
+                                    <p class="text-dark"><span class="font-weight-bold">Ans.</span> The contact number
+                                        is <a
+                                            href="tel:{{ $organization->organization_phone_number }}">{{ $organization->organization_phone_number }}
+                                            .</a></p>
+                                @else
+                                    <p class="text-dark"><span class="font-weight-bold">Ans.</span> This business hasn’t
+                                        provided any phone number. </p>
+                                @endif
+                            </div>
+                            <div class="pt-4 block-card-header">
+                                <h3 class="widget-title pb-0">6. What category is this service listed under?</h3>
+                                <p class="text-dark"><span class="font-weight-bold">Ans.</span> This service is listed
+                                    under {{ Str::title($organization->category->name) }}.</p>
+                            </div>
+
+                            <div class="pt-4">
+                                <h2 class="widget-title pb-1">Finally</h2>
+                            </div>
+                            <div class="pt-2">
+                                @if(in_array($organization->category_id, $restaurant_type))
+                                    <p class="text-dark text-justify">
+                                        <strong>{{ $organization->organization_name }}</strong> is a very picturesque
+                                        and welcoming place for all. Come join with
+                                        your friends or family, relax, have a great meal, take some good selfies and
+                                        enjoy your time together. Thus, you can make it a memorable day for everyone.
+                                    </p>
+                                @elseif(in_array($organization->category_id, $gym_type))
+                                    <p class="text-dark text-justify">
+                                        <strong>{{ $organization->organization_name }}</strong> is a very picturesque
+                                        and welcoming place for all. Come join with
+                                        your friends or family, relax, take some good selfies and
+                                        enjoy your time together. Thus, you can make it a memorable day for everyone.
+                                    </p>
+                                @elseif(in_array($organization->category_id, $landscaper_type))
+                                    <p class="text-dark text-justify">
+                                        <strong>{{ $organization->organization_name }}</strong> is a very neat and
+                                        welcoming place for all. Just make an appointment or go directly and wait if you
+                                        find a little queue. After that, you can share your need with the concerned
+                                        person and book your desired service.
+                                    </p>
+                                @else
+                                    <p class="text-dark text-justify">
+                                        <strong>{{ $organization->organization_name }}</strong> is very professional and
+                                        always active in customer service. Book their service or clarify things if you
+                                        have any query by contacting them
+                                        at {{ $organization->organization_phone_number}}.
+                                    </p>
+                                @endif
+                                @if($organization->organization_website || $organization->organization_facebook)
+                                    <p class="text-dark pt-3">For more info about
+                                        <strong>{{ $organization->organization_name }}</strong>, visit their
+                                        @if($organization->organization_website)
+                                            <a rel="nofollow"
+                                               href="{{ 'https://' . $organization->organization_website }}"
+                                               target="_blank">{{ $organization->organization_website }}</a>.
+                                        @elseif($organization->organization_facebook)
+                                            <a rel="nofollow" href="{{ $organization->organization_facebook }}"
+                                               target="_blank">Facebook</a>.
+                                        @endif
+                                    </p>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="block-card" id="review">
                             <div class="block-card-header">
                                 <h2 class="widget-title pb-1">Add a Review</h2>
@@ -676,9 +769,5 @@
             "reviewCount": "{{ $organization->reviews->count() ?? 0}}"
           }
         }
-
-
-
-
     </script>
 @endsection
