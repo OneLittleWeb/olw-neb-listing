@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title', "Nebraskalisting THE Local Business Directory | Categories")
-@section('meta_description', "add")
+@section('meta_description', "Explore variety services and businesses like salons, gym, restaurant, hotels, car wash, pest control, moving companies, dentists and so on in Nebraska.")
 @section('meta_keywords',"add")
 @section('content')
     <section class="category-area section--padding margin-top-40px">

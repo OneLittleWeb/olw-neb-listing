@@ -69,7 +69,7 @@ class CategoryController extends Controller
 
             $category->meta_title = Str::title($business_category->organization_category) . ' in ' . Str::title($city->name) . ', NE | nebraskalisting.com';
 
-            return view('category.business', compact('organizations', 'city', 'cities', 'category', 'categories'));
+            return view('category.business', compact('organizations', 'city', 'cities', 'category', 'categories', 'business_category'));
         }
 
         abort(404);

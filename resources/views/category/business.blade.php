@@ -31,9 +31,9 @@
                     <div class="col-lg-12">
                         <div class="d-flex align-items-center pb-4 text-capitalize">
                             @if($city != null)
-                                <h2 class="sec__title mb-0">{{ $category->name }} in {{ $city->name }}, NE</h2>
+                                <h2 class="sec__title mb-0">{{ $business_category->organization_category }} in {{ $city->name }}, NE</h2>
                             @else
-                                <h2 class="sec__title mb-0">{{ $category->name }} in, NE</h2>
+                                <h2 class="sec__title mb-0">{{ $business_category->organization_category }} in, NE</h2>
                             @endif
                         </div>
                     </div>
