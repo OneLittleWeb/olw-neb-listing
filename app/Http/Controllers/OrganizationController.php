@@ -101,38 +101,55 @@ class OrganizationController extends Controller
 
             if (in_array($organization->category_id, $restaurant_type)) {
                 if ($organization->organization_address) {
-                    $meta = explode(',', $organization->organization_address);
-                    $organization->about1 = 'Sitting at the Breathtaking spot of ' . Str::title($organization->city->name) . ' city, ' . "<strong>$organization->organization_name</strong>" . ' is located at' . $meta[1] . ',' . $meta[2] . '.';
+                    $address_line = explode(',', $organization->organization_address);
+                    $organization->about1 = 'Sitting at the Breathtaking spot of ' . Str::title($organization->city->name) . ' city, ' . "<strong>$organization->organization_name</strong>" . ' is located at' . $address_line[1] . ',' . $address_line[2] . '.';
                 } else {
-                    $organization->about1 = 'Sitting at the Breathtaking spot of ' . Str::title($organization->city->name) . ' city, NE';
+                    $organization->about1 = 'Sitting at the Breathtaking spot of ' . Str::title($organization->city->name) . ' city, ' . "<strong>$organization->organization_name</strong>" . ' is located at ' . Str::title($organization->city->name) . ', NE.';
                 }
-
-                if ($organization->organization_phone_number) {
-                    $organization->about2 = 'Get a reservation or know necessary information by contacting them at ' . "<a href='tel:$organization->organization_phone_number'>$organization->organization_phone_number</a>" . '.';
-                } elseif ($organization->organization_email) {
-                    $organization->about2 = 'Get a reservation or know necessary information by contacting them at ' . "<strong>$organization->organization_email</strong>" . '.';
-                } elseif ($organization->organization_address) {
-                    $organization->about2 = 'Get a reservation or know necessary information by contacting them at ' . "<strong>$organization->organization_address</strong>" . '.';
-                } elseif ($organization->organization_website) {
-                    $organization->about2 = 'Get a reservation or know necessary information by contacting them at ' . "<strong>$organization->organization_website</strong>" . '.';
+            } elseif (in_array($organization->category_id, $gym_type)) {
+                if ($organization->organization_address) {
+                    $address_line = explode(',', $organization->organization_address);
+                    $organization->about1 = 'Sitting at the bustling city-center of ' . Str::title($organization->city->name) . ', ' . "<strong>$organization->organization_name</strong>" . ' is located at' . $address_line[1] . ',' . $address_line[2] . '.';
                 } else {
-                    $organization->about2 = null;
+                    $organization->about1 = 'Sitting at the bustling city-center of ' . Str::title($organization->city->name) . ', ' . "<strong>$organization->organization_name</strong>" . ' is located at ' . Str::title($organization->city->name) . ', NE.';
                 }
-
-                $organization->rate_stars = $organization->rate_stars ?? 0;
-                $organization->reviews_total_count = $organization->reviews_total_count ?? 0;
-
-                $organization->about3 = "<strong>$organization->organization_name</strong>" . ' has a ' . "<strong>$organization->rate_stars</strong>" . '-star rating and ' . "<strong>$organization->reviews_total_count</strong>" . ' reviews. Check out the photos and customer reviews to make an image in your mind about what to expect there.';
-
+            } elseif (in_array($organization->category_id, $landscaper_type)) {
+                if ($organization->organization_address) {
+                    $address_line = explode(',', $organization->organization_address);
+                    $organization->about1 = 'Sitting at the graceful service center of ' . Str::title($organization->city->name) . ' city, ' . "<strong>$organization->organization_name</strong>" . ' is located at' . $address_line[1] . ',' . $address_line[2] . '.';
+                } else {
+                    $organization->about1 = 'Sitting at the graceful service center of ' . Str::title($organization->city->name) . ' city, ' . "<strong>$organization->organization_name</strong>" . ' is located at ' . Str::title($organization->city->name) . ', NE.';
+                }
+            } else {
+                if ($organization->organization_address) {
+                    $address_line = explode(',', $organization->organization_address);
+                    $organization->about1 = 'Positioned at the neighborhood of ' . Str::title($organization->city->name) . ' city, ' . "<strong>$organization->organization_name</strong>" . ' is located at' . $address_line[1] . ',' . $address_line[2] . '.';
+                } else {
+                    $organization->about1 = 'Positioned at the neighborhood of ' . Str::title($organization->city->name) . ' city, ' . "<strong>$organization->organization_name</strong>" . ' is located at ' . Str::title($organization->city->name) . ', NE.';
+                }
             }
 
-//            $organization->meta_description = str_replace("'", "" ,$organization->organization_name) . ' is in ' . Str::title($organization->city->name) . ', NE. '. 'Get photos, business hours, phone numbers, ratings, reviews and service details. Rate and review.';
+            if ($organization->organization_phone_number) {
+                $organization->about2 = 'Get a reservation or know necessary information by contacting them at ' . "<a href='tel:$organization->organization_phone_number'>$organization->organization_phone_number</a>" . '.';
+            } elseif ($organization->organization_email) {
+                $organization->about2 = 'Get a reservation or know necessary information by contacting them at ' . "<strong>$organization->organization_email</strong>" . '.';
+            } elseif ($organization->organization_address) {
+                $organization->about2 = 'Get a reservation or know necessary information by contacting them at ' . "<strong>$organization->organization_address</strong>" . '.';
+            } elseif ($organization->organization_website) {
+                $organization->about2 = 'Get a reservation or know necessary information by contacting them at ' . "<strong>$organization->organization_website</strong>" . '.';
+            } else {
+                $organization->about2 = null;
+            }
 
+            $organization->rate_stars = $organization->rate_stars ?? 0;
+            $organization->reviews_total_count = $organization->reviews_total_count ?? 0;
+
+            $organization->about3 = "<strong>$organization->organization_name</strong>" . ' has a ' . "<strong>$organization->rate_stars</strong>" . '-star rating and ' . "<strong>$organization->reviews_total_count</strong>" . ' reviews. Check out the photos and customer reviews to make an image in your mind about what to expect there.';
 
             $organization->reviews_paginator = $organization->reviews()->orderByDesc('id')->paginate(10)->onEachSide(0);
             Meta::setPaginationLinks($organization->reviews_paginator);
 
-            return view('organization.show', compact('organization', 'city', 'cities', 'five_star_reviews', 'four_star_reviews', 'three_star_reviews', 'two_star_reviews', 'one_star_reviews','restaurant_type','gym_type','landscaper_type'));
+            return view('organization.show', compact('organization', 'city', 'cities', 'five_star_reviews', 'four_star_reviews', 'three_star_reviews', 'two_star_reviews', 'one_star_reviews', 'restaurant_type', 'gym_type', 'landscaper_type'));
         }
 
         abort(404);
