@@ -26,6 +26,10 @@
     <link rel="stylesheet" href="{{asset('/css/chosen.min.css')}}">
     <link rel="stylesheet" href="{{asset('/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('/css/admin.css')}}">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.css">
 
     @yield('css')
@@ -76,6 +80,10 @@
 <script src="{{asset('/js/tilt.jquery.min.js')}}"></script>
 <script src="{{asset('/js/jquery.lazy.min.js')}}"></script>
 <script src="{{asset('/js/main.js')}}"></script>
+
+<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
 <script src="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.js"></script>
 {!! Toastr::message() !!}
 @yield('js')

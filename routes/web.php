@@ -9,6 +9,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\admin\ReviewController as AdminReviewController;
+use App\Http\Controllers\admin\ContactUsController;
 
 //Admin Panel
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
@@ -20,6 +21,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('logout', [\App\Http\Controllers\admin\AdminController::class, 'logout'])->name('logout');
     Route::get('business/review', [AdminReviewController::class, 'reviewBusiness'])->name('reviews.business');
     Route::get('review/{slug}', [AdminReviewController::class, 'reviews'])->name('reviews');
+    Route::get('contacts', [ContactUsController::class, 'index'])->name('contact.index');
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');

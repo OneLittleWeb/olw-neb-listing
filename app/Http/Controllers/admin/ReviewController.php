@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Organization;
 use App\Models\Review;
 use Illuminate\Http\Request;
-use DataTables;
+use Yajra\DataTables\DataTables;
 
 class ReviewController extends Controller
 {

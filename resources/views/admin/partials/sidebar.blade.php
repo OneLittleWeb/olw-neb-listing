@@ -32,6 +32,12 @@
             <span>Manage Cities</span>
         </a>
     </li>
+    <li class="nav-item {{ (request()->routeIs('admin.contact.index')) ? 'active' : '' }}">
+        <a class="nav-link" href="{{route('admin.contact.index')}}">
+            <i class="la la-file-text-o font-size-18 mr-1"></i>
+            <span>Manage Contacts</span>
+        </a>
+    </li>
      <li class="nav-item {{ (request()->routeIs('admin.settings.index')) ? 'active' : '' }}">
         <a class="nav-link" href="{{route('admin.settings.index')}}">
             <i class="la la-file-text-o font-size-18 mr-1"></i>
