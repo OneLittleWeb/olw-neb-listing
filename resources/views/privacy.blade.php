@@ -3,7 +3,7 @@
 @section('meta_description', "To be added")
 @section('content')
     <section>
-        <div class="container" style="margin-top: 140px; margin-bottom: 70px">
+        <div class="container main_container">
             <h1>Privacy Policy</h1>
             <p>Last updated: March 27, 2023</p>
             <p>This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your

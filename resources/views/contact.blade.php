@@ -3,7 +3,7 @@
 @section('meta_description', "To be added")
 @section('content')
     <section>
-        <div class="container" style="margin-top: 140px; margin-bottom: 70px">
+        <div class="container main_container">
             <h1 class="text-center">Contact US</h1>
             <div class="container my-5">
                 <div class="row justify-content-center">

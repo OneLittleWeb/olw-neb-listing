@@ -3,10 +3,10 @@
 @section('meta_description', "To be added")
 @section('content')
     <section>
-        <div class="container" style="margin-top: 140px; margin-bottom: 70px">
+        <div class="container main_container">
             <div class="padding-bottom-20px">
                 <h1 class="text-center">About Us</h1>
-                <p class="padding-top-10px">NebraskaListing.com is your unbeatable GPS for finding local businesses and
+                <p class="padding-top-30px">NebraskaListing.com is your unbeatable GPS for finding local businesses and
                     services in the cities of
                     Nebraska. This website acts as a one-stop-shop for users for a seamless access to all the important
                     business information you need before picking the rightmost one.</p>
