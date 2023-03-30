@@ -834,22 +834,20 @@
                     <div class="cta-content p-0">
                         <div class="section-heading">
                             <div class="section-badge pb-3">
-                                <span class="ribbon ribbon-lg">Join with us</span>
+                                <span class="ribbon ribbon-lg">Join Us</span>
                             </div>
                             <h2 class="sec__title mb-4 font-size-45 line-height-60 text-white">
-                                Grow Your Marketing With <span class="text-color-16">Nebraskalisting</span> and <br>
-                                Be Happy With Your Business.
+                                Expand Your Visibility with <span class="text-color-16">Nebraskalisting</span> and <br>
+                                See Your Business Scale Up!
                             </h2>
                             <p class="sec__desc text-white line-height-35 mb-3">
-                                Your business deserves efficiently unleash cross-media information without cross-media
-                                value
-                                <br>
-                                Quickly maximize timely deliverables for real-time schemas.
+                                Why not take advantage of the extra visibility we are offering! Your competitors are present in every possible channel.
+                                <br>Step up and join us.
                             </p>
                         </div><!-- end section-heading -->
                         <div class="btn-box pt-4">
-                            <a href="#" class="theme-btn gradient-btn" data-toggle="modal" data-target="#signUpModal"><i
-                                    class="la la-user-plus mr-2"></i>Click Me to Start</a>
+                            <a href="{{ route('login') }}" class="theme-btn gradient-btn"><i
+                                    class="la la-user-plus mr-2"></i>Start Now</a>
                         </div><!-- end btn-box -->
                     </div>
                 </div><!-- end col-lg-12 -->
