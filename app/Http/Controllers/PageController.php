@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactUsMail;
 use App\Models\City;
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class PageController extends Controller
 {
@@ -44,6 +46,13 @@ class PageController extends Controller
         $contact->subject = $request->subject;
         $contact->message = $request->message;
         $contact->save();
+
+        try {
+            Mail::to('support@nebraskalisting.com')->send(new ContactUsMail($contact));
+        } catch (\Exception $e) {
+            alert()->error('error', 'Something went wrong. Please try again later.');
+            return redirect()->back();
+        }
 
         alert()->success('success', 'Your message has been sent successfully.');
 
