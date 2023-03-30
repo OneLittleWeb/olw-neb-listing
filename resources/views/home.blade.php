@@ -54,7 +54,8 @@
                     <div class="hero-heading">
                         <div class="section-heading">
                             <h2 class="sec__title font-size-35">Find The Best Places In Your City</h2>
-                            <p class="sec__desc">Nebraskalisting helps you find out what's happening in your city. Let’s explore!</p>
+                            <p class="sec__desc">Nebraskalisting helps you find out what's happening in your city. Let’s
+                                explore!</p>
                         </div>
                     </div><!-- end hero-heading -->
                 </div><!-- end col-lg-6 -->
@@ -305,7 +306,8 @@
                         <div class="info-content">
                             <h4 class="info__title">Pick a Keyword</h4>
                             <p class="info__desc">
-                                Proin dapibus nisl ornare diam varius ecos tempus. Aenean a quam
+                                Search for the service you’re looking for, i.e. ‘plumber,’ ‘electrician,’ ‘pest
+                                control,’ etc.
                             </p>
                         </div><!-- end info-content -->
                     </div><!-- end info-box -->
@@ -348,7 +350,7 @@
                         <div class="info-content">
                             <h4 class="info__title">Select Location</h4>
                             <p class="info__desc">
-                                Proin dapibus nisl ornare diam varius ecos tempus. Aenean a quam
+                                Select location from the dropdown menu so that you get exactly where you want.
                             </p>
                         </div><!-- end info-content -->
                     </div><!-- end info-box -->
@@ -414,7 +416,7 @@
                         <div class="info-content">
                             <h4 class="info__title">Select Category</h4>
                             <p class="info__desc">
-                                Proin dapibus nisl ornare diam varius ecos tempus. Aenean a quam
+                                You can also select any type of service from the ‘Category’ tab located in the Menu bar.
                             </p>
                         </div><!-- end info-content -->
                     </div><!-- end info-box -->
@@ -460,7 +462,8 @@
                         <div class="info-content">
                             <h4 class="info__title">View Results</h4>
                             <p class="info__desc">
-                                Proin dapibus nisl ornare diam varius ecos tempus. Aenean a quam
+                                After placing Keyword and Location, hit the “Search” button to get all available
+                                results.
                             </p>
                         </div><!-- end info-content -->
                     </div><!-- end info-box -->
@@ -857,7 +860,8 @@
 @endsection
 
 @section('js')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.1/bootstrap3-typeahead.min.js"></script>
     <script>
         let path = "{{ route('autocomplete')}}";
         $('#looking_for').typeahead({
