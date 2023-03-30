@@ -515,7 +515,7 @@
                         </div>
                         <div class="counter-content pl-3">
                             <h3 class="counter__number text-color-3 mb-2">
-                                <span class="counter">40,000</span>
+                                <span class="counter">{{ $total_pages }}</span>
                                 <span class="count-symbol">+</span>
                             </h3>
                             <p class="counter__title">Nebraskalisting Pages</p>
@@ -562,7 +562,7 @@
                         </div>
                         <div class="counter-content pl-3">
                             <h3 class="counter__number text-color-4 mb-2">
-                                <span class="counter">25,100</span>
+                                <span class="counter">3500</span>
                                 <span class="count-symbol">+</span>
                             </h3>
                             <p class="counter__title">Happy Clients</p>
@@ -585,7 +585,7 @@
                         </div>
                         <div class="counter-content pl-3">
                             <h3 class="counter__number text-color-5 mb-2">
-                                <span class="counter">12,100</span>
+                                <span class="counter">{{ $company_joined->count() }}</span>
                                 <span class="count-symbol">+</span>
                             </h3>
                             <p class="counter__title">Company Joined</p>
@@ -616,7 +616,7 @@
                         </div>
                         <div class="counter-content pl-3">
                             <h3 class="counter__number text-color-6 mb-2">
-                                <span class="counter">18,200</span>
+                                <span class="counter">{{ $five_star_ratings }}</span>
                                 <span class="count-symbol">+</span>
                             </h3>
                             <p class="counter__title">Five Star Ratings</p>

@@ -19,7 +19,11 @@ class HomeController extends Controller
         $popular_cities = City::take(8)->orderByDesc('population')->get();
         $cities = City::all();
 
-        return view('home', compact('categories', 'major_cities', 'popular_cities', 'cities'));
+        $total_pages = Organization::count();
+        $five_star_ratings = Organization::where('rate_stars', 5)->count();
+        $company_joined = Organization::select('organization_name')->distinct()->get();
+
+        return view('home', compact('categories', 'major_cities', 'popular_cities', 'cities','total_pages', 'five_star_ratings','company_joined'));
     }
 
     public function autocomplete(Request $request)
