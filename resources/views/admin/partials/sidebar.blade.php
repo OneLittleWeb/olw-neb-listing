@@ -49,7 +49,7 @@
     </li>
     <li class="sidebar-heading">Listings</li>
     <li class="nav-item">
-        <a class="nav-link" href="dashboard-my-listings.html">
+        <a class="nav-link" href="#">
             <i class="la la-file-text-o font-size-18 mr-1"></i>
             <span>My listings</span>
         </a>
@@ -71,7 +71,7 @@
     </li>
     <li class="sidebar-heading">Account</li>
     <li class="nav-item">
-        <a class="nav-link" href="dashboard-my-profile.html">
+        <a class="nav-link" href="#">
             <i class="la la-user font-size-18 mr-1"></i>
             <span>My Profile</span>
         </a>

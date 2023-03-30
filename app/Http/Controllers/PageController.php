@@ -29,7 +29,7 @@ class PageController extends Controller
         return view('contact', compact('cities', 'city'));
     }
 
-    public function contactStore(Request $request)
+    public function contactStore(Request $request): \Illuminate\Http\RedirectResponse
     {
         $request->validate([
             'name' => 'required',
