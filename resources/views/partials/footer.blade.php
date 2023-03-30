@@ -16,7 +16,7 @@
             <div class="col-lg-8">
                 <ul class="list-items term-list text-right">
                     <li><a href="#">Terms & Conditions</a></li>
-                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="{{ route('page.privacy') }}">Privacy Policy</a></li>
                 </ul>
             </div>
         </div>
