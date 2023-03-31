@@ -658,7 +658,7 @@
                         </div><!-- end card-image -->
                         <div class="card-content">
                             <h4 class="card-title pt-2">
-                                <a href="{{url('/blog/').$post->post_name}}">{{$post->post_title}}</a>
+                                <a href="{{url('/blog').'/'.$post->post_name}}">{{$post->post_title}}</a>
                             </h4>
                         </div><!-- end card-content -->
                     </div><!-- end card-item -->
