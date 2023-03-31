@@ -5,7 +5,7 @@
         <meta name="robots" content="noindex, follow">
     @endsection
 @endif
-@section('meta_description', str_replace("'","",$organization->organization_name) . " is in Omaha, NE. Get photos, business hours, phone numbers, ratings, reviews and service details. Rate and review.")
+@section('meta_description', str_replace("'","",$organization->organization_name) . " is in $city->name, NE. Get photos, business hours, phone numbers, ratings, reviews and service details. Rate and review.")
 @section('meta_keywords',"add")
 @section('content')
     <!-- =======START FULL SCREEN SLIDER======= -->
