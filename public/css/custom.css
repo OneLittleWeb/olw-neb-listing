@@ -22,6 +22,10 @@
     height: 52px;
 }
 
+.review-logo{
+    width: 20px;
+}
+
 @media screen and (max-width: 1450px) {
     .logo img {
         width: 12rem;
@@ -67,7 +71,7 @@
     }
 }
 
-@media screen and (max-width: 400px) and (min-width: 330px)
+@media screen and (max-width: 420px) and (min-width: 330px)
 {
     .google-review button span{
         display:none;

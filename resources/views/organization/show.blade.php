@@ -259,7 +259,7 @@
                                     <li class="nav-item google-review" role="presentation">
                                         <button class="nav-link active" id="google-tab" data-toggle="tab"
                                                 data-target="#google-review" type="button" role="tab"
-                                                aria-controls="google-review" aria-selected="true">Google
+                                                aria-controls="google-review" aria-selected="true"><img class="review-logo" src="{{asset('/images/google-logo.png')}}" alt="Logo"> Google
                                             <span>({{ $organization->reviews->whereNotNull('review_id')->count() }})</span>
                                         </button>
                                     </li>
@@ -267,7 +267,7 @@
                                         <button class="nav-link nebraska-review" id="nebraska-review-tab" data-toggle="tab"
                                                 data-target="#nebraska-review" type="button" role="tab"
                                                 aria-controls="nebraska-review"
-                                                aria-selected="false">Nebraskalisting
+                                                aria-selected="false"><img class="review-logo" src="{{asset('/images/favicon.png')}}" alt="Logo"> Nebraskalisting
                                             <span class="nebraska-review-count"> ({{ $organization->reviews->whereNull('review_id')->count() }})</span>
                                         </button>
                                     </li>
