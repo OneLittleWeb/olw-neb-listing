@@ -651,7 +651,7 @@
                 <div class="col-lg-4 responsive-column">
                     <div class="card-item card-item-layout-5 js-tilt">
                         <div class="card-image">
-                            <img src="{{asset('/images/img4.jpg')}}" data-src="{{asset('/images/img4.jpg')}}"
+                            <img src="{{$post->thumbnail}}" data-src="{{$post->thumbnail}}"
                                  class="card__img lazy"
                                  alt="blog image">
                             <span class="badge">{{\Carbon\Carbon::parse($post->post_modified)->format('F d, Y')}}</span>
