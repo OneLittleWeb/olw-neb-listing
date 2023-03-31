@@ -44,6 +44,7 @@ Route::get('/copy-past', [OrganizationController::class, 'copyPast'])->name('cop
 
 Route::get('/about-us',[PageController::class, 'aboutUs'])->name('page.about');
 Route::get('/privacy-policy',[PageController::class, 'privacy'])->name('page.privacy');
+Route::get('/terms-conditions',[PageController::class, 'termsConditions'])->name('terms.conditions');
 Route::get('/contact-us',[PageController::class, 'contactUs'])->name('page.contact');
 Route::post('/contact-store',[PageController::class, 'contactStore'])->name('contact.store');
 

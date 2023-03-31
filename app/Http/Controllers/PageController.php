@@ -24,6 +24,13 @@ class PageController extends Controller
         return view('privacy', compact('cities', 'city'));
     }
 
+    public function termsConditions()
+    {
+        $cities = City::all();
+        $city = null;
+        return view('terms-conditions', compact('cities', 'city'));
+    }
+
     public function contactUs()
     {
         $cities = City::all();
