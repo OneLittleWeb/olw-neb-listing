@@ -90,6 +90,18 @@ return [
             'prefix' => '',
             'prefix_indexes' => true,
         ],
+        'wordpress' => [ // for WordPress database (used by Corcel)
+            'driver' => 'mysql',
+            'host' => 'localhost',
+            'database' => 'jRNoH8w7kRY4G3',
+            'username' => 'CDH9aon5GxQeFg',
+            'password' => 'eS9DPpSR7Xqvb4',
+            'charset' => 'utf8',
+            'collation' => 'utf8_unicode_ci',
+            'prefix' => 'wp_',
+            'strict' => false,
+            'engine' => null,
+        ],
 
     ],
 
@@ -123,7 +135,7 @@ return [
 
         'options' => [
             'cluster' => env('REDIS_CLUSTER', 'redis'),
-            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_') . '_database_'),
         ],
 
         'default' => [

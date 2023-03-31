@@ -170,7 +170,7 @@ return [
         App\Providers\FortifyServiceProvider::class,
         Spatie\Permission\PermissionServiceProvider::class,
         App\Providers\MetaTagsServiceProvider::class,
-
+        Corcel\Laravel\CorcelServiceProvider::class,
 
         /*
          * Application Service Providers...
