@@ -6,6 +6,7 @@ use App\Http\Controllers\OrganizationController;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\Organization;
+use Corcel\Model\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
@@ -23,7 +24,14 @@ class HomeController extends Controller
         $five_star_ratings = Organization::where('rate_stars', 5)->count();
         $company_joined = Organization::select('organization_name')->distinct()->get();
 
-        return view('home', compact('categories', 'major_cities', 'popular_cities', 'cities','total_pages', 'five_star_ratings','company_joined'));
+        try {
+            $posts = Post::status('publish')->take(6)->get() ?? null;
+        } catch (\Exception $e) {
+            $posts = null;
+        }
+
+        dd($posts);
+        return view('home', compact('categories', 'major_cities', 'popular_cities', 'cities', 'total_pages', 'five_star_ratings', 'company_joined', 'posts'));
     }
 
     public function autocomplete(Request $request)
