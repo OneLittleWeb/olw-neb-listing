@@ -25,7 +25,7 @@ class HomeController extends Controller
         $company_joined = Organization::select('organization_name')->distinct()->get();
 
         try {
-            $posts = Post::status('publish')->take(6)->get() ?? null;
+            $posts = Post::published()->terms('category', '	Uncategorized')->latest()->take(6)->get();
         } catch (\Exception $e) {
             $posts = null;
         }
