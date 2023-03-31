@@ -24,11 +24,9 @@ class HomeController extends Controller
         $five_star_ratings = Organization::where('rate_stars', 5)->count();
         $company_joined = Organization::select('organization_name')->distinct()->get();
 
-        try {
+
             $posts = Post::published()->terms('category', '	Uncategorized')->latest()->take(6)->get();
-        } catch (\Exception $e) {
-            $posts = null;
-        }
+
 
         dd($posts);
         return view('home', compact('categories', 'major_cities', 'popular_cities', 'cities', 'total_pages', 'five_star_ratings', 'company_joined', 'posts'));
