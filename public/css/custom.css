@@ -17,7 +17,7 @@
     font-size: 20px;
 }
 
-#search-from-header{
+#search-from-header {
     width: 305px;
     height: 52px;
 }
@@ -26,7 +26,8 @@
     .logo img {
         width: 12rem;
     }
-    #search-from-header{
+
+    #search-from-header {
         width: 230px;
         height: 52px;
     }
@@ -36,7 +37,8 @@
     .logo img {
         width: 10rem;
     }
-    #search-from-header{
+
+    #search-from-header {
         width: 228px;
         height: 52px;
     }
@@ -46,7 +48,8 @@
     .logo img {
         width: 8rem;
     }
-    #search-from-header{
+
+    #search-from-header {
         width: 198px;
         height: 52px;
     }
@@ -55,6 +58,22 @@
 @media screen and (max-width: 1198px) {
     .logo img {
         width: 15rem;
+    }
+}
+
+@media screen and (max-width: 336px) {
+    .google-review {
+        width: 90px;
+    }
+}
+
+@media screen and (max-width: 400px) and (min-width: 330px)
+{
+    .google-review button span{
+        display:none;
+    }
+    .nebraska-review-count{
+        display:none;
     }
 }
 
@@ -87,12 +106,13 @@
     margin: 20px 0;
 }
 
-.header-search-button{
+.header-search-button {
     background-color: #9f8fff;
     border: #9f8fff;
     padding: 13px;
 }
-.header-search-button:hover{
+
+.header-search-button:hover {
     background-color: #8c7ce7;
     border: #8c7ce7;
 }
@@ -100,7 +120,8 @@
 #profile span {
     padding-bottom: 10px !important;
 }
-.main_container{
+
+.main_container {
     margin-top: 140px;
     margin-bottom: 70px
 }

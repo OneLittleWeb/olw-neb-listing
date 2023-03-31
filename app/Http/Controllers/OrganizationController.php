@@ -146,7 +146,9 @@ class OrganizationController extends Controller
 
             $organization->about3 = "<strong>$organization->organization_name</strong>" . ' has a ' . "<strong>$organization->rate_stars</strong>" . '-star rating and ' . "<strong>$organization->reviews_total_count</strong>" . ' reviews. Check out the photos and customer reviews to make an image in your mind about what to expect there.';
 
-            $organization->reviews_paginator = $organization->reviews()->orderByDesc('id')->paginate(10)->onEachSide(0);
+            $organization->reviews_paginator = $organization->reviews()->whereNotNull('review_id')->orderByDesc('id')->paginate(10)->onEachSide(0);
+            $organization->nebraska_reviews_paginator = $organization->reviews()->whereNull('review_id')->orderByDesc('id')->paginate(10)->onEachSide(0);
+
             Meta::setPaginationLinks($organization->reviews_paginator);
 
             return view('organization.show', compact('organization', 'city', 'cities', 'five_star_reviews', 'four_star_reviews', 'three_star_reviews', 'two_star_reviews', 'one_star_reviews', 'restaurant_type', 'gym_type', 'landscaper_type'));

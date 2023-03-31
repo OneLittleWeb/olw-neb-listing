@@ -75,7 +75,6 @@
                     offer. <strong>NebraskaListing- Honestly, it’s <span class="text-danger"><del>not</del></span> for
                         everyone!</strong></p>
             </div>
-
         </div>
     </section>
 @endsection
