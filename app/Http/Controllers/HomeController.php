@@ -25,7 +25,7 @@ class HomeController extends Controller
         $company_joined = Organization::select('organization_name')->distinct()->get();
 
 
-            $posts = Post::published()->taxonomy('category', '	Uncategorized')->latest()->take(6)->get();
+        $posts = Post::published()->taxonomy('category', '	Uncategorized')->take(6)->get();
 
 
         dd($posts);
