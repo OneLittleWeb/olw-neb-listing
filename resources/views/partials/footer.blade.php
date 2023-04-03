@@ -13,12 +13,6 @@
                                 class="lab la-youtube"></i></a></li>
                 </ul>
             </div>
-            <div class="col-lg-8">
-                <ul class="list-items term-list text-right">
-                    <li><a href="{{ route('terms.conditions') }}">Terms & Conditions</a></li>
-                    <li><a href="{{ route('page.privacy') }}">Privacy Policy</a></li>
-                </ul>
-            </div>
         </div>
         <div class="section-block-2 margin-top-30px margin-bottom-30px"></div>
         <div class="row">
@@ -30,10 +24,6 @@
                                 alt="logo"></a>
                     </div><!-- end footer-logo -->
                     <ul class="list-items contact-links pt-3">
-                        <li><span class="d-block text-color mb-1"><i
-                                    class="la la-map mr-1 text-color-2"></i>Address:</span> 12345 Little Baker St,
-                            Melbourne
-                        </li>
                         <li><span class="d-block text-color mb-1"><i
                                     class="la la-phone mr-1 text-color-2"></i>Phone:</span><a href="#">+ 61 23 8093
                                 3400</a></li>
@@ -48,8 +38,9 @@
                     <div class="stroke-shape mb-3"></div>
                     <ul class="list-items">
                         <li><a href="{{ route('page.about') }}">About Us</a></li>
-                        <li><a href="{{ route('page.privacy') }}">Privacy Policy</a></li>
                         <li><a href="{{ route('page.contact') }}">Content Us</a></li>
+                        <li><a href="{{ route('terms.conditions') }}">Terms & Conditions</a></li>
+                        <li><a href="{{ route('page.privacy') }}">Privacy Policy</a></li>
                     </ul>
                 </div><!-- end footer-item -->
             </div><!-- end col-lg-3 -->
@@ -68,8 +59,7 @@
                     <h4 class="footer__title">Nebraskalisting for Business</h4>
                     <div class="stroke-shape mb-3"></div>
                     <ul class="list-items">
-                        <li><a href="#">Claim your Business</a></li>
-                        <li><a href="#">Add Restaurant</a></li>
+                        <li><a href="{{ route('login') }}">Claim your Business</a></li>
                     </ul>
                 </div><!-- end footer-item -->
             </div><!-- end col-lg-3 -->
