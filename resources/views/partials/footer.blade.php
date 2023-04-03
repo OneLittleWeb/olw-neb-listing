@@ -38,7 +38,7 @@
                     <div class="stroke-shape mb-3"></div>
                     <ul class="list-items">
                         <li><a href="{{ route('page.about') }}">About Us</a></li>
-                        <li><a href="{{ route('page.contact') }}">Content Us</a></li>
+                        <li><a href="{{ route('page.contact') }}">Contact Us</a></li>
                         <li><a href="{{ route('terms.conditions') }}">Terms & Conditions</a></li>
                         <li><a href="{{ route('page.privacy') }}">Privacy Policy</a></li>
                     </ul>
