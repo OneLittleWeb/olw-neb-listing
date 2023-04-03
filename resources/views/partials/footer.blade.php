@@ -71,7 +71,7 @@
                         <h2 class="sec__title mb-0 font-size-24 line-height-30">Don't miss any update!</h2>
                         <p class="sec__desc font-size-16">Subscribe to get latest updates and information.</p>
                     </div><!-- end section-heading -->
-                    <form method="post" class="form-box">
+                    <form action="#" class="form-box">
                         <div class="form-group mb-0">
                             <span class="la la-envelope-o form-icon"></span>
                             <input class="form-control form-control-styled form-control-long" type="email"
