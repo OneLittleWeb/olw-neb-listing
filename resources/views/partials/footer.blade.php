@@ -28,7 +28,7 @@
                                     class="la la-phone mr-1 text-color-2"></i>Phone:</span><a href="#">+ 61 23 8093
                                 3400</a></li>
                         <li><span class="d-block text-color mb-1"><i class="la la-envelope mr-1 text-color-2"></i>Email:</span><a
-                                href="#">olw@gmail.com</a></li>
+                                href="mailto:support@nebraskalisting.com">support@nebraskalisting.com</a></li>
                     </ul>
                 </div><!-- end footer-item -->
             </div><!-- end col-lg-3 -->
@@ -88,13 +88,9 @@
         <div class="section-block-2 margin-top-30px margin-bottom-30px"></div>
         <div class="row">
             <div class="col-lg-12">
-                <div class="copy-right d-flex align-items-center justify-content-between">
+                <div class="copy-right text-center">
                     <p class="copy__desc">
-                        &copy; Copyright Olw
-                        <script> document.write(new Date().getFullYear()); </script>
-                        . Made with
-                        <span class="la la-heart-o"></span> by <a
-                            href="#">serpkick</a>
+                        &copy; <script> document.write(new Date().getFullYear()); </script> Copyright Nebraskalisting . All Rights Reserved
                     </p>
                 </div><!-- end copy-right -->
             </div><!-- end col-lg-12 -->

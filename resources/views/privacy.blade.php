@@ -68,7 +68,7 @@
             <div class="padding-bottom-20px">
                 <h2><strong>Contact Us</strong></h2>
                 <p class="padding-top-10px">If you have any questions or concerns about our privacy policy or our use of
-                    your personal information, please contact us at <a href="mailto:privacy@nebraskalisting.com">privacy@nebraskalisting.com</a>.</p>
+                    your personal information, please contact us at <a href="mailto:support@nebraskalisting.com">support@nebraskalisting.com</a>.</p>
             </div>
 
         </div>
