@@ -61,14 +61,14 @@
         </script>
 
         <!-- Google tag (gtag.js) -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-T89B1MD5QN"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-0RTN18CDQC"></script>
         <script>
             window.dataLayer = window.dataLayer || [];
             function gtag() {
                 dataLayer.push(arguments);
             }
             gtag('js', new Date());
-            gtag('config', 'G-T89B1MD5QN');
+            gtag('config', 'G-0RTN18CDQC');
         </script>
     @endproduction
 </head>
