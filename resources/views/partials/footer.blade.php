@@ -1,6 +1,6 @@
 <section class="footer-area bg-gradient-gray pattern-bg-2 padding-top-30px padding-bottom-30px">
     <div class="container">
-        <div class="section-block-2 margin-top-30px margin-bottom-30px"></div>
+        <div class="margin-top-30px margin-bottom-30px"></div>
         <div class="row">
             <div class="col-lg-3 responsive-column">
                 <div class="footer-item">
