@@ -42,6 +42,25 @@
                             </ul>
                             <div class="d-flex align-items-center pt-1">
                                 <h1 class="sec__title mb-0">{{ $organization->organization_name }}</h1>
+
+                                @if($organization->is_claim)
+                                    <div class="hover-tooltip-box ml-3 pt-2">
+                                        <span class="text-color"><i class="la la-check-circle mr-1 text-color-4"></i>Claimed</span>
+                                        <div class="hover-tooltip">
+                                            <p>This business has been claimed by the owner or a representative.</p>
+                                        </div>
+                                    </div>
+                                @else
+                                    <div class="hover-tooltip-box ml-3 pt-2">
+                                        <a href="{{ route('login') }}" class="gradient-btn btn-sm claim-button">
+                                            <i class="la la-check-circle mr-1 text-color-4"></i>Claim</a>
+                                        <div class="hover-tooltip">
+                                            <p>If you are the owner or representative of this business, you can claim it
+                                                by
+                                                following the appropriate steps.</p>
+                                        </div>
+                                    </div>
+                                @endif
                             </div>
                             @if($organization->organization_address)
                                 <p class="sec__desc py-2 font-size-17"><i
@@ -259,15 +278,20 @@
                                     <li class="nav-item google-review" role="presentation">
                                         <button class="nav-link active" id="google-tab" data-toggle="tab"
                                                 data-target="#google-review" type="button" role="tab"
-                                                aria-controls="google-review" aria-selected="true"><img class="review-logo" src="{{asset('/images/google-logo.png')}}" alt="Logo"> Google
+                                                aria-controls="google-review" aria-selected="true"><img
+                                                class="review-logo" src="{{asset('/images/google-logo.png')}}"
+                                                alt="Logo"> Google
                                             <span>({{ $organization->reviews->whereNotNull('review_id')->count() }})</span>
                                         </button>
                                     </li>
                                     <li class="nav-item" role="presentation">
-                                        <button class="nav-link nebraska-review" id="nebraska-review-tab" data-toggle="tab"
+                                        <button class="nav-link nebraska-review" id="nebraska-review-tab"
+                                                data-toggle="tab"
                                                 data-target="#nebraska-review" type="button" role="tab"
                                                 aria-controls="nebraska-review"
-                                                aria-selected="false"><img class="review-logo" src="{{asset('/images/favicon.png')}}" alt="Logo"> Nebraskalisting
+                                                aria-selected="false"><img class="review-logo"
+                                                                           src="{{asset('/images/favicon.png')}}"
+                                                                           alt="Logo"> Nebraskalisting
                                             <span class="nebraska-review-count"> ({{ $organization->reviews->whereNull('review_id')->count() }})</span>
                                         </button>
                                     </li>
@@ -1005,9 +1029,5 @@
             "reviewCount": "{{ $organization->reviews->count() ?? 0}}"
           }
         }
-
-
-
-
     </script>
 @endsection
