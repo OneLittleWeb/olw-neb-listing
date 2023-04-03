@@ -2,8 +2,6 @@
 <html lang="en">
 <head>
     @yield('meta')
-    <meta name="robots" content="noindex,nofollow">
-    <meta name="googlebot" content="noindex,nofollow">
     {{Meta::setContentType('text/html')
             ->addMeta('X-UA-Compatible', ['content' => 'ie=edge'])
             ->addMeta('author', ['content' => 'serpkick'])
