@@ -1,19 +1,5 @@
 <section class="footer-area bg-gradient-gray pattern-bg-2 padding-top-30px padding-bottom-30px">
     <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-4">
-                <ul class="social-profile social-profile-styled">
-                    <li><a href="#" class="facebook-bg" data-toggle="tooltip" data-placement="top" title="Facebook"><i
-                                class="lab la-facebook-f"></i></a></li>
-                    <li><a href="#" class="twitter-bg" data-toggle="tooltip" data-placement="top" title="Twitter"><i
-                                class="lab la-twitter"></i></a></li>
-                    <li><a href="#" class="instagram-bg" data-toggle="tooltip" data-placement="top" title="Instagram"><i
-                                class="lab la-instagram"></i></a></li>
-                    <li><a href="#" class="youtube-bg" data-toggle="tooltip" data-placement="top" title="Youtube"><i
-                                class="lab la-youtube"></i></a></li>
-                </ul>
-            </div>
-        </div>
         <div class="section-block-2 margin-top-30px margin-bottom-30px"></div>
         <div class="row">
             <div class="col-lg-3 responsive-column">
