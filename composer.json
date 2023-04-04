@@ -12,6 +12,7 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "intervention/image": "^2.7",
         "jgrossi/corcel": "^5.1",
+        "laravel-notification-channels/telegram": "^2.1",
         "laravel/fortify": "^1.16",
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
