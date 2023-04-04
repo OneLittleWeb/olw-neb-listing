@@ -640,8 +640,7 @@
                         </div>
                         <h2 class="sec__title">Articles You Might <span class="text-color-16">Like.</span></h2>
                         <p class="sec__desc">
-                            Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, <br>
-                            a feugiat eros. Nunc ut lacinia tortors.
+                            Learn about unique attractions of Nebraska and what the cities have to offer. Activities, foods, spooky places and so on.
                         </p>
                     </div><!-- end section-heading -->
                 </div><!-- end col-lg-12 -->
