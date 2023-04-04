@@ -72,12 +72,12 @@ class SitemapController extends Controller
         // create sitemap index
         $sitemap = App::make("sitemap");
         $sitemap->addSitemap(URL::to('sitemap-pages.xml'), Carbon::now()->format('Y-m-d\T00:00:00+06:00'));
-        $sitemap->addSitemap(URL::to('sitemap_city_category_business.xml'), Carbon::now()->format('Y-m-d\T00:00:00+06:00'));
+        $sitemap->addSitemap(URL::to('sitemap_category_business.xml'), Carbon::now()->format('Y-m-d\T00:00:00+06:00'));
         $sitemap->addSitemap(URL::to('sitemap_city_category_all_business.xml'), Carbon::now()->format('Y-m-d\T00:00:00+06:00'));
         $sitemap->addSitemap(URL::to('sitemap_category_city_all_business.xml'), Carbon::now()->format('Y-m-d\T00:00:00+06:00'));
         $sitemap->addSitemap(URL::to('sitemap_category_cities.xml'), Carbon::now()->format('Y-m-d\T00:00:00+06:00'));
         $sitemap->addSitemap(URL::to('sitemap_city_categories.xml'), Carbon::now()->format('Y-m-d\T00:00:00+06:00'));
-
+        
          // get all products from db (or wherever you store them)
         $businesses = Organization::all();
 
