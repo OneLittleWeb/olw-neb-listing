@@ -77,47 +77,41 @@ class SitemapController extends Controller
         $sitemap->addSitemap(URL::to('sitemap_category_city_all_business.xml'), Carbon::now()->format('Y-m-d\T00:00:00+06:00'));
         $sitemap->addSitemap(URL::to('sitemap_category_cities.xml'), Carbon::now()->format('Y-m-d\T00:00:00+06:00'));
         $sitemap->addSitemap(URL::to('sitemap_city_categories.xml'), Carbon::now()->format('Y-m-d\T00:00:00+06:00'));
-        
-         // get all products from db (or wherever you store them)
-        $businesses = Organization::all();
 
-        // counters
-        $counter = 0;
-        $sitemapCounter = 0;
+        // fetch records in batches of 2000
+        Organization::chunk(2000, function ($businesses) use ($sitemap, &$counter, &$sitemapCounter) {
+            // add every record to multiple sitemaps with one sitemap index
+            foreach ($businesses as $business) {
+                if ($counter == 2000) {
+                    // generate new sitemap file
+                    $sitemap->store('xml', 'sitemap_city_category_business_0' . $sitemapCounter);
+                    // add the file to the sitemaps array
+                    $sitemap->addSitemap(secure_url('sitemap_city_category_business_0' . $sitemapCounter . '.xml'), Carbon::now()->format('Y-m-d\T00:00:00+06:00'));
+                    // reset items array (clear memory)
+                    $sitemap->model->resetItems();
+                    // reset the counter
+                    $counter = 0;
+                    // count generated sitemap
+                    $sitemapCounter++;
+                }
 
-        // add every product to multiple sitemaps with one sitemap index
-        foreach ($businesses as $business) {
-            if ($counter == 2000) {
-                // generate new sitemap file
-                $sitemap->store('xml', 'sitemap_city_category_business_0' . $sitemapCounter);
-                // add the file to the sitemaps array
-                $sitemap->addSitemap(secure_url('sitemap_city_category_business_0' . $sitemapCounter . '.xml'), Carbon::now()->format('Y-m-d\T00:00:00+06:00'));
-                // reset items array (clear memory)
-                $sitemap->model->resetItems();
-                // reset the counter
-                $counter = 0;
-                // count generated sitemap
-                $sitemapCounter++;
+                // add record to items array
+                $sitemap->add(route('city.wise.organization', ['city_slug' => $business->city->slug, 'organization_slug' => $business->slug]), Carbon::now()->format('Y-m-d\T00:00:00+06:00'), '0.7', 'daily');
+
+                // count number of elements
+                $counter++;
             }
+        });
 
-            // add product to items array
-
-            $sitemap->add(route('city.wise.organization', ['city_slug' => $business->city->slug, 'organization_slug' => $business->slug]), Carbon::now()->format('Y-m-d\T00:00:00+06:00'), '0.7', 'daily');
-
-            // count number of elements
-            $counter++;
-        }
-        // you need to check for unused items
+// you need to check for unused items
         if (!empty($sitemap->model->getItems())) {
             // generate sitemap with last items
             $sitemap->store('xml', 'sitemap_city_category_business_0' . $sitemapCounter);
             // add sitemap to sitemaps array
-            $sitemap->add(route('city.wise.organization', ['city_slug' => $business->city->slug, 'organization_slug' => $business->slug]), Carbon::now()->format('Y-m-d\T00:00:00+06:00'), '0.7', 'monthly');
+            $sitemap->addSitemap(secure_url('sitemap_city_category_business_0' . $sitemapCounter . '.xml'), Carbon::now()->format('Y-m-d\T00:00:00+06:00'));
             // reset items array
             $sitemap->model->resetItems();
         }
-
-
 
         $sitemap->store('sitemapindex', 'sitemap_index');
 
