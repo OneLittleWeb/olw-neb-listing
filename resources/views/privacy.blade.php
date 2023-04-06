@@ -1,6 +1,6 @@
 @extends('layouts.master')
 @section('title', "Privacy Policy - Nebraskalisting")
-@section('meta_description', "To be added")
+@section('meta_description', "nebraskalisting, best places in nebraska")
 @section('content')
     <section>
         <div class="container main_container">

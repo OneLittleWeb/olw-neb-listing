@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title', "Nebraskalisting THE Local Business Directory")
 @section('meta_description', "Explore every best place and service nearby or anywhere in Nebraska. Photos-business hours-phone numbers-ratings-reviews-service details- all in one place.")
-@section('meta_keywords',"add")
+@section('meta_keywords',"nebraska, nebraskalisting, best places in nebraska")
 @section('content')
     <section class="hero-wrapper hero-bg-2 pb-0 overflow-hidden">
         <div class="overlay"></div><!-- end overlay -->

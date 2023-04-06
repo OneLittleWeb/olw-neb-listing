@@ -5,7 +5,11 @@
 @else
     @section('meta_description', "Explore the best $category->name in " . Str::title($city->name) . ", Nebraska. Get photos, business hours, phone numbers, ratings, reviews and service details.")
 @endif
-@section('meta_keywords',"add")
+@if($city != null)
+    @section('meta_keywords', "$category->name in $city->name,ne , $category->name in $city->name near me")
+@else
+    @section('meta_keywords',  "$category->name in , ne")
+@endif
 @section('content')
     <section class="card-area section-padding">
         <div class="container pt-5">

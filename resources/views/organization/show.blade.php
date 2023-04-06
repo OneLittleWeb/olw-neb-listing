@@ -6,7 +6,7 @@
     @endsection
 @endif
 @section('meta_description', str_replace("'","",$organization->organization_name) . " is in $city->name, NE. Get photos, business hours, phone numbers, ratings, reviews and service details. Rate and review.")
-@section('meta_keywords',"add")
+@section('meta_keywords',  str_replace("'","",$organization->organization_name). ", " .str_replace("'","",$organization->organization_name) . " review")
 @section('content')
     <!-- =======START FULL SCREEN SLIDER======= -->
     <section class="full-screen-slider-area" style="padding-top: 98px">

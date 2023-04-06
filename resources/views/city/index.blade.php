@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title', "Nebraskalisting THE Local Business Directory | Cities")
 @section('meta_description', "Browse all the cities in Nebraska to find the best local service you’re looking for. Professional services, skilled labors, businesses - all in one place.")
-@section('meta_keywords',"add")
+@section('meta_keywords',"nebraska, nebraskalisting, best places in nebraska")
 @section('content')
     <section class="category-area section--padding margin-top-40px">
         <div class="container">
