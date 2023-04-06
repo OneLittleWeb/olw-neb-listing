@@ -48,6 +48,8 @@ Route::get('/terms-conditions',[PageController::class, 'termsConditions'])->name
 Route::get('/contact-us',[PageController::class, 'contactUs'])->name('page.contact');
 Route::post('/contact-store',[PageController::class, 'contactStore'])->name('contact.store');
 
+Route::get('/claim-your-business',[OrganizationController::class, 'claimBusiness'])->name('claim.business');
+
 Route::get('/{slug}', [CategoryController::class, 'index'])->name('category.index');
 
 

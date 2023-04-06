@@ -50,6 +50,7 @@ class PageController extends Controller
         $contact = new Contact();
         $contact->name = $request->name;
         $contact->email = $request->email;
+        $contact->phone_number = $request->phone_number;
         $contact->subject = $request->subject;
         $contact->message = $request->message;
         $contact->save();

@@ -26,6 +26,7 @@
                                     <th>No</th>
                                     <th>Name</th>
                                     <th>Email</th>
+                                    <th>Phone Number</th>
                                     <th>Subject</th>
                                     <th>Message</th>
                                 </tr>
@@ -52,6 +53,7 @@
                     {data: 'DT_RowIndex', name: 'DT_RowIndex'},
                     {data: 'name', name: 'name'},
                     {data: 'email', name: 'email'},
+                    {data: 'phone_number', name: 'phone_number'},
                     {data: 'subject', name: 'subject'},
                     {data: 'message', name: 'message'},
                 ]
