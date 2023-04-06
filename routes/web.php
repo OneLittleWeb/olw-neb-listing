@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\PricingController;
+use App\Http\Controllers\StripePaymentController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\ReviewController;
@@ -28,6 +30,11 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/autocomplete', [HomeController::class, 'autocomplete'])->name('autocomplete');
 Route::get('/search', [HomeController::class, 'search'])->name('search');
 
+Route::get('/checkout',[StripePaymentController::class,'index'])->name('stripe.form');
+Route::post('/checkout',[StripePaymentController::class,'checkout'])->name('stripe.checkout');
+Route::get('/success',[StripePaymentController::class,'success'])->name('stripe.success');
+
+
 Route::get('/categories', [CategoryController::class, 'allCategories'])->name('all.categories');
 Route::get('/category/{slug}', [CategoryController::class, 'categoryBusiness'])->name('category.business');
 
@@ -47,6 +54,7 @@ Route::get('/privacy-policy',[PageController::class, 'privacy'])->name('page.pri
 Route::get('/terms-conditions',[PageController::class, 'termsConditions'])->name('terms.conditions');
 Route::get('/contact-us',[PageController::class, 'contactUs'])->name('page.contact');
 Route::post('/contact-store',[PageController::class, 'contactStore'])->name('contact.store');
+Route::get('/pricing',[PricingController::class, 'index'])->name('page.pricing');
 
 Route::get('/claim-your-business',[OrganizationController::class, 'claimBusiness'])->name('claim.business');
 
