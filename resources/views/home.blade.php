@@ -13,7 +13,7 @@
         <span class="line-bg line-bg6"></span>
 
         <div class="container">
-            <div class="row align-items-center padding-bottom-30px">
+            <div class="row align-items-center padding-bottom-80px">
                 <div class="col-lg-5 mr-auto">
                     <form action="{{ route('search') }}" class="form-box">
                         @csrf
