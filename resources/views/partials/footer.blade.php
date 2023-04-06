@@ -11,8 +11,7 @@
                     </div><!-- end footer-logo -->
                     <ul class="list-items contact-links pt-3">
                         <li><span class="d-block text-color mb-1"><i
-                                    class="la la-phone mr-1 text-color-2"></i>Phone:</span><a href="#">+ 61 23 8093
-                                3400</a></li>
+                                    class="la la-phone mr-1 text-color-2"></i>Phone:</span><a href="tel:+1 402 318 7149">+1 402 318 7149</a></li>
                         <li><span class="d-block text-color mb-1"><i class="la la-envelope mr-1 text-color-2"></i>Email:</span><a
                                 href="mailto:support@nebraskalisting.com">support@nebraskalisting.com</a></li>
                     </ul>
