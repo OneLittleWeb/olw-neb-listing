@@ -157,6 +157,12 @@ class OrganizationController extends Controller
         abort(404);
     }
 
+    public function claimBusiness()
+    {
+        $cities = City::all();
+
+        return view('organization.claim-business', compact('cities'));
+    }
 
     public function import()
     {
