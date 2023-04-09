@@ -13,6 +13,7 @@
         "intervention/image": "^2.7",
         "jgrossi/corcel": "^5.1",
         "laravel-notification-channels/telegram": "^2.1",
+        "laravel/cashier": "^13.17",
         "laravel/fortify": "^1.16",
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
@@ -22,7 +23,6 @@
         "maatwebsite/excel": "^3.1",
         "realrashid/sweet-alert": "^6.0",
         "spatie/laravel-permission": "^5.9",
-        "stripe/stripe-php": "^10.12",
         "yajra/laravel-datatables-oracle": "^9.21"
     },
     "require-dev": {

@@ -12,6 +12,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\admin\ReviewController as AdminReviewController;
 use App\Http\Controllers\admin\ContactUsController;
+use App\Http\Controllers\admin\PlanManageController;
 
 //Admin Panel
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
@@ -20,6 +21,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::resource('city', \App\Http\Controllers\admin\CityController::class)->except(['show', 'edit', 'create']);
     Route::resource('organization', \App\Http\Controllers\admin\OrganizationController::class)->except(['show']);
     Route::resource('settings', \App\Http\Controllers\admin\SettingController::class)->except(['show']);
+    Route::resource('plan', PlanManageController::class)->except(['show']);
     Route::get('logout', [\App\Http\Controllers\admin\AdminController::class, 'logout'])->name('logout');
     Route::get('business/review', [AdminReviewController::class, 'reviewBusiness'])->name('reviews.business');
     Route::get('review/{slug}', [AdminReviewController::class, 'reviews'])->name('reviews');
@@ -30,9 +32,10 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/autocomplete', [HomeController::class, 'autocomplete'])->name('autocomplete');
 Route::get('/search', [HomeController::class, 'search'])->name('search');
 
-Route::get('/checkout',[StripePaymentController::class,'index'])->name('stripe.form');
-Route::post('/checkout',[StripePaymentController::class,'checkout'])->name('stripe.checkout');
-Route::get('/success',[StripePaymentController::class,'success'])->name('stripe.success');
+Route::get('/checkout',[StripePaymentController::class,'index'])->name('payment.form');
+Route::post('/payments/pay',[StripePaymentController::class,'checkout'])->name('payment.checkout');
+Route::get('/payments/approval',[StripePaymentController::class,'approval'])->name('payment.approval');
+Route::get('/payments/cancelled',[StripePaymentController::class,'cancelled'])->name('payment.cancelled');
 
 
 Route::get('/categories', [CategoryController::class, 'allCategories'])->name('all.categories');

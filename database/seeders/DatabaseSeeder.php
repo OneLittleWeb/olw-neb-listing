@@ -18,6 +18,9 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             CategorySeeder::class,
             CitySeeder::class,
+            PaymentPlatformSeeder::class,
+            CurrenciesSeeder::class,
+            PlanSeeder::class,
         ]);
 
         // \App\Models\User::factory(10)->create();

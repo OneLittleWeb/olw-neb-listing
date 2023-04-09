@@ -47,6 +47,8 @@
     <li>
         <hr class="sidebar-divider border-top-color">
     </li>
+
+
     <li class="sidebar-heading">Listings</li>
     <li class="nav-item">
         <a class="nav-link" href="#">
@@ -70,6 +72,12 @@
         <hr class="sidebar-divider border-top-color">
     </li>
     <li class="sidebar-heading">Account</li>
+    <li class="nav-item {{ (request()->routeIs('admin.plan.index')) ? 'active' : '' }}">
+        <a class="nav-link" href="{{route('admin.plan.index')}}">
+            <i class="la la-file-text-o font-size-18 mr-1"></i>
+            <span>Manage Plans</span>
+        </a>
+    </li>
     <li class="nav-item">
         <a class="nav-link" href="#">
             <i class="la la-user font-size-18 mr-1"></i>
