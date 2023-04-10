@@ -52,7 +52,8 @@
                                     </div>
                                 @else
                                     <div class="hover-tooltip-box ml-3 pt-2">
-                                        <a href="{{ route('claim.business', $organization->slug) }}" class="gradient-btn btn-sm claim-button">
+                                        <a href="{{ route('claim.business', $organization->slug) }}"
+                                           class="gradient-btn btn-sm claim-button">
                                             <i class="la la-check-circle mr-1 text-color-4"></i>Claim</a>
                                         <div class="hover-tooltip">
                                             <p>If you are the owner or representative of this business, you can claim it
@@ -86,7 +87,7 @@
                                     <div class="star-rating-wrap d-flex align-items-center">
                                         <div class="organization_rating"
                                              data-rating="{{ $organization->rate_stars }}"></div>
-                                        <p class="font-size-14 pl-2 font-weight-medium">{{ $organization->reviews_total_count }}
+                                        <p class="font-size-14 pl-2 font-weight-medium">{{ $organization->reviews->count() }}
                                             reviews</p>
                                     </div>
                                 @endif
@@ -366,7 +367,7 @@
                                                 @endforeach
                                             </div>
                                             @if ($organization->reviews_paginator->hasPages())
-                                                <div class="text-center">
+                                                <div class="text-center padding-bottom-10px">
                                                     <div class="pagination-wrapper d-inline-block">
                                                         <div class="section-pagination">
                                                             <nav aria-label="Page navigation">
@@ -684,6 +685,9 @@
                                                 </div>
                                             </div>
                                         @endif
+                                    </div>
+                                    <div class="text-center">
+                                        <a rel="nofollow" href="{{ $organization->gmaps_link }}" class="more-review-link" target="_blank">For more reviews</a>
                                     </div>
                                 </div>
                             </div><!-- end block-card -->
@@ -1029,5 +1033,6 @@
             "reviewCount": "{{ $organization->reviews->count() ?? 0}}"
           }
         }
+
     </script>
 @endsection

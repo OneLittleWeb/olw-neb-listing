@@ -81,6 +81,15 @@
     }
 }
 
+.business-access-search-input-item{
+    margin-left: 0 !important;
+    margin-top: 10px !important;
+}
+
+.more-review-link:hover{
+    text-decoration: underline;
+}
+
 /* Rating Star Widgets Style */
 .rating-stars ul {
     list-style-type: none;
