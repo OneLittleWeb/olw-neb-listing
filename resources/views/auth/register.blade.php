@@ -179,28 +179,31 @@
     <div class="container">
         <div class="row justify-content-center align-items-center" style="height: 100vh">
             <div class="col-md-offset-3 col-md-6">
-                <form class="form-horizontal" action="{{route('login')}}" method="POST">
+                <form class="form-horizontal" action="{{route('register')}}" method="POST">
                     @csrf
                     <span class="heading">Register</span>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="name" name="name"
+                               placeholder="Your Name">
+                        <i class="fa fa-user"></i>
+                    </div>
                     <div class="form-group">
                         <input type="email" class="form-control" id="inputEmail3" name="email"
                                placeholder="Email or Username">
                         <i class="fa fa-user"></i>
-                        @error('email')
-                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                        @enderror
                     </div>
                     <div class="form-group help">
-                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password"
+                        <input type="password" class="form-control" id="password" placeholder="Password"
                                name="password">
                         <i class="fa fa-lock"></i>
                         <a href="#" class="fa fa-question-circle"></a>
-                        @error('password')
-                        <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                        @enderror
+                    </div>
+                    <div class="form-group help">
+                        <input type="password" class="form-control" id="password_confirmation"
+                               placeholder="Confirm Password"
+                               name="password_confirmation">
+                        <i class="fa fa-lock"></i>
+                        <a href="#" class="fa fa-question-circle"></a>
                     </div>
 
                     @if(!$errors->isEmpty())
@@ -213,12 +216,8 @@
                         </div>
                     @endif
                     <div class="form-group">
-                        <div class="main-checkbox">
-                            <input type="checkbox" value="None" id="checkbox1" name="check">
-                            <label for="checkbox1"></label>
-                        </div>
-                        <span class="text">Remember me</span>
-                        <button type="submit" class="btn btn-default">log in</button>
+                        <span class="text">Already a member? <a href="{{route('login')}}">Login</a></span>
+                        <button type="submit" class="btn btn-default">Sign Up</button>
                     </div>
                 </form>
             </div>

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use Laravel\Cashier\Billable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
@@ -76,5 +77,30 @@ class User extends Authenticatable
             }
         }
         return $hasPermission;
+    }
+
+    public function setNameAttribute($value)
+    {
+        $this->attributes['name'] = $value;
+        $this->attributes['slug'] = $this->createSlug($value);
+    }
+
+    public function createSlug($name)
+    {
+        $slug = Str::slug($name, '-');
+        $count = 0;
+        $originalSlug = $slug;
+
+        while ($this->slugExists($slug)) {
+            $count++;
+            $slug = $originalSlug . '-' . $count;
+        }
+
+        return $slug;
+    }
+
+    public function slugExists($slug)
+    {
+        return static::whereSlug($slug)->exists();
     }
 }
