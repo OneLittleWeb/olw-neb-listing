@@ -157,11 +157,13 @@ class OrganizationController extends Controller
         abort(404);
     }
 
-    public function claimBusiness()
+    public function claimBusiness($slug)
     {
         $cities = City::all();
+        $city = null;
+        $organization = Organization::where('slug', $slug)->firstOrFail();
 
-        return view('organization.claim-business', compact('cities'));
+        return view('organization.claim-business', compact('cities', 'city', 'organization'));
     }
 
     public function import()

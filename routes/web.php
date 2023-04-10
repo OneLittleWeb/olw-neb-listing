@@ -38,6 +38,7 @@ Route::get('/success',[StripePaymentController::class,'success'])->name('stripe.
 Route::get('/categories', [CategoryController::class, 'allCategories'])->name('all.categories');
 Route::get('/category/{slug}', [CategoryController::class, 'categoryBusiness'])->name('category.business');
 
+Route::get('/claim-your-business/{slug}',[OrganizationController::class, 'claimBusiness'])->name('claim.business');
 Route::get('/{city_slug}/{category_slug}', [OrganizationController::class, 'cityWiseOrganizations'])->name('city.wise.organizations');
 Route::get('/{city_slug}/nls/{organization_slug}', [OrganizationController::class, 'cityWiseOrganization'])->name('city.wise.organization');
 
@@ -55,8 +56,6 @@ Route::get('/terms-conditions',[PageController::class, 'termsConditions'])->name
 Route::get('/contact-us',[PageController::class, 'contactUs'])->name('page.contact');
 Route::post('/contact-store',[PageController::class, 'contactStore'])->name('contact.store');
 Route::get('/pricing',[PricingController::class, 'index'])->name('page.pricing');
-
-Route::get('/claim-your-business',[OrganizationController::class, 'claimBusiness'])->name('claim.business');
 
 Route::get('/{slug}', [CategoryController::class, 'index'])->name('category.index');
 

@@ -52,7 +52,7 @@
                                     </div>
                                 @else
                                     <div class="hover-tooltip-box ml-3 pt-2">
-                                        <a href="{{ route('login') }}" class="gradient-btn btn-sm claim-button">
+                                        <a href="{{ route('claim.business', $organization->slug) }}" class="gradient-btn btn-sm claim-button">
                                             <i class="la la-check-circle mr-1 text-color-4"></i>Claim</a>
                                         <div class="hover-tooltip">
                                             <p>If you are the owner or representative of this business, you can claim it
