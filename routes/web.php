@@ -32,7 +32,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/autocomplete', [HomeController::class, 'autocomplete'])->name('autocomplete');
 Route::get('/search', [HomeController::class, 'search'])->name('search');
 
-Route::get('/checkout',[StripePaymentController::class,'index'])->name('payment.form');
+Route::get('/checkout',[StripePaymentController::class,'index'])->name('payment.form')->middleware('auth');
 Route::post('/payments/pay',[StripePaymentController::class,'checkout'])->name('payment.checkout');
 Route::get('/payments/approval',[StripePaymentController::class,'approval'])->name('payment.approval');
 Route::get('/payments/cancelled',[StripePaymentController::class,'cancelled'])->name('payment.cancelled');

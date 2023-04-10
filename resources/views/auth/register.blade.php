@@ -184,12 +184,12 @@
                     <span class="heading">Register</span>
                     <div class="form-group">
                         <input type="text" class="form-control" id="name" name="name"
-                               placeholder="Your Name">
+                               placeholder="Your Name" value="{{old('name')}}">
                         <i class="fa fa-user"></i>
                     </div>
                     <div class="form-group">
                         <input type="email" class="form-control" id="inputEmail3" name="email"
-                               placeholder="Email or Username">
+                               placeholder="Email or Username" value="{{old('email')}}">
                         <i class="fa fa-user"></i>
                     </div>
                     <div class="form-group help">

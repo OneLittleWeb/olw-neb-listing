@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Plan;
 use App\Traits\ConsumeExternalServices;
 use Illuminate\Http\Request;
 
@@ -39,7 +40,12 @@ class StripeService
 
     public function handlePayment(Request $request)
     {
+        $plan = Plan::where('stripe_name', $request->plan)->first();
+        $paymentMethod = $request->payment_method;
+        $user = $request->user();
+        $user->newSubscription($request->plan, $plan->stripe_name)->create($paymentMethod);
 
+        return redirect()->route('home');
     }
 
     public function handleApproval()

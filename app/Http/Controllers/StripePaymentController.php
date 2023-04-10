@@ -37,7 +37,8 @@ class StripePaymentController extends Controller
         }else{
            $selected_plan = null;
         }
-        return view('checkout', compact('cities', 'city', 'currencies', 'platforms', 'selected_plan', 'plans'));
+        $intent = auth()->user()->createSetupIntent();
+        return view('checkout', compact('cities', 'city', 'currencies', 'platforms', 'selected_plan', 'plans' , 'intent'));
     }
 
     public function checkout(Request $request)
@@ -48,7 +49,16 @@ class StripePaymentController extends Controller
             'platform' => ['required', 'exists:payment_platforms,id'],
         ];
 
-        dd($request->all());
+        $user = $request->user();
+        $user->update([
+            'line1' => $request->line1,
+            'line2' => $request->line2,
+            'city' => $request->city,
+            'state' => $request->state,
+            'country' => $request->country,
+            'postal_code' => $request->postal_code,
+        ]);
+
         $request->validate($rules);
 
         $paymentPlatform = $this->paymantPlatformResolver->resolveService($request->platform);
