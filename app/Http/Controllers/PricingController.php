@@ -3,14 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\City;
+use App\Models\Plan;
 use Illuminate\Http\Request;
 
 class PricingController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $cities = City::all();
         $city = null;
-        return view('pricing', compact('cities', 'city'));
+        $plans = Plan::all();
+        return view('pricing', compact('cities', 'city', 'plans'));
     }
 }

@@ -3,44 +3,74 @@
 namespace App\Http\Controllers;
 
 use App\Models\City;
+use App\Models\Currency;
+use App\Models\PaymentPlatform;
+use App\Models\Plan;
+use App\Resolvers\PaymentPlatformResolver;
+use App\Services\PaypalService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Stripe\Stripe;
 
 class StripePaymentController extends Controller
 {
-    public function index()
+    protected $paymantPlatformResolver;
+
+    public function __construct(PaymentPlatformResolver $paymantPlatformResolver)
+    {
+        $this->paymantPlatformResolver = $paymantPlatformResolver;
+    }
+
+    public function index(Request $request)
     {
         $cities = City::all();
         $city = null;
-        return view('checkout', compact('cities', 'city'));
+        $currencies = Currency::all();
+        $platforms = PaymentPlatform::all();
+        $plans = Plan::all();
+        if ($request->has('plan')) {
+            if (Plan::where('slug', $request->plan)->exists()) {
+                $selected_plan = Plan::where('slug', $request->plan)->first();
+            } else {
+                App::abort(404, 'Plan not found');
+            }
+        }else{
+           $selected_plan = null;
+        }
+        return view('checkout', compact('cities', 'city', 'currencies', 'platforms', 'selected_plan', 'plans'));
     }
 
-    public function checkout()
+    public function checkout(Request $request)
     {
-        Stripe::setApiKey(config('services.stripe.secret_key'));
-        $session = \Stripe\Checkout\Session::create([
-            'line_items' => [[
-                'price_data' => [
-                    'currency' => 'usd',
-                    'unit_amount' => 2000,
-                    'product_data' => [
-                        'name' => 'T-shirt',
-                        'description' => 'Comfortable cotton t-shirt',
-                        'images' => ['https://example.com/t-shirt.png'],
-                    ],
-                ],
-                'quantity' => 1,
-            ]],
-            'mode' => 'payment',
-            'success_url' => route('stripe.success'),
-            'cancel_url' => route('home'),
-        ]);
+        $rules = [
+            'value' =>['required', 'numeric', 'min:3'],
+            'currency' => ['required', 'exists:currencies,iso'],
+            'platform' => ['required', 'exists:payment_platforms,id'],
+        ];
 
-        return redirect()->away($session->url);
+        dd($request->all());
+        $request->validate($rules);
+
+        $paymentPlatform = $this->paymantPlatformResolver->resolveService($request->platform);
+
+        session()->put('paymentPlatformId', $request->platform);
+
+        return $paymentPlatform->handlePayment($request);
     }
 
-    public function success()
+    public function approval()
     {
-        return view('stripe.success');
+        if (session()->has('paymentPlatformId')) {
+            $paymentPlatformId = session()->get('paymentPlatformId');
+
+            $paymentPlatform = $this->paymantPlatformResolver->resolveService($paymentPlatformId);
+
+            return $paymentPlatform->handleApproval();
+        }
+    }
+
+    public function cancelled()
+    {
+        return redirect()->route('payment.form')->withErrors('You cancelled the payment');
     }
 }
