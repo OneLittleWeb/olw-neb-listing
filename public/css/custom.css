@@ -86,6 +86,10 @@
     margin-top: 10px !important;
 }
 
+.more-review-link:hover{
+    text-decoration: underline;
+}
+
 /* Rating Star Widgets Style */
 .rating-stars ul {
     list-style-type: none;
