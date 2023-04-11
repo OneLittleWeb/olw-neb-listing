@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title', "Terms & Conditions - Nebraskalisting")
+@section('title', "Nebraskalisting THE Local Business Directory | Terms & Conditions")
 @section('meta_description', "nebraskalisting, best places in nebraska")
 @section('content')
     <section>
