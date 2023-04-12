@@ -726,99 +726,217 @@
                                 </div>
                             </div><!-- end block-card -->
                         @endif
+
                         <div class="block-card mb-4">
                             <div class="block-card-header">
-                                <h2 class="widget-title pb-1">Frequently Asked Questions</h2>
-                            </div>
-                            <div class="pt-4">
-                                <h3 class="widget-title pb-0">1. How busy is this place?</h3>
-                                <p class="text-dark"><span class="font-weight-bold">Ans.</span> Except the peak hours,
-                                    this place remains quite free or moderately crowded.</p>
-                            </div>
-                            <div class="pt-4">
-                                <h3 class="widget-title pb-0">2. What is the rating of this business?</h3>
-                                <p class="text-dark"><span class="font-weight-bold">Ans.</span> This business has a
-                                    rating of {{ $organization->rate_stars }}-star.</p>
-                            </div>
-                            <div class="pt-4">
-                                <h3 class="widget-title pb-0">3. How many reviews does this business have?</h3>
-                                <p class="text-dark"><span class="font-weight-bold">Ans.</span> This business
-                                    has {{ $organization->reviews_total_count }} reviews.</p>
-                            </div>
-                            @if($organization->organization_address)
-                                <div class="pt-4">
-                                    <h3 class="widget-title pb-0">4. What is the address of this place?</h3>
-                                    <p class="text-dark"><span class="font-weight-bold">Ans.</span> The address
-                                        is: {{ $organization->organization_address }}.</p>
-                                </div>
-                            @endif
-                            <div class="pt-4">
-                                <h3 class="widget-title pb-0">5. What is the contact number of this service?</h3>
-                                @if($organization->organization_phone_number)
-                                    <p class="text-dark"><span class="font-weight-bold">Ans.</span> The contact number
-                                        is <a
-                                            href="tel:{{ $organization->organization_phone_number }}">{{ $organization->organization_phone_number }}
-                                            .</a></p>
-                                @else
-                                    <p class="text-dark"><span class="font-weight-bold">Ans.</span> This business hasn’t
-                                        provided any phone number. </p>
-                                @endif
-                            </div>
-                            <div class="pt-4 block-card-header">
-                                <h3 class="widget-title pb-0">6. What category is this service listed under?</h3>
-                                <p class="text-dark"><span class="font-weight-bold">Ans.</span> This service is listed
-                                    under {{ Str::title($organization->category->name) }}.</p>
-                            </div>
+                                <h2 class="widget-title">Frequently Asked Questions</h2>
+                                <div class="stroke-shape"></div>
+                            </div><!-- end block-card-header -->
+                            <div class="block-card-body">
+                                <div class="accordion-item" id="accordion">
+                                    <div class="card">
+                                        <div class="card-header" id="headingOne">
+                                            <h5>
+                                                <button
+                                                    class="btn btn-link d-flex align-items-center justify-content-between"
+                                                    data-toggle="collapse" data-target="#collapseOne"
+                                                    aria-expanded="true" aria-controls="collapseOne">
+                                                    How busy is this place?
+                                                    <i class="la la-minus"></i>
+                                                    <i class="la la-plus"></i>
+                                                </button>
+                                            </h5>
+                                        </div>
+                                        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne"
+                                             data-parent="#accordion">
+                                            <div class="card-body">
+                                                <p>Except the peak hours,
+                                                    this place remains quite free or moderately crowded.</p>
+                                            </div>
+                                        </div>
+                                    </div><!-- end card -->
+                                    <div class="card">
+                                        <div class="card-header" id="headingTwo">
+                                            <h5>
+                                                <button
+                                                    class="btn btn-link d-flex align-items-center justify-content-between"
+                                                    data-toggle="collapse" data-target="#collapseTwo"
+                                                    aria-expanded="false" aria-controls="collapseTwo">
+                                                    What is the rating of this business?
+                                                    <i class="la la-minus"></i>
+                                                    <i class="la la-plus"></i>
+                                                </button>
+                                            </h5>
+                                        </div>
+                                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
+                                             data-parent="#accordion">
+                                            <div class="card-body">
+                                                <p>This business has a
+                                                    rating of {{ $organization->rate_stars }}-star.</p>
+                                            </div>
+                                        </div>
+                                    </div><!-- end card -->
+                                    <div class="card">
+                                        <div class="card-header" id="headingThree">
+                                            <h5>
+                                                <button
+                                                    class="btn btn-link d-flex align-items-center justify-content-between"
+                                                    data-toggle="collapse" data-target="#collapseThree"
+                                                    aria-expanded="false" aria-controls="collapseThree">
+                                                    How many reviews does this business have?
+                                                    <i class="la la-minus"></i>
+                                                    <i class="la la-plus"></i>
+                                                </button>
+                                            </h5>
+                                        </div>
+                                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
+                                             data-parent="#accordion">
+                                            <div class="card-body">
+                                                <p>This business
+                                                    has {{ $organization->reviews_total_count }} reviews.</p>
+                                            </div>
+                                        </div>
+                                    </div><!-- end card -->
+                                    @if($organization->organization_address)
+                                        <div class="card">
+                                            <div class="card-header" id="headingFour">
+                                                <h5>
+                                                    <button
+                                                        class="btn btn-link d-flex align-items-center justify-content-between"
+                                                        data-toggle="collapse" data-target="#collapseFour"
+                                                        aria-expanded="false" aria-controls="collapseFour">
+                                                        What is the address of this place?
+                                                        <i class="la la-minus"></i>
+                                                        <i class="la la-plus"></i>
+                                                    </button>
+                                                </h5>
+                                            </div>
+                                            <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
+                                                 data-parent="#accordion">
+                                                <div class="card-body">
+                                                    <p>The address
+                                                        is: {{ $organization->organization_address }}.</p>
+                                                </div>
+                                            </div>
+                                        </div><!-- end card -->
+                                    @endif
 
-                            <div class="pt-4">
-                                <h2 class="widget-title pb-1">Finally</h2>
-                            </div>
-                            <div class="pt-2">
-                                @if(in_array($organization->category_id, $restaurant_type))
-                                    <p class="text-dark text-justify">
-                                        <strong>{{ $organization->organization_name }}</strong> is a very picturesque
-                                        and welcoming place for all. Come join with
-                                        your friends or family, relax, have a great meal, take some good selfies and
-                                        enjoy your time together. Thus, you can make it a memorable day for everyone.
-                                    </p>
-                                @elseif(in_array($organization->category_id, $gym_type))
-                                    <p class="text-dark text-justify">
-                                        <strong>{{ $organization->organization_name }}</strong> is a very picturesque
-                                        and welcoming place for all. Come join with
-                                        your friends or family, relax, take some good selfies and
-                                        enjoy your time together. Thus, you can make it a memorable day for everyone.
-                                    </p>
-                                @elseif(in_array($organization->category_id, $landscaper_type))
-                                    <p class="text-dark text-justify">
-                                        <strong>{{ $organization->organization_name }}</strong> is a very neat and
-                                        welcoming place for all. Just make an appointment or go directly and wait if you
-                                        find a little queue. After that, you can share your need with the concerned
-                                        person and book your desired service.
-                                    </p>
-                                @else
-                                    <p class="text-dark text-justify">
-                                        <strong>{{ $organization->organization_name }}</strong> is very professional and
-                                        always active in customer service. Book their service or clarify things if you
-                                        have any query by contacting them
-                                        at <a
-                                            href="tel:{{$organization->organization_phone_number }}">{{ $organization->organization_phone_number}}</a>.
-                                    </p>
-                                @endif
-                                @if($organization->organization_website || $organization->organization_facebook)
-                                    <p class="text-dark pt-3">For more info about
-                                        <strong>{{ $organization->organization_name }}</strong>, visit their
-                                        @if($organization->organization_website)
-                                            <a rel="nofollow"
-                                               href="{{ 'https://' . $organization->organization_website }}"
-                                               target="_blank">{{ $organization->organization_website }}</a>.
-                                        @elseif($organization->organization_facebook)
-                                            <a rel="nofollow" href="{{ $organization->organization_facebook }}"
-                                               target="_blank">Facebook</a>.
+                                    <div class="card">
+                                        <div class="card-header" id="headingFive">
+                                            <h5>
+                                                <button
+                                                    class="btn btn-link d-flex align-items-center justify-content-between"
+                                                    data-toggle="collapse" data-target="#collapseFive"
+                                                    aria-expanded="false" aria-controls="collapseFive">
+                                                    What is the contact number of this service?
+                                                    <i class="la la-minus"></i>
+                                                    <i class="la la-plus"></i>
+                                                </button>
+                                            </h5>
+                                        </div>
+                                        <div id="collapseFive" class="collapse" aria-labelledby="headingFive"
+                                             data-parent="#accordion">
+                                            <div class="card-body">
+                                                @if($organization->organization_phone_number)
+                                                    <p>The contact number is <a
+                                                            href="tel:{{ $organization->organization_phone_number }}">{{ $organization->organization_phone_number }}</a>
+                                                    </p>
+                                                @else
+                                                    <p>This business hasn’t provided any phone number.
+                                                    </p>
+                                                @endif
+                                            </div>
+                                        </div>
+                                    </div><!-- end card -->
+
+                                    <div class="card">
+                                        <div class="card-header" id="headingSix">
+                                            <h5>
+                                                <button
+                                                    class="btn btn-link d-flex align-items-center justify-content-between"
+                                                    data-toggle="collapse" data-target="#collapseSix"
+                                                    aria-expanded="false" aria-controls="collapseSix">
+                                                    What category is this service listed under?
+                                                    <i class="la la-minus"></i>
+                                                    <i class="la la-plus"></i>
+                                                </button>
+                                            </h5>
+                                        </div>
+                                        <div id="collapseSix" class="collapse" aria-labelledby="headingSix"
+                                             data-parent="#accordion">
+                                            <div class="card-body">
+                                                <p>This service is listed
+                                                    under {{ Str::title($organization->category->name) }}.</p>
+                                            </div>
+                                        </div>
+                                    </div><!-- end card -->
+
+                                    <div class="block-card-header pt-3">
+                                    </div>
+
+                                    <div class="pt-4">
+                                        <h2 class="widget-title pb-1">Finally</h2>
+                                    </div>
+                                    <div class="pt-2">
+                                        @if(in_array($organization->category_id, $restaurant_type))
+                                            <p class="text-dark text-justify">
+                                                <strong>{{ $organization->organization_name }}</strong> is a very
+                                                picturesque
+                                                and welcoming place for all. Come join with
+                                                your friends or family, relax, have a great meal, take some good selfies
+                                                and
+                                                enjoy your time together. Thus, you can make it a memorable day for
+                                                everyone.
+                                            </p>
+                                        @elseif(in_array($organization->category_id, $gym_type))
+                                            <p class="text-dark text-justify">
+                                                <strong>{{ $organization->organization_name }}</strong> is a very
+                                                picturesque
+                                                and welcoming place for all. Come join with
+                                                your friends or family, relax, take some good selfies and
+                                                enjoy your time together. Thus, you can make it a memorable day for
+                                                everyone.
+                                            </p>
+                                        @elseif(in_array($organization->category_id, $landscaper_type))
+                                            <p class="text-dark text-justify">
+                                                <strong>{{ $organization->organization_name }}</strong> is a very neat
+                                                and
+                                                welcoming place for all. Just make an appointment or go directly and
+                                                wait if you
+                                                find a little queue. After that, you can share your need with the
+                                                concerned
+                                                person and book your desired service.
+                                            </p>
+                                        @else
+                                            <p class="text-dark text-justify">
+                                                <strong>{{ $organization->organization_name }}</strong> is very
+                                                professional and
+                                                always active in customer service. Book their service or clarify things
+                                                if you
+                                                have any query by contacting them
+                                                at <a
+                                                    href="tel:{{$organization->organization_phone_number }}">{{ $organization->organization_phone_number}}</a>.
+                                            </p>
                                         @endif
-                                    </p>
-                                @endif
-                            </div>
-                        </div>
+
+                                        @if($organization->organization_website || $organization->organization_facebook)
+                                            <p class="text-dark pt-3">For more info about
+                                                <strong>{{ $organization->organization_name }}</strong>, visit their
+                                                @if($organization->organization_website)
+                                                    <a rel="nofollow"
+                                                       href="{{ 'https://' . $organization->organization_website }}"
+                                                       target="_blank">{{ $organization->organization_website }}</a>.
+                                                @elseif($organization->organization_facebook)
+                                                    <a rel="nofollow" href="{{ $organization->organization_facebook }}"
+                                                       target="_blank">Facebook</a>.
+                                                @endif
+                                            </p>
+                                        @endif
+                                    </div>
+
+                                </div>
+                            </div><!-- end block-card-body -->
+                        </div><!-- end block-card -->
                         <div class="block-card" id="review">
                             <div class="block-card-header">
                                 <h2 class="widget-title pb-1">Add a Review</h2>
@@ -1067,29 +1185,5 @@
             "reviewCount": "{{ $organization->reviews->count() ?? 0}}"
           }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     </script>
 @endsection
