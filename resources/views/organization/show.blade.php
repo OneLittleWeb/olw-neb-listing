@@ -267,9 +267,42 @@
                                 </div><!-- end block-card-body -->
                             </div><!-- end block-card -->
                         @endif
+
+                        <div class="block-card mb-4">
+                            <div class="row">
+                                <div class="col-sm-9">
+                                    <h2 class="widget-title">Reviews <span class="ml-1 text-color-2">({{ $organization->reviews->whereNotNull('review_id')->count() }})</span>
+                                    </h2>
+                                    <div class="stroke-shape mb-4"></div>
+                                    <div class="widget-title filter-by-rating">
+                                        <span class="mr-2 mt-2 filter">Filter</span>
+                                        <button type="button" class="btn border active">All</button>
+                                        <button type="button" class="btn border">5
+                                            <i class="fa-sharp fa-solid fa-star"></i></button>
+                                        <button type="button" class="btn border">4 <i class="fa-solid fa-star"></i>
+                                        </button>
+                                        <button type="button" class="btn border">3 <i class="fa-solid fa-star"></i>
+                                        </button>
+                                        <button type="button" class="btn border">2 <i class="fa-solid fa-star"></i>
+                                        </button>
+                                        <button type="button" class="btn border">1 <i class="fa-solid fa-star"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3 review-sort-by">
+                                    <select class="form-control" id="exampleFormControlSelect1">
+                                        <option>Most Recent</option>
+                                        <option>Highest to Lowest</option>
+                                        <option>Lowest to Highest</option>
+                                        <option>Oldest to Newest</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
                         @if($organization->reviews->count())
                             <div class="block-card mb-4">
-                                <div class=" pb-4">
+                                <div class="pb-4">
                                     <h2 class="widget-title">Reviews <span class="ml-1 text-color-2">({{ $organization->reviews->whereNotNull('review_id')->count() }})</span>
                                     </h2>
                                     <div class="stroke-shape"></div>
@@ -687,7 +720,8 @@
                                         @endif
                                     </div>
                                     <div class="text-center">
-                                        <a rel="nofollow" href="{{ $organization->gmaps_link }}" class="more-review-link" target="_blank">For more reviews</a>
+                                        <a rel="nofollow" href="{{ $organization->gmaps_link }}"
+                                           class="more-review-link" target="_blank">For more reviews</a>
                                     </div>
                                 </div>
                             </div><!-- end block-card -->
@@ -1033,5 +1067,29 @@
             "reviewCount": "{{ $organization->reviews->count() ?? 0}}"
           }
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     </script>
 @endsection

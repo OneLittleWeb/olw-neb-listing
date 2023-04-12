@@ -22,71 +22,24 @@
     height: 52px;
 }
 
-.review-logo{
+.review-logo {
     width: 20px;
 }
 
-@media screen and (max-width: 1450px) {
-    .logo img {
-        width: 12rem;
-    }
-
-    #search-from-header {
-        width: 230px;
-        height: 52px;
-    }
+.filter-by-rating button {
+    padding: 6px 20px;
 }
 
-@media screen and (max-width: 1320px) {
-    .logo img {
-        width: 10rem;
-    }
-
-    #search-from-header {
-        width: 228px;
-        height: 52px;
-    }
+.filter-by-rating button:hover {
+    background: #e7e7e7;
 }
 
-@media screen and (max-width: 1260px) {
-    .logo img {
-        width: 8rem;
-    }
-
-    #search-from-header {
-        width: 198px;
-        height: 52px;
-    }
-}
-
-@media screen and (max-width: 1198px) {
-    .logo img {
-        width: 15rem;
-    }
-}
-
-@media screen and (max-width: 336px) {
-    .google-review {
-        width: 90px;
-    }
-}
-
-@media screen and (max-width: 420px) and (min-width: 330px)
-{
-    .google-review button span{
-        display:none;
-    }
-    .nebraska-review-count{
-        display:none;
-    }
-}
-
-.business-access-search-input-item{
+.business-access-search-input-item {
     margin-left: 0 !important;
     margin-top: 10px !important;
 }
 
-.more-review-link:hover{
+.more-review-link:hover {
     text-decoration: underline;
 }
 
@@ -139,8 +92,17 @@
     margin-bottom: 70px
 }
 
-.claim-button{
+.claim-button {
     border: 0;
+}
+
+.review-sort-by {
+    padding-top: 63px;
+}
+
+.filter-by-rating .active {
+    border: 2px solid #005aa3 !important;
+    box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25) !important;
 }
 
 .owl-stage-outer {
@@ -161,4 +123,102 @@
 /* Selected state of the stars */
 .rating-stars ul > li.star.selected > i.fa {
     color: #FFA718;
+}
+
+@media screen and (max-width: 1450px) {
+    .logo img {
+        width: 12rem;
+    }
+
+    #search-from-header {
+        width: 230px;
+        height: 52px;
+    }
+}
+
+@media screen and (max-width: 1320px) {
+    .logo img {
+        width: 10rem;
+    }
+
+    #search-from-header {
+        width: 228px;
+        height: 52px;
+    }
+}
+
+@media screen and (max-width: 1260px) {
+    .logo img {
+        width: 8rem;
+    }
+
+    #search-from-header {
+        width: 198px;
+        height: 52px;
+    }
+}
+
+@media screen and (max-width: 1198px) {
+    .logo img {
+        width: 15rem;
+    }
+}
+
+@media screen and (max-width: 336px) {
+    .google-review {
+        width: 90px;
+    }
+}
+
+@media screen and (max-width: 420px) and (min-width: 330px) {
+    .google-review button span {
+        display: none;
+    }
+
+    .nebraska-review-count {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1201px) {
+    .filter-by-rating .filter {
+        display: none;
+    }
+
+    .filter-by-rating button {
+        padding: 3px 10px;
+    }
+}
+
+@media screen and (max-width: 769px) {
+    .filter-by-rating .filter {
+        display: none;
+    }
+
+    .filter-by-rating button {
+        padding: 3px 10px;
+    }
+}
+
+@media screen and (max-width: 580px) {
+    .review-sort-by {
+        padding-top: 2px;
+        width: 50%;
+    }
+
+    .filter-by-rating button {
+        padding: 3px 12px;
+    }
+}
+
+/*@media screen and (max-width: 521px) {*/
+/*    .filter-by-rating button {*/
+/*        padding: 3px 12px;*/
+/*    }*/
+/*}*/
+
+@media screen and (max-width: 481px) {
+    .filter-by-rating button {
+        padding: 3px 1px;
+    }
 }
