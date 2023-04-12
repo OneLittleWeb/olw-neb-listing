@@ -838,35 +838,48 @@
                                         </div>
                                     </div><!-- end card -->
 
+                                    <div class="block-card-header pt-3">
+                                    </div>
+
                                     <div class="pt-4">
                                         <h2 class="widget-title pb-1">Finally</h2>
                                     </div>
                                     <div class="pt-2">
                                         @if(in_array($organization->category_id, $restaurant_type))
                                             <p class="text-dark text-justify">
-                                                <strong>{{ $organization->organization_name }}</strong> is a very picturesque
+                                                <strong>{{ $organization->organization_name }}</strong> is a very
+                                                picturesque
                                                 and welcoming place for all. Come join with
-                                                your friends or family, relax, have a great meal, take some good selfies and
-                                                enjoy your time together. Thus, you can make it a memorable day for everyone.
+                                                your friends or family, relax, have a great meal, take some good selfies
+                                                and
+                                                enjoy your time together. Thus, you can make it a memorable day for
+                                                everyone.
                                             </p>
                                         @elseif(in_array($organization->category_id, $gym_type))
                                             <p class="text-dark text-justify">
-                                                <strong>{{ $organization->organization_name }}</strong> is a very picturesque
+                                                <strong>{{ $organization->organization_name }}</strong> is a very
+                                                picturesque
                                                 and welcoming place for all. Come join with
                                                 your friends or family, relax, take some good selfies and
-                                                enjoy your time together. Thus, you can make it a memorable day for everyone.
+                                                enjoy your time together. Thus, you can make it a memorable day for
+                                                everyone.
                                             </p>
                                         @elseif(in_array($organization->category_id, $landscaper_type))
                                             <p class="text-dark text-justify">
-                                                <strong>{{ $organization->organization_name }}</strong> is a very neat and
-                                                welcoming place for all. Just make an appointment or go directly and wait if you
-                                                find a little queue. After that, you can share your need with the concerned
+                                                <strong>{{ $organization->organization_name }}</strong> is a very neat
+                                                and
+                                                welcoming place for all. Just make an appointment or go directly and
+                                                wait if you
+                                                find a little queue. After that, you can share your need with the
+                                                concerned
                                                 person and book your desired service.
                                             </p>
                                         @else
                                             <p class="text-dark text-justify">
-                                                <strong>{{ $organization->organization_name }}</strong> is very professional and
-                                                always active in customer service. Book their service or clarify things if you
+                                                <strong>{{ $organization->organization_name }}</strong> is very
+                                                professional and
+                                                always active in customer service. Book their service or clarify things
+                                                if you
                                                 have any query by contacting them
                                                 at <a
                                                     href="tel:{{$organization->organization_phone_number }}">{{ $organization->organization_phone_number}}</a>.
@@ -1139,5 +1152,6 @@
             "reviewCount": "{{ $organization->reviews->count() ?? 0}}"
           }
         }
+
     </script>
 @endsection
