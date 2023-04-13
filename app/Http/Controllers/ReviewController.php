@@ -45,4 +45,16 @@ class ReviewController extends Controller
 
         return redirect()->back();
     }
+
+    public function getBusinessReviews($organization_slug)
+    {
+        $organization = Organization::where('slug', $organization_slug)->first();
+
+        if ($organization) {
+            $reviews = Review::where('organization_guid', $organization->organization_guid)->get();
+            return response()->json(['status' => 'success', 'reviews' => $reviews]);
+        } else {
+            return response()->json(['status' => 'error', 'message' => 'Organization not found.']);
+        }
+    }
 }

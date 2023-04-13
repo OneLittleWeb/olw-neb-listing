@@ -48,6 +48,8 @@ Route::get('/{city_slug}/nls/{organization_slug}', [OrganizationController::clas
 Route::get('/cities', [CityController::class, 'index'])->name('city.index');
 Route::post('/store-review', [ReviewController::class, 'store'])->name('review.store');
 
+Route::get('/business/review/{organization_slug}', [ReviewController::class, 'getBusinessReviews'])->name('business.reviews');
+
 Route::get('/sitemap', [SitemapController::class, 'sitemapStore'])->name('sitemap');
 
 Route::get('/import', [OrganizationController::class, 'import'])->name('import');

@@ -269,14 +269,16 @@
                         @endif
 
                         <div class="block-card mb-4">
+                            <div class="block-card-header mb-4">
+                                <h2 class="widget-title">Reviews <span class="ml-1 text-color-2">({{ $organization->reviews->whereNotNull('review_id')->count() }})</span>
+                                </h2>
+                                <div class="stroke-shape"></div>
+                            </div><!-- end block-card-header -->
                             <div class="row">
                                 <div class="col-sm-9">
-                                    <h2 class="widget-title">Reviews <span class="ml-1 text-color-2">({{ $organization->reviews->whereNotNull('review_id')->count() }})</span>
-                                    </h2>
-                                    <div class="stroke-shape mb-4"></div>
                                     <div class="widget-title filter-by-rating">
                                         <span class="mr-2 mt-2 filter">Filter</span>
-                                        <button type="button" class="btn border active">All</button>
+                                        <button type="button" class="btn border active" onclick="getOrganizationData('all')">All</button>
                                         <button type="button" class="btn border">5
                                             <i class="fa-sharp fa-solid fa-star"></i></button>
                                         <button type="button" class="btn border">4 <i class="fa-solid fa-star"></i>
@@ -297,6 +299,84 @@
                                         <option>Oldest to Newest</option>
                                     </select>
                                 </div>
+                            </div>
+
+                            <div class="block-card-body" id="review_content_div">
+{{--                                <div class="comments-list">--}}
+{{--                                    <div class="comment">--}}
+{{--                                        <div class="user-thumb user-thumb-lg flex-shrink-0">--}}
+{{--                                            <img src="#" alt="author-img">--}}
+{{--                                        </div>--}}
+{{--                                        <div class="comment-body">--}}
+{{--                                            <div class="meta-data d-flex align-items-center justify-content-between">--}}
+{{--                                                <div>--}}
+{{--                                                    <h4 class="comment__title">Adam Smith</h4>--}}
+{{--                                                    <span class="comment__meta">San Francisco, CA</span>--}}
+{{--                                                </div>--}}
+{{--                                                <div class="star-rating-wrap text-center">--}}
+{{--                                                    <div class="star-rating text-color-5 font-size-18">--}}
+{{--                                                        <span><i class="la la-star"></i></span>--}}
+{{--                                                        <span class="ml-n1"><i class="la la-star"></i></span>--}}
+{{--                                                        <span class="ml-n1"><i class="la la-star"></i></span>--}}
+{{--                                                        <span class="ml-n1"><i class="la la-star"></i></span>--}}
+{{--                                                        <span class="ml-n1"><i class="la la-star"></i></span>--}}
+{{--                                                    </div>--}}
+{{--                                                    <p class="font-size-13 font-weight-medium">04/10/2020</p>--}}
+{{--                                                </div>--}}
+{{--                                            </div>--}}
+{{--                                            <p class="comment-desc">--}}
+{{--                                                Lorem ipsum dolor sit amet, consectetur adipisicing elit,--}}
+{{--                                                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.--}}
+{{--                                                Ut enim ad minim veniam, quis nostrud exercitation.--}}
+{{--                                            </p>--}}
+{{--                                            <div class="review-photos d-flex flex-wrap align-items-center ml-n1 mb-3">--}}
+{{--                                                <a href="#" class="d-inline-block" data-fancybox="gallery">--}}
+{{--                                                    <img class="lazy" src="#" data-src="#" alt="review image">--}}
+{{--                                                </a>--}}
+{{--                                                <a href="#" class="d-inline-block" data-fancybox="gallery">--}}
+{{--                                                    <img class="lazy" src="#" data-src="#"--}}
+{{--                                                         alt="review image">--}}
+{{--                                                </a>--}}
+{{--                                            </div><!-- end review-photos -->--}}
+{{--                                        </div>--}}
+{{--                                    </div><!-- end comment -->--}}
+{{--                                </div>--}}
+{{--                                <div class="text-center">--}}
+{{--                                    <div class="pagination-wrapper d-inline-block">--}}
+{{--                                        <div class="section-pagination">--}}
+{{--                                            <nav aria-label="Page navigation">--}}
+{{--                                                <ul class="pagination flex-wrap justify-content-center">--}}
+{{--                                                    <li class="page-item">--}}
+{{--                                                        <a class="page-link page-link-first" href="#"><i--}}
+{{--                                                                class="la la-long-arrow-left mr-1"></i> First</a>--}}
+{{--                                                    </li>--}}
+{{--                                                    <li class="page-item">--}}
+{{--                                                        <a class="page-link" href="#" aria-label="Previous">--}}
+{{--                                                            <span aria-hidden="true"><i--}}
+{{--                                                                    class="la la-angle-left"></i></span>--}}
+{{--                                                            <span class="sr-only">Previous</span>--}}
+{{--                                                        </a>--}}
+{{--                                                    </li>--}}
+{{--                                                    <li class="page-item"><a class="page-link" href="#">1</a></li>--}}
+{{--                                                    <li class="page-item"><a class="page-link page-link-active"--}}
+{{--                                                                             href="#">2</a></li>--}}
+{{--                                                    <li class="page-item"><a class="page-link" href="#">3</a></li>--}}
+{{--                                                    <li class="page-item">--}}
+{{--                                                        <a class="page-link" href="#" aria-label="Next">--}}
+{{--                                                            <span aria-hidden="true"><i--}}
+{{--                                                                    class="la la-angle-right"></i></span>--}}
+{{--                                                            <span class="sr-only">Next</span>--}}
+{{--                                                        </a>--}}
+{{--                                                    </li>--}}
+{{--                                                    <li class="page-item">--}}
+{{--                                                        <a class="page-link page-link-last" href="#">Last <i--}}
+{{--                                                                class="la la-long-arrow-right ml-1"></i></a>--}}
+{{--                                                    </li>--}}
+{{--                                                </ul>--}}
+{{--                                            </nav>--}}
+{{--                                        </div><!-- end section-pagination -->--}}
+{{--                                    </div>--}}
+{{--                                </div>--}}
                             </div>
                         </div>
 
@@ -1170,20 +1250,78 @@
             });
         });
     </script>
+
+    <script>
+        function getOrganizationData() {
+            $.ajax({
+                url: "{{ route('business.reviews', ['organization_slug' => $organization->slug]) }}",
+                method: "GET",
+                success: function (data) {
+                    if (data.status === "success") {
+                        console.log(data.reviews);
+                        let all_reviews = data.reviews;
+                        let html = '';
+
+                        all_reviews.forEach((review) => {
+                            html += '<div class="comments-list"> '+
+                                '<div class="comment">'+
+                                 '<div class="user-thumb user-thumb-lg flex-shrink-0">' +
+                                 '<img src="#" alt="author-img">' +
+                                 '</div>' +
+                             '<div class="comment-body">' +
+                                 '<div class="meta-data d-flex align-items-center justify-content-between">'+
+                                    '<div>'+
+                                        '<h4 class="comment__title">'+ review.reviewer_name +'</h4>'+
+                                    '</div>'+
+                                    '<div class="star-rating-wrap text-center">'+
+                                        '<div class="users_review_ratings" data-rating="review.review_rate_stars">' +
+                                            '</div>';
+                                        if (review.review_date){
+                                            html += '<p class="font-size-13 font-weight-medium">'+ review.review_date +'</p>';
+                                        } else {
+                                            const now = moment().format('YYYY-MM-DD HH:mm:ss');
+                                            const elapsedTime = moment.duration(moment(now).diff(moment(review.created_at)));
+                                            html += '<p class="font-size-13 font-weight-medium">'+ elapsedTime.humanize() + ' ago ' +'</p>';
+                                        }
+                            html += '</div>'+
+                                '</div>'+
+                                 '<p class="comment-desc">'+ review.review_text_original +'</p>' +
+                                '<div class="review-photos d-flex flex-wrap align-items-center ml-n1 mb-3">'+
+                                    '<a href="#" class="d-inline-block" data-fancybox="gallery">'+
+                                        '<img class="lazy" src="#" data-src="#" alt="review image">'+
+                                     '</a>' +
+                                     '<a href="#" class="d-inline-block" data-fancybox="gallery">'+
+                                         '<img class="lazy" src="#" data-src="#" alt="review image">'+
+                                     '</a>'+
+                                '</div>'+
+                            '</div>'+
+                        '</div>'+
+                        '</div>';
+                        });
+                        document.getElementById('review_content_div').innerHTML = html;
+                    } else {
+                        console.log(data.message);
+                    }
+                }
+            })
+        }
+
+        getOrganizationData();
+    </script>
 @endsection
 @section('json-ld')
     <!-- =======Schema======= -->
-    <script type="application/ld+json">
-        {
-          "@context": "https://schema.org/",
-          "@type": "Organization",
-          "name": "{{$organization->organization_name}}",
-          "description": "{{ $organization->organization_short_description }}",
-          "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "{{ $organization->rate_stars }}",
-            "reviewCount": "{{ $organization->reviews->count() ?? 0}}"
-          }
-        }
-    </script>
+    {{--    <script type="application/ld+json">--}}
+    {{--        {--}}
+    {{--          "@context": "https://schema.org/",--}}
+    {{--          "@type": "Organization",--}}
+    {{--          "name": "{{$organization->organization_name}}",--}}
+    {{--          "description": "{{ $organization->organization_short_description }}",--}}
+    {{--          "aggregateRating": {--}}
+    {{--            "@type": "AggregateRating",--}}
+    {{--            "ratingValue": "{{ $organization->rate_stars }}",--}}
+    {{--            "reviewCount": "{{ $organization->reviews->count() ?? 0}}"--}}
+    {{--          }--}}
+    {{--        }--}}
+    {{--    </script>--}}
 @endsection

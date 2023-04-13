@@ -96,10 +96,6 @@
     border: 0;
 }
 
-.review-sort-by {
-    padding-top: 63px;
-}
-
 .filter-by-rating .active {
     border: 2px solid #005aa3 !important;
     box-shadow: 0 0 0 .2rem rgba(0, 123, 255, .25) !important;
@@ -210,12 +206,6 @@
         padding: 3px 12px;
     }
 }
-
-/*@media screen and (max-width: 521px) {*/
-/*    .filter-by-rating button {*/
-/*        padding: 3px 12px;*/
-/*    }*/
-/*}*/
 
 @media screen and (max-width: 481px) {
     .filter-by-rating button {
