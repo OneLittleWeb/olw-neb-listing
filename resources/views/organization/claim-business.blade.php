@@ -81,7 +81,7 @@
                     '                            </div>' +
                     '                        </div>';
             } else if (selected_value === 'nothing_out_of_this') {
-                business_verification_data.innerHTML = '<p class="padding-top-20px"><a href="#">Please contact us to continue the verification process</a></p>';
+                business_verification_data.innerHTML = '<p class="padding-top-20px"><a href="{{ route('contact.for.claim.business', $organization->slug) }}" target="_blank">Please contact us to continue the verification process</a></p>';
             } else {
                 business_verification_data.innerHTML = '';
             }

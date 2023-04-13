@@ -166,6 +166,15 @@ class OrganizationController extends Controller
         return view('organization.claim-business', compact('cities', 'city', 'organization'));
     }
 
+    public function contactForClaimBusiness($slug)
+    {
+        $cities = City::all();
+        $city = null;
+        $organization = Organization::where('slug', $slug)->firstOrFail();
+
+        return view('organization.contact-for-claim-business', compact('cities', 'city', 'organization'));
+    }
+
     public function import()
     {
         $category_directories = File::directories('H:\scraped data');

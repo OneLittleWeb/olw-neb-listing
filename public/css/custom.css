@@ -22,71 +22,16 @@
     height: 52px;
 }
 
-.review-logo{
+.review-logo {
     width: 20px;
 }
 
-@media screen and (max-width: 1450px) {
-    .logo img {
-        width: 12rem;
-    }
-
-    #search-from-header {
-        width: 230px;
-        height: 52px;
-    }
-}
-
-@media screen and (max-width: 1320px) {
-    .logo img {
-        width: 10rem;
-    }
-
-    #search-from-header {
-        width: 228px;
-        height: 52px;
-    }
-}
-
-@media screen and (max-width: 1260px) {
-    .logo img {
-        width: 8rem;
-    }
-
-    #search-from-header {
-        width: 198px;
-        height: 52px;
-    }
-}
-
-@media screen and (max-width: 1198px) {
-    .logo img {
-        width: 15rem;
-    }
-}
-
-@media screen and (max-width: 336px) {
-    .google-review {
-        width: 90px;
-    }
-}
-
-@media screen and (max-width: 420px) and (min-width: 330px)
-{
-    .google-review button span{
-        display:none;
-    }
-    .nebraska-review-count{
-        display:none;
-    }
-}
-
-.business-access-search-input-item{
+.business-access-search-input-item {
     margin-left: 0 !important;
     margin-top: 10px !important;
 }
 
-.more-review-link:hover{
+.more-review-link:hover {
     text-decoration: underline;
 }
 
@@ -139,7 +84,7 @@
     margin-bottom: 70px
 }
 
-.claim-button{
+.claim-button {
     border: 0;
 }
 
@@ -161,4 +106,64 @@
 /* Selected state of the stars */
 .rating-stars ul > li.star.selected > i.fa {
     color: #FFA718;
+}
+
+.contact-for-claim-business-profile {
+    padding-left: 30px;
+    list-style-type: disc;
+}
+
+@media screen and (max-width: 1450px) {
+    .logo img {
+        width: 12rem;
+    }
+
+    #search-from-header {
+        width: 230px;
+        height: 52px;
+    }
+}
+
+@media screen and (max-width: 1320px) {
+    .logo img {
+        width: 10rem;
+    }
+
+    #search-from-header {
+        width: 228px;
+        height: 52px;
+    }
+}
+
+@media screen and (max-width: 1260px) {
+    .logo img {
+        width: 8rem;
+    }
+
+    #search-from-header {
+        width: 198px;
+        height: 52px;
+    }
+}
+
+@media screen and (max-width: 1198px) {
+    .logo img {
+        width: 15rem;
+    }
+}
+
+@media screen and (max-width: 336px) {
+    .google-review {
+        width: 90px;
+    }
+}
+
+@media screen and (max-width: 420px) and (min-width: 330px) {
+    .google-review button span {
+        display: none;
+    }
+
+    .nebraska-review-count {
+        display: none;
+    }
 }
