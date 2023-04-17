@@ -176,7 +176,8 @@
                         <p style="margin: 0;">Your business <a
                                 href="{{ route('city.wise.organization', ['city_slug' => $organization->city->slug, 'organization_slug' => $organization->slug]) }}">{{ $organization->organization_name }}</a>
                             has been successfully claimed. You may now sign up using the
-                            same email associated with your business and log in to your account.</p>
+                            email <a href="mailto:{{$organization->claimed_mail}}">{{ $organization->claimed_mail }}</a>
+                            associated with your business and log in to your account.</p>
                         <p>If you didn't sent
                             an email from <a href="{{ env('APP_URL') }}">nebraskalisting.com</a>, you can safely
                             delete this
