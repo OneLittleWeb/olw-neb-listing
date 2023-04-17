@@ -28,35 +28,42 @@
                         methods below. After claiming a profile you will be able to edit all your business
                         information.</p>
 
-                    <div class="main-search-input-item user-chosen-select-container margin-top-10px">
-                        <label>Business state <span class="required">*</span></label>
-                        <select class="user-chosen-select" name="search_city" id="search_city">
-                            @foreach($cities as $search_city)
-                                <option class="text-capitalize" value="{{ $search_city->id }}">{{ $search_city->name }},
-                                    NE
-                                </option>
-                            @endforeach
-                        </select>
-                    </div><!-- end main-search-input-item -->
+                    <form method="post" action="{{ route('claim.business.profile', $organization->slug) }}">
+                        @csrf
+                        <div class="main-search-input-item user-chosen-select-container margin-top-10px">
+                            <label>Business state <span class="required">*</span></label>
+                            <select class="user-chosen-select" name="organization_city" id="organization_city">
+                                @foreach($cities as $organization_city)
+                                    <option class="text-capitalize"
+                                            value="{{ $organization_city->id }}" {{ $organization_city->id == $organization->city_id ? 'selected' : '' }}>{{ $organization_city->name }},
+                                        NE
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
 
-                    <div
-                        class="main-search-input-item business-access-search-input-item user-chosen-select-container margin-top-10px">
-                        <label>I have access to <span class="required">*</span></label>
-                        <select class="user-chosen-select" name="search_city" id="search_city"
-                                onchange="businessAccess(event)">
-                            <option class="text-capitalize" value="">-</option>
-                            @if($organization->organization_website)
-                                <option class="text-capitalize" value="email_on_business_domain">Email on business
-                                    domain
-                                </option>
-                            @endif
-                            <option class="text-capitalize" value="nothing_out_of_this">Nothing out of this</option>
-                        </select>
-                    </div><!-- end main-search-input-item -->
+                        <div
+                            class="main-search-input-item business-access-search-input-item user-chosen-select-container margin-top-10px">
+                            <label>I have access to <span class="required">*</span></label>
+                            <select class="user-chosen-select" name="organization_access" id="organization_access"
+                                    onchange="businessAccess(event)" required>
+                                <option class="text-capitalize" value="">-</option>
+                                @if($organization->organization_website)
+                                    <option class="text-capitalize" value="email_on_business_domain">Email on business
+                                        domain
+                                    </option>
+                                @endif
+                                <option class="text-capitalize" value="nothing_out_of_this">Nothing out of this</option>
+                            </select>
+                        </div><!-- end main-search-input-item -->
 
-                    <div id="business_verification_data_div">
+                        <div id="business_verification_data_div">
 
-                    </div>
+                        </div>
+                        <div class="padding-top-20px">
+                            <button type="submit" class="btn btn-primary send-contact-button">Send</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -73,11 +80,11 @@
                     '                        <div' +
                     '                            class="main-search-input-item business-access-search-input-item input-group margin-top-20px">' +
                     '                            <input class="form-control rounded-0 looking-for" type="search" id="search-from-header"' +
-                    '                                   name="looking_for" placeholder="What are you looking for?" autocomplete="off"' +
+                    '                                   name="business_email" autocomplete="off"' +
                     '                                   required>' +
                     '                            <div class="input-group-prepend">' +
                     '                                <span class="input-group-text"' +
-                    '                                      id="inputGroupPrepend2">{{ '@' . $organization->organization_website }}</span>' +
+                    '                                      id="organization_website">{{ '@' . $organization->organization_website }}</span>' +
                     '                            </div>' +
                     '                        </div>';
             } else if (selected_value === 'nothing_out_of_this') {

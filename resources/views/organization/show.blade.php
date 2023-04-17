@@ -43,7 +43,7 @@
                             <div class="d-flex align-items-center pt-1">
                                 <h1 class="sec__title mb-0">{{ $organization->organization_name }}</h1>
 
-                                @if($organization->is_claim)
+                                @if($organization->is_claimed)
                                     <div class="hover-tooltip-box ml-3 pt-2">
                                         <span class="text-color"><i class="la la-check-circle mr-1 text-color-4"></i>Claimed</span>
                                         <div class="hover-tooltip">

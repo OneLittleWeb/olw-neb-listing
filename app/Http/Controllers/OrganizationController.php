@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Imports\ImportOrganization;
+use App\Mail\ClaimBusinessMail;
+use App\Mail\ContactUsMail;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\Organization;
 use Butschster\Head\Facades\Meta;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\File;
@@ -164,6 +167,60 @@ class OrganizationController extends Controller
         $organization = Organization::where('slug', $slug)->firstOrFail();
 
         return view('organization.claim-business', compact('cities', 'city', 'organization'));
+    }
+
+    public function claimBusinessProfile(Request $request, $slug)
+    {
+        $organization = Organization::where('slug', $slug)->firstOrFail();
+
+        if ($organization) {
+            if ($organization->city_id == $request->organization_city) {
+                $business_mail = $request->business_email . '@' . $organization->organization_website;
+
+                try {
+                    Mail::to($business_mail)->send(new ClaimBusinessMail($organization));
+
+                    alert()->success('success', 'An email has been sent to your business mail. Please check and confirm your business.');
+
+                    return redirect()->back();
+
+                } catch (\Exception $e) {
+                    alert()->error('error', 'Something went wrong. Please try again later.');
+                    return redirect()->back();
+                }
+            } else {
+                alert()->warning('No Found', 'This business is not available in this state!');
+                return redirect()->back();
+            }
+        }
+        abort(404);
+    }
+
+    public function confirmClaimBusiness($slug)
+    {
+        $organization = Organization::where('slug', $slug)->firstOrFail();
+        if ($organization) {
+            $organization->is_claimed = 1;
+            $organization->save();
+
+//            try {
+//                Mail::to($business_mail)->send(new ClaimBusinessMail($organization));
+//
+//                alert()->success('success', 'An email has been sent to your business mail. Please check and confirm your business.');
+//
+//                return redirect()->back();
+//
+//            } catch (\Exception $e) {
+//                alert()->error('error', 'Something went wrong. Please try again later.');
+//                return redirect()->back();
+//            }
+
+            alert()->success('success', 'Your business has been claimed successfully. Now you can signup using same business mail and login to your account.');
+
+            return redirect()->route('city.wise.organization', ['city_slug' => $organization->city->slug, 'organization_slug' => $organization->slug]);
+        }
+
+        abort(404);
     }
 
     public function contactForClaimBusiness($slug)
