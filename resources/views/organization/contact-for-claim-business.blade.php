@@ -61,6 +61,8 @@
                                 <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
                             </div>
                         </div>
+
+                        <button type="submit" class="btn btn-primary send-contact-button">Send</button>
                     </form>
 
                 </div>

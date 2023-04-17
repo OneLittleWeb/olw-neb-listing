@@ -113,6 +113,10 @@
     list-style-type: disc;
 }
 
+.send-contact-button{
+    padding: 7px 42px;
+}
+
 @media screen and (max-width: 1450px) {
     .logo img {
         width: 12rem;
