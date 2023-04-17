@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Imports\ImportOrganization;
 use App\Mail\ClaimBusinessMail;
+use App\Mail\ClaimedBusiness;
 use App\Mail\ContactUsMail;
 use App\Models\Category;
 use App\Models\City;
@@ -180,6 +181,8 @@ class OrganizationController extends Controller
                 try {
                     Mail::to($business_mail)->send(new ClaimBusinessMail($organization));
 
+                    $organization->claimed_mail = $business_mail;
+                    $organization->update();
                     alert()->success('success', 'An email has been sent to your business mail. Please check and confirm your business.');
 
                     return redirect()->back();
@@ -201,23 +204,18 @@ class OrganizationController extends Controller
         $organization = Organization::where('slug', $slug)->firstOrFail();
         if ($organization) {
             $organization->is_claimed = 1;
-            $organization->save();
+            $organization->update();
 
-//            try {
-//                Mail::to($business_mail)->send(new ClaimBusinessMail($organization));
-//
-//                alert()->success('success', 'An email has been sent to your business mail. Please check and confirm your business.');
-//
-//                return redirect()->back();
-//
-//            } catch (\Exception $e) {
-//                alert()->error('error', 'Something went wrong. Please try again later.');
-//                return redirect()->back();
-//            }
+            try {
+                Mail::to($organization->claimed_mail)->send(new ClaimedBusiness($organization));
+                alert()->success('success', 'Your business has been claimed successfully. You may now sign up using the same email associated with your business and log in to your account.');
 
-            alert()->success('success', 'Your business has been claimed successfully. Now you can signup using same business mail and login to your account.');
+                return redirect()->route('city.wise.organization', ['city_slug' => $organization->city->slug, 'organization_slug' => $organization->slug]);
 
-            return redirect()->route('city.wise.organization', ['city_slug' => $organization->city->slug, 'organization_slug' => $organization->slug]);
+            } catch (\Exception $e) {
+                alert()->error('error', 'Something went wrong. Please try again later.');
+                return redirect()->back();
+            }
         }
 
         abort(404);

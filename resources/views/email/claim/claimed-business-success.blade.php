@@ -146,7 +146,7 @@
                     <td align="left" bgcolor="#ffffff"
                         style="padding: 36px 24px 0; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; border-top: 3px solid #d4dadf;">
                         <h1 style="margin: 0; font-size: 32px; font-weight: 700; letter-spacing: -1px; line-height: 48px;">
-                            Confirm Your Business</h1>
+                            Claimed Your Business</h1>
                     </td>
                 </tr>
             </table>
@@ -173,44 +173,14 @@
                 <tr>
                     <td align="left" bgcolor="#ffffff"
                         style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-                        <p style="margin: 0;">Tap the button below to confirm your business. If you didn't sent
+                        <p style="margin: 0;">Your business <a
+                                href="{{ route('city.wise.organization', ['city_slug' => $organization->city->slug, 'organization_slug' => $organization->slug]) }}">{{ $organization->organization_name }}</a>
+                            has been successfully claimed. You may now sign up using the
+                            same email associated with your business and log in to your account.</p>
+                        <p>If you didn't sent
                             an email from <a href="{{ env('APP_URL') }}">nebraskalisting.com</a>, you can safely
                             delete this
                             email.</p>
-                    </td>
-                </tr>
-                <!-- end copy -->
-
-                <!-- start button -->
-                <tr>
-                    <td align="left" bgcolor="#ffffff">
-                        <table border="0" cellpadding="0" cellspacing="0" width="100%">
-                            <tr>
-                                <td align="center" bgcolor="#ffffff" style="padding: 12px;">
-                                    <table border="0" cellpadding="0" cellspacing="0">
-                                        <tr>
-                                            <td align="center" bgcolor="#1a82e2" style="border-radius: 6px;">
-                                                <a href="{{ route('confirm.claim.business', $organization->slug) }}" target="_blank"
-                                                   style="display: inline-block; padding: 16px 36px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; color: #ffffff; text-decoration: none; border-radius: 6px;">Confirm
-                                                    Business</a>
-                                            </td>
-                                        </tr>
-                                    </table>
-                                </td>
-                            </tr>
-                        </table>
-                    </td>
-                </tr>
-                <!-- end button -->
-
-                <!-- start copy -->
-                <tr>
-                    <td align="left" bgcolor="#ffffff"
-                        style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-                        <p style="margin: 0;">If that doesn't work, copy and paste the following link in your
-                            browser:</p>
-                        <p style="margin: 0;"><a href="{{ route('confirm.claim.business', $organization->slug) }}" target="_blank">{{ route('confirm.claim.business', $organization->slug) }}</a>
-                        </p>
                     </td>
                 </tr>
                 <!-- end copy -->

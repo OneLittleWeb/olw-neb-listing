@@ -11,14 +11,16 @@ class ClaimedBusiness extends Mailable
 {
     use Queueable, SerializesModels;
 
+    public $organization;
+
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($organization)
     {
-        //
+        $this->organization = $organization;
     }
 
     /**
@@ -28,6 +30,7 @@ class ClaimedBusiness extends Mailable
      */
     public function build()
     {
-        return $this->view('view.name');
+        return $this->subject('Claim business profile' . ' - ' . $this->organization['subject'])
+            ->view('email.claim.claimed-business-success');
     }
 }
