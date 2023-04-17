@@ -37,11 +37,11 @@ Route::post('/payments/pay',[StripePaymentController::class,'checkout'])->name('
 Route::get('/payments/approval',[StripePaymentController::class,'approval'])->name('payment.approval');
 Route::get('/payments/cancelled',[StripePaymentController::class,'cancelled'])->name('payment.cancelled');
 
-
 Route::get('/categories', [CategoryController::class, 'allCategories'])->name('all.categories');
 Route::get('/category/{slug}', [CategoryController::class, 'categoryBusiness'])->name('category.business');
 
 Route::get('/claim-your-business/{slug}',[OrganizationController::class, 'claimBusiness'])->name('claim.business');
+Route::get('/contact-for/claim-your-business/{slug}',[OrganizationController::class, 'contactForClaimBusiness'])->name('contact.for.claim.business');
 Route::get('/{city_slug}/{category_slug}', [OrganizationController::class, 'cityWiseOrganizations'])->name('city.wise.organizations');
 Route::get('/{city_slug}/nls/{organization_slug}', [OrganizationController::class, 'cityWiseOrganization'])->name('city.wise.organization');
 
