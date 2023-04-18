@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class ClaimedBusiness extends Mailable
+class ClaimedNotificationToAdmin extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -31,6 +31,6 @@ class ClaimedBusiness extends Mailable
     public function build()
     {
         return $this->subject('Claim business profile' . ' - ' . $this->organization['subject'])
-            ->view('email.claim.claimed-success-to-user');
+            ->view('email.claim.claimed-success-to-admin');
     }
 }

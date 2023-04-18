@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Imports\ImportOrganization;
 use App\Mail\ClaimBusinessMail;
 use App\Mail\ClaimedBusiness;
+use App\Mail\ClaimedNotificationToAdmin;
 use App\Mail\ContactUsMail;
 use App\Models\Category;
 use App\Models\City;
@@ -208,6 +209,7 @@ class OrganizationController extends Controller
 
             try {
                 Mail::to($organization->claimed_mail)->send(new ClaimedBusiness($organization));
+                Mail::to('support@nebraskalisting.com')->send(new ClaimedNotificationToAdmin($organization));
                 alert()->success('success', 'Your business has been claimed successfully. You may now sign up using the same email associated with your business and log in to your account.');
 
                 return redirect()->route('city.wise.organization', ['city_slug' => $organization->city->slug, 'organization_slug' => $organization->slug]);
