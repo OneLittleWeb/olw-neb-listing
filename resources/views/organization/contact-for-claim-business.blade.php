@@ -39,26 +39,34 @@
                         </ul>
                     </div>
 
-                    <form action="#" enctype="multipart/form-data">
+                    <form method="post" action="{{ route('store.contact.for.claim.business',$organization->slug) }}"
+                          enctype="multipart/form-data">
+                        @csrf
                         <div class="form-group pt-3">
                             <label for="contact_email">Email address <span class="required">*</span></label>
                             <input type="email" class="form-control" name="contact_email" id="contact_email"
-                                   aria-describedby="emailHelp" placeholder="Enter email" required>
+                                   aria-describedby="emailHelp" placeholder="Enter email" value="{{ old('contact_email') }}" required>
                         </div>
 
-                        <div class="form-group">
+                        <div class="form-group pt-2">
+                            <label for="contact_email">Phone number</label>
+                            <input type="text" class="form-control" name="contact_number" id="contact_number"
+                                   placeholder="Enter phone number" value="{{ old('contact_number') }}">
+                        </div>
+
+                        <div class="form-group pt-2">
                             <label for="editable_information">What business information you want to edit? <span
                                     class="required">*</span></label>
                             <textarea class="form-control" name="editable_information" id="editable_information"
-                                      rows="3" required></textarea>
+                                      rows="3" required>{{ old('editable_information') }}</textarea>
                         </div>
 
                         <div>
-                            <label for="exampleInputEmail1">Photo</label>
+                            <label for="validation_images">Photo</label>
                             <div class="custom-file padding-top-40px">
-                                <input type="file" class="custom-file-input" name="validation_images"
-                                       id="validation_images">
-                                <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                                <input type="file" class="custom-file-input" name="validation_images[]"
+                                       id="validation_images" multiple>
+                                <label class="custom-file-label" for="validation_images">Choose file...</label>
                             </div>
                         </div>
 
@@ -73,9 +81,8 @@
 
 @section('js')
     <script>
-        // Add the following code if you want the name of the file appear on select
         $(".custom-file-input").on("change", function () {
-            var fileName = $(this).val().split("\\").pop();
+            let fileName = $(this).val().split("\\").pop();
             $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
         });
     </script>

@@ -56,7 +56,7 @@ class PageController extends Controller
         $contact->save();
 
         try {
-            Mail::to('support@nebraskalisting.com')->send(new ContactUsMail($contact));
+            Mail::to(env('SUPPORT_MAIL_ADDRESS'))->send(new ContactUsMail($contact));
         } catch (\Exception $e) {
             alert()->error('error', 'Something went wrong. Please try again later.');
             return redirect()->back();

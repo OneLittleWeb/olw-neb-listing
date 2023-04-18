@@ -6,13 +6,17 @@ use App\Imports\ImportOrganization;
 use App\Mail\ClaimBusinessMail;
 use App\Mail\ClaimedBusiness;
 use App\Mail\ClaimedNotificationToAdmin;
+use App\Mail\ContactForClaimToAdmin;
+use App\Mail\ContactForClaimToUser;
 use App\Mail\ContactUsMail;
 use App\Models\Category;
 use App\Models\City;
+use App\Models\ContactForClaimBusiness;
 use App\Models\Organization;
 use Butschster\Head\Facades\Meta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\File;
@@ -209,7 +213,7 @@ class OrganizationController extends Controller
 
             try {
                 Mail::to($organization->claimed_mail)->send(new ClaimedBusiness($organization));
-                Mail::to('support@nebraskalisting.com')->send(new ClaimedNotificationToAdmin($organization));
+                Mail::to(env('SUPPORT_MAIL_ADDRESS'))->send(new ClaimedNotificationToAdmin($organization));
                 alert()->success('success', 'Your business has been claimed successfully. You may now sign up using the same email associated with your business and log in to your account.');
 
                 return redirect()->route('city.wise.organization', ['city_slug' => $organization->city->slug, 'organization_slug' => $organization->slug]);
@@ -230,6 +234,56 @@ class OrganizationController extends Controller
         $organization = Organization::where('slug', $slug)->firstOrFail();
 
         return view('organization.contact-for-claim-business', compact('cities', 'city', 'organization'));
+    }
+
+    public function storeContactForClaimBusiness(Request $request, $slug)
+    {
+        $request->validate([
+            'contact_email' => 'required|email',
+            'editable_information' => 'required',
+            'validation_images.*' => 'required|mimes:jpg,jpeg,png'
+        ]);
+
+        $organization = Organization::where('slug', $slug)->firstOrFail();
+
+        if ($organization) {
+
+            if ($request->hasFile('validation_images')) {
+                $images = [];
+                foreach ($request->file('validation_images') as $image) {
+                    $path = $image->store('public/images/claim-business');
+                    $images[] = [
+                        'url' => Storage::url($path),
+                        'name' => $image->getClientOriginalName(),
+                        'mime_type' => $image->getClientMimeType(),
+                    ];
+                }
+            }
+
+            $contact_for_claim_business = new ContactForClaimBusiness();
+            $contact_for_claim_business->organization_id = $organization->id;
+            $contact_for_claim_business->contact_email = $request->contact_email;
+            $contact_for_claim_business->contact_number = $request->contact_number;
+            $contact_for_claim_business->editable_information = $request->editable_information;
+            if ($request->hasFile('validation_images')) {
+                $contact_for_claim_business->validation_images = json_encode($images);
+            }
+            $contact_for_claim_business->save();
+
+            try {
+                Mail::to($request->contact_email)->send(new ContactForClaimToUser($organization));
+                Mail::to('')->send(new ContactForClaimToAdmin($organization));
+            } catch (\Exception $e) {
+                alert()->error('error', 'Something went wrong. Please try again later.');
+                return redirect()->back();
+            }
+
+            alert()->success('success', 'your request has been submitted successfully. We will contact you soon.');
+
+            return redirect()->back();
+        }
+
+        abort(404);
     }
 
     public function import()

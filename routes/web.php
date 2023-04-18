@@ -45,6 +45,7 @@ Route::post('/claim-your-business/{slug}',[OrganizationController::class, 'claim
 Route::get('/confirm/claim-business/{slug}',[OrganizationController::class, 'confirmClaimBusiness'])->name('confirm.claim.business');
 
 Route::get('/contact-for/claim-your-business/{slug}',[OrganizationController::class, 'contactForClaimBusiness'])->name('contact.for.claim.business');
+Route::post('/contact-for/claim-business/{slug}',[OrganizationController::class, 'storeContactForClaimBusiness'])->name('store.contact.for.claim.business');
 
 
 Route::get('/{city_slug}/{category_slug}', [OrganizationController::class, 'cityWiseOrganizations'])->name('city.wise.organizations');
