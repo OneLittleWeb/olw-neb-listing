@@ -26,6 +26,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('business/review', [AdminReviewController::class, 'reviewBusiness'])->name('reviews.business');
     Route::get('review/{slug}', [AdminReviewController::class, 'reviews'])->name('reviews');
     Route::get('contacts', [ContactUsController::class, 'index'])->name('contact.index');
+    Route::get('contacts/claim', [ContactUsController::class, 'contactForClaimBusiness'])->name('contact.for.claim');
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -46,7 +47,6 @@ Route::get('/confirm/claim-business/{slug}',[OrganizationController::class, 'con
 
 Route::get('/contact-for/claim-your-business/{slug}',[OrganizationController::class, 'contactForClaimBusiness'])->name('contact.for.claim.business');
 Route::post('/contact-for/claim-business/{slug}',[OrganizationController::class, 'storeContactForClaimBusiness'])->name('store.contact.for.claim.business');
-
 
 Route::get('/{city_slug}/{category_slug}', [OrganizationController::class, 'cityWiseOrganizations'])->name('city.wise.organizations');
 Route::get('/{city_slug}/nls/{organization_slug}', [OrganizationController::class, 'cityWiseOrganization'])->name('city.wise.organization');
