@@ -30,7 +30,7 @@ class ContactForClaimToAdmin extends Mailable
      */
     public function build()
     {
-        return $this->subject('Contact from Claim business profile' . ' - ' . $this->organization['subject'])
-            ->view('email.claim.claimed-success-to-user');
+        return $this->subject('Contact for business profile' . ' - ' . $this->organization['subject'])
+            ->view('email.claim.contact.contact-for-claim-to-admin');
     }
 }

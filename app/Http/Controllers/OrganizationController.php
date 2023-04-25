@@ -272,7 +272,7 @@ class OrganizationController extends Controller
 
             try {
                 Mail::to($request->contact_email)->send(new ContactForClaimToUser($organization));
-                Mail::to('')->send(new ContactForClaimToAdmin($organization));
+                Mail::to(env('SUPPORT_MAIL_ADDRESS'))->send(new ContactForClaimToAdmin($organization));
             } catch (\Exception $e) {
                 alert()->error('error', 'Something went wrong. Please try again later.');
                 return redirect()->back();
