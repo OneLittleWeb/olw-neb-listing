@@ -27,6 +27,8 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('review/{slug}', [AdminReviewController::class, 'reviews'])->name('reviews');
     Route::get('contacts', [ContactUsController::class, 'index'])->name('contact.index');
     Route::get('contacts/claim', [ContactUsController::class, 'contactForClaimBusiness'])->name('contact.for.claim');
+    Route::post('contacts/claim/{id}', [ContactUsController::class, 'ClaimStatusEdit'])->name('claim.status.edit');
+    Route::post('contacts/claim/update/{id}/{status}', [ContactUsController::class, 'ClaimStatusUpdate'])->name('claim.status.update');
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');

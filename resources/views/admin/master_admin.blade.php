@@ -90,7 +90,10 @@
 <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/toastr@2.1.4/build/toastr.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 {!! Toastr::message() !!}
 @yield('js')
+@include('sweetalert::alert')
 </body>
 </html>

@@ -20,6 +20,7 @@ class CreateContactForClaimBusinessesTable extends Migration
             $table->string('contact_number')->nullable();
             $table->text('editable_information')->nullable();
             $table->json('validation_images')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }

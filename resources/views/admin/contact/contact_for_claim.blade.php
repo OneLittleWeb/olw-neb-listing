@@ -35,16 +35,26 @@
                                         <td>{{$contact->contact_email}}</td>
                                         <td>{{$contact->contact_number}}</td>
                                         <td>{{$contact->editable_information}}</td>
-                                        <td style="table-layout: fixed; width: 10%">
-                                            <button type="button" class="btn btn-sm btn-primary"
-                                                    data-toggle="tooltip" data-placement="top" title="Approve"><i
-                                                    class="fas fa-check" aria-hidden="true"></i></button>
-                                            <button type="submit" class="btn btn-sm btn-danger"
-                                                    data-toggle="tooltip" data-placement="top" title="Cancel"><i
-                                                    class="fa fa-times" aria-hidden="true"></i></button>
-                                            <button type="submit" class="btn btn-sm btn-info"
-                                                    data-toggle="tooltip" data-placement="top" title="Show details"><i
-                                                    class="fa fa-eye" aria-hidden="true"></i></button>
+                                        <td style="width: 10%">
+                                            <form class="d-inline" method="post" action="{{ route('admin.claim.status.update', ['id' => $contact->id, 'status' => 'approved']) }}">
+                                                @csrf
+                                                <button type="button" class="btn btn-sm btn-primary claim-status"
+                                                        data-toggle="tooltip" data-placement="top" title="Approve"><i
+                                                        class="fa fa-check" aria-hidden="true"></i></button>
+                                            </form>
+
+                                            <form method="post" action="{{ route('admin.claim.status.update', ['id' => $contact->id, 'status' => 'cancel']) }}"
+                                                  class="d-inline">
+                                                @csrf
+                                                <button type="button" class="btn btn-sm btn-danger claim-status"
+                                                        data-toggle="tooltip" data-placement="top" title="Cancel"><i
+                                                        class="fa fa-times" aria-hidden="true"></i></button>
+                                            </form>
+                                            <div class="d-inline">
+                                                <button type="submit" class="btn btn-sm btn-info d-inline"
+                                                        data-toggle="tooltip" data-placement="top" title="Show details"><i
+                                                        class="fa fa-eye" aria-hidden="true"></i></button>
+                                            </div>
                                         </td>
                                     </tr>
                                 @endforeach
@@ -254,6 +264,26 @@
     </div><!-- end dashboard-inner-body-container -->
 @endsection
 @section('js')
+    <script>
+        $(document).on('click', 'button.claim-status', function () {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "Do you want to approve this business?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, approve it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $(this).parent('form').trigger('submit')
+                } else if (result.isDenied) {
+                    Swal.fire('Changes are not saved', '', 'info')
+                }
+            });
+        });
+    </script>
+
     <script>
         $(document).ready(function () {
             $('#claim_business_table').DataTable();
