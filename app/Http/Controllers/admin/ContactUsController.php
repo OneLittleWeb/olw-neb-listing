@@ -40,6 +40,8 @@ class ContactUsController extends Controller
                 $organization->is_claimed = 1;
                 $organization->update();
 
+                $claimed_business->delete();
+
                 alert()->success('success', 'The business claim has been approved.');
                 return redirect()->back();
             } else {
