@@ -36,23 +36,26 @@
                                         <td>{{$contact->contact_number}}</td>
                                         <td>{{$contact->editable_information}}</td>
                                         <td style="width: 10%">
-                                            <form class="d-inline" method="post" action="{{ route('admin.claim.status.update', ['id' => $contact->id, 'status' => 'approved']) }}">
+                                            <form class="d-inline" method="post"
+                                                  action="{{ route('admin.claim.status.update', ['id' => $contact->id, 'status' => 'approved']) }}">
                                                 @csrf
-                                                <button type="button" class="btn btn-sm btn-primary claim-status"
+                                                <button type="button" class="btn btn-sm btn-primary claim-approve"
                                                         data-toggle="tooltip" data-placement="top" title="Approve"><i
                                                         class="fa fa-check" aria-hidden="true"></i></button>
                                             </form>
 
-                                            <form method="post" action="{{ route('admin.claim.status.update', ['id' => $contact->id, 'status' => 'cancel']) }}"
+                                            <form method="post"
+                                                  action="{{ route('admin.claim.status.update', ['id' => $contact->id, 'status' => 'cancel']) }}"
                                                   class="d-inline">
                                                 @csrf
-                                                <button type="button" class="btn btn-sm btn-danger claim-status"
+                                                <button type="button" class="btn btn-sm btn-danger claim-cancel"
                                                         data-toggle="tooltip" data-placement="top" title="Cancel"><i
                                                         class="fa fa-times" aria-hidden="true"></i></button>
                                             </form>
                                             <div class="d-inline">
                                                 <button type="submit" class="btn btn-sm btn-info d-inline"
-                                                        data-toggle="tooltip" data-placement="top" title="Show details"><i
+                                                        data-toggle="tooltip" data-placement="top" title="Show details">
+                                                    <i
                                                         class="fa fa-eye" aria-hidden="true"></i></button>
                                             </div>
                                         </td>
@@ -265,10 +268,10 @@
 @endsection
 @section('js')
     <script>
-        $(document).on('click', 'button.claim-status', function () {
+        $(document).on('click', 'button.claim-approve', function () {
             Swal.fire({
                 title: 'Are you sure?',
-                text: "Do you want to approve this business?",
+                text: "Do you want to approve this business claim?",
                 icon: 'warning',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -277,8 +280,22 @@
             }).then((result) => {
                 if (result.isConfirmed) {
                     $(this).parent('form').trigger('submit')
-                } else if (result.isDenied) {
-                    Swal.fire('Changes are not saved', '', 'info')
+                }
+            });
+        });
+
+        $(document).on('click', 'button.claim-cancel', function () {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "Do you want to cancel this business claim?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, cancel it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $(this).parent('form').trigger('submit')
                 }
             });
         });

@@ -278,7 +278,7 @@ class OrganizationController extends Controller
                 return redirect()->back();
             }
 
-            alert()->success('success', 'your request has been submitted successfully. We will contact you soon.');
+            alert()->success('success', 'Your request has been submitted successfully. the administrator will contact you soon.');
 
             return redirect()->back();
         }

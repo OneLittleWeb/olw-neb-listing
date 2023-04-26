@@ -23,31 +23,32 @@ class ContactUsController extends Controller
         return view('admin.contact.index');
     }
 
-    public function contactForClaimBusiness(Request $request)
+    public function contactForClaimBusiness()
     {
-//        if ($request->ajax()) {
-//            $data = ContactForClaimBusiness::latest()->get();
-//            return Datatables::of($data)
-//                ->addIndexColumn()
-//                ->make(true);
-//        }
-
         $all_contacts_for_claim = ContactForClaimBusiness::latest()->get();
 
         return view('admin.contact.contact_for_claim', compact('all_contacts_for_claim'));
     }
 
-    public function ClaimStatusEdit($id)
-    {
-        Alert::warning('Are you sure?', 'This action cannot be undone.')
-            ->showConfirmButton('Yes, delete it!', '#3085d6')
-            ->showCancelButton('No, cancel', '#aaa');
-
-        return redirect()->route('admin.contact.for.claim');
-    }
-
     public function ClaimStatusUpdate($id, $status)
     {
-        dd($status);
+        $claimed_business = ContactForClaimBusiness::find($id);
+
+        if ($claimed_business) {
+            if ($status == 'approved') {
+                $organization = $claimed_business->organization;
+                $organization->is_claimed = 1;
+                $organization->update();
+
+                alert()->success('success', 'The business claim has been approved.');
+                return redirect()->back();
+            } else {
+                $claimed_business->delete();
+                alert()->success('success', 'The business claim has been rejected.');
+                return redirect()->back();
+            }
+        }
+
+        abort(404);
     }
 }
