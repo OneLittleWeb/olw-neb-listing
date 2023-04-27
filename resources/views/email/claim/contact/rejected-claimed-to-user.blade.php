@@ -146,7 +146,7 @@
                     <td align="left" bgcolor="#ffffff"
                         style="padding: 36px 24px 0; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; border-top: 3px solid #d4dadf;">
                         <h1 style="margin: 0; font-size: 32px; font-weight: 700; letter-spacing: -1px; line-height: 48px;">
-                            Successfully Claimed Your Business</h1>
+                            Rejected Your Claimed Business</h1>
                     </td>
                 </tr>
             </table>
@@ -175,9 +175,8 @@
                         style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
                         <p style="margin: 0;">Your business <a
                                 href="{{ route('city.wise.organization', ['city_slug' => $organization->city->slug, 'organization_slug' => $organization->slug]) }}">{{ $organization->organization_name }}</a>
-                            has been successfully claimed. You may now sign up using the
-                            email <a href="mailto:{{$organization->claimed_mail}}">{{ $organization->claimed_mail }}</a>
-                            associated with your business and log in to your account.</p>
+                            has been declined due to some reasons. You may contact us using the
+                            email <a href="mailto:{{env('SUPPORT_MAIL_ADDRESS')}}">{{ env('SUPPORT_MAIL_ADDRESS') }}</a>.</p>
                         <p>If you didn't sent
                             an email from <a href="{{ env('APP_URL') }}">nebraskalisting.com</a>, you can safely
                             delete this

@@ -30,7 +30,7 @@ class ClaimBusinessMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Claim business profile' . ' - ' . $this->organization['subject'])
+        return $this->subject('Claim business profile' . ' - ' . $this->organization['organization_name'])
             ->view('email.claim.claim-business');
     }
 }
