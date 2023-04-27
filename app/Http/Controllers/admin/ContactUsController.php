@@ -39,7 +39,6 @@ class ContactUsController extends Controller
                 $organization = $claimed_business->organization;
                 $organization->is_claimed = 1;
                 $organization->update();
-
                 $claimed_business->delete();
 
                 alert()->success('success', 'The business claim has been approved.');

@@ -247,6 +247,12 @@ class OrganizationController extends Controller
         $organization = Organization::where('slug', $slug)->firstOrFail();
 
         if ($organization) {
+            $claimed_contact = ContactForClaimBusiness::where('organization_id', $organization->id)->exists();
+
+            if ($claimed_contact) {
+                alert()->warning('warning', 'You have already submitted a request for this business. Please wait for the admin to contact you.')->autoClose(50000);
+                return redirect()->back();
+            }
 
             if ($request->hasFile('validation_images')) {
                 $images = [];
@@ -278,7 +284,7 @@ class OrganizationController extends Controller
                 return redirect()->back();
             }
 
-            alert()->success('success', 'Your request has been submitted successfully. the administrator will contact you soon.');
+            alert()->success('success', 'Your request has been submitted successfully. the administrator will contact you soon.')->autoClose(50000);
 
             return redirect()->back();
         }
