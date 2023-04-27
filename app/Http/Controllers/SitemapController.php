@@ -41,6 +41,18 @@ class SitemapController extends Controller
         }
         $sitemap_city_category_all_business->store('xml', 'sitemap_city_category_all_business');
 
+        //category and city wise businesses
+        $sitemap_category_city_all_business = App::make("sitemap");
+        $cities = City::all();
+        $categories = Organization::select('category_id')->distinct()->get();
+        foreach ($categories as $category) {
+            $category_slug = Category::find($category->category_id)->slug;
+            foreach ($cities as $city) {
+                $sitemap_category_city_all_business->add(route('city.wise.organizations', ['city_slug' => $category_slug, 'category_slug' => $city->slug]), Carbon::now()->format('Y-m-d\T00:00:00+06:00'), '0.7', 'monthly');
+            }
+        }
+        $sitemap_category_city_all_business->store('xml', 'sitemap_category_city_all_business');
+
         //category cities
         $sitemap_category_cities = App::make("sitemap");
         $categories = Category::all();
@@ -62,6 +74,7 @@ class SitemapController extends Controller
         $sitemap->addSitemap(URL::to('sitemap-pages.xml'), Carbon::now()->format('Y-m-d\T00:00:00+06:00'));
         $sitemap->addSitemap(URL::to('sitemap_category_business.xml'), Carbon::now()->format('Y-m-d\T00:00:00+06:00'));
         $sitemap->addSitemap(URL::to('sitemap_city_category_all_business.xml'), Carbon::now()->format('Y-m-d\T00:00:00+06:00'));
+        $sitemap->addSitemap(URL::to('sitemap_category_city_all_business.xml'), Carbon::now()->format('Y-m-d\T00:00:00+06:00'));
         $sitemap->addSitemap(URL::to('sitemap_category_cities.xml'), Carbon::now()->format('Y-m-d\T00:00:00+06:00'));
         $sitemap->addSitemap(URL::to('sitemap_city_categories.xml'), Carbon::now()->format('Y-m-d\T00:00:00+06:00'));
 
