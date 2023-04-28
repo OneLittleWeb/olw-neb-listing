@@ -20,7 +20,7 @@
                 </div>
             </div>
             <div class="card">
-                <h5 class="card-header">Claim Your Business Profile</h5>
+                <h1 class="card-header">Claim Your Business Profile</h1>
                 <div class="card-body text-dark">
                     <p class="card-text">Claim your ownership of <a
                             href="{{ route('city.wise.organization', ['city_slug' => $organization->city->slug, 'organization_slug' => $organization->slug]) }}">{{ $organization->organization_name }}</a>

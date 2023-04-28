@@ -46,34 +46,37 @@ class OrganizationController extends Controller
             Meta::setPaginationLinks($organizations);
             return view('organization.index', compact('organizations', 'cities', 'city', 'category', 'categories'));
         } else {
-            return $this->categoryWiseOrganizations($city_slug, $category_slug);
+            $category = Category::where('slug', $city_slug)->first();
+            $city = City::where('slug', $category_slug)->first();
+
+            return redirect()->route('city.wise.organizations', [$city->slug, $category->slug]);
         }
     }
 
-    public function categoryWiseOrganizations($category_slug, $city_slug)
-    {
-        $category = Category::where('slug', $category_slug)->first();
-        $city = City::where('slug', $city_slug)->first();
-
-        if ($category && $city) {
-            $category->meta_title = Str::title($category->name) . ' in ' . Str::title($city->name) . ', NE | nebraskalisting.com';
-
-            $categories = Category::all();
-            $cities = City::all();
-
-            $organizations = Organization::where('city_id', $city->id)
-                ->where('category_id', $category->id)
-                ->orderByRaw('CAST(reviews_total_count AS SIGNED) DESC')
-                ->orderByRaw('CAST(rate_stars AS SIGNED) DESC')
-                ->paginate(10)
-                ->onEachSide(0);
-
-            Meta::setPaginationLinks($organizations);
-
-            return view('organization.index', compact('organizations', 'cities', 'city', 'category', 'categories'));
-        }
-        abort(404);
-    }
+//    public function categoryWiseOrganizations($category_slug, $city_slug)
+//    {
+//        $category = Category::where('slug', $category_slug)->first();
+//        $city = City::where('slug', $city_slug)->first();
+//
+//        if ($category && $city) {
+//            $category->meta_title = Str::title($category->name) . ' in ' . Str::title($city->name) . ', NE | nebraskalisting.com';
+//
+//            $categories = Category::all();
+//            $cities = City::all();
+//
+//            $organizations = Organization::where('city_id', $city->id)
+//                ->where('category_id', $category->id)
+//                ->orderByRaw('CAST(reviews_total_count AS SIGNED) DESC')
+//                ->orderByRaw('CAST(rate_stars AS SIGNED) DESC')
+//                ->paginate(10)
+//                ->onEachSide(0);
+//
+//            Meta::setPaginationLinks($organizations);
+//
+//            return view('organization.index', compact('organizations', 'cities', 'city', 'category', 'categories'));
+//        }
+//        abort(404);
+//    }
 
     public function cityWiseOrganization($city_slug, $organization_slug)
     {
