@@ -31,8 +31,17 @@ return [
     ],
 
     'stripe' => [
-        'pub_key' => env('STRIPE_PUB_ID', 'pk_test_51Mt7LPDagRG4n09BNwACeF4RetWbeq1uRmzMNF9KGkESOmJOkP0qQq2FRqNB4CnX63RDN3S1M3xKMVTjymkS2xo100rRQ80d0R'),
-        'secret_key' => env('STRIPE_SECRET_KEY_ID', 'sk_test_51Mt7LPDagRG4n09BAN1x59Tue2auRvWTeYPefOdhZ5kexEoEHuWqC2Hm018vISzT7662oi37QUJ39ooEUKCucUYp005p3ZgJda'),
+        'base_uri' => env('STRIPE_BASE_URI', 'https://api.stripe.com/v1/'),
+        'pub_key' => env('STRIPE_KEY', 'pk_test_51Mt7LPDagRG4n09BNwACeF4RetWbeq1uRmzMNF9KGkESOmJOkP0qQq2FRqNB4CnX63RDN3S1M3xKMVTjymkS2xo100rRQ80d0R'),
+        'secret_key' => env('STRIPE_SECRET', 'sk_test_51Mt7LPDagRG4n09BAN1x59Tue2auRvWTeYPefOdhZ5kexEoEHuWqC2Hm018vISzT7662oi37QUJ39ooEUKCucUYp005p3ZgJda'),
+        'class' => App\Services\StripeService::class,
+        ],
+
+    'paypal' => [
+        'base_uri' => env('PAYPAL_BASE_URI', ''),
+        'client_id' => env('PAYPAL_CLIENT_ID', ''),
+        'client_secret' => env('PAYPAL_CLIENT_SECRET', ''),
+        'class' => App\Services\PaypalService::class,
     ],
 
     'telegram-bot-api' => [

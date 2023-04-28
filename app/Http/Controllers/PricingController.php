@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\City;
+use App\Models\Plan;
 use Illuminate\Http\Request;
 
 class PricingController extends Controller
@@ -11,6 +12,7 @@ class PricingController extends Controller
     {
         $cities = City::all();
         $city = null;
-        return view('pricing', compact('cities', 'city'));
+        $plans = Plan::all();
+        return view('pricing', compact('cities', 'city', 'plans'));
     }
 }

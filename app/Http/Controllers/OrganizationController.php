@@ -3,11 +3,20 @@
 namespace App\Http\Controllers;
 
 use App\Imports\ImportOrganization;
+use App\Mail\ClaimBusinessMail;
+use App\Mail\ClaimedBusiness;
+use App\Mail\ClaimedNotificationToAdmin;
+use App\Mail\ContactForClaimToAdmin;
+use App\Mail\ContactForClaimToUser;
+use App\Mail\ContactUsMail;
 use App\Models\Category;
 use App\Models\City;
+use App\Models\ContactForClaimBusiness;
 use App\Models\Organization;
 use Butschster\Head\Facades\Meta;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\File;
@@ -37,34 +46,37 @@ class OrganizationController extends Controller
             Meta::setPaginationLinks($organizations);
             return view('organization.index', compact('organizations', 'cities', 'city', 'category', 'categories'));
         } else {
-            return $this->categoryWiseOrganizations($city_slug, $category_slug);
+            $category = Category::where('slug', $city_slug)->first();
+            $city = City::where('slug', $category_slug)->first();
+
+            return redirect()->route('city.wise.organizations', [$city->slug, $category->slug]);
         }
     }
 
-    public function categoryWiseOrganizations($category_slug, $city_slug)
-    {
-        $category = Category::where('slug', $category_slug)->first();
-        $city = City::where('slug', $city_slug)->first();
-
-        if ($category && $city) {
-            $category->meta_title = Str::title($category->name) . ' in ' . Str::title($city->name) . ', NE | nebraskalisting.com';
-
-            $categories = Category::all();
-            $cities = City::all();
-
-            $organizations = Organization::where('city_id', $city->id)
-                ->where('category_id', $category->id)
-                ->orderByRaw('CAST(reviews_total_count AS SIGNED) DESC')
-                ->orderByRaw('CAST(rate_stars AS SIGNED) DESC')
-                ->paginate(10)
-                ->onEachSide(0);
-
-            Meta::setPaginationLinks($organizations);
-
-            return view('organization.index', compact('organizations', 'cities', 'city', 'category', 'categories'));
-        }
-        abort(404);
-    }
+//    public function categoryWiseOrganizations($category_slug, $city_slug)
+//    {
+//        $category = Category::where('slug', $category_slug)->first();
+//        $city = City::where('slug', $city_slug)->first();
+//
+//        if ($category && $city) {
+//            $category->meta_title = Str::title($category->name) . ' in ' . Str::title($city->name) . ', NE | nebraskalisting.com';
+//
+//            $categories = Category::all();
+//            $cities = City::all();
+//
+//            $organizations = Organization::where('city_id', $city->id)
+//                ->where('category_id', $category->id)
+//                ->orderByRaw('CAST(reviews_total_count AS SIGNED) DESC')
+//                ->orderByRaw('CAST(rate_stars AS SIGNED) DESC')
+//                ->paginate(10)
+//                ->onEachSide(0);
+//
+//            Meta::setPaginationLinks($organizations);
+//
+//            return view('organization.index', compact('organizations', 'cities', 'city', 'category', 'categories'));
+//        }
+//        abort(404);
+//    }
 
     public function cityWiseOrganization($city_slug, $organization_slug)
     {
@@ -157,11 +169,130 @@ class OrganizationController extends Controller
         abort(404);
     }
 
-    public function claimBusiness()
+    public function claimBusiness($slug)
     {
         $cities = City::all();
+        $city = null;
+        $organization = Organization::where('slug', $slug)->firstOrFail();
 
-        return view('organization.claim-business', compact('cities'));
+        return view('organization.claim-business', compact('cities', 'city', 'organization'));
+    }
+
+    public function claimBusinessProfile(Request $request, $slug)
+    {
+        $organization = Organization::where('slug', $slug)->firstOrFail();
+
+        if ($organization) {
+            if ($organization->city_id == $request->organization_city) {
+                $business_mail = $request->business_email . '@' . $organization->organization_website;
+
+                try {
+                    Mail::to($business_mail)->send(new ClaimBusinessMail($organization));
+
+                    $organization->claimed_mail = $business_mail;
+                    $organization->update();
+                    alert()->success('success', 'An email has been sent to your business mail. Please check and confirm your business.');
+
+                    return redirect()->back();
+
+                } catch (\Exception $e) {
+                    alert()->error('error', 'Something went wrong. Please try again later.');
+                    return redirect()->back();
+                }
+            } else {
+                alert()->warning('No Found', 'This business is not available in this state!');
+                return redirect()->back();
+            }
+        }
+        abort(404);
+    }
+
+    public function confirmClaimBusiness($slug)
+    {
+        $organization = Organization::where('slug', $slug)->firstOrFail();
+        if ($organization) {
+            $organization->is_claimed = 1;
+            $organization->update();
+
+            try {
+                Mail::to($organization->claimed_mail)->send(new ClaimedBusiness($organization));
+                Mail::to(env('SUPPORT_MAIL_ADDRESS'))->send(new ClaimedNotificationToAdmin($organization));
+                alert()->success('success', 'Your business has been claimed successfully. You may now sign up using the same email associated with your business and log in to your account.');
+
+                return redirect()->route('city.wise.organization', ['city_slug' => $organization->city->slug, 'organization_slug' => $organization->slug]);
+
+            } catch (\Exception $e) {
+                alert()->error('error', 'Something went wrong. Please try again later.');
+                return redirect()->back();
+            }
+        }
+
+        abort(404);
+    }
+
+    public function contactForClaimBusiness($slug)
+    {
+        $cities = City::all();
+        $city = null;
+        $organization = Organization::where('slug', $slug)->firstOrFail();
+
+        return view('organization.contact-for-claim-business', compact('cities', 'city', 'organization'));
+    }
+
+    public function storeContactForClaimBusiness(Request $request, $slug)
+    {
+        $request->validate([
+            'contact_email' => 'required|email',
+            'editable_information' => 'required',
+            'validation_images.*' => 'required|mimes:jpg,jpeg,png'
+        ]);
+
+        $organization = Organization::where('slug', $slug)->firstOrFail();
+
+        if ($organization) {
+            $claimed_contact = ContactForClaimBusiness::where('organization_id', $organization->id)->exists();
+
+            if ($claimed_contact) {
+                alert()->warning('warning', 'You have already submitted a request for this business. Please wait for the admin to contact you.')->autoClose(50000);
+                return redirect()->back();
+            }
+
+            if ($request->hasFile('validation_images')) {
+                $images = [];
+                foreach ($request->file('validation_images') as $image) {
+                    $path = $image->store('public/images/claim-business');
+                    $images[] = [
+                        'url' => Storage::url($path),
+                        'name' => $image->getClientOriginalName(),
+                        'mime_type' => $image->getClientMimeType(),
+                    ];
+                }
+            }
+
+            $contact_for_claim_business = new ContactForClaimBusiness();
+            $contact_for_claim_business->organization_id = $organization->id;
+            $contact_for_claim_business->contact_email = $request->contact_email;
+            $contact_for_claim_business->contact_number = $request->contact_number;
+            $contact_for_claim_business->editable_information = $request->editable_information;
+            if ($request->hasFile('validation_images')) {
+                $contact_for_claim_business->validation_images = json_encode($images);
+            }
+            $contact_for_claim_business->save();
+
+            try {
+                Mail::to($request->contact_email)->send(new ContactForClaimToUser($organization));
+                Mail::to(env('SUPPORT_MAIL_ADDRESS'))->send(new ContactForClaimToAdmin($organization));
+            } catch (\Exception $e) {
+                alert()->error('error', 'Something went wrong. Please try again later.');
+                return redirect()->back();
+            }
+
+            alert()->success('success', 'Your request has been submitted successfully. the administrator will contact you soon.')->autoClose(50000);
+
+            return redirect()->back();
+        }
+
+        abort(404);
     }
 
     public function import()

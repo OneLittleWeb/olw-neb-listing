@@ -12,6 +12,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\admin\ReviewController as AdminReviewController;
 use App\Http\Controllers\admin\ContactUsController;
+use App\Http\Controllers\admin\PlanManageController;
 
 //Admin Panel
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
@@ -20,23 +21,33 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::resource('city', \App\Http\Controllers\admin\CityController::class)->except(['show', 'edit', 'create']);
     Route::resource('organization', \App\Http\Controllers\admin\OrganizationController::class)->except(['show']);
     Route::resource('settings', \App\Http\Controllers\admin\SettingController::class)->except(['show']);
+    Route::resource('plan', PlanManageController::class)->except(['show']);
     Route::get('logout', [\App\Http\Controllers\admin\AdminController::class, 'logout'])->name('logout');
     Route::get('business/review', [AdminReviewController::class, 'reviewBusiness'])->name('reviews.business');
     Route::get('review/{slug}', [AdminReviewController::class, 'reviews'])->name('reviews');
     Route::get('contacts', [ContactUsController::class, 'index'])->name('contact.index');
+    Route::get('contacts/claim', [ContactUsController::class, 'contactForClaimBusiness'])->name('contact.for.claim');
+    Route::post('contacts/claim/update/{id}/{status}', [ContactUsController::class, 'ClaimStatusUpdate'])->name('claim.status.update');
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/autocomplete', [HomeController::class, 'autocomplete'])->name('autocomplete');
 Route::get('/search', [HomeController::class, 'search'])->name('search');
 
-Route::get('/checkout',[StripePaymentController::class,'index'])->name('stripe.form');
-Route::post('/checkout',[StripePaymentController::class,'checkout'])->name('stripe.checkout');
-Route::get('/success',[StripePaymentController::class,'success'])->name('stripe.success');
-
+Route::get('/checkout', [StripePaymentController::class, 'index'])->name('payment.form')->middleware('auth');
+Route::post('/payments/pay', [StripePaymentController::class, 'checkout'])->name('payment.checkout');
+Route::get('/payments/approval', [StripePaymentController::class, 'approval'])->name('payment.approval');
+Route::get('/payments/cancelled', [StripePaymentController::class, 'cancelled'])->name('payment.cancelled');
 
 Route::get('/categories', [CategoryController::class, 'allCategories'])->name('all.categories');
 Route::get('/category/{slug}', [CategoryController::class, 'categoryBusiness'])->name('category.business');
+
+Route::get('/claim-your-business/{slug}', [OrganizationController::class, 'claimBusiness'])->name('claim.business');
+Route::post('/claim-your-business/{slug}', [OrganizationController::class, 'claimBusinessProfile'])->name('claim.business.profile');
+Route::get('/confirm/claim-business/{slug}', [OrganizationController::class, 'confirmClaimBusiness'])->name('confirm.claim.business');
+
+Route::get('/contact-for/claim-your-business/{slug}', [OrganizationController::class, 'contactForClaimBusiness'])->name('contact.for.claim.business');
+Route::post('/contact-for/claim-business/{slug}', [OrganizationController::class, 'storeContactForClaimBusiness'])->name('store.contact.for.claim.business');
 
 Route::get('/{city_slug}/{category_slug}', [OrganizationController::class, 'cityWiseOrganizations'])->name('city.wise.organizations');
 Route::get('/{city_slug}/nls/{organization_slug}', [OrganizationController::class, 'cityWiseOrganization'])->name('city.wise.organization');
@@ -49,14 +60,12 @@ Route::get('/sitemap', [SitemapController::class, 'sitemapStore'])->name('sitema
 Route::get('/import', [OrganizationController::class, 'import'])->name('import');
 Route::get('/copy-past', [OrganizationController::class, 'copyPast'])->name('copy.past');
 
-Route::get('/about-us',[PageController::class, 'aboutUs'])->name('page.about');
-Route::get('/privacy-policy',[PageController::class, 'privacy'])->name('page.privacy');
-Route::get('/terms-conditions',[PageController::class, 'termsConditions'])->name('terms.conditions');
-Route::get('/contact-us',[PageController::class, 'contactUs'])->name('page.contact');
-Route::post('/contact-store',[PageController::class, 'contactStore'])->name('contact.store');
-Route::get('/pricing',[PricingController::class, 'index'])->name('page.pricing');
-
-Route::get('/claim-your-business',[OrganizationController::class, 'claimBusiness'])->name('claim.business');
+Route::get('/about-us', [PageController::class, 'aboutUs'])->name('page.about');
+Route::get('/privacy-policy', [PageController::class, 'privacy'])->name('page.privacy');
+Route::get('/terms-conditions', [PageController::class, 'termsConditions'])->name('terms.conditions');
+Route::get('/contact-us', [PageController::class, 'contactUs'])->name('page.contact');
+Route::post('/contact-store', [PageController::class, 'contactStore'])->name('contact.store');
+Route::get('/pricing', [PricingController::class, 'index'])->name('page.pricing');
 
 Route::get('/{slug}', [CategoryController::class, 'index'])->name('category.index');
 
