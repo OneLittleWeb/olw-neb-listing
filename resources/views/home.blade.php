@@ -53,7 +53,7 @@
                 <div class="col-lg-6">
                     <div class="hero-heading">
                         <div class="section-heading">
-                            <h2 class="sec__title font-size-35">Find The Best Places In Your City</h2>
+                            <h1 class="sec__title font-size-35">Find The Best Places In Nebraska</h1>
                             <p class="sec__desc">Nebraskalisting helps you find out what's happening in your city. Let’s
                                 explore!</p>
                         </div>

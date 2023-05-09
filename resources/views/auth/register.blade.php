@@ -1,242 +1,90 @@
-<!DOCTYPE html>
-<html class="loading semi-dark-layout" lang="en" data-layout="semi-dark-layout" data-textdirection="ltr">
-<!-- BEGIN: Head-->
-
-<head>
-    <meta name="robots" content="noindex">
-    <meta name="googlebot" content="noindex">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" href="{{asset('/images/favicon.png')}}">
-    <title>Register - {{request()->getHost()}}</title>
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('BackEnd')}}/app-assets/images/ico/favicon.ico">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500;1,600"
-          rel="stylesheet">
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.5.0/css/all.min.css"
-          integrity="sha512-QfDd74mlg8afgSqm3Vq2Q65e9b3xMhJB4GZ9OcHDVy1hZ6pqBJPWWnMsKDXM7NINoKqJANNGBuVRIpIJ5dogfA=="
-          crossorigin="anonymous" referrerpolicy="no-referrer"/>
-</head>
-<!-- END: Head-->
-
-<!-- BEGIN: Body-->
-
-<body>
-<!-- BEGIN: Content-->
-<style>
-    .form-bg {
-        background: #00b4ef;
-        height: 100vh;
-    }
-
-    .form-horizontal {
-        background: #fff;
-        padding-bottom: 100px;
-        border-radius: 15px;
-        text-align: center;
-    }
-
-    .form-horizontal .heading {
-        display: block;
-        font-size: 35px;
-        font-weight: 700;
-        padding: 35px 0;
-        border-bottom: 1px solid #f0f0f0;
-        margin-bottom: 30px;
-    }
-
-    .form-horizontal .form-group {
-        padding: 0 40px;
-        margin: 0 0 25px 0;
-        position: relative;
-    }
-
-    .form-horizontal .form-control {
-        background: #f0f0f0;
-        border: none;
-        border-radius: 20px;
-        box-shadow: none;
-        padding: 0 20px 0 45px;
-        height: 40px;
-        transition: all 0.3s ease 0s;
-    }
-
-    .form-horizontal .form-control:focus {
-        background: #e0e0e0;
-        box-shadow: none;
-        outline: 0 none;
-    }
-
-    .form-horizontal .form-group i {
-        position: absolute;
-        top: 12px;
-        left: 60px;
-        font-size: 17px;
-        color: #c8c8c8;
-        transition: all 0.5s ease 0s;
-    }
-
-    .form-horizontal .form-control:focus + i {
-        color: #00b4ef;
-    }
-
-    .form-horizontal .fa-question-circle {
-        display: inline-block;
-        position: absolute;
-        top: 12px;
-        right: 60px;
-        font-size: 20px;
-        color: #808080;
-        transition: all 0.5s ease 0s;
-    }
-
-    .form-horizontal .fa-question-circle:hover {
-        color: #000;
-    }
-
-    .form-horizontal .main-checkbox {
-        float: left;
-        width: 20px;
-        height: 20px;
-        background: #11a3fc;
-        border-radius: 50%;
-        position: relative;
-        margin: 5px 0 0 5px;
-        border: 1px solid #11a3fc;
-    }
-
-    .form-horizontal .main-checkbox label {
-        width: 20px;
-        height: 20px;
-        position: absolute;
-        top: 0;
-        left: 0;
-        cursor: pointer;
-    }
-
-    .form-horizontal .main-checkbox label:after {
-        content: "";
-        width: 10px;
-        height: 5px;
-        position: absolute;
-        top: 5px;
-        left: 4px;
-        border: 3px solid #fff;
-        border-top: none;
-        border-right: none;
-        background: transparent;
-        opacity: 0;
-        -webkit-transform: rotate(-45deg);
-        transform: rotate(-45deg);
-    }
-
-    .form-horizontal .main-checkbox input[type=checkbox] {
-        visibility: hidden;
-    }
-
-    .form-horizontal .main-checkbox input[type=checkbox]:checked + label:after {
-        opacity: 1;
-    }
-
-    .form-horizontal .text {
-        float: left;
-        margin-left: 7px;
-        line-height: 20px;
-        padding-top: 5px;
-        text-transform: capitalize;
-    }
-
-    .form-horizontal .btn {
-        float: right;
-        font-size: 14px;
-        color: #fff;
-        background: #00b4ef;
-        border-radius: 30px;
-        padding: 10px 25px;
-        border: none;
-        text-transform: capitalize;
-        transition: all 0.5s ease 0s;
-    }
-
-    @media only screen and (max-width: 479px) {
-        .form-horizontal .form-group {
-            padding: 0 25px;
-        }
-
-        .form-horizontal .form-group i {
-            left: 45px;
-        }
-
-        .form-horizontal .btn {
-            padding: 10px 20px;
-        }
-    }
-</style>
-<div class="form-bg">
-    <div class="container">
-        <div class="row justify-content-center align-items-center" style="height: 100vh">
-            <div class="col-md-offset-3 col-md-6">
-                <form class="form-horizontal" action="{{route('register')}}" method="POST">
-                    @csrf
-                    <span class="heading">Register</span>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="name" name="name"
-                               placeholder="Your Name" value="{{old('name')}}">
-                        <i class="fa fa-user"></i>
-                    </div>
-                    <div class="form-group">
-                        <input type="email" class="form-control" id="inputEmail3" name="email"
-                               placeholder="Email or Username" value="{{old('email')}}">
-                        <i class="fa fa-user"></i>
-                    </div>
-                    <div class="form-group help">
-                        <input type="password" class="form-control" id="password" placeholder="Password"
-                               name="password">
-                        <i class="fa fa-lock"></i>
-                        <a href="#" class="fa fa-question-circle"></a>
-                    </div>
-                    <div class="form-group help">
-                        <input type="password" class="form-control" id="password_confirmation"
-                               placeholder="Confirm Password"
-                               name="password_confirmation">
-                        <i class="fa fa-lock"></i>
-                        <a href="#" class="fa fa-question-circle"></a>
-                    </div>
-
-                    @if(!$errors->isEmpty())
-                        <div class="alert alert-red text-danger">
-                            <ul class="list-unstyled">
-                                @foreach($errors->all() as $err)
-                                    <li>{{ $err }}</li>
-                                @endforeach
-                            </ul>
-                        </div>
-                    @endif
-                    <div class="form-group">
-                        <span class="text">Already a member? <a href="{{route('login')}}">Login</a></span>
-                        <button type="submit" class="btn btn-default">Sign Up</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- END: Content-->
-
-<!-- BEGIN: Vendor JS-->
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-        crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-        crossorigin="anonymous"></script>
-
-</body>
-<!-- END: Body-->
-</html>
+@extends('layouts.master')
+@section('title', "Register - Nebraskalisting")
+@section('meta_description', "To be added")
+@php $cities = \App\Models\City::all(); $city = null; @endphp
+@section('content')
+    <section class="contact-area section-padding position-relative">
+        <span class="circle-bg circle-bg-1 position-absolute"></span>
+        <span class="circle-bg circle-bg-2 position-absolute"></span>
+        <span class="circle-bg circle-bg-3 position-absolute"></span>
+        <span class="circle-bg circle-bg-4 position-absolute"></span>
+        <span class="circle-bg circle-bg-5 position-absolute"></span>
+        <div class="container">
+            <div class="row justify-content-center mt-5">
+                <div class="col-lg-7">
+                    <div class="block-card">
+                        <div class="block-card-header">
+                            <h1 class="widget-title pb-0">Register Now</h1>
+                            <p class="pt-1">In order to manage your listings later, we suggest that you create an
+                                account with us. Already have an account? <a href="{{route('login')}}">Click here to
+                                    login </a></p>
+                        </div><!-- block-card-header -->
+                        @if(!$errors->isEmpty())
+                            <div class="alert alert-red text-danger">
+                                <ul class="list-unstyled">
+                                    @foreach($errors->all() as $err)
+                                        <li>{{ $err }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        <form method="post" class="form-box row">
+                            <form class="form-box row" action="{{route('register')}}" method="POST">
+                                @csrf
+                                <div class="col-lg-12">
+                                    <div class="input-box">
+                                        <label class="label-text">Your Name</label>
+                                        <div class="form-group">
+                                            <span class="la la-user form-icon"></span>
+                                            <input class="form-control form-control-styled" type="text" id="name"
+                                                   name="name" placeholder="Your Name" value="{{old('name')}}">
+                                        </div>
+                                    </div>
+                                </div><!-- end col-lg-6 -->
+                                <div class="col-lg-12">
+                                    <div class="input-box">
+                                        <label class="label-text">Your Email</label>
+                                        <div class="form-group">
+                                            <span class="la la-envelope-o form-icon"></span>
+                                            <input class="form-control form-control-styled" type="email" name="email"
+                                                   placeholder="Your Email" value="{{old('email')}}">
+                                        </div>
+                                    </div>
+                                </div><!-- end col-lg-6 -->
+                                <div class="col-lg-12">
+                                    <div class="input-box">
+                                        <label class="label-text">Password</label>
+                                        <div class="form-group">
+                                            <span class="la la-lock form-icon"></span>
+                                            <input class="form-control form-control-styled" type="password"
+                                                   name="password"
+                                                   placeholder="Password">
+                                        </div>
+                                    </div>
+                                </div><!-- end col-lg-12 -->
+                                <div class="col-lg-12">
+                                    <div class="input-box">
+                                        <label class="label-text">Confirm Password</label>
+                                        <div class="form-group">
+                                            <span class="la la-lock form-icon"></span>
+                                            <input class="form-control form-control-styled" type="password"
+                                                   id="password_confirmation"
+                                                   placeholder="Confirm Password" name="password_confirmation">
+                                        </div>
+                                    </div>
+                                </div><!-- end col-lg-12 -->
+                                <div class="col-lg-12">
+                                    <div class="btn-box">
+                                        <button type="submit" class="theme-btn gradient-btn border-0">Register <i
+                                                class="la la-arrow-right ml-1"></i></button>
+                                        <p class="font-size-14 pt-1">*We'll never share your email with anyone else.</p>
+                                    </div>
+                                </div><!-- end col-lg-12 -->
+                            </form>
+                    </div><!-- end block-card-body -->
+                </div><!-- end block-card -->
+            </div><!-- end col-lg-8 -->
+        </div><!-- end row -->
+        </div><!-- end container -->
+    </section>
+@endsection
