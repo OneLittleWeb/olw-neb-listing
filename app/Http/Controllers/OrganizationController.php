@@ -124,8 +124,8 @@ class OrganizationController extends Controller
                 $organization->about2 = null;
             }
 
-            $organization->rate_stars = $organization->rate_stars ?? 0;
-            $organization->reviews_total_count = $organization->reviews_total_count ?? 0;
+            $organization->rate_stars = $organization->reviews->count() ? $organization->rate_stars : 0;
+            $organization->reviews_total_count = $organization->reviews->count() ?? 0;
 
             $organization->about3 = "<strong>$organization->organization_name</strong>" . ' has a ' . "<strong>$organization->rate_stars</strong>" . '-star rating and ' . "<strong>$organization->reviews_total_count</strong>" . ' reviews. Check out the photos and customer reviews to make an image in your mind about what to expect there.';
 

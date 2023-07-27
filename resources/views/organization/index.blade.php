@@ -80,11 +80,10 @@
                                                 </p>
                                             @endif
                                             <ul class="listing-meta d-flex align-items-center">
-                                                @if($organization->rate_stars && $organization->reviews_total_count)
+                                                @if($organization->rate_stars && $organization->reviews_total_count && $organization->reviews->count())
                                                     <li class="d-flex align-items-center">
-                                                        <span
-                                                            class="rate flex-shrink-0">{{ $organization->rate_stars }}</span>
-                                                        <span class="rate-text">{{ $organization->reviews_total_count }} Ratings</span>
+                                                        <span class="rate flex-shrink-0">{{ $organization->rate_stars }}</span>
+                                                        <span class="rate-text">{{ $organization->reviews->count() }} Ratings</span>
                                                     </li>
                                                 @endif
                                                 <li>
