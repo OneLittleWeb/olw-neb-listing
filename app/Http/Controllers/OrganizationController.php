@@ -36,13 +36,21 @@ class OrganizationController extends Controller
             $categories = Category::all();
             $cities = City::all();
 
-            $organizations = Organization::where('city_id', $city->id)
+//            $organizations = Organization::where('city_id', $city->id)
+//                ->where('category_id', $category->id)
+//                ->orderByRaw('CAST(reviews_total_count AS SIGNED) DESC')
+//                ->orderByRaw('CAST(rate_stars AS SIGNED) DESC')
+//                ->paginate(10)
+//                ->onEachSide(0);
+
+            $organizations = Organization::withCount('reviews') // This will add a 'reviews_count' attribute to each organization
+            ->where('city_id', $city->id)
                 ->where('category_id', $category->id)
-                ->orderByRaw('CAST(reviews_total_count AS SIGNED) DESC')
+                ->orderByRaw('CAST(reviews_count AS SIGNED) DESC')
                 ->orderByRaw('CAST(rate_stars AS SIGNED) DESC')
                 ->paginate(10)
                 ->onEachSide(0);
-
+            
             Meta::setPaginationLinks($organizations);
             return view('organization.index', compact('organizations', 'cities', 'city', 'category', 'categories'));
         }
