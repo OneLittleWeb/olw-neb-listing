@@ -58,11 +58,10 @@ class OrganizationController extends Controller
             $category = Category::where('slug', $category_slug)->first();
 
             if ($city && $category) {
-                dd($city, $category);
                 $category->meta_title = Str::title($category->name) . ' in ' . Str::title($city->name) . ', NE | nebraskalisting.com';
 
-                $categories = Category::select('id', 'name', 'slug', 'icon', 'background', 'background_image')->get();
-                $cities = City::select('id', 'name', 'slug', 'is_major', 'population', 'background_image')->get();
+                $categories = Category::all();
+                $cities = City::all();
 
                 $organizations = Organization::withCount('reviews')
                     ->where('city_id', $city->id)
