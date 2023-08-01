@@ -24,12 +24,8 @@
                     </div>
                     <div class="col-lg-12">
                         <div class="d-flex align-items-center pb-4 text-capitalize">
-                            @if($organizations->onFirstPage())
-                                <h1 class="sec__title mb-0">Top 10 Best {{ $category->name }} in {{ $city->name }},
-                                    Nebraska</h1>
-                            @else
-                                <h1 class="sec__title mb-0">Top 10 {{ $category->name }} Near {{ $city->name }}, Nebraska</h1>
-                            @endif
+                            <h1 class="sec__title mb-0">Top 10 Best {{ $category->name }} near {{ $city->name }},
+                                Nebraska</h1>
                         </div>
                     </div>
                     <div class="col-lg-8">

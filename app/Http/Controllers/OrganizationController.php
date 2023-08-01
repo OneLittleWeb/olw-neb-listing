@@ -33,7 +33,6 @@ class OrganizationController extends Controller
         if ($city_check && $category_check) {
             $city = City::where('slug', $city_slug)->first();
             $category = Category::where('slug', $category_slug)->first();
-            $category->meta_title = Str::title($category->name) . ' in ' . Str::title($city->name) . ', NE | nebraskalisting.com';
 
             $categories = Category::all();
             $cities = City::all();
@@ -44,6 +43,12 @@ class OrganizationController extends Controller
                 ->orderByRaw('CAST(reviews_count AS SIGNED) DESC')
                 ->orderByRaw('CAST(rate_stars AS SIGNED) DESC')
                 ->paginate(10);
+
+            if ($organizations->onFirstPage()){
+                $category->meta_title = 'Top 10 Best ' . Str::title($category->name) . ' near ' . Str::title($city->name) . ', Nebraska';
+            } else {
+                $category->meta_title = Str::title($category->name) . ' near ' . Str::title($city->name) . ', Nebraska';
+            }
 
             Meta::setPaginationLinks($organizations);
             return view('organization.index', compact('organizations', 'cities', 'city', 'category', 'categories'));
