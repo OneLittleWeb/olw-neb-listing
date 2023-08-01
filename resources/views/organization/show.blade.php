@@ -17,7 +17,7 @@
                        data-fancybox="gallery"
                        data-caption="Showing image - {{ $photo_file }}">
                         <img src="{{ asset('images/business/' . $photo_file) }}"
-                             alt="single listing image" style="height: 355px">
+                             alt="single listing image" style="height: 355px" loading="lazy">
                     </a><!-- end fs-slider-item -->
                 @endforeach
             </div>
@@ -35,6 +35,7 @@
                         <div class="section-heading">
                             <ul class="list-items bread-list bread-list-2 bg-transparent rounded-0 p-0 text-capitalize">
                                 <li><a href="{{ route('home') }}">Home</a></li>
+                                <li><a href="{{ route('category.index', $organization->city->slug) }}">{{ $organization->city->name }}</a></li>
                                 <li>
                                     <a href="{{ route('city.wise.organizations', ['city_slug' => $organization->city->slug, 'category_slug' => $organization->category->slug]) }}">{{ $organization->category->name }}</a>
                                 </li>
@@ -87,7 +88,7 @@
                                     <div class="star-rating-wrap d-flex align-items-center">
                                         <div class="organization_rating"
                                              data-rating="{{ $organization->rate_stars }}"></div>
-                                        <p class="font-size-14 pl-2 font-weight-medium">{{ $organization->reviews->count() }}
+                                        <p class="font-size-14 pl-2 font-weight-medium">{{ $organization->reviews_total_count }}
                                             reviews</p>
                                     </div>
                                 @endif
@@ -345,7 +346,7 @@
                                                                             <img class="lazy"
                                                                                  src="{{ asset('images/business/' . $photo_file) }}"
                                                                                  data-src="{{ asset('images/business/' . $photo_file) }}"
-                                                                                 alt="review image">
+                                                                                 alt="review image" loading="lazy">
                                                                         </a>
                                                                     @endforeach
                                                                 </div><!-- end review-photos -->
@@ -534,7 +535,7 @@
                                                                                 <img class="lazy"
                                                                                      src="{{ asset('images/business/' . $photo_file) }}"
                                                                                      data-src="{{ asset('images/business/' . $photo_file) }}"
-                                                                                     alt="review image">
+                                                                                     alt="review image" loading="lazy">
                                                                             </a>
                                                                         @endforeach
                                                                     </div><!-- end review-photos -->

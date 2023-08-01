@@ -40,6 +40,7 @@ class CategorySeeder extends Seeder
             ['name' => 'plumbers', 'icon' => 'fa-solid fa-wrench', 'background' => 'bg-10', 'background_image' => 'omaha.jpg'],
             ['name' => 'resorts', 'icon' => 'fa-solid fa-hotel', 'background' => 'bg-1', 'background_image' => 'omaha.jpg'],
             ['name' => 'restaurants', 'icon' => 'fa-solid fa-utensils', 'background' => 'bg-2', 'background_image' => 'omaha.jpg'],
+            ['name' => 'towing', 'icon' => 'fa-solid fa-car-burst', 'background' => 'bg-8', 'background_image' => 'omaha.jpg'],
         ];
         foreach ($categories as $category) {
             Category::create($category);

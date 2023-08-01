@@ -15,6 +15,8 @@ use App\Models\ContactForClaimBusiness;
 use App\Models\Organization;
 use Butschster\Head\Facades\Meta;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -23,36 +25,56 @@ use Illuminate\Support\Facades\File;
 
 class OrganizationController extends Controller
 {
+//    public function cityWiseOrganizations($city_slug, $category_slug)
+//    {
+//        $city_check = City::where('slug', $city_slug)->exists();
+//        $category_check = Category::where('slug', $category_slug)->exists();
+//
+//        if ($city_check && $category_check) {
+//            $city = City::where('slug', $city_slug)->first();
+//            $category = Category::where('slug', $category_slug)->first();
+//            $category->meta_title = Str::title($category->name) . ' in ' . Str::title($city->name) . ', NE | nebraskalisting.com';
+//
+//            $categories = Category::all();
+//            $cities = City::all();
+//
+//            $organizations = Organization::withCount('reviews') // This will add a 'reviews_count' attribute to each organization
+//            ->where('city_id', $city->id)
+//                ->where('category_id', $category->id)
+//                ->orderByRaw('CAST(reviews_count AS SIGNED) DESC')
+//                ->orderByRaw('CAST(rate_stars AS SIGNED) DESC')
+//                ->paginate(10);
+//
+//            Meta::setPaginationLinks($organizations);
+//            return view('organization.index', compact('organizations', 'cities', 'city', 'category', 'categories'));
+//        }
+//        return abort(404);
+//    }
+
     public function cityWiseOrganizations($city_slug, $category_slug)
     {
-        $city_check = City::where('slug', $city_slug)->exists();
-        $category_check = Category::where('slug', $category_slug)->exists();
-
-        if ($city_check && $category_check) {
+        if ($city_slug && $category_slug) {
             $city = City::where('slug', $city_slug)->first();
             $category = Category::where('slug', $category_slug)->first();
-            $category->meta_title = Str::title($category->name) . ' in ' . Str::title($city->name) . ', NE | nebraskalisting.com';
 
-            $categories = Category::all();
-            $cities = City::all();
+            if ($city && $category) {
+                $category->meta_title = Str::title($category->name) . ' in ' . Str::title($city->name) . ', NE | nebraskalisting.com';
 
-//            $organizations = Organization::where('city_id', $city->id)
-//                ->where('category_id', $category->id)
-//                ->orderByRaw('CAST(reviews_total_count AS SIGNED) DESC')
-//                ->orderByRaw('CAST(rate_stars AS SIGNED) DESC')
-//                ->paginate(10)
-//                ->onEachSide(0);
+                $categories = Category::select('id', 'name', 'slug', 'icon', 'background', 'background_image')->get();
+                $cities = City::select('id', 'name', 'slug', 'is_major', 'population', 'background_image')->get();
 
-            $organizations = Organization::withCount('reviews') // This will add a 'reviews_count' attribute to each organization
-            ->where('city_id', $city->id)
-                ->where('category_id', $category->id)
-                ->orderByRaw('CAST(reviews_count AS SIGNED) DESC')
-                ->orderByRaw('CAST(rate_stars AS SIGNED) DESC')
-                ->paginate(10)
-                ->onEachSide(0);
-            
-            Meta::setPaginationLinks($organizations);
-            return view('organization.index', compact('organizations', 'cities', 'city', 'category', 'categories'));
+                $organizations = Organization::withCount('reviews')
+                    ->where('city_id', $city->id)
+                    ->where('category_id', $category->id)
+                    ->leftJoin('reviews', 'organizations.organization_guid', '=', 'reviews.organization_guid') // Left join to include reviews table
+                    ->select('organizations.*', DB::raw('COUNT(reviews.id) AS reviews_count')) // Calculate the reviews_count
+                    ->groupBy('organizations.id') // Group by organization to avoid duplicates
+                    ->orderBy('reviews_count', 'DESC') // Order by the reviews_count
+                    ->paginate(10);
+
+                Meta::setPaginationLinks($organizations);
+                return view('organization.index', compact('organizations', 'cities', 'city', 'category', 'categories'));
+            }
         }
         return abort(404);
     }
@@ -133,7 +155,7 @@ class OrganizationController extends Controller
             }
 
             $organization->rate_stars = $organization->reviews->count() ? $organization->rate_stars : 0;
-            $organization->reviews_total_count = $organization->reviews->count() ?? 0;
+            $organization->reviews_total_count = $organization->reviews->count() ? $organization->reviews_total_count : 0;
 
             $organization->about3 = "<strong>$organization->organization_name</strong>" . ' has a ' . "<strong>$organization->rate_stars</strong>" . '-star rating and ' . "<strong>$organization->reviews_total_count</strong>" . ' reviews. Check out the photos and customer reviews to make an image in your mind about what to expect there.';
 
@@ -276,11 +298,12 @@ class OrganizationController extends Controller
 
     public function import()
     {
-        $category_directories = File::directories('H:\scraped data');
+        $category_directories = File::directories('H:\sc v4');
 
         foreach ($category_directories as $category_directory) {
 
             $category_name = basename($category_directory);
+
             $category_id = Category::where('name', Str::lower($category_name))->first()->id;
 
             foreach (File::directories($category_directory) as $city_directory) {

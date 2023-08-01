@@ -59,12 +59,12 @@
                                                         src="{{ asset('images/business/' . $organization->organization_head_photo_file) }}"
                                                         data-src="{{ asset('images/business/' . $organization->organization_head_photo_file) }}"
                                                         class="card__img lazy"
-                                                        alt="{{ $organization->organization_name }}">
+                                                        alt="{{ $organization->organization_name }}" loading="lazy">
                                                 @else
                                                     <img src="{{ asset('images/default.jpg') }}"
                                                          data-src="{{ asset('images/default.jpg') }}"
                                                          class="card__img lazy"
-                                                         alt="{{ $organization->organization_name }}">
+                                                         alt="{{ $organization->organization_name }}" loading="lazy">
                                                 @endif
                                             </a>
                                         </div>
@@ -83,7 +83,7 @@
                                                 @if($organization->rate_stars && $organization->reviews_total_count && $organization->reviews->count())
                                                     <li class="d-flex align-items-center">
                                                         <span class="rate flex-shrink-0">{{ $organization->rate_stars }}</span>
-                                                        <span class="rate-text">{{ $organization->reviews->count() }} Ratings</span>
+                                                        <span class="rate-text">{{ $organization->reviews->count() }} Reviews</span>
                                                     </li>
                                                 @endif
                                                 <li>
@@ -237,7 +237,7 @@
                                                class="generic-img-card d-block hover-y overflow-hidden mb-3">
                                                 <img src="{{ asset('images/city/' . $f_city->background_image) }}"
                                                      data-src="{{ asset('images/city/' . $f_city->background_image) }}"
-                                                     alt="image" class="generic-img-card-img filter-image lazy">
+                                                     alt="image" class="generic-img-card-img filter-image lazy" loading="lazy">
                                                 <div
                                                     class="generic-img-card-content d-flex align-items-center justify-content-between">
                                                     <span class="badge text-capitalize">{{ $f_city->name }}</span>
@@ -250,7 +250,7 @@
                                                    class="generic-img-card d-block hover-y overflow-hidden mb-3">
                                                     <img src="{{ asset('images/city/' . $f_city->background_image) }}"
                                                          data-src="{{ asset('images/city/' . $f_city->background_image) }}"
-                                                         alt="image" class="generic-img-card-img filter-image lazy">
+                                                         alt="image" class="generic-img-card-img filter-image lazy" loading="lazy">
                                                     <div
                                                         class="generic-img-card-content d-flex align-items-center justify-content-between">
                                                         <span class="badge text-capitalize">{{ $f_city->name }}</span>
@@ -278,7 +278,7 @@
                                                class="generic-img-card d-block hover-y overflow-hidden mb-3">
                                                 <img src="{{ asset('images/category/' . $category->background_image) }}"
                                                      data-src="{{ asset('images/category/' . $category->background_image) }}"
-                                                     alt="image" class="generic-img-card-img filter-image lazy">
+                                                     alt="image" class="generic-img-card-img filter-image lazy" loading="lazy">
                                                 <div
                                                     class="generic-img-card-content d-flex align-items-center justify-content-between">
                                                     <span class="badge text-capitalize">{{ $category->name }}</span>
@@ -294,7 +294,7 @@
                                                     <img
                                                         src="{{ asset('images/category/' . $category->background_image) }}"
                                                         data-src="{{ asset('images/category/' . $category->background_image) }}"
-                                                        alt="image" class="generic-img-card-img filter-image lazy">
+                                                        alt="image" class="generic-img-card-img filter-image lazy" loading="lazy">
                                                     <div
                                                         class="generic-img-card-content d-flex align-items-center justify-content-between">
                                                         <span class="badge text-capitalize">{{ $category->name }}</span>
