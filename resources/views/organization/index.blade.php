@@ -5,16 +5,8 @@
         <meta name="robots" content="noindex, follow">
     @endsection
 @endif
-@if($city == null)
-    @section('meta_description', "Explore the best $category->name in Nebraska. Get photos, business hours, phone numbers, ratings, reviews and service details.")
-@else
-    @section('meta_description', "Explore the best $category->name in " . Str::title($city->name) . ", Nebraska. Get photos, business hours, phone numbers, ratings, reviews and service details.")
-@endif
-@if($city != null)
-    @section('meta_keywords', "$category->name in $city->name,ne , $category->name in $city->name near me")
-@else
-    @section('meta_keywords',  "$category->name in , ne")
-@endif
+@section('meta_description', "Explore the best $category->name in " . Str::title($city->name) . ", Nebraska. Get photos, business hours, phone numbers, ratings, reviews and service details.")
+@section('meta_keywords', "$category->name in $city->name,ne , $category->name in $city->name near me")
 @section('content')
     <section class="card-area section-padding">
         <div class="container pt-5">
@@ -23,26 +15,20 @@
                     <div class="col-lg-12">
                         <div
                             class="breadcrumb-content breadcrumb-content-2 d-flex flex-wrap align-items-end justify-content-between margin-bottom-30px">
-                            @if($city == null)
-                                <ul class="list-items bread-list bread-list-2 bg-transparent rounded-0 p-0 text-capitalize">
-                                    <li><a href="{{ route('home') }}">Home</a></li>
-                                    <li>{{ $category->name }}</li>
-                                </ul>
-                            @else
-                                <ul class="list-items bread-list bread-list-2 bg-transparent rounded-0 p-0 text-capitalize">
-                                    <li><a href="{{ route('home') }}">Home</a></li>
-                                    <li><a href="{{ route('category.index', $city->slug) }}">{{ $city->name }}</a></li>
-                                    <li>{{ $category->name }}</li>
-                                </ul>
-                            @endif
+                            <ul class="list-items bread-list bread-list-2 bg-transparent rounded-0 p-0 text-capitalize">
+                                <li><a href="{{ route('home') }}">Home</a></li>
+                                <li><a href="{{ route('category.index', $city->slug) }}">{{ $city->name }}</a></li>
+                                <li>{{ $category->name }}</li>
+                            </ul>
                         </div>
-                    </div><!-- end col-lg-12 -->
+                    </div>
                     <div class="col-lg-12">
                         <div class="d-flex align-items-center pb-4 text-capitalize">
-                            @if($city != null)
-                                <h1 class="sec__title mb-0">{{ $category->name }} in {{ $city->name }}, NE</h1>
+                            @if($organizations->onFirstPage())
+                                <h1 class="sec__title mb-0">Top 10 Best {{ $category->name }} in {{ $city->name }},
+                                    Nebraska</h1>
                             @else
-                                <h1 class="sec__title mb-0">{{ $category->name }} in, NE</h1>
+                                <h1 class="sec__title mb-0">Top 10 {{ $category->name }} Near {{ $city->name }}, Nebraska</h1>
                             @endif
                         </div>
                     </div>
@@ -82,7 +68,8 @@
                                             <ul class="listing-meta d-flex align-items-center">
                                                 @if($organization->rate_stars && $organization->reviews_total_count && $organization->reviews->count())
                                                     <li class="d-flex align-items-center">
-                                                        <span class="rate flex-shrink-0">{{ $organization->rate_stars }}</span>
+                                                        <span
+                                                            class="rate flex-shrink-0">{{ $organization->rate_stars }}</span>
                                                         <span class="rate-text">{{ $organization->reviews->count() }} Reviews</span>
                                                     </li>
                                                 @endif
@@ -115,10 +102,10 @@
                                                 @endif
                                             </ul>
                                         </div>
-                                    </div><!-- end card-item -->
-                                </div><!-- end col-lg-12 -->
+                                    </div>
+                                </div>
                             @endforeach
-                        </div><!-- end row -->
+                        </div>
                         @if ($organizations->hasPages())
                             <div class="row">
                                 <div class="col-lg-12 pt-3 text-center">
@@ -237,7 +224,8 @@
                                                class="generic-img-card d-block hover-y overflow-hidden mb-3">
                                                 <img src="{{ asset('images/city/' . $f_city->background_image) }}"
                                                      data-src="{{ asset('images/city/' . $f_city->background_image) }}"
-                                                     alt="image" class="generic-img-card-img filter-image lazy" loading="lazy">
+                                                     alt="image" class="generic-img-card-img filter-image lazy"
+                                                     loading="lazy">
                                                 <div
                                                     class="generic-img-card-content d-flex align-items-center justify-content-between">
                                                     <span class="badge text-capitalize">{{ $f_city->name }}</span>
@@ -250,7 +238,8 @@
                                                    class="generic-img-card d-block hover-y overflow-hidden mb-3">
                                                     <img src="{{ asset('images/city/' . $f_city->background_image) }}"
                                                          data-src="{{ asset('images/city/' . $f_city->background_image) }}"
-                                                         alt="image" class="generic-img-card-img filter-image lazy" loading="lazy">
+                                                         alt="image" class="generic-img-card-img filter-image lazy"
+                                                         loading="lazy">
                                                     <div
                                                         class="generic-img-card-content d-flex align-items-center justify-content-between">
                                                         <span class="badge text-capitalize">{{ $f_city->name }}</span>
@@ -278,7 +267,8 @@
                                                class="generic-img-card d-block hover-y overflow-hidden mb-3">
                                                 <img src="{{ asset('images/category/' . $category->background_image) }}"
                                                      data-src="{{ asset('images/category/' . $category->background_image) }}"
-                                                     alt="image" class="generic-img-card-img filter-image lazy" loading="lazy">
+                                                     alt="image" class="generic-img-card-img filter-image lazy"
+                                                     loading="lazy">
                                                 <div
                                                     class="generic-img-card-content d-flex align-items-center justify-content-between">
                                                     <span class="badge text-capitalize">{{ $category->name }}</span>
@@ -294,7 +284,8 @@
                                                     <img
                                                         src="{{ asset('images/category/' . $category->background_image) }}"
                                                         data-src="{{ asset('images/category/' . $category->background_image) }}"
-                                                        alt="image" class="generic-img-card-img filter-image lazy" loading="lazy">
+                                                        alt="image" class="generic-img-card-img filter-image lazy"
+                                                        loading="lazy">
                                                     <div
                                                         class="generic-img-card-content d-flex align-items-center justify-content-between">
                                                         <span class="badge text-capitalize">{{ $category->name }}</span>
