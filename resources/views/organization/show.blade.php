@@ -18,11 +18,11 @@
                        data-caption="Showing image - {{ $photo_file }}">
                         <img src="{{ asset('images/business/' . $photo_file) }}"
                              alt="single listing image" style="height: 355px">
-                    </a><!-- end fs-slider-item -->
+                    </a>
                 @endforeach
             </div>
         @endif
-    </section><!-- end full-screen-slider-area -->
+    </section>
     <!-- =====END FULL SCREEN SLIDER======= -->
 
     <!-- ======START BREADCRUMB AREA======== -->
@@ -35,7 +35,9 @@
                         <div class="section-heading">
                             <ul class="list-items bread-list bread-list-2 bg-transparent rounded-0 p-0 text-capitalize">
                                 <li><a href="{{ route('home') }}">Home</a></li>
-                                <li><a href="{{ route('category.index', $organization->city->slug) }}">{{ $organization->city->name }}</a></li>
+                                <li>
+                                    <a href="{{ route('category.index', $organization->city->slug) }}">{{ $organization->city->name }}</a>
+                                </li>
                                 <li>
                                     <a href="{{ route('city.wise.organizations', ['city_slug' => $organization->city->slug, 'category_slug' => $organization->category->slug]) }}">{{ $organization->category->name }}</a>
                                 </li>
@@ -98,11 +100,11 @@
                                     Review</a>
                             </div>
                         </div>
-                    </div><!-- end breadcrumb-content -->
-                </div><!-- end col-lg-12 -->
-            </div><!-- end row -->
-        </div><!-- end container -->
-    </section><!-- end breadcrumb-area -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- =======END BREADCRUMB AREA======= -->
 
     <!-- ========START LISTING DETAIL AREA======== -->
@@ -115,30 +117,30 @@
                             <div class="block-card-header">
                                 <h2 class="widget-title">About</h2>
                                 <div class="stroke-shape"></div>
-                            </div><!-- end block-card-header -->
+                            </div>
                             <div class="block-card-body">
                                 <p class="pb-3 font-weight-medium line-height-30">{!! $organization->about1 !!}</p>
                                 <p class="pb-3 font-weight-medium line-height-30">{!! $organization->about2 !!}</p>
                                 <p class="pb-3 font-weight-medium line-height-30">{!! $organization->about3 !!}</p>
-                            </div><!-- end block-card-body -->
-                        </div><!-- end block-card -->
+                            </div>
+                        </div>
 
                         @if($organization->organization_short_description)
                             <div class="block-card mb-4">
                                 <div class="block-card-header">
                                     <h2 class="widget-title">Description</h2>
                                     <div class="stroke-shape"></div>
-                                </div><!-- end block-card-header -->
+                                </div>
                                 <div class="block-card-body">
                                     <p class="pb-3 font-weight-medium line-height-30">{{ $organization->organization_short_description }}</p>
-                                </div><!-- end block-card-body -->
-                            </div><!-- end block-card -->
+                                </div>
+                            </div>
                         @endif
                         <div class="block-card mb-4">
                             <div class="block-card-header">
                                 <h2 class="widget-title">Location / Contact</h2>
                                 <div class="stroke-shape"></div>
-                            </div><!-- end block-card-header -->
+                            </div>
                             <div class="block-card-body">
                                 @if($organization->embed_map_code)
                                     <div class="map-container height-500">
@@ -196,26 +198,26 @@
                                                title="Youtube"><i class="la la-youtube"></i></a></li>
                                     @endif
                                 </ul>
-                            </div><!-- end block-card-body -->
-                        </div><!-- end block-card -->
+                            </div>
+                        </div>
                         @if($organization->rate_stars && $organization->reviews_total_count)
                             <div class="block-card mb-4">
                                 <div class="block-card-header">
                                     <h2 class="widget-title">Rating Stats</h2>
                                     <div class="stroke-shape"></div>
-                                </div><!-- end block-card-header -->
+                                </div>
                                 <div class="block-card-body">
                                     <div class="review-content d-flex flex-wrap align-items-center">
                                         <div class="review-rating-summary">
                                     <span class="stats-average__count">
                                        {{ $organization->rate_stars }}
-                                    </span><!-- end stats-average__count -->
+                                    </span>
                                             <div class="star-rating-wrap">
                                                 <p class="font-size-14 font-weight-medium">out of 5.0</p>
                                                 <div class="organization_rating"
                                                      data-rating="{{ $organization->rate_stars }}"></div>
                                             </div>
-                                        </div><!-- end review-rating-summary -->
+                                        </div>
                                         <div
                                             class="review-bars d-flex flex-row flex-wrap flex-grow-1 align-items-center">
                                             <div class="review-bars-item">
@@ -226,7 +228,7 @@
                                             </span>
                                                     <span class="pill">5.0</span>
                                                 </div>
-                                            </div><!-- end review-bars-item -->
+                                            </div>
                                             <div class="review-bars-item">
                                                 <span class="review-bars-name">{{ $four_star_reviews }} reviews</span>
                                                 <div class="review-bars-inner d-flex w-100 align-items-center">
@@ -235,7 +237,7 @@
                                             </span>
                                                     <span class="pill">4.0</span>
                                                 </div>
-                                            </div><!-- end review-bars-item -->
+                                            </div>
                                             <div class="review-bars-item">
                                                 <span class="review-bars-name">{{ $three_star_reviews }} reviews</span>
                                                 <div class="review-bars-inner d-flex w-100 align-items-center">
@@ -244,7 +246,7 @@
                                             </span>
                                                     <span class="pill">3.0</span>
                                                 </div>
-                                            </div><!-- end review-bars-item -->
+                                            </div>
                                             <div class="review-bars-item">
                                                 <span class="review-bars-name">{{ $two_star_reviews }} reviews</span>
                                                 <div class="review-bars-inner d-flex w-100 align-items-center">
@@ -253,7 +255,7 @@
                                             </span>
                                                     <span class="pill">2.0</span>
                                                 </div>
-                                            </div><!-- end review-bars-item -->
+                                            </div>
                                             <div class="review-bars-item">
                                                 <span class="review-bars-name">{{ $one_star_reviews }} reviews</span>
                                                 <div class="review-bars-inner d-flex w-100 align-items-center">
@@ -262,11 +264,11 @@
                                             </span>
                                                     <span class="pill">1.0</span>
                                                 </div>
-                                            </div><!-- end review-bars-item -->
-                                        </div><!-- end review-bars -->
-                                    </div><!-- end review-content -->
-                                </div><!-- end block-card-body -->
-                            </div><!-- end block-card -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         @endif
                         @if($organization->reviews->count())
                             <div class="block-card mb-4">
@@ -274,7 +276,7 @@
                                     <h2 class="widget-title">Reviews <span class="ml-1 text-color-2">({{ $organization->reviews->whereNotNull('review_id')->count() }})</span>
                                     </h2>
                                     <div class="stroke-shape"></div>
-                                </div><!-- end block-card-header -->
+                                </div>
 
                                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                                     <li class="nav-item google-review" role="presentation">
@@ -349,7 +351,7 @@
                                                                                  alt="review image" loading="lazy">
                                                                         </a>
                                                                     @endforeach
-                                                                </div><!-- end review-photos -->
+                                                                </div>
                                                             @endif
                                                             @if($review->review_thumbs_up_value)
                                                                 <div
@@ -364,7 +366,7 @@
                                                                 </div>
                                                             @endif
                                                         </div>
-                                                    </div><!-- end comment -->
+                                                    </div>
                                                 @endforeach
                                             </div>
                                             @if ($organization->reviews_paginator->hasPages())
@@ -481,11 +483,11 @@
 
                                                                 </ul>
                                                             </nav>
-                                                        </div><!-- end section-pagination -->
+                                                        </div>
                                                     </div>
                                                 </div>
                                             @endif
-                                        </div><!-- end block-card-body -->
+                                        </div>
                                     </div>
                                     <div class="tab-pane fade" id="nebraska-review" role="tabpanel"
                                          aria-labelledby="nebraska-review-tab">
@@ -538,7 +540,7 @@
                                                                                      alt="review image" loading="lazy">
                                                                             </a>
                                                                         @endforeach
-                                                                    </div><!-- end review-photos -->
+                                                                    </div>
                                                                 @endif
                                                                 @if($nebraska_review->review_thumbs_up_value)
                                                                     <div
@@ -554,7 +556,7 @@
                                                                     </div>
                                                                 @endif
                                                             </div>
-                                                        </div><!-- end comment -->
+                                                        </div>
                                                     @endforeach
                                                 </div>
                                                 @if ($organization->nebraska_reviews_paginator->hasPages())
@@ -674,11 +676,11 @@
 
                                                                     </ul>
                                                                 </nav>
-                                                            </div><!-- end section-pagination -->
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 @endif
-                                            </div><!-- end block-card-body -->
+                                            </div>
                                         @else
                                             <div class="block-card-body">
                                                 <div class="comments-list">
@@ -692,14 +694,14 @@
                                            class="more-review-link" target="_blank">For more reviews</a>
                                     </div>
                                 </div>
-                            </div><!-- end block-card -->
+                            </div>
                         @endif
 
                         <div class="block-card mb-4">
                             <div class="block-card-header">
                                 <h2 class="widget-title">Frequently Asked Questions</h2>
                                 <div class="stroke-shape"></div>
-                            </div><!-- end block-card-header -->
+                            </div>
                             <div class="block-card-body">
                                 <div class="accordion-item" id="accordion">
                                     <div class="card">
@@ -722,7 +724,7 @@
                                                     this place remains quite free or moderately crowded.</p>
                                             </div>
                                         </div>
-                                    </div><!-- end card -->
+                                    </div>
                                     <div class="card">
                                         <div class="card-header" id="headingTwo">
                                             <h5>
@@ -743,7 +745,7 @@
                                                     rating of {{ $organization->rate_stars }}-star.</p>
                                             </div>
                                         </div>
-                                    </div><!-- end card -->
+                                    </div>
                                     <div class="card">
                                         <div class="card-header" id="headingThree">
                                             <h5>
@@ -764,7 +766,7 @@
                                                     has {{ $organization->reviews->count() }} reviews.</p>
                                             </div>
                                         </div>
-                                    </div><!-- end card -->
+                                    </div>
                                     @if($organization->organization_address)
                                         <div class="card">
                                             <div class="card-header" id="headingFour">
@@ -786,7 +788,7 @@
                                                         is: {{ $organization->organization_address }}.</p>
                                                 </div>
                                             </div>
-                                        </div><!-- end card -->
+                                        </div>
                                     @endif
 
                                     <div class="card">
@@ -815,7 +817,7 @@
                                                 @endif
                                             </div>
                                         </div>
-                                    </div><!-- end card -->
+                                    </div>
 
                                     <div class="card">
                                         <div class="card-header" id="headingSix">
@@ -837,7 +839,7 @@
                                                     under {{ Str::title($organization->category->name) }}.</p>
                                             </div>
                                         </div>
-                                    </div><!-- end card -->
+                                    </div>
 
                                     <div class="block-card-header pt-3">
                                     </div>
@@ -903,21 +905,20 @@
                                     </div>
 
                                 </div>
-                            </div><!-- end block-card-body -->
-                        </div><!-- end block-card -->
+                            </div>
+                        </div>
                         <div class="block-card" id="review">
                             <div class="block-card-header">
                                 <h2 class="widget-title pb-1">Add a Review</h2>
                                 <p>Your email address will not be published. Required fields are marked <span
                                         class="required">*</span></p>
-                            </div><!-- end block-card-header -->
+                            </div>
                             <div class="block-card-body">
                                 <div
                                     class="add-rating-bars review-bars d-flex flex-row flex-wrap flex-grow-1 align-items-center">
                                     <span class="review-bars-name pr-3">Rate this business! <span
                                             class="required">*</span></span>
                                     <section class='rating-widget'>
-                                        <!-- Rating Stars Box -->
                                         <div class='rating-stars text-center'>
                                             <ul id='stars'>
                                                 <li class='star' title='Poor' data-value='1'>
@@ -938,7 +939,7 @@
                                             </ul>
                                         </div>
                                     </section>
-                                </div><!-- end review-bars -->
+                                </div>
                                 <form method="post" action="{{ route('review.store') }}" class="form-box row pt-3"
                                       enctype="multipart/form-data">
                                     @csrf
@@ -957,7 +958,7 @@
                                                        required>
                                             </div>
                                         </div>
-                                    </div><!-- end col-lg-6 -->
+                                    </div>
                                     <div class="col-lg-6">
                                         <div class="input-box">
                                             <label class="label-text" for="reviewer_email">Email</label>
@@ -968,7 +969,7 @@
                                                        placeholder="Email Address" value="{{ old('reviewer_email') }}">
                                             </div>
                                         </div>
-                                    </div><!-- end col-lg-6 -->
+                                    </div>
                                     <div class="col-lg-12">
                                         <div class="input-box">
                                             <label class="label-text" for="review_text_original">Review</label>
@@ -980,7 +981,7 @@
                                                           placeholder="Tell about your experience or leave a tip for others">{{ old('review_text_original') }}</textarea>
                                             </div>
                                         </div>
-                                    </div><!-- end col-lg-12 -->
+                                    </div>
                                     <div class="col-lg-12">
                                         <div class="file-upload-wrap file-upload-wrap-2">
                                             <input type="file" name="review_photos_files[]"
@@ -988,18 +989,18 @@
                                             <span class="file-upload-text"><i
                                                     class="la la-photo mr-2"></i>Add Photos</span>
                                         </div>
-                                    </div><!-- end col-lg-12 -->
+                                    </div>
                                     <div class="col-lg-12">
                                         <div class="btn-box pt-3">
                                             <button class="theme-btn gradient-btn border-0">Submit Review<i
                                                     class="la la-arrow-right ml-2"></i></button>
                                         </div>
-                                    </div><!-- end col-lg-12 -->
+                                    </div>
                                 </form>
-                            </div><!-- end block-card-body -->
-                        </div><!-- end block-card -->
-                    </div><!-- end listing-detail-wrap -->
-                </div><!-- end col-lg-8 -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <div class="col-lg-4">
                     <div class="sidebar mb-0">
                         <div class="sidebar-widget">
@@ -1021,7 +1022,7 @@
                                                                                                      target="_blank">Get
                                         Directions</a></li>
                             </ul>
-                        </div><!-- end sidebar-widget -->
+                        </div>
                         @if($organization->organization_work_time)
                             <div class="sidebar-widget">
                                 <h3 class="widget-title">Opening Hours</h3>
@@ -1039,13 +1040,13 @@
                                         @endif
                                     @endforeach
                                 </ul>
-                            </div><!-- end sidebar-widget -->
+                            </div>
                         @endif
-                    </div><!-- end sidebar -->
-                </div><!-- end col-lg-4 -->
-            </div><!-- end row -->
-        </div><!-- end container -->
-    </section><!-- end listing-detail-area -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
     <!-- =======END LISTING DETAIL  AREA======= -->
 @endsection
 @section('js')
@@ -1153,6 +1154,5 @@
             "reviewCount": "{{ $organization->reviews->count() ?? 0}}"
           }
         }
-
     </script>
 @endsection
