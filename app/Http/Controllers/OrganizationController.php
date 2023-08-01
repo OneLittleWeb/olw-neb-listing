@@ -37,10 +37,9 @@ class OrganizationController extends Controller
             $categories = Category::all();
             $cities = City::all();
 
-            $organizations = Organization::withCount('reviews') // This will add a 'reviews_count' attribute to each organization
-            ->where('city_id', $city->id)
+            $organizations = Organization::where('city_id', $city->id)
                 ->where('category_id', $category->id)
-                ->orderByRaw('CAST(reviews_count AS SIGNED) DESC')
+                ->orderByRaw('CAST(reviews_total_count AS SIGNED) DESC')
                 ->orderByRaw('CAST(rate_stars AS SIGNED) DESC')
                 ->paginate(10);
 
@@ -159,8 +158,8 @@ class OrganizationController extends Controller
                 $organization->about2 = null;
             }
 
-            $organization->rate_stars = $organization->reviews->count() ? $organization->rate_stars : 0;
-            $organization->reviews_total_count = $organization->reviews->count() ? $organization->reviews_total_count : 0;
+            $organization->rate_stars = $organization->rate_stars ?? 0;
+            $organization->reviews_total_count = $organization->reviews_total_count ?? 0;
 
             $organization->about3 = "<strong>$organization->organization_name</strong>" . ' has a ' . "<strong>$organization->rate_stars</strong>" . '-star rating and ' . "<strong>$organization->reviews_total_count</strong>" . ' reviews. Check out the photos and customer reviews to make an image in your mind about what to expect there.';
 

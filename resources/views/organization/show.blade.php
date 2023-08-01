@@ -84,7 +84,7 @@
                                 </span>
                             </p>
                             <div class="d-flex flex-wrap align-items-center">
-                                @if($organization->rate_stars && $organization->reviews_total_count && $organization->reviews->count())
+                                @if($organization->rate_stars && $organization->reviews_total_count)
                                     <div class="star-rating-wrap d-flex align-items-center">
                                         <div class="organization_rating"
                                              data-rating="{{ $organization->rate_stars }}"></div>
