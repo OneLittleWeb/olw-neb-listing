@@ -53,10 +53,11 @@ class OrganizationController extends Controller
 
     public function cityWiseOrganizations($city_slug, $category_slug)
     {
-        dd($city_slug, $category_slug);
         if ($city_slug && $category_slug) {
             $city = City::where('slug', $city_slug)->first();
             $category = Category::where('slug', $category_slug)->first();
+
+            dd($city, $category);
 
             if ($city && $category) {
                 $category->meta_title = Str::title($category->name) . ' in ' . Str::title($city->name) . ', NE | nebraskalisting.com';
