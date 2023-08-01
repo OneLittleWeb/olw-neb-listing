@@ -57,8 +57,6 @@ class OrganizationController extends Controller
             $city = City::where('slug', $city_slug)->first();
             $category = Category::where('slug', $category_slug)->first();
 
-            dd($city, $category);
-
             if ($city && $category) {
                 $category->meta_title = Str::title($category->name) . ' in ' . Str::title($city->name) . ', NE | nebraskalisting.com';
 
@@ -73,6 +71,8 @@ class OrganizationController extends Controller
                     ->groupBy('organizations.id') // Group by organization to avoid duplicates
                     ->orderBy('reviews_count', 'DESC') // Order by the reviews_count
                     ->paginate(10);
+
+                dd($organizations);
 
                 Meta::setPaginationLinks($organizations);
                 return view('organization.index', compact('organizations', 'cities', 'city', 'category', 'categories'));
