@@ -41,9 +41,10 @@ class OrganizationController extends Controller
                 ->where('category_id', $category->id)
                 ->orderByRaw('CAST(reviews_total_count AS SIGNED) DESC')
                 ->orderByRaw('CAST(rate_stars AS SIGNED) DESC')
-                ->paginate(10);
+                ->paginate(10)
+                ->onEachSide(0);
 
-            if ($organizations->onFirstPage()){
+            if ($organizations->onFirstPage()) {
                 $category->meta_title = 'Top 10 Best ' . Str::title($category->name) . ' near ' . Str::title($city->name) . ', Nebraska';
             } else {
                 $category->meta_title = Str::title($category->name) . ' near ' . Str::title($city->name) . ', Nebraska';
