@@ -1013,14 +1013,14 @@
                                             target="_blank">{{ $organization->organization_website }}</a></li>
                                 @endif
                                 @if($organization->organization_phone_number)
-                                    <li><i class="la la-phone mr-2 text-color-2 font-size-18"></i><a
-                                            href="tel:{{ $organization->organization_phone_number }}">{{ $organization->organization_phone_number }}</a>
+                                    <li><i class="la la-phone mr-2 text-color-2 font-size-18"></i>
+                                        <a href="tel:{{ $organization->organization_phone_number }}">{{ $organization->organization_phone_number }}</a>
                                     </li>
                                 @endif
-                                <li><i class="la la-map-signs mr-2 text-color-2 font-size-18"></i><a rel="nofollow"
-                                                                                                     href="{{ $organization->gmaps_link }}"
-                                                                                                     target="_blank">Get
-                                        Directions</a></li>
+                                <li><i class="la la-map-signs mr-2 text-color-2 font-size-18"></i>
+                                    <a rel="nofollow" href="{{ $organization->gmaps_link }}" target="_blank">Get
+                                        Directions</a>
+                                </li>
                             </ul>
                         </div>
                         @if($organization->organization_work_time)
