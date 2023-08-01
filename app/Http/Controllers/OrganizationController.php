@@ -25,59 +25,59 @@ use Illuminate\Support\Facades\File;
 
 class OrganizationController extends Controller
 {
-//    public function cityWiseOrganizations($city_slug, $category_slug)
-//    {
-//        $city_check = City::where('slug', $city_slug)->exists();
-//        $category_check = Category::where('slug', $category_slug)->exists();
-//
-//        if ($city_check && $category_check) {
-//            $city = City::where('slug', $city_slug)->first();
-//            $category = Category::where('slug', $category_slug)->first();
-//            $category->meta_title = Str::title($category->name) . ' in ' . Str::title($city->name) . ', NE | nebraskalisting.com';
-//
-//            $categories = Category::all();
-//            $cities = City::all();
-//
-//            $organizations = Organization::withCount('reviews') // This will add a 'reviews_count' attribute to each organization
-//            ->where('city_id', $city->id)
-//                ->where('category_id', $category->id)
-//                ->orderByRaw('CAST(reviews_count AS SIGNED) DESC')
-//                ->orderByRaw('CAST(rate_stars AS SIGNED) DESC')
-//                ->paginate(10);
-//
-//            Meta::setPaginationLinks($organizations);
-//            return view('organization.index', compact('organizations', 'cities', 'city', 'category', 'categories'));
-//        }
-//        return abort(404);
-//    }
-
     public function cityWiseOrganizations($city_slug, $category_slug)
     {
-        if ($city_slug && $category_slug) {
+        $city_check = City::where('slug', $city_slug)->exists();
+        $category_check = Category::where('slug', $category_slug)->exists();
+
+        if ($city_check && $category_check) {
             $city = City::where('slug', $city_slug)->first();
             $category = Category::where('slug', $category_slug)->first();
+            $category->meta_title = Str::title($category->name) . ' in ' . Str::title($city->name) . ', NE | nebraskalisting.com';
 
-            if ($city && $category) {
-                $category->meta_title = Str::title($category->name) . ' in ' . Str::title($city->name) . ', NE | nebraskalisting.com';
+            $categories = Category::all();
+            $cities = City::all();
 
-                $categories = Category::all();
-                $cities = City::all();
+            $organizations = Organization::withCount('reviews') // This will add a 'reviews_count' attribute to each organization
+            ->where('city_id', $city->id)
+                ->where('category_id', $category->id)
+                ->orderByRaw('CAST(reviews_count AS SIGNED) DESC')
+                ->orderByRaw('CAST(rate_stars AS SIGNED) DESC')
+                ->paginate(10);
 
-                $organizations = Organization::withCount('reviews')
-                    ->where('city_id', $city->id)
-                    ->where('category_id', $category->id)
-                    ->leftJoin('reviews', 'organizations.organization_guid', '=', 'reviews.organization_guid') // Left join to include reviews table
-                    ->select('organizations.*', DB::raw('COUNT(reviews.id) AS reviews_count')) // Calculate the reviews_count
-                    ->groupBy('organizations.id') // Group by organization to avoid duplicates
-                    ->orderBy('reviews_count', 'DESC') // Order by the reviews_count
-                    ->paginate(10);
-
-                Meta::setPaginationLinks($organizations);
-                return view('organization.index', compact('organizations', 'cities', 'city', 'category', 'categories'));
-            }
+            Meta::setPaginationLinks($organizations);
+            return view('organization.index', compact('organizations', 'cities', 'city', 'category', 'categories'));
         }
         return abort(404);
     }
+
+//    public function cityWiseOrganizations($city_slug, $category_slug)
+//    {
+//        if ($city_slug && $category_slug) {
+//            $city = City::where('slug', $city_slug)->first();
+//            $category = Category::where('slug', $category_slug)->first();
+//
+//            if ($city && $category) {
+//                $category->meta_title = Str::title($category->name) . ' in ' . Str::title($city->name) . ', NE | nebraskalisting.com';
+//
+//                $categories = Category::select('id', 'name', 'slug', 'icon', 'background', 'background_image')->get();
+//                $cities = City::select('id', 'name', 'slug', 'is_major', 'population', 'background_image')->get();
+//
+//                $organizations = Organization::withCount('reviews')
+//                    ->where('city_id', $city->id)
+//                    ->where('category_id', $category->id)
+//                    ->leftJoin('reviews', 'organizations.organization_guid', '=', 'reviews.organization_guid') // Left join to include reviews table
+//                    ->select('organizations.*', DB::raw('COUNT(reviews.id) AS reviews_count')) // Calculate the reviews_count
+//                    ->groupBy('organizations.id') // Group by organization to avoid duplicates
+//                    ->orderBy('reviews_count', 'DESC') // Order by the reviews_count
+//                    ->paginate(10);
+//
+//                Meta::setPaginationLinks($organizations);
+//                return view('organization.index', compact('organizations', 'cities', 'city', 'category', 'categories'));
+//            }
+//        }
+//        return abort(404);
+//    }
 
     public function cityWiseOrganization($city_slug, $organization_slug)
     {
