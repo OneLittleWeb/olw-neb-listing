@@ -66,11 +66,15 @@
                                     </div>
                                 @endif
                             </div>
-                            @if($organization->organization_address)
-                                <p class="sec__desc py-2 font-size-17"><i
-                                        class="la la-map-marker mr-1 text-color-2"></i>{{ $organization->organization_address }}
-                                </p>
-                            @endif
+
+                            <p class="sec__desc py-2 font-size-17"><i
+                                    class="la la-map-marker mr-1 text-color-2"></i>
+                                @if($organization->organization_address)
+                                    {{ $organization->organization_address }}
+                                @else
+                                    {{ ucfirst($organization->city->name) }}, Nebraska, US
+                                @endif
+                            </p>
                             <p class="pb-2 font-weight-medium">
                             <span class="price-range mr-1 text-color font-size-16" data-toggle="tooltip"
                                   data-placement="top" title="Moderate">

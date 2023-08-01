@@ -54,13 +54,16 @@
                                             <h2 class="card-title">
                                                 <a href="{{ route('city.wise.organization', ['city_slug' => $organization->city->slug, 'organization_slug' => $organization->slug]) }}">{{ $organization->organization_name }}</a>
                                             </h2>
-                                            @if($organization->organization_address)
-                                                <p class="card-sub">
-                                                    <a href="#">
-                                                        <i class="la la-map-marker mr-1 text-color-2"></i>{{ $organization->organization_address }}
-                                                    </a>
-                                                </p>
-                                            @endif
+                                            <p class="card-sub">
+                                                <a href="#">
+                                                    <i class="la la-map-marker mr-1 text-color-2"></i>
+                                                    @if($organization->organization_address)
+                                                        {{ $organization->organization_address }}
+                                                    @else
+                                                        {{ ucfirst($organization->city->name) }}, Nebraska, US
+                                                    @endif
+                                                </a>
+                                            </p>
                                             <ul class="listing-meta d-flex align-items-center">
                                                 @if($organization->rate_stars && $organization->reviews_total_count)
                                                     <li class="d-flex align-items-center">
