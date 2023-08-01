@@ -17,7 +17,7 @@
                        data-fancybox="gallery"
                        data-caption="Showing image - {{ $photo_file }}">
                         <img src="{{ asset('images/business/' . $photo_file) }}"
-                             alt="single listing image" style="height: 355px" loading="lazy">
+                             alt="single listing image" style="height: 355px">
                     </a><!-- end fs-slider-item -->
                 @endforeach
             </div>
