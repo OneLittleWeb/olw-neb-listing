@@ -28,14 +28,18 @@
                                 Nebraska</h1>
                         </div>
                     </div>
-{{--                    <div class="col-lg-12 nebraska-badge-div mobile">--}}
-{{--                        <img class="nebraska-badge-image" src="{{ asset('images/nebraska-badge.png') }}"--}}
-{{--                             data-src="{{ asset('images/nebraska-badge.png') }}" alt="Nebraska Badge">--}}
-{{--                        <p class="text-justify">We considered all 336 Property Management Companies in the Chicago area.--}}
-{{--                            We looked at--}}
-{{--                            all the data and analyzed these companies on costs, customer rating, reliability,--}}
-{{--                            and experience to identify the top 31.</p>--}}
-{{--                    </div>--}}
+                    @if($organizations->onFirstPage() && $organization_badge)
+                        <div class="col-lg-12 nebraska-badge-div mobile">
+                            <img class="nebraska-badge-image" src="{{ asset('images/badges/' . $organization_badge) }}"
+                                 data-src="{{ asset('images/badges/' . $organization_badge) }}" alt="Nebraska Badge">
+                            <p class="text-justify">We considered
+                                all {{ $organization_count }} {{ $organizations[0]->category->name }} Companies in the
+                                {{ $organizations[0]->city->name }} area. We looked at
+                                all the data and analyzed these companies on costs, customer rating,
+                                reliability,
+                                and experience to identify the top 10.</p>
+                        </div>
+                    @endif
                     <div class="col-lg-8">
                         <div class="row">
                             @foreach($organizations as $organization)
@@ -221,13 +225,21 @@
                     </div>
                     <div class="col-lg-4">
                         <div class="sidebar mb-0">
-                            {{--                            <div class="nebraska-badge-div desktop">--}}
-                            {{--                                <img class="nebraska-badge-image" src="{{ asset('images/nebraska-badge.png') }}"--}}
-                            {{--                                     data-src="{{ asset('images/nebraska-badge.png') }}" alt="Nebraska Badge">--}}
-                            {{--                                <p class="text-justify">We considered all 336 Property Management Companies in the Chicago area. We looked at--}}
-                            {{--                                    all the data and analyzed these companies on costs, customer rating, reliability,--}}
-                            {{--                                    and experience to identify the top 31.</p>--}}
-                            {{--                            </div>--}}
+                            @if($organizations->onFirstPage() && $organization_badge)
+                                <div class="nebraska-badge-div desktop">
+                                    <img class="nebraska-badge-image"
+                                         src="{{ asset('images/badges/' . $organization_badge) }}"
+                                         data-src="{{ asset('images/badges/' . $organization_badge) }}"
+                                         alt="Nebraska Badge">
+                                    <p class="text-justify">We considered
+                                        all {{ $organization_count }} {{ $organizations[0]->category->name }} Companies
+                                        in the
+                                        {{ $organizations[0]->city->name }} area. We looked at
+                                        all the data and analyzed these companies on costs, customer rating,
+                                        reliability,
+                                        and experience to identify the top 10.</p>
+                                </div>
+                            @endif
 
                             @if($cities)
                                 <div class="sidebar-widget">

@@ -22,6 +22,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Facades\File;
+use Symfony\Component\Finder\Finder;
 
 class OrganizationController extends Controller
 {
@@ -44,7 +45,23 @@ class OrganizationController extends Controller
                 ->paginate(10)
                 ->onEachSide(0);
 
-//            dd($organizations[0]->category->name. '-' .$organizations[0]->city->name . '.png');
+            $files = File::files(public_path('images/badges'));
+            $images = [];
+            $organization_badge = '';
+
+            foreach ($files as $file) {
+                $images[] = $file->getRelativePathname();
+
+                foreach ($images as $image) {
+                    if ($image == $organizations[0]->category->name . ' - ' . $organizations[0]->city->name . '.png')
+                    {
+                        $organization_badge = $image;
+                    }
+                }
+            }
+
+            $organization_count = Organization::where('city_id', $city->id)
+                ->where('category_id', $category->id)->count();
 
             if ($organizations->onFirstPage()) {
                 $category->meta_title = 'Top 10 Best ' . Str::title($category->name) . ' near ' . Str::title($city->name) . ', Nebraska';
@@ -53,7 +70,7 @@ class OrganizationController extends Controller
             }
 
             Meta::setPaginationLinks($organizations);
-            return view('organization.index', compact('organizations', 'cities', 'city', 'category', 'categories'));
+            return view('organization.index', compact('organizations', 'cities', 'city', 'category', 'categories', 'organization_badge', 'organization_count'));
         }
         return abort(404);
     }
