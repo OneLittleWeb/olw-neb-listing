@@ -113,9 +113,97 @@
     list-style-type: disc;
 }
 
-.send-contact-button{
+.send-contact-button {
     padding: 7px 42px;
 }
+
+.nebraska-badge-image {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+}
+
+.nebraska-badge-div {
+    padding: 10px 10px 25px;
+}
+
+/* Styles for desktop */
+.nebraska-badge-div.desktop {
+    display: block;
+}
+
+/* Styles for mobile */
+.nebraska-badge-div.mobile {
+    display: none;
+}
+
+.slide-image-top {
+    padding-top: 110px;
+}
+
+.slider-image-height img {
+    height: 355px;
+}
+
+.suggest-edit-button-div {
+    padding: 0 0 20px 0;
+}
+
+.suggest-edit-button {
+    padding: 10px;
+    width: 365px;
+    background: linear-gradient(270deg, #9f8fff, #7b68ee);
+    position: relative;
+    color: #fff;
+}
+
+.suggest-edit-button:hover {
+    background: linear-gradient(270deg, #7b68ee, #9f8fff);
+    color: #fff;
+}
+
+/* Custom styles for the modal */
+.suggest-edit-modal-header {
+    display: flex;
+    flex-direction: column;
+}
+
+.suggest-edit-modal-address {
+    font-size: 15px;
+    color: #1a5272;
+}
+
+.suggest-edit-close-button {
+    padding-left: 352px !important;
+}
+
+.suggest-edit-form-check-input {
+    margin-top: 0.4rem !important;
+}
+
+.suggested-modal-content-section {
+    padding-left: 70px;
+}
+
+.suggested-modal-content-text {
+    font-size: 15px;
+    color: black;
+    font-weight: bold;
+}
+
+@media (max-width: 768px) {
+    /* Hide the desktop div on mobile */
+    .nebraska-badge-div.desktop {
+        display: none;
+    }
+
+    /* Show the mobile div on mobile */
+    .nebraska-badge-div.mobile {
+        display: block;
+    }
+}
+
 
 @media screen and (max-width: 1450px) {
     .logo img {
@@ -169,5 +257,9 @@
 
     .nebraska-review-count {
         display: none;
+    }
+
+    .suggest-edit-close-button {
+        padding-left: 320px !important;
     }
 }

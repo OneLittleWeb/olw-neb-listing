@@ -28,6 +28,14 @@
                                 Nebraska</h1>
                         </div>
                     </div>
+{{--                    <div class="col-lg-12 nebraska-badge-div mobile">--}}
+{{--                        <img class="nebraska-badge-image" src="{{ asset('images/nebraska-badge.png') }}"--}}
+{{--                             data-src="{{ asset('images/nebraska-badge.png') }}" alt="Nebraska Badge">--}}
+{{--                        <p class="text-justify">We considered all 336 Property Management Companies in the Chicago area.--}}
+{{--                            We looked at--}}
+{{--                            all the data and analyzed these companies on costs, customer rating, reliability,--}}
+{{--                            and experience to identify the top 31.</p>--}}
+{{--                    </div>--}}
                     <div class="col-lg-8">
                         <div class="row">
                             @foreach($organizations as $organization)
@@ -205,14 +213,22 @@
                                                     @endif
                                                 </ul>
                                             </nav>
-                                        </div><!-- end section-pagination -->
+                                        </div>
                                     </div>
-                                </div><!-- end col-lg-12 -->
-                            </div><!-- end row -->
+                                </div>
+                            </div>
                         @endif
-                    </div><!-- end col-lg-8 -->
+                    </div>
                     <div class="col-lg-4">
                         <div class="sidebar mb-0">
+                            {{--                            <div class="nebraska-badge-div desktop">--}}
+                            {{--                                <img class="nebraska-badge-image" src="{{ asset('images/nebraska-badge.png') }}"--}}
+                            {{--                                     data-src="{{ asset('images/nebraska-badge.png') }}" alt="Nebraska Badge">--}}
+                            {{--                                <p class="text-justify">We considered all 336 Property Management Companies in the Chicago area. We looked at--}}
+                            {{--                                    all the data and analyzed these companies on costs, customer rating, reliability,--}}
+                            {{--                                    and experience to identify the top 31.</p>--}}
+                            {{--                            </div>--}}
+
                             @if($cities)
                                 <div class="sidebar-widget">
                                     <h3 class="widget-title">Filter by City</h3>
@@ -254,7 +270,7 @@
                                                     class="la la-minus ml-1"></i></span>
                                         </a>
                                     </div>
-                                </div><!-- end sidebar-widget -->
+                                </div>
                             @endif
                             @if($city != null)
                                 <div class="sidebar-widget">
@@ -302,21 +318,21 @@
                                                     class="la la-minus ml-1"></i></span>
                                         </a>
                                     </div>
-                                </div><!-- end sidebar-widget -->
+                                </div>
                             @endif
-                        </div><!-- end sidebar -->
-                    </div><!-- end col-lg-4 -->
-                </div><!-- end row -->
+                        </div>
+                    </div>
+                </div>
             @else
                 <div class="row">
                     <div class="col-lg-12">
                         <div
                             class="filter-bar d-flex flex-wrap margin-bottom-30px">
                             <p class="result-text font-weight-medium">No Business Found</p>
-                        </div><!-- end filter-bar -->
-                    </div><!-- end col-lg-12 -->
+                        </div>
+                    </div>
                 </div>
             @endif
-        </div><!-- end container -->
-    </section><!-- end card-area -->
+        </div>
+    </section>
 @endsection

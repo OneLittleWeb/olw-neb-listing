@@ -9,15 +9,15 @@
 @section('meta_keywords',  str_replace("'","",$organization->organization_name). ", " .str_replace("'","",$organization->organization_name) . " review")
 @section('content')
     <!-- =======START FULL SCREEN SLIDER======= -->
-    <section class="full-screen-slider-area" style="padding-top: 98px">
+    <section class="full-screen-slider-area slide-image-top">
         @if($organization->organization_photos_files)
             <div class="full-screen-slider owl-trigger-action owl-trigger-action-2">
                 @foreach(explode(',', $organization->organization_photos_files) as $photo_file)
-                    <a href="{{ asset('images/business/' . $photo_file) }}" class="fs-slider-item d-block"
+                    <a href="{{ asset('images/business/' . $photo_file) }}" class="fs-slider-item d-block slider-image-height"
                        data-fancybox="gallery"
                        data-caption="Showing image - {{ $photo_file }}">
                         <img src="{{ asset('images/business/' . $photo_file) }}"
-                             alt="single listing image" style="height: 355px">
+                             alt="single listing image">
                     </a>
                 @endforeach
             </div>
@@ -525,7 +525,7 @@
                                                                         @if($nebraska_review->review_date)
                                                                             <p class="font-size-13 font-weight-medium">{{ $nebraska_review->review_date }}</p>
                                                                         @else
-                                                                            <p class="font-size-13 font-weight-medium">{{ \Carbon\Carbon::parse($nebraska_review->created_at)->diffForHumans() }}</p>
+                                                                            <p class="font-size-13 font-weight-medium">{{ Carbon::parse($nebraska_review->created_at)->diffForHumans() }}</p>
                                                                         @endif
                                                                     </div>
                                                                 </div>
@@ -1007,6 +1007,13 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="sidebar mb-0">
+
+                        <div class="suggest-edit-button-div">
+                            <button type="button" class="btn btn-light suggest-edit-button" data-toggle="modal" data-target="#exampleModalCenter">Suggest an Edit</button>
+                        </div>
+
+                        @include('organization.partials.suggest_edit_modal')
+
                         <div class="sidebar-widget">
                             <h3 class="widget-title">General Information</h3>
                             <div class="stroke-shape mb-4"></div>

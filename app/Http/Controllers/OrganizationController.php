@@ -44,6 +44,8 @@ class OrganizationController extends Controller
                 ->paginate(10)
                 ->onEachSide(0);
 
+//            dd($organizations[0]->category->name. '-' .$organizations[0]->city->name . '.png');
+
             if ($organizations->onFirstPage()) {
                 $category->meta_title = 'Top 10 Best ' . Str::title($category->name) . ' near ' . Str::title($city->name) . ', Nebraska';
             } else {
