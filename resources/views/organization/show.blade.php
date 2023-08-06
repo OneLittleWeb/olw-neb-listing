@@ -13,7 +13,8 @@
         @if($organization->organization_photos_files)
             <div class="full-screen-slider owl-trigger-action owl-trigger-action-2">
                 @foreach(explode(',', $organization->organization_photos_files) as $photo_file)
-                    <a href="{{ asset('images/business/' . $photo_file) }}" class="fs-slider-item d-block slider-image-height"
+                    <a href="{{ asset('images/business/' . $photo_file) }}"
+                       class="fs-slider-item d-block slider-image-height"
                        data-fancybox="gallery"
                        data-caption="Showing image - {{ $photo_file }}">
                         <img src="{{ asset('images/business/' . $photo_file) }}"
@@ -1009,10 +1010,24 @@
                     <div class="sidebar mb-0">
 
                         <div class="suggest-edit-button-div">
-                            <button type="button" class="btn btn-light suggest-edit-button" data-toggle="modal" data-target="#exampleModalCenter">Suggest an Edit</button>
+                            <button type="button" class="btn btn-light suggest-edit-button" data-toggle="modal"
+                                    data-target="#suggestEditModal">Suggest an Edit
+                            </button>
                         </div>
 
                         @include('organization.partials.suggest_edit_modal')
+
+                        @if($organization->organization_badge)
+                            <button type="button" class="btn btn-light sidebar-widget-get-award"
+                                    data-toggle="modal"
+                                    data-target="#getYourAwardModal">
+                                <img class="nebraska-badge-image"
+                                     src="{{ asset('images/badges/' . $organization->organization_badge) }}"
+                                     data-src="{{ asset('images/badges/' . $organization->organization_badge) }}"
+                                     alt="Nebraska Badge">
+                                <span class="text-center pt-4 font-weight-bold">Get your award certificate!</span>
+                            </button>
+                        @endif
 
                         <div class="sidebar-widget">
                             <h3 class="widget-title">General Information</h3>
@@ -1165,5 +1180,8 @@
             "reviewCount": "{{ $organization->reviews->count() ?? 0}}"
           }
         }
+
+
+
     </script>
 @endsection
