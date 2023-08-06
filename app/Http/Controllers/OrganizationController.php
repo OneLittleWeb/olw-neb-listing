@@ -45,17 +45,20 @@ class OrganizationController extends Controller
                 ->paginate(10)
                 ->onEachSide(0);
 
-            $files = File::files(public_path('images/badges'));
-            $images = [];
             $organization_badge = '';
 
-            foreach ($files as $file) {
-                $images[] = $file->getRelativePathname();
+            if ($organizations[0]){
+                $files = File::files(public_path('images/badges'));
+                $images = [];
 
-                foreach ($images as $image) {
-                    if ($image == $organizations[0]->category->name . ' - ' . $organizations[0]->city->name . '.png')
-                    {
-                        $organization_badge = $image;
+                foreach ($files as $file) {
+                    $images[] = $file->getRelativePathname();
+
+                    foreach ($images as $image) {
+                        if ($image == $organizations[0]->category->name . ' - ' . $organizations[0]->city->name . '.png')
+                        {
+                            $organization_badge = $image;
+                        }
                     }
                 }
             }
