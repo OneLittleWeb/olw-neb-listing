@@ -360,41 +360,47 @@
                     {{ $organization->organization_phone_number }}
                 </p>
             </div>
-            <div class="modal-body">
-                <div class="suggested-modal-content-section">
-                    <div class="form-group row">
-                        <div class="col-sm-5 suggested-modal-content-text">Are you affiliated
-                            with {{ $organization->organization_name }} ?
-                        </div>
-                        <div class="col-sm-7">
-                            <div class="form-check">
-                                <input class="form-check-input suggest-edit-form-check-input" type="checkbox"
-                                       name="affiliated_with_organization"
-                                       id="affiliated_with_organization">
-                                <label class="form-check-label suggested-modal-content-text" for="affiliated_with_organization">
-                                    Yes
-                                </label>
+            <form method="post" action="{{ route('get.award.certificate', $organization->slug) }}" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-body">
+                    <div class="suggested-modal-content-section">
+                            <div class="form-group row">
+                                <div class="col-sm-5 suggested-modal-content-text">Are you affiliated
+                                    with {{ $organization->organization_name }} ?
+                                </div>
+                                <div class="col-sm-7">
+                                    <div class="form-check">
+                                        <input class="form-check-input suggest-edit-form-check-input" type="checkbox"
+                                               name="is_affiliated"
+                                               id="is_affiliated" value="1">
+                                        <label class="form-check-label suggested-modal-content-text"
+                                               for="is_affiliated">
+                                            Yes
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-5 suggested-modal-content-text">Name</div>
-                        <div class="col-sm-7">
-                            <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}" placeholder="Name">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-sm-5 suggested-modal-content-text">Your Email</div>
-                        <div class="col-sm-7">
-                            <input type="email" class="form-control" name="email" id="email" value="{{ old('email') }}" placeholder="Your Email">
-                        </div>
+                            <div class="form-group row">
+                                <div class="col-sm-5 suggested-modal-content-text">Name <span class="required">*</span></div>
+                                <div class="col-sm-7">
+                                    <input type="text" class="form-control" name="requested_user_name" id="requested_user_name" value="{{ old('requested_user_name') }}"
+                                           placeholder="Name" required>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <div class="col-sm-5 suggested-modal-content-text">Your Email <span class="required">*</span></div>
+                                <div class="col-sm-7">
+                                    <input type="email" class="form-control" name="requested_user_email" id="requested_user_email"
+                                           value="{{ old('requested_user_email') }}" placeholder="Your Email" required>
+                                </div>
+                            </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Send</button>
-            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>

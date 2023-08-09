@@ -9,6 +9,7 @@ use App\Mail\ClaimedNotificationToAdmin;
 use App\Mail\ContactForClaimToAdmin;
 use App\Mail\ContactForClaimToUser;
 use App\Mail\ContactUsMail;
+use App\Models\AwardCertificateRequest;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\ContactForClaimBusiness;
@@ -47,7 +48,7 @@ class OrganizationController extends Controller
 
             $organization_badge = '';
 
-            if ($organizations[0]){
+            if ($organizations[0]) {
                 $files = File::files(public_path('images/badges'));
                 $images = [];
 
@@ -55,8 +56,7 @@ class OrganizationController extends Controller
                     $images[] = $file->getRelativePathname();
 
                     foreach ($images as $image) {
-                        if ($image == $organizations[0]->category->name . ' - ' . $organizations[0]->city->name . '.png')
-                        {
+                        if ($image == $organizations[0]->category->name . ' - ' . $organizations[0]->city->name . '.png') {
                             $organization_badge = $image;
                         }
                     }
@@ -195,7 +195,7 @@ class OrganizationController extends Controller
 
             $organization_badge = '';
 
-            if ($organization){
+            if ($organization) {
                 $files = File::files(public_path('images/badges'));
                 $images = [];
 
@@ -203,15 +203,14 @@ class OrganizationController extends Controller
                     $images[] = $file->getRelativePathname();
 
                     foreach ($images as $image) {
-                        if ($image == $organization->category->name . ' - ' . $organization->city->name . '.png')
-                        {
-                            $organization ->organization_badge = $image;
+                        if ($image == $organization->category->name . ' - ' . $organization->city->name . '.png') {
+                            $organization->organization_badge = $image;
                         }
                     }
                 }
             }
 
-            return view('organization.show', compact('organization', 'city', 'cities', 'five_star_reviews', 'four_star_reviews', 'three_star_reviews', 'two_star_reviews', 'one_star_reviews', 'restaurant_type', 'gym_type', 'landscaper_type','select_hours'));
+            return view('organization.show', compact('organization', 'city', 'cities', 'five_star_reviews', 'four_star_reviews', 'three_star_reviews', 'two_star_reviews', 'one_star_reviews', 'restaurant_type', 'gym_type', 'landscaper_type', 'select_hours'));
         }
 
         abort(404);
@@ -334,6 +333,41 @@ class OrganizationController extends Controller
                 alert()->error('error', 'Something went wrong. Please try again later.');
                 return redirect()->back();
             }
+
+            alert()->success('success', 'Your request has been submitted successfully. the administrator will contact you soon.')->autoClose(50000);
+
+            return redirect()->back();
+        }
+
+        abort(404);
+    }
+
+    public function awardCertificateRequest(Request $request, $slug)
+    {
+        $request->validate([
+            'requested_user_name' => 'required',
+            'requested_user_email' => 'required|email',
+        ]);
+
+        $organization = Organization::where('slug', $slug)->firstOrFail();
+
+        if ($organization) {
+
+            $requested_organization = AwardCertificateRequest::where('organization_id', $organization->id)->exists();
+
+            if ($requested_organization) {
+                alert()->warning('warning', 'You have already submitted a request for this business. Please wait for the admin to contact you.')->autoClose(50000);
+                return redirect()->back();
+            }
+
+            $award_certificate_request = new AwardCertificateRequest();
+            $award_certificate_request->organization_id = $organization->id;
+            $award_certificate_request->requested_user_name = $request->requested_user_name;
+            $award_certificate_request->requested_user_email = $request->requested_user_email;
+            if (!empty($request->is_affiliated)) {
+                $award_certificate_request->is_affiliated = $request->is_affiliated;
+            }
+            $award_certificate_request->save();
 
             alert()->success('success', 'Your request has been submitted successfully. the administrator will contact you soon.')->autoClose(50000);
 
