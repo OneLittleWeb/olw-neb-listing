@@ -14,6 +14,7 @@ use App\Models\Category;
 use App\Models\City;
 use App\Models\ContactForClaimBusiness;
 use App\Models\Organization;
+use App\Models\SuggestAnEdit;
 use Butschster\Head\Facades\Meta;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -368,6 +369,50 @@ class OrganizationController extends Controller
                 $award_certificate_request->is_affiliated = $request->is_affiliated;
             }
             $award_certificate_request->save();
+
+            alert()->success('success', 'Your request has been submitted successfully. the administrator will contact you soon.')->autoClose(50000);
+
+            return redirect()->back();
+        }
+
+        abort(404);
+    }
+
+    public function storeSuggestAnEdit(Request $request, $slug)
+    {
+        $request->validate([
+            'organization_name' => 'required',
+            'organization_address' => 'required',
+        ]);
+
+        $organization = Organization::where('slug', $slug)->firstOrFail();
+
+        if ($organization) {
+
+            $suggest_an_edit_organization = SuggestAnEdit::where('organization_id', $organization->id)->exists();
+
+            if ($suggest_an_edit_organization) {
+                $suggest_an_edit = SuggestAnEdit::where('organization_id', $organization->id)->first();
+            } else {
+                $suggest_an_edit = new SuggestAnEdit();
+            }
+
+            $suggest_an_edit->organization_id = $organization->id;
+            $suggest_an_edit->is_it_closed = $request->is_it_closed ?? 0;
+            $suggest_an_edit->temporarily_closed = $request->temporarily_closed ?? 0;
+            $suggest_an_edit->are_you_the_owner = $request->are_you_the_owner ?? 0;
+            $suggest_an_edit->organization_name = $request->organization_name;
+            $suggest_an_edit->organization_address = $request->organization_address;
+            $suggest_an_edit->organization_phone_number = $request->organization_phone_number;
+            $suggest_an_edit->organization_website = $request->organization_website;
+            $suggest_an_edit->price_list_url = $request->price_list_url;
+            $suggest_an_edit->message = $request->message;
+
+            if ($suggest_an_edit_organization) {
+                $suggest_an_edit->update();
+            } else {
+                $suggest_an_edit->save();
+            }
 
             alert()->success('success', 'Your request has been submitted successfully. the administrator will contact you soon.')->autoClose(50000);
 

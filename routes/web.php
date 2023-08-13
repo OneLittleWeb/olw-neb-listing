@@ -12,6 +12,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\admin\ReviewController as AdminReviewController;
+use App\Http\Controllers\admin\OrganizationController as AdminOrganizationController;
 use App\Http\Controllers\admin\ContactUsController;
 use App\Http\Controllers\admin\PlanManageController;
 
@@ -20,7 +21,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('dashboard', [\App\Http\Controllers\admin\HomeController::class, 'adminDashboard'])->name('dashboard');
     Route::resource('category', \App\Http\Controllers\admin\CategoryController::class)->except(['show', 'edit', 'create']);
     Route::resource('city', \App\Http\Controllers\admin\CityController::class)->except(['show', 'edit', 'create']);
-    Route::resource('organization', \App\Http\Controllers\admin\OrganizationController::class)->except(['show']);
+    Route::resource('organization', AdminOrganizationController::class)->except(['show']);
     Route::resource('settings', \App\Http\Controllers\admin\SettingController::class)->except(['show']);
     Route::resource('plan', PlanManageController::class)->except(['show']);
     Route::get('logout', [\App\Http\Controllers\admin\AdminController::class, 'logout'])->name('logout');
@@ -55,6 +56,9 @@ Route::post('/contact-for/claim-business/{slug}', [OrganizationController::class
 
 //get your award certificate
 Route::post('/get-your-award-certificate/{slug}', [OrganizationController::class, 'awardCertificateRequest'])->name('get.award.certificate');
+
+//Suggest an edit
+Route::post('/suggest-an-edit/store/{slug}', [OrganizationController::class, 'storeSuggestAnEdit'])->name('store.suggest.edit');
 
 Route::get('/{city_slug}/{category_slug}', [OrganizationController::class, 'cityWiseOrganizations'])->name('city.wise.organizations');
 Route::get('/{city_slug}/nls/{organization_slug}', [OrganizationController::class, 'cityWiseOrganization'])->name('city.wise.organization');
