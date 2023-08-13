@@ -43,20 +43,20 @@
                                         </div>
                                     </a>
                                 </div>
-                            </div><!-- end category-item -->
-                        </div><!-- end col-lg-3 -->
+                            </div>
+                        </div>
                     @endforeach
-                </div><!-- end row -->
+                </div>
             @else
                 <div class="row">
                     <div class="col-lg-12">
                         <div
                             class="filter-bar d-flex flex-wrap margin-bottom-30px">
                             <p class="result-text font-weight-medium">No Category Found</p>
-                        </div><!-- end filter-bar -->
-                    </div><!-- end col-lg-12 -->
+                        </div>
+                    </div>
                 </div>
             @endif
-        </div><!-- end container -->
+        </div>
     </section>
 @endsection

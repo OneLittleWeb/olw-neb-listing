@@ -15,16 +15,30 @@ class CategoryController extends Controller
     {
         $city = City::where('slug', $slug)->exists();
         $category = Category::where('slug', $slug)->exists();
-        $cities = City::all();
+
         if ($city) {
 
+            $cities = City::all();
             $city = City::where('slug', $slug)->first();
-            $categories = Category::all();
             $organizations = Organization::where('city_id', $city->id)->get()->groupBy('organization_category');
+
+            if ($city->id == 1 || $city->id == 2 || $city->id == 3 || $city->id == 4) {
+                $categories = Category::all();
+            } else {
+                $categories = Category::where('id', '!=', 23)->get();
+            }
+
             return view('category.index', compact('cities', 'city', 'categories', 'organizations'));
         } elseif ($category) {
 
             $category = Category::where('slug', $slug)->first();
+
+            if ($category->id == 23) {
+                $cities = City::where('is_major', 1)->get();
+            } else {
+                $cities = City::all();
+            }
+
             return view('city.category-city', compact('category', 'cities'));
         }
         abort(404);
