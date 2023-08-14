@@ -68,19 +68,20 @@
                                         </td>
                                         <td class="text-center" style="width: 15%">
                                             <form class="d-inline" method="post"
-                                                  action="{{ route('admin.claim.status.update', ['id' => $edit_requests->id, 'status' => 'approved']) }}">
+                                                  action="{{ route('admin.edit.request.update', ['id' => $edit_requests->id, 'status' => 'approved']) }}">
                                                 @csrf
-                                                <button type="button" class="btn btn-sm btn-primary claim-approve"
+                                                <button type="button"
+                                                        class="btn btn-sm btn-primary approve-suggest-request"
                                                         data-toggle="tooltip" data-placement="top" title="Approve">
-                                                    <i
-                                                        class="fa fa-check" aria-hidden="true"></i></button>
+                                                    <i class="fa fa-check" aria-hidden="true"></i></button>
                                             </form>
 
                                             <form method="post"
-                                                  action="{{ route('admin.claim.status.update', ['id' => $edit_requests->id, 'status' => 'reject']) }}"
+                                                  action="{{ route('admin.edit.request.update', ['id' => $edit_requests->id, 'status' => 'reject']) }}"
                                                   class="d-inline">
                                                 @csrf
-                                                <button type="button" class="btn btn-sm btn-danger claim-cancel"
+                                                <button type="button"
+                                                        class="btn btn-sm btn-danger reject-suggested-request"
                                                         data-toggle="tooltip" data-placement="top" title="Reject"><i
                                                         class="fa fa-times" aria-hidden="true"></i></button>
                                             </form>
@@ -88,8 +89,7 @@
                                             <div class="d-inline">
                                                 <button type="submit" class="btn btn-sm btn-info d-inline"
                                                         data-toggle="tooltip" data-placement="top" title="Details">
-                                                    <i
-                                                        class="fa fa-eye" aria-hidden="true"></i></button>
+                                                    <i class="fa fa-eye" aria-hidden="true"></i></button>
                                             </div>
                                         </td>
                                     </tr>
@@ -104,39 +104,39 @@
     </div>
 @endsection
 @section('js')
-    {{--    <script>--}}
-    {{--        $(document).on('click', 'button.claim-approve', function () {--}}
-    {{--            Swal.fire({--}}
-    {{--                title: 'Are you sure?',--}}
-    {{--                text: "Do you want to approve this business claim?",--}}
-    {{--                icon: 'warning',--}}
-    {{--                showCancelButton: true,--}}
-    {{--                confirmButtonColor: '#3085d6',--}}
-    {{--                cancelButtonColor: '#d33',--}}
-    {{--                confirmButtonText: 'Yes, approve it!'--}}
-    {{--            }).then((result) => {--}}
-    {{--                if (result.isConfirmed) {--}}
-    {{--                    $(this).parent('form').trigger('submit')--}}
-    {{--                }--}}
-    {{--            });--}}
-    {{--        });--}}
+    <script>
+        $(document).on('click', 'button.approve-suggest-request', function () {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "Do you want to approve this suggested request?",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, approve it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $(this).parent('form').trigger('submit')
+                }
+            });
+        });
 
-    {{--        $(document).on('click', 'button.claim-cancel', function () {--}}
-    {{--            Swal.fire({--}}
-    {{--                title: 'Are you sure?',--}}
-    {{--                text: "Do you want to cancel this business claim?",--}}
-    {{--                icon: 'warning',--}}
-    {{--                showCancelButton: true,--}}
-    {{--                confirmButtonColor: '#3085d6',--}}
-    {{--                cancelButtonColor: '#d33',--}}
-    {{--                confirmButtonText: 'Yes, cancel it!'--}}
-    {{--            }).then((result) => {--}}
-    {{--                if (result.isConfirmed) {--}}
-    {{--                    $(this).parent('form').trigger('submit')--}}
-    {{--                }--}}
-    {{--            });--}}
-    {{--        });--}}
-    {{--    </script>--}}
+        $(document).on('click', 'button.reject-suggested-request', function () {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "Do you want to reject this suggested request?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, cancel it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $(this).parent('form').trigger('submit')
+                }
+            });
+        });
+    </script>
 
     <script>
         $(document).ready(function () {

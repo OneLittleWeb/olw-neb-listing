@@ -90,4 +90,15 @@ class OrganizationController extends Controller
 
         return view('admin.organization.suggest_edit_request', compact('suggest_edit_requests'));
     }
+
+    public function editRequestUpdate($id, $status)
+    {
+        if ($status == 'approved') {
+            alert()->success('success', 'Suggested Request has been approved.');
+        } else {
+            alert()->success('success', 'Suggested Request has been rejected.');
+        }
+
+        return back();
+    }
 }
