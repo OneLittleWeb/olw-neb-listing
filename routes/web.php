@@ -31,6 +31,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('contacts/claim', [ContactUsController::class, 'contactForClaimBusiness'])->name('contact.for.claim');
     Route::post('contacts/claim/update/{id}/{status}', [ContactUsController::class, 'ClaimStatusUpdate'])->name('claim.status.update');
 
+    Route::get('suggest/edit/request', [AdminOrganizationController::class, 'suggestEditRequest'])->name('suggest.edit.request');
     Route::get('award/certificate/request', [AwardController::class, 'awardCertificateRequest'])->name('award.certificate.request');
 });
 

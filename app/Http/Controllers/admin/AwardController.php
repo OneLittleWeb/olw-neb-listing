@@ -12,6 +12,6 @@ class AwardController extends Controller
     {
         $award_certificate_requests = AwardCertificateRequest::withTrashed()->latest()->get();
 
-        return view('admin.award.award-certificate-request', compact('award_certificate_requests'));
+        return view('admin.award.award_certificate_request', compact('award_certificate_requests'));
     }
 }

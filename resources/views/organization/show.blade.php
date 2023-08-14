@@ -1192,8 +1192,5 @@
             "reviewCount": "{{ $organization->reviews->count() ?? 0}}"
           }
         }
-
-
-
     </script>
 @endsection

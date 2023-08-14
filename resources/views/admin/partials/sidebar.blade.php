@@ -44,6 +44,12 @@
             <span>Manage Claim Business</span>
         </a>
     </li>
+    <li class="nav-item {{ (request()->routeIs('admin.suggest.edit.request')) ? 'active' : '' }}">
+        <a class="nav-link" href="{{route('admin.suggest.edit.request')}}">
+            <i class="la la-file-text-o font-size-18 mr-1"></i>
+            <span>Suggest Edit Request</span>
+        </a>
+    </li>
     <li class="nav-item {{ (request()->routeIs('admin.award.certificate.request')) ? 'active' : '' }}">
         <a class="nav-link" href="{{route('admin.award.certificate.request')}}">
             <i class="la la-file-text-o font-size-18 mr-1"></i>

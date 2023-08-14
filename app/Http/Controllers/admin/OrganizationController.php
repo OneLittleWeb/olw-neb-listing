@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\Organization;
+use App\Models\SuggestAnEdit;
 use Illuminate\Http\Request;
 
 class OrganizationController extends Controller
@@ -81,5 +82,12 @@ class OrganizationController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function suggestEditRequest()
+    {
+        $suggest_edit_requests = SuggestAnEdit::whereNull('deleted_at')->latest()->get();
+
+        return view('admin.organization.suggest_edit_request', compact('suggest_edit_requests'));
     }
 }
