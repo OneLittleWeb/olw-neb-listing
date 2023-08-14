@@ -125,12 +125,13 @@
                                         @if($organization->organization_work_time)
                                             <tr class="business-opening-wrap">
                                                 <td class="business-day">{{ $first_day }}</td>
+                                                <input type="hidden" name="first_day" value="{{ $first_day }}">
                                                 <td class="user-chosen-select-container">
                                                     <select class="user-chosen-select" name="first_day_open"
                                                             id="first_day_open">
                                                         @foreach($select_hours as $hours)
                                                             <option
-                                                                value="{{ $hours }}" {{ str_replace(' ', ' ', $hours) == $first_day_opening_hours ? 'selected' : '' }}>
+                                                                value="{{ $hours }}" {{ str_replace(' ', ' ', $hours) == str_replace(' ', ' ', $first_day_opening_hours)  ? 'selected' : '' }}>
                                                                 {{ $hours }}
                                                             </option>
                                                         @endforeach
@@ -141,19 +142,20 @@
                                                             id="first_day_close">
                                                         @foreach($select_hours as $hours)
                                                             <option
-                                                                value="{{$hours}}" {{ str_replace(' ', ' ', $hours) == $first_day_closing_hours ? 'selected' : '' }}>{{$hours}}</option>
+                                                                value="{{$hours}}" {{ str_replace(' ', ' ', $hours) == str_replace(' ', ' ', $first_day_closing_hours) ? 'selected' : '' }}>{{$hours}}</option>
                                                         @endforeach
                                                     </select>
                                                 </td>
                                             </tr>
                                             <tr class="business-opening-wrap">
                                                 <td class="business-day">{{ $second_day }}</td>
+                                                <input type="hidden" name="second_day" value="{{ $second_day }}">
                                                 <td class="user-chosen-select-container">
                                                     <select class="user-chosen-select" name="second_day_open"
                                                             id="second_day_open">
                                                         @foreach($select_hours as $hours)
                                                             <option
-                                                                value="{{$hours}}" {{ str_replace(' ', ' ', $hours) == $second_day_opening_hours ? 'selected' : '' }}>{{$hours}}</option>
+                                                                value="{{$hours}}" {{ str_replace(' ', ' ', $hours) == str_replace(' ', ' ', $second_day_opening_hours) ? 'selected' : '' }}>{{$hours}}</option>
                                                         @endforeach
                                                     </select>
                                                 </td>
@@ -162,19 +164,20 @@
                                                             id="second_day_close">
                                                         @foreach($select_hours as $hours)
                                                             <option
-                                                                value="{{$hours}}" {{ str_replace(' ', ' ', $hours) == $second_day_closing_hours ? 'selected' : '' }}>{{$hours}}</option>
+                                                                value="{{$hours}}" {{ str_replace(' ', ' ', $hours) == str_replace(' ', ' ', $second_day_closing_hours) ? 'selected' : '' }}>{{$hours}}</option>
                                                         @endforeach
                                                     </select>
                                                 </td>
                                             </tr>
                                             <tr class="business-opening-wrap">
                                                 <td class="business-day">{{ $third_day }}</td>
+                                                <input type="hidden" name="third_day" value="{{ $third_day }}">
                                                 <td class="user-chosen-select-container">
                                                     <select class="user-chosen-select" name="third_day_open"
                                                             id="third_day_open">
                                                         @foreach($select_hours as $hours)
                                                             <option
-                                                                value="{{$hours}}" {{ str_replace(' ', ' ', $hours) == $third_day_opening_hours ? 'selected' : '' }}>{{$hours}}</option>
+                                                                value="{{$hours}}" {{ str_replace(' ', ' ', $hours) == str_replace(' ', ' ', $third_day_opening_hours) ? 'selected' : '' }}>{{$hours}}</option>
                                                         @endforeach
                                                     </select>
                                                 </td>
@@ -183,19 +186,20 @@
                                                             id="third_day_close">
                                                         @foreach($select_hours as $hours)
                                                             <option
-                                                                value="{{$hours}}" {{ str_replace(' ', ' ', $hours) == $third_day_closing_hours ? 'selected' : '' }}>{{$hours}}</option>
+                                                                value="{{$hours}}" {{ str_replace(' ', ' ', $hours) == str_replace(' ', ' ', $third_day_closing_hours) ? 'selected' : '' }}>{{$hours}}</option>
                                                         @endforeach
                                                     </select>
                                                 </td>
                                             </tr>
                                             <tr class="business-opening-wrap">
                                                 <td class="business-day">{{ $fourth_day }}</td>
+                                                <input type="hidden" name="fourth_day" value="{{ $fourth_day }}">
                                                 <td class="user-chosen-select-container">
                                                     <select class="user-chosen-select" name="fourth_day_open"
                                                             id="fourth_day_open">
                                                         @foreach($select_hours as $hours)
                                                             <option
-                                                                value="{{ $hours }}" {{ str_replace(' ', ' ', $hours) == $fourth_day_opening_hours ? 'selected' : '' }}>
+                                                                value="{{ $hours }}" {{ str_replace(' ', ' ', $hours) == str_replace(' ', ' ', $fourth_day_opening_hours) ? 'selected' : '' }}>
                                                                 {{ $hours }}
                                                             </option>
                                                         @endforeach
@@ -206,19 +210,20 @@
                                                             id="fourth_day_close">
                                                         @foreach($select_hours as $hours)
                                                             <option
-                                                                value="{{$hours}}" {{ str_replace(' ', ' ', $hours) == $fourth_day_closing_hours ? 'selected' : '' }}>{{$hours}}</option>
+                                                                value="{{$hours}}" {{ str_replace(' ', ' ', $hours) == str_replace(' ', ' ', $fourth_day_closing_hours) ? 'selected' : '' }}>{{$hours}}</option>
                                                         @endforeach
                                                     </select>
                                                 </td>
                                             </tr>
                                             <tr class="business-opening-wrap">
                                                 <td class="business-day">{{ $fifth_day }}</td>
+                                                <input type="hidden" name="fifth_day" value="{{ $fifth_day }}">
                                                 <td class="user-chosen-select-container">
                                                     <select class="user-chosen-select" name="fifth_day_open"
                                                             id="fifth_day_open">
                                                         @foreach($select_hours as $hours)
                                                             <option
-                                                                value="{{ $hours }}" {{ str_replace(' ', ' ', $hours) == $fifth_day_opening_hours ? 'selected' : '' }}>
+                                                                value="{{ $hours }}" {{ str_replace(' ', ' ', $hours) == str_replace(' ', ' ', $fifth_day_opening_hours) ? 'selected' : '' }}>
                                                                 {{ $hours }}
                                                             </option>
                                                         @endforeach
@@ -229,19 +234,20 @@
                                                             id="fifth_day_close">
                                                         @foreach($select_hours as $hours)
                                                             <option
-                                                                value="{{$hours}}" {{ str_replace(' ', ' ', $hours) == $fifth_day_closing_hours ? 'selected' : '' }}>{{$hours}}</option>
+                                                                value="{{$hours}}" {{ str_replace(' ', ' ', $hours) == str_replace(' ', ' ', $fifth_day_closing_hours) ? 'selected' : '' }}>{{$hours}}</option>
                                                         @endforeach
                                                     </select>
                                                 </td>
                                             </tr>
                                             <tr class="business-opening-wrap">
                                                 <td class="business-day">{{ $sixth_day }}</td>
+                                                <input type="hidden" name="sixth_day" value="{{ $sixth_day }}">
                                                 <td class="user-chosen-select-container">
                                                     <select class="user-chosen-select" name="sixth_day_open"
                                                             id="sixth_day_open">
                                                         @foreach($select_hours as $hours)
                                                             <option
-                                                                value="{{ $hours }}" {{ str_replace(' ', ' ', $hours) == $sixth_day_opening_hours ? 'selected' : '' }}>
+                                                                value="{{ $hours }}" {{ str_replace(' ', ' ', $hours) == str_replace(' ', ' ', $sixth_day_opening_hours) ? 'selected' : '' }}>
                                                                 {{ $hours }}
                                                             </option>
                                                         @endforeach
@@ -252,19 +258,20 @@
                                                             id="sixth_day_close">
                                                         @foreach($select_hours as $hours)
                                                             <option
-                                                                value="{{$hours}}" {{ str_replace(' ', ' ', $hours) == $sixth_day_closing_hours ? 'selected' : '' }}>{{$hours}}</option>
+                                                                value="{{$hours}}" {{ str_replace(' ', ' ', $hours) == str_replace(' ', ' ', $sixth_day_closing_hours) ? 'selected' : '' }}>{{$hours}}</option>
                                                         @endforeach
                                                     </select>
                                                 </td>
                                             </tr>
                                             <tr class="business-opening-wrap">
                                                 <td class="business-day">{{ $seventh_day }}</td>
+                                                <input type="hidden" name="seventh_day" value="{{ $seventh_day }}">
                                                 <td class="user-chosen-select-container">
                                                     <select class="user-chosen-select" name="seventh_day_open"
                                                             id="seventh_day_open">
                                                         @foreach($select_hours as $hours)
                                                             <option
-                                                                value="{{ $hours }}" {{ str_replace(' ', ' ', $hours) == $seventh_day_opening_hours ? 'selected' : '' }}>
+                                                                value="{{ $hours }}" {{ str_replace(' ', ' ', $hours) == str_replace(' ', ' ', $seventh_day_opening_hours) ? 'selected' : '' }}>
                                                                 {{ $hours }}
                                                             </option>
                                                         @endforeach
@@ -275,7 +282,7 @@
                                                             id="seventh_day_close">
                                                         @foreach($select_hours as $hours)
                                                             <option
-                                                                value="{{$hours}}" {{ str_replace(' ', ' ', $hours) == $seventh_day_closing_hours ? 'selected' : '' }}>{{$hours}}</option>
+                                                                value="{{$hours}}" {{ str_replace(' ', ' ', $hours) == str_replace(' ', ' ', $seventh_day_closing_hours) ? 'selected' : '' }}>{{$hours}}</option>
                                                         @endforeach
                                                     </select>
                                                 </td>
@@ -283,9 +290,10 @@
                                         @else
                                             <tr class="business-opening-wrap">
                                                 <td class="business-day">Monday</td>
+                                                <input type="hidden" name="first_day" value="Monday">
                                                 <td class="user-chosen-select-container">
-                                                    <select class="user-chosen-select" name="monday_open"
-                                                            id="monday_open">
+                                                    <select class="user-chosen-select" name="first_day_open"
+                                                            id="first_day_open">
                                                         @foreach($select_hours as $hours)
                                                             <option value="{{ $hours }}">
                                                                 {{ $hours }}
@@ -294,8 +302,8 @@
                                                     </select>
                                                 </td>
                                                 <td class="user-chosen-select-container">
-                                                    <select class="user-chosen-select" name="monday_close"
-                                                            id="monday_close">
+                                                    <select class="user-chosen-select" name="first_day_close"
+                                                            id="first_day_close">
                                                         @foreach($select_hours as $hours)
                                                             <option value="{{$hours}}">{{$hours}}</option>
                                                         @endforeach
@@ -304,17 +312,18 @@
                                             </tr>
                                             <tr class="business-opening-wrap">
                                                 <td class="business-day">Tuesday</td>
+                                                <input type="hidden" name="second_day" value="Tuesday">
                                                 <td class="user-chosen-select-container">
-                                                    <select class="user-chosen-select" name="tuesday_open"
-                                                            id="tuesday_open">
+                                                    <select class="user-chosen-select" name="second_day_open"
+                                                            id="second_day_open">
                                                         @foreach($select_hours as $hours)
                                                             <option value="{{$hours}}">{{$hours}}</option>
                                                         @endforeach
                                                     </select>
                                                 </td>
                                                 <td class="user-chosen-select-container">
-                                                    <select class="user-chosen-select" name="tuesday_close"
-                                                            id="tuesday_close">
+                                                    <select class="user-chosen-select" name="second_day_close"
+                                                            id="second_day_close">
                                                         @foreach($select_hours as $hours)
                                                             <option value="{{$hours}}">{{$hours}}</option>
                                                         @endforeach
@@ -323,17 +332,18 @@
                                             </tr>
                                             <tr class="business-opening-wrap">
                                                 <td class="business-day">Wednesday</td>
+                                                <input type="hidden" name="third_day" value="Wednesday">
                                                 <td class="user-chosen-select-container">
-                                                    <select class="user-chosen-select" name="wednesday_open"
-                                                            id="wednesday_open">
+                                                    <select class="user-chosen-select" name="third_day_open"
+                                                            id="third_day_open">
                                                         @foreach($select_hours as $hours)
                                                             <option value="{{$hours}}">{{$hours}}</option>
                                                         @endforeach
                                                     </select>
                                                 </td>
                                                 <td class="user-chosen-select-container">
-                                                    <select class="user-chosen-select" name="wednesday_close"
-                                                            id="wednesday_close">
+                                                    <select class="user-chosen-select" name="third_day_close"
+                                                            id="third_day_close">
                                                         @foreach($select_hours as $hours)
                                                             <option value="{{$hours}}">{{$hours}}</option>
                                                         @endforeach
@@ -342,17 +352,18 @@
                                             </tr>
                                             <tr class="business-opening-wrap">
                                                 <td class="business-day">Thursday</td>
+                                                <input type="hidden" name="fourth_day" value="Thursday">
                                                 <td class="user-chosen-select-container">
-                                                    <select class="user-chosen-select" name="thursday_open"
-                                                            id="thursday_open">
+                                                    <select class="user-chosen-select" name="fourth_day_open"
+                                                            id="fourth_day_open">
                                                         @foreach($select_hours as $hours)
                                                             <option value="{{ $hours }}">{{ $hours }}</option>
                                                         @endforeach
                                                     </select>
                                                 </td>
                                                 <td class="user-chosen-select-container">
-                                                    <select class="user-chosen-select" name="thursday_close"
-                                                            id="thursday_close">
+                                                    <select class="user-chosen-select" name="fourth_day_close"
+                                                            id="fourth_day_close">
                                                         @foreach($select_hours as $hours)
                                                             <option
                                                                 value="{{$hours}}">{{$hours}}</option>
@@ -362,17 +373,18 @@
                                             </tr>
                                             <tr class="business-opening-wrap">
                                                 <td class="business-day">Friday</td>
+                                                <input type="hidden" name="fifth_day" value="Friday">
                                                 <td class="user-chosen-select-container">
-                                                    <select class="user-chosen-select" name="friday_open"
-                                                            id="friday_open">
+                                                    <select class="user-chosen-select" name="fifth_day_open"
+                                                            id="fifth_day_open">
                                                         @foreach($select_hours as $hours)
                                                             <option value="{{ $hours }}">{{ $hours }}</option>
                                                         @endforeach
                                                     </select>
                                                 </td>
                                                 <td class="user-chosen-select-container">
-                                                    <select class="user-chosen-select" name="friday_close"
-                                                            id="friday_close">
+                                                    <select class="user-chosen-select" name="fifth_day_close"
+                                                            id="fifth_day_close">
                                                         @foreach($select_hours as $hours)
                                                             <option
                                                                 value="{{$hours}}">{{$hours}}</option>
@@ -382,17 +394,18 @@
                                             </tr>
                                             <tr class="business-opening-wrap">
                                                 <td class="business-day">Saturday</td>
+                                                <input type="hidden" name="sixth_day" value="Saturday">
                                                 <td class="user-chosen-select-container">
-                                                    <select class="user-chosen-select" name="saturday_open"
-                                                            id="saturday_open">
+                                                    <select class="user-chosen-select" name="sixth_day_open"
+                                                            id="sixth_day_open">
                                                         @foreach($select_hours as $hours)
                                                             <option value="{{ $hours }}">{{ $hours }}</option>
                                                         @endforeach
                                                     </select>
                                                 </td>
                                                 <td class="user-chosen-select-container">
-                                                    <select class="user-chosen-select" name="saturday_close"
-                                                            id="saturday_close">
+                                                    <select class="user-chosen-select" name="sixth_day_close"
+                                                            id="sixth_day_close">
                                                         @foreach($select_hours as $hours)
                                                             <option value="{{$hours}}">{{$hours}}</option>
                                                         @endforeach
@@ -401,17 +414,18 @@
                                             </tr>
                                             <tr class="business-opening-wrap">
                                                 <td class="business-day">Sunday</td>
+                                                <input type="hidden" name="seventh_day" value="Sunday">
                                                 <td class="user-chosen-select-container">
-                                                    <select class="user-chosen-select" name="sunday_open"
-                                                            id="sunday_open">
+                                                    <select class="user-chosen-select" name="seventh_day_open"
+                                                            id="seventh_day_open">
                                                         @foreach($select_hours as $hours)
                                                             <option value="{{ $hours }}">{{ $hours }}</option>
                                                         @endforeach
                                                     </select>
                                                 </td>
                                                 <td class="user-chosen-select-container">
-                                                    <select class="user-chosen-select" name="sunday_close"
-                                                            id="sunday_close">
+                                                    <select class="user-chosen-select" name="seventh_day_close"
+                                                            id="seventh_day_close">
                                                         @foreach($select_hours as $hours)
                                                             <option
                                                                 value="{{$hours}}">{{$hours}}</option>

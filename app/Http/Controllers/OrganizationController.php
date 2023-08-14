@@ -485,6 +485,53 @@ class OrganizationController extends Controller
             $suggest_an_edit->price_list_url = $request->price_list_url;
             $suggest_an_edit->message = $request->message;
 
+
+            if ($request->first_day_open == 'Closed' || $request->first_day_open == 'Open 24 Hours') {
+                $first_day = $request->first_day . ', ' . $request->first_day_open;
+            } else {
+                $first_day = $request->first_day . ', ' . $request->first_day_open . ' to ' . $request->first_day_close;
+            }
+
+            if ($request->second_day_open == 'Closed' || $request->second_day_open == 'Open 24 Hours') {
+                $second_day = $request->second_day . ', ' . $request->second_day_open;
+            } else {
+                $second_day = $request->second_day . ', ' . $request->second_day_open . ' to ' . $request->second_day_close;
+            }
+
+            if ($request->third_day_open == 'Closed' || $request->third_day_open == 'Open 24 Hours') {
+                $third_day = $request->third_day . ', ' . $request->third_day_open;
+            } else {
+                $third_day = $request->third_day . ', ' . $request->third_day_open . ' to ' . $request->third_day_close;
+            }
+
+            if ($request->fourth_day_open == 'Closed' || $request->fourth_day_open == 'Open 24 Hours') {
+                $fourth_day = $request->fourth_day . ', ' . $request->fourth_day_open;
+            } else {
+                $fourth_day = $request->fourth_day . ', ' . $request->fourth_day_open . ' to ' . $request->fourth_day_close;
+            }
+
+            if ($request->fifth_day_open == 'Closed' || $request->fifth_day_open == 'Open 24 Hours') {
+                $fifth_day = $request->fifth_day . ', ' . $request->fifth_day_open;
+            } else {
+                $fifth_day = $request->fifth_day . ', ' . $request->fifth_day_open . ' to ' . $request->fifth_day_close;
+            }
+
+            if ($request->sixth_day_open == 'Closed' || $request->sixth_day_open == 'Open 24 Hours') {
+                $sixth_day = $request->sixth_day . ', ' . $request->sixth_day_open;
+            } else {
+                $sixth_day = $request->sixth_day . ', ' . $request->sixth_day_open . ' to ' . $request->sixth_day_close;
+            }
+
+            if ($request->seventh_day_open == 'Closed' || $request->seventh_day_open == 'Open 24 Hours') {
+                $seventh_day = $request->seventh_day . ', ' . $request->seventh_day_open;
+            } else {
+                $seventh_day = $request->seventh_day . ', ' . $request->seventh_day_open . ' to ' . $request->seventh_day_close;
+            }
+            $opening_hours = $first_day . '; ' . $second_day . '; ' . $third_day . '; ' . $fourth_day . '; ' . $fifth_day . '; ' . $sixth_day . '; ' . $seventh_day;
+
+            $suggest_an_edit->organization_work_time = $opening_hours;
+
+
             if ($suggest_an_edit_organization) {
                 $suggest_an_edit->update();
             } else {
