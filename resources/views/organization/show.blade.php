@@ -1054,17 +1054,29 @@
                                 <h3 class="widget-title">Opening Hours</h3>
                                 <div class="stroke-shape mb-4"></div>
                                 <ul class="list-items">
-                                    @foreach(explode(';', $organization->organization_work_time) as $work_times)
+                                    @foreach($organization->organization_work_time_modified as $work_times)
                                         @php
-                                            $modified_work_time = str_replace('. Hide open hours for the week', '', $work_times);
-                                            $updated_work_time = str_replace(', Hours might differ', '', $modified_work_time);
-                                            $exploded_work_time = explode(',', $updated_work_time);
+                                            $exploded_work_time = explode(',', $work_times);
                                         @endphp
                                         @if($exploded_work_time[0] && $exploded_work_time[1])
                                             <li class="d-flex justify-content-between">{{ $exploded_work_time[0] }}
                                                 <span>{{ $exploded_work_time[1] }}</span></li>
                                         @endif
                                     @endforeach
+{{--                                    <li class="d-flex justify-content-between">{{ $first_day }}--}}
+{{--                                        <span>{{ $first_day_opening_hours . ' - ' . $first_day_closing_hours}}</span></li>--}}
+{{--                                    <li class="d-flex justify-content-between">{{ $second_day }}--}}
+{{--                                        <span>{{ $second_day_opening_hours . ' - ' . $second_day_closing_hours}}</span></li>--}}
+{{--                                    <li class="d-flex justify-content-between">{{ $third_day }}--}}
+{{--                                        <span>{{ $third_day_opening_hours . ' - ' . $third_day_closing_hours}}</span></li>--}}
+{{--                                    <li class="d-flex justify-content-between">{{ $fourth_day }}--}}
+{{--                                        <span>{{ $fourth_day_opening_hours . ' - ' . $fourth_day_closing_hours}}</span></li>--}}
+{{--                                    <li class="d-flex justify-content-between">{{ $fifth_day }}--}}
+{{--                                        <span>{{ $fifth_day_opening_hours . ' - ' . $fifth_day_closing_hours}}</span></li>--}}
+{{--                                    <li class="d-flex justify-content-between">{{ $sixth_day }}--}}
+{{--                                        <span>{{ $sixth_day_opening_hours . ' - ' . $sixth_day_closing_hours}}</span></li>--}}
+{{--                                    <li class="d-flex justify-content-between">{{ $seventh_day }}--}}
+{{--                                        <span>{{ $seventh_day_opening_hours . ' - ' . $seventh_day_closing_hours}}</span></li>--}}
                                 </ul>
                             </div>
                         @endif

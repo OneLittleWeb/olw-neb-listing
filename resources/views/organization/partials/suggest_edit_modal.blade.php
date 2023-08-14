@@ -122,200 +122,304 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-
-                                        {{--                                    @if($organization->organization_work_time)--}}
-                                        {{--                                        @foreach(explode(';', $organization->organization_work_time) as $work_times)--}}
-                                        {{--                                            @php--}}
-
-                                        {{--                                                $modified_work_time = str_replace('. Hide open hours for the week', '', $work_times);--}}
-
-                                        {{--                                                $updated_work_time = str_replace(', Hours might differ', '', $modified_work_time);--}}
-
-                                        {{--                                                $exploded_day_and_times = explode(',', $updated_work_time);--}}
-
-                                        {{--                                                $exploded_times = explode('to', $exploded_day_and_times[1]);--}}
-
-                                        {{--                                                if (isset($exploded_times[0]) && isset($exploded_times[1])) {--}}
-                                        {{--                                                    $opening_hours = $exploded_times[0];--}}
-                                        {{--                                                    $closing_hours = $exploded_times[1];--}}
-                                        {{--                                                } else {--}}
-                                        {{--                                                    $opening_hours = '';--}}
-                                        {{--                                                    $closing_hours = '';--}}
-                                        {{--                                                }--}}
-
-                                        {{--                                            @endphp--}}
-                                        {{--                                            @if($opening_hours && $closing_hours)--}}
-                                        {{--                                                <tr class="business-opening-wrap">--}}
-                                        {{--                                                    <td class="business-day">{{ $exploded_day_and_times[0] }}</td>--}}
-                                        {{--                                                    <td class="user-chosen-select-container">--}}
-                                        {{--                                                        <select class="user-chosen-select" name="monday_open"--}}
-                                        {{--                                                                id="monday_open">--}}
-                                        {{--                                                            @foreach($select_hours as $hours)--}}
-                                        {{--                                                                <option--}}
-                                        {{--                                                                    value="{{$opening_hours}}" {{ $hours == $opening_hours ? 'selected="selected"' : '' }}>{{$hours}}</option>--}}
-                                        {{--                                                            @endforeach--}}
-                                        {{--                                                        </select>--}}
-                                        {{--                                                    </td>--}}
-                                        {{--                                                    <td class="user-chosen-select-container">--}}
-                                        {{--                                                        <select class="user-chosen-select" name="monday_closed"--}}
-                                        {{--                                                                id="monday_closed">--}}
-                                        {{--                                                            @foreach($select_hours as $hours)--}}
-                                        {{--                                                                <option value="{{$hours}}">{{$hours}}</option>--}}
-                                        {{--                                                            @endforeach--}}
-                                        {{--                                                        </select>--}}
-                                        {{--                                                    </td>--}}
-                                        {{--                                                </tr>--}}
-                                        {{--                                            @endif--}}
-                                        {{--                                        @endforeach--}}
-                                        {{--                                    @else--}}
-                                        <tr class="business-opening-wrap">
-                                            <td class="business-day">Monday</td>
-                                            <td class="user-chosen-select-container">
-                                                <select class="user-chosen-select" name="monday_open"
-                                                        id="monday_open">
-                                                    <option value="" selected>Select</option>
-                                                    @foreach($select_hours as $hours)
-                                                        <option value="{{$hours}}">{{$hours}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </td>
-                                            <td class="user-chosen-select-container">
-                                                <select class="user-chosen-select" name="monday_closed"
-                                                        id="monday_closed">
-                                                    <option value="" selected>Select</option>
-                                                    @foreach($select_hours as $hours)
-                                                        <option value="{{$hours}}">{{$hours}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </td>
-                                        </tr>
-                                        <tr class="business-opening-wrap">
-                                            <td class="business-day">Tuesday</td>
-                                            <td class="user-chosen-select-container">
-                                                <select class="user-chosen-select" name="tuesday_open"
-                                                        id="tuesday_open">
-                                                    <option value="" selected>Select</option>
-                                                    @foreach($select_hours as $hours)
-                                                        <option value="{{$hours}}">{{$hours}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </td>
-                                            <td class="user-chosen-select-container">
-                                                <select class="user-chosen-select" name="tuesday_closed"
-                                                        id="tuesday_closed">
-                                                    <option value="" selected>Select</option>
-                                                    @foreach($select_hours as $hours)
-                                                        <option value="{{$hours}}">{{$hours}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </td>
-                                        </tr>
-                                        <tr class="business-opening-wrap">
-                                            <td class="business-day">Wednesday</td>
-                                            <td class="user-chosen-select-container">
-                                                <select class="user-chosen-select" name="wednesday_open"
-                                                        id="wednesday_open">
-                                                    <option value="" selected>Select</option>
-                                                    @foreach($select_hours as $hours)
-                                                        <option value="{{$hours}}">{{$hours}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </td>
-                                            <td class="user-chosen-select-container">
-                                                <select class="user-chosen-select" name="wednesday_closed"
-                                                        id="wednesday_closed">
-                                                    <option value="" selected>Select</option>
-                                                    @foreach($select_hours as $hours)
-                                                        <option value="{{$hours}}">{{$hours}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </td>
-                                        </tr>
-                                        <tr class="business-opening-wrap">
-                                            <td class="business-day">Thursday</td>
-                                            <td class="user-chosen-select-container">
-                                                <select class="user-chosen-select" name="thursday_open"
-                                                        id="thursday_open">
-                                                    <option value="" selected>Select</option>
-                                                    @foreach($select_hours as $hours)
-                                                        <option value="{{$hours}}">{{$hours}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </td>
-                                            <td class="user-chosen-select-container">
-                                                <select class="user-chosen-select" name="thursday_closed"
-                                                        id="thursday_closed">
-                                                    <option value="" selected>Select</option>
-                                                    @foreach($select_hours as $hours)
-                                                        <option value="{{$hours}}">{{$hours}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </td>
-                                        </tr>
-                                        <tr class="business-opening-wrap">
-                                            <td class="business-day">Friday</td>
-                                            <td class="user-chosen-select-container">
-                                                <select class="user-chosen-select" name="friday_open"
-                                                        id="friday_open">
-                                                    <option value="" selected>Select</option>
-                                                    @foreach($select_hours as $hours)
-                                                        <option value="{{$hours}}">{{$hours}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </td>
-                                            <td class="user-chosen-select-container">
-                                                <select class="user-chosen-select" name="friday_closed"
-                                                        id="friday_closed">
-                                                    <option value="" selected>Select</option>
-                                                    @foreach($select_hours as $hours)
-                                                        <option value="{{$hours}}">{{$hours}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </td>
-                                        </tr>
-                                        <tr class="business-opening-wrap">
-                                            <td class="business-day">Saturday</td>
-                                            <td class="user-chosen-select-container">
-                                                <select class="user-chosen-select" name="saturday_open"
-                                                        id="saturday_open">
-                                                    <option value="" selected>Select</option>
-                                                    @foreach($select_hours as $hours)
-                                                        <option value="{{$hours}}">{{$hours}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </td>
-                                            <td class="user-chosen-select-container">
-                                                <select class="user-chosen-select" name="saturday_closed"
-                                                        id="saturday_closed">
-                                                    <option value="" selected>Select</option>
-                                                    @foreach($select_hours as $hours)
-                                                        <option value="{{$hours}}">{{$hours}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </td>
-                                        </tr>
-                                        <tr class="business-opening-wrap">
-                                            <td class="business-day">Sunday</td>
-                                            <td class="user-chosen-select-container">
-                                                <select class="user-chosen-select" name="sunday_open"
-                                                        id="sunday_open">
-                                                    <option value="" selected>Select</option>
-                                                    @foreach($select_hours as $hours)
-                                                        <option value="{{$hours}}">{{$hours}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </td>
-                                            <td class="user-chosen-select-container">
-                                                <select class="user-chosen-select" name="sunday_closed"
-                                                        id="sunday_closed">
-                                                    <option value="" selected>Select</option>
-                                                    @foreach($select_hours as $hours)
-                                                        <option value="{{$hours}}">{{$hours}}</option>
-                                                    @endforeach
-                                                </select>
-                                            </td>
-                                        </tr>
-                                        {{--                                    @endif--}}
+                                        @if($organization->organization_work_time)
+                                            <tr class="business-opening-wrap">
+                                                <td class="business-day">{{ $first_day }}</td>
+                                                <td class="user-chosen-select-container">
+                                                    <select class="user-chosen-select" name="first_day_open"
+                                                            id="first_day_open">
+                                                        @foreach($select_hours as $hours)
+                                                            <option
+                                                                value="{{ $hours }}" {{ str_replace(' ', ' ', $hours) == $first_day_opening_hours ? 'selected' : '' }}>
+                                                                {{ $hours }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
+                                                <td class="user-chosen-select-container">
+                                                    <select class="user-chosen-select" name="first_day_close"
+                                                            id="first_day_close">
+                                                        @foreach($select_hours as $hours)
+                                                            <option
+                                                                value="{{$hours}}" {{ str_replace(' ', ' ', $hours) == $first_day_closing_hours ? 'selected' : '' }}>{{$hours}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr class="business-opening-wrap">
+                                                <td class="business-day">{{ $second_day }}</td>
+                                                <td class="user-chosen-select-container">
+                                                    <select class="user-chosen-select" name="second_day_open"
+                                                            id="second_day_open">
+                                                        @foreach($select_hours as $hours)
+                                                            <option
+                                                                value="{{$hours}}" {{ str_replace(' ', ' ', $hours) == $second_day_opening_hours ? 'selected' : '' }}>{{$hours}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
+                                                <td class="user-chosen-select-container">
+                                                    <select class="user-chosen-select" name="second_day_close"
+                                                            id="second_day_close">
+                                                        @foreach($select_hours as $hours)
+                                                            <option
+                                                                value="{{$hours}}" {{ str_replace(' ', ' ', $hours) == $second_day_closing_hours ? 'selected' : '' }}>{{$hours}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr class="business-opening-wrap">
+                                                <td class="business-day">{{ $third_day }}</td>
+                                                <td class="user-chosen-select-container">
+                                                    <select class="user-chosen-select" name="third_day_open"
+                                                            id="third_day_open">
+                                                        @foreach($select_hours as $hours)
+                                                            <option
+                                                                value="{{$hours}}" {{ str_replace(' ', ' ', $hours) == $third_day_opening_hours ? 'selected' : '' }}>{{$hours}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
+                                                <td class="user-chosen-select-container">
+                                                    <select class="user-chosen-select" name="third_day_close"
+                                                            id="third_day_close">
+                                                        @foreach($select_hours as $hours)
+                                                            <option
+                                                                value="{{$hours}}" {{ str_replace(' ', ' ', $hours) == $third_day_closing_hours ? 'selected' : '' }}>{{$hours}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr class="business-opening-wrap">
+                                                <td class="business-day">{{ $fourth_day }}</td>
+                                                <td class="user-chosen-select-container">
+                                                    <select class="user-chosen-select" name="fourth_day_open"
+                                                            id="fourth_day_open">
+                                                        @foreach($select_hours as $hours)
+                                                            <option
+                                                                value="{{ $hours }}" {{ str_replace(' ', ' ', $hours) == $fourth_day_opening_hours ? 'selected' : '' }}>
+                                                                {{ $hours }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
+                                                <td class="user-chosen-select-container">
+                                                    <select class="user-chosen-select" name="fourth_day_close"
+                                                            id="fourth_day_close">
+                                                        @foreach($select_hours as $hours)
+                                                            <option
+                                                                value="{{$hours}}" {{ str_replace(' ', ' ', $hours) == $fourth_day_closing_hours ? 'selected' : '' }}>{{$hours}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr class="business-opening-wrap">
+                                                <td class="business-day">{{ $fifth_day }}</td>
+                                                <td class="user-chosen-select-container">
+                                                    <select class="user-chosen-select" name="fifth_day_open"
+                                                            id="fifth_day_open">
+                                                        @foreach($select_hours as $hours)
+                                                            <option
+                                                                value="{{ $hours }}" {{ str_replace(' ', ' ', $hours) == $fifth_day_opening_hours ? 'selected' : '' }}>
+                                                                {{ $hours }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
+                                                <td class="user-chosen-select-container">
+                                                    <select class="user-chosen-select" name="fifth_day_close"
+                                                            id="fifth_day_close">
+                                                        @foreach($select_hours as $hours)
+                                                            <option
+                                                                value="{{$hours}}" {{ str_replace(' ', ' ', $hours) == $fifth_day_closing_hours ? 'selected' : '' }}>{{$hours}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr class="business-opening-wrap">
+                                                <td class="business-day">{{ $sixth_day }}</td>
+                                                <td class="user-chosen-select-container">
+                                                    <select class="user-chosen-select" name="sixth_day_open"
+                                                            id="sixth_day_open">
+                                                        @foreach($select_hours as $hours)
+                                                            <option
+                                                                value="{{ $hours }}" {{ str_replace(' ', ' ', $hours) == $sixth_day_opening_hours ? 'selected' : '' }}>
+                                                                {{ $hours }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
+                                                <td class="user-chosen-select-container">
+                                                    <select class="user-chosen-select" name="sixth_day_close"
+                                                            id="sixth_day_close">
+                                                        @foreach($select_hours as $hours)
+                                                            <option
+                                                                value="{{$hours}}" {{ str_replace(' ', ' ', $hours) == $sixth_day_closing_hours ? 'selected' : '' }}>{{$hours}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr class="business-opening-wrap">
+                                                <td class="business-day">{{ $seventh_day }}</td>
+                                                <td class="user-chosen-select-container">
+                                                    <select class="user-chosen-select" name="seventh_day_open"
+                                                            id="seventh_day_open">
+                                                        @foreach($select_hours as $hours)
+                                                            <option
+                                                                value="{{ $hours }}" {{ str_replace(' ', ' ', $hours) == $seventh_day_opening_hours ? 'selected' : '' }}>
+                                                                {{ $hours }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
+                                                <td class="user-chosen-select-container">
+                                                    <select class="user-chosen-select" name="seventh_day_close"
+                                                            id="seventh_day_close">
+                                                        @foreach($select_hours as $hours)
+                                                            <option
+                                                                value="{{$hours}}" {{ str_replace(' ', ' ', $hours) == $seventh_day_closing_hours ? 'selected' : '' }}>{{$hours}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                        @else
+                                            <tr class="business-opening-wrap">
+                                                <td class="business-day">Monday</td>
+                                                <td class="user-chosen-select-container">
+                                                    <select class="user-chosen-select" name="monday_open"
+                                                            id="monday_open">
+                                                        @foreach($select_hours as $hours)
+                                                            <option value="{{ $hours }}">
+                                                                {{ $hours }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
+                                                <td class="user-chosen-select-container">
+                                                    <select class="user-chosen-select" name="monday_close"
+                                                            id="monday_close">
+                                                        @foreach($select_hours as $hours)
+                                                            <option value="{{$hours}}">{{$hours}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr class="business-opening-wrap">
+                                                <td class="business-day">Tuesday</td>
+                                                <td class="user-chosen-select-container">
+                                                    <select class="user-chosen-select" name="tuesday_open"
+                                                            id="tuesday_open">
+                                                        @foreach($select_hours as $hours)
+                                                            <option value="{{$hours}}">{{$hours}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
+                                                <td class="user-chosen-select-container">
+                                                    <select class="user-chosen-select" name="tuesday_close"
+                                                            id="tuesday_close">
+                                                        @foreach($select_hours as $hours)
+                                                            <option value="{{$hours}}">{{$hours}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr class="business-opening-wrap">
+                                                <td class="business-day">Wednesday</td>
+                                                <td class="user-chosen-select-container">
+                                                    <select class="user-chosen-select" name="wednesday_open"
+                                                            id="wednesday_open">
+                                                        @foreach($select_hours as $hours)
+                                                            <option value="{{$hours}}">{{$hours}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
+                                                <td class="user-chosen-select-container">
+                                                    <select class="user-chosen-select" name="wednesday_close"
+                                                            id="wednesday_close">
+                                                        @foreach($select_hours as $hours)
+                                                            <option value="{{$hours}}">{{$hours}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr class="business-opening-wrap">
+                                                <td class="business-day">Thursday</td>
+                                                <td class="user-chosen-select-container">
+                                                    <select class="user-chosen-select" name="thursday_open"
+                                                            id="thursday_open">
+                                                        @foreach($select_hours as $hours)
+                                                            <option value="{{ $hours }}">{{ $hours }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
+                                                <td class="user-chosen-select-container">
+                                                    <select class="user-chosen-select" name="thursday_close"
+                                                            id="thursday_close">
+                                                        @foreach($select_hours as $hours)
+                                                            <option
+                                                                value="{{$hours}}">{{$hours}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr class="business-opening-wrap">
+                                                <td class="business-day">Friday</td>
+                                                <td class="user-chosen-select-container">
+                                                    <select class="user-chosen-select" name="friday_open"
+                                                            id="friday_open">
+                                                        @foreach($select_hours as $hours)
+                                                            <option value="{{ $hours }}">{{ $hours }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
+                                                <td class="user-chosen-select-container">
+                                                    <select class="user-chosen-select" name="friday_close"
+                                                            id="friday_close">
+                                                        @foreach($select_hours as $hours)
+                                                            <option
+                                                                value="{{$hours}}">{{$hours}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr class="business-opening-wrap">
+                                                <td class="business-day">Saturday</td>
+                                                <td class="user-chosen-select-container">
+                                                    <select class="user-chosen-select" name="saturday_open"
+                                                            id="saturday_open">
+                                                        @foreach($select_hours as $hours)
+                                                            <option value="{{ $hours }}">{{ $hours }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
+                                                <td class="user-chosen-select-container">
+                                                    <select class="user-chosen-select" name="saturday_close"
+                                                            id="saturday_close">
+                                                        @foreach($select_hours as $hours)
+                                                            <option value="{{$hours}}">{{$hours}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                            <tr class="business-opening-wrap">
+                                                <td class="business-day">Sunday</td>
+                                                <td class="user-chosen-select-container">
+                                                    <select class="user-chosen-select" name="sunday_open"
+                                                            id="sunday_open">
+                                                        @foreach($select_hours as $hours)
+                                                            <option value="{{ $hours }}">{{ $hours }}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
+                                                <td class="user-chosen-select-container">
+                                                    <select class="user-chosen-select" name="sunday_close"
+                                                            id="sunday_close">
+                                                        @foreach($select_hours as $hours)
+                                                            <option
+                                                                value="{{$hours}}">{{$hours}}</option>
+                                                        @endforeach
+                                                    </select>
+                                                </td>
+                                            </tr>
+                                        @endif
                                         </tbody>
                                     </table>
                                 </div>

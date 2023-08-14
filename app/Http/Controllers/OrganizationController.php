@@ -194,24 +194,101 @@ class OrganizationController extends Controller
 
             $select_hours = ['Open 24 Hours', 'Closed', '12 AM', '12:15 AM', '12:30 AM', '12:45 AM', '1 AM', '1:15 AM', '1:30 AM', '1:45 AM', '2 AM', '2:15 AM', '2:30 AM', '2:45 AM', '3 AM', '3:15 AM', '3:30 AM', '3:45 AM', '4 AM', '4:15 AM', '4:30 AM', '4:45 AM', '5 AM', '5:15 AM', '5:30 AM', '5:45 AM', '6 AM', '6:15 AM', '6:30 AM', '6:45 AM', '7 AM', '7:15 AM', '7:30 AM', '7:45 AM', '8 AM', '8:15 AM', '8:30 AM', '8:45 AM', '9 AM', '9:15 AM', '9:30 AM', '9:45 AM', '10 AM', '10:15 AM', '10:30 AM', '10:45 AM', '11 AM', '11:15 AM', '11:30 AM', '11:45 AM', '12 PM', '12:15 PM', '12:30 PM', '12:45 PM', '1 PM', '1:15 PM', '1:30 PM', '1:45 PM', '2 PM', '2:15 PM', '2:30 PM', '2:45 PM', '3 PM', '3:15 PM', '3:30 PM', '3:45 PM', '4 PM', '4:15 PM', '4:30 PM', '4:45 PM', '5 PM', '5:15 PM', '5:30 PM', '5:45 PM', '6 PM', '6:15 PM', '6:30 PM', '6:45 PM', '7 PM', '7:15 PM', '7:30 PM', '7:45 PM', '8 PM', '8:15 PM', '8:30 PM', '8:45 PM', '9 PM', '9:15 PM', '9:30 PM', '9:45 PM', '10 PM', '10:15 PM', '10:30 PM', '10:45 PM', '11 PM', '11:15 PM', '11:30 PM', '11:45 PM'];
 
-            $organization_badge = '';
+            $files = File::files(public_path('images/badges'));
+            $images = [];
 
-            if ($organization) {
-                $files = File::files(public_path('images/badges'));
-                $images = [];
+            foreach ($files as $file) {
+                $images[] = $file->getRelativePathname();
 
-                foreach ($files as $file) {
-                    $images[] = $file->getRelativePathname();
-
-                    foreach ($images as $image) {
-                        if ($image == $organization->category->name . ' - ' . $organization->city->name . '.png') {
-                            $organization->organization_badge = $image;
-                        }
+                foreach ($images as $image) {
+                    if ($image == $organization->category->name . ' - ' . $organization->city->name . '.png') {
+                        $organization->organization_badge = $image;
                     }
                 }
             }
 
-            return view('organization.show', compact('organization', 'city', 'cities', 'five_star_reviews', 'four_star_reviews', 'three_star_reviews', 'two_star_reviews', 'one_star_reviews', 'restaurant_type', 'gym_type', 'landscaper_type', 'select_hours'));
+            if ($organization->organization_work_time) {
+                $organization_work_time_exploded = explode(';', $organization->organization_work_time);
+                $organization_work_time_exploded = str_replace('. Hide open hours for the week', '', $organization_work_time_exploded);
+                $organization_work_time_exploded = str_ireplace(' (Washington\'s Birthday)', '', $organization_work_time_exploded);
+                $organization->organization_work_time_modified = str_replace(', Hours might differ', '', $organization_work_time_exploded);
+
+                $modified_work_time = $organization->organization_work_time_modified;
+
+                //First day
+                $first_day_work_time = explode(',', $modified_work_time[0]);
+                $first_day = ltrim($first_day_work_time[0]);
+                $first_day_work_hours = explode(' to ', $first_day_work_time[1]);
+                if (count($first_day_work_hours) == 1) {
+                    $first_day_work_hours[1] = $first_day_work_hours[0];
+                }
+                $first_day_opening_hours = ltrim($first_day_work_hours[0]);
+                $first_day_closing_hours = ltrim($first_day_work_hours[1]);
+
+                //  Second day
+                $second_day_work_time = explode(',', $modified_work_time[1]);
+                $second_day = ltrim($second_day_work_time[0]);
+                $second_day_work_hours = explode(' to ', $second_day_work_time[1]);
+                if (count($second_day_work_hours) == 1) {
+                    $second_day_work_hours[1] = $second_day_work_hours[0];
+                }
+                $second_day_opening_hours = ltrim($second_day_work_hours[0]);
+                $second_day_closing_hours = ltrim($second_day_work_hours[1]);
+
+                //  Third day
+                $third_day_work_time = explode(',', $modified_work_time[2]);
+                $third_day = ltrim($third_day_work_time[0]);
+                $third_day_work_hours = explode(' to ', $third_day_work_time[1]);
+                if (count($third_day_work_hours) == 1) {
+                    $third_day_work_hours[1] = $third_day_work_hours[0];
+                }
+                $third_day_opening_hours = ltrim($third_day_work_hours[0]);
+                $third_day_closing_hours = ltrim($third_day_work_hours[1]);
+
+                //  Fourth day
+                $fourth_day_work_time = explode(',', $modified_work_time[3]);
+                $fourth_day = ltrim($fourth_day_work_time[0]);
+                $fourth_day_work_hours = explode(' to ', $fourth_day_work_time[1]);
+                if (count($fourth_day_work_hours) == 1) {
+                    $fourth_day_work_hours[1] = $fourth_day_work_hours[0];
+                }
+                $fourth_day_opening_hours = ltrim($fourth_day_work_hours[0]);
+                $fourth_day_closing_hours = ltrim($fourth_day_work_hours[1]);
+
+                //  Fifth day
+                $fifth_day_work_time = explode(',', $modified_work_time[4]);
+                $fifth_day = ltrim($fifth_day_work_time[0]);
+                $fifth_day_work_hours = explode(' to ', $fifth_day_work_time[1]);
+                if (count($fifth_day_work_hours) == 1) {
+                    $fifth_day_work_hours[1] = $fifth_day_work_hours[0];
+                }
+                $fifth_day_opening_hours = ltrim($fifth_day_work_hours[0]);
+                $fifth_day_closing_hours = ltrim($fifth_day_work_hours[1]);
+
+                //  Sixth day
+                $sixth_day_work_time = explode(',', $modified_work_time[5]);
+                $sixth_day = ltrim($sixth_day_work_time[0]);
+                $sixth_day_work_hours = explode(' to ', $sixth_day_work_time[1]);
+                if (count($sixth_day_work_hours) == 1) {
+                    $sixth_day_work_hours[1] = $sixth_day_work_hours[0];
+                }
+                $sixth_day_opening_hours = ltrim($sixth_day_work_hours[0]);
+                $sixth_day_closing_hours = ltrim($sixth_day_work_hours[1]);
+
+                //  Seventh day
+                $seventh_day_work_time = explode(',', $modified_work_time[6]);
+                $seventh_day = ltrim($seventh_day_work_time[0]);
+                $seventh_day_work_hours = explode(' to ', $seventh_day_work_time[1]);
+                if (count($seventh_day_work_hours) == 1) {
+                    $seventh_day_work_hours[1] = $seventh_day_work_hours[0];
+                }
+                $seventh_day_opening_hours = ltrim($seventh_day_work_hours[0]);
+                $seventh_day_closing_hours = ltrim($seventh_day_work_hours[1]);
+
+                return view('organization.show', compact('organization', 'city', 'cities', 'five_star_reviews', 'four_star_reviews', 'three_star_reviews', 'two_star_reviews', 'one_star_reviews', 'restaurant_type', 'gym_type', 'landscaper_type', 'select_hours', 'first_day', 'first_day_opening_hours', 'first_day_closing_hours', 'second_day', 'second_day_opening_hours', 'second_day_closing_hours', 'third_day', 'third_day_opening_hours', 'third_day_closing_hours', 'fourth_day', 'fourth_day_opening_hours', 'fourth_day_closing_hours', 'fifth_day', 'fifth_day_opening_hours', 'fifth_day_closing_hours', 'sixth_day', 'sixth_day_opening_hours', 'sixth_day_closing_hours', 'seventh_day', 'seventh_day_opening_hours', 'seventh_day_closing_hours'));
+            } else {
+                return view('organization.show', compact('organization', 'city', 'cities', 'five_star_reviews', 'four_star_reviews', 'three_star_reviews', 'two_star_reviews', 'one_star_reviews', 'restaurant_type', 'gym_type', 'landscaper_type', 'select_hours'));
+            }
         }
 
         abort(404);
