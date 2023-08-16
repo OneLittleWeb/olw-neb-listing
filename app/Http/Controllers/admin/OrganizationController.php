@@ -93,12 +93,32 @@ class OrganizationController extends Controller
 
     public function editRequestUpdate($id, $status)
     {
-        if ($status == 'approved') {
-            alert()->success('success', 'Suggested Request has been approved.');
-        } else {
-            alert()->success('success', 'Suggested Request has been rejected.');
+        $suggest_edit = suggestAnEdit::find($id);
+
+        if ($suggest_edit) {
+            $organization = $suggest_edit->organization;
+            if ($status == 'approved') {
+
+                $suggest_edit->edit_status = 1;
+                $suggest_edit->update();
+
+                $organization->organization_name = $suggest_edit->organization_name;
+                $organization->organization_address = $suggest_edit->organization_address;
+                $organization->organization_phone_number = $suggest_edit->organization_phone_number;
+                $organization->organization_website = $suggest_edit->organization_website;
+                $organization->organization_work_time = $suggest_edit->organization_work_time;
+                $organization->update();
+
+                alert()->success('success', 'Suggested Request has been approved.');
+            } else {
+
+                $suggest_edit->edit_status = 2;
+                $suggest_edit->update();
+                alert()->success('success', 'Suggested Request has been rejected.');
+            }
+            return back();
         }
 
-        return back();
+        abort(404);
     }
 }
