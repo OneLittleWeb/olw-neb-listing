@@ -1,5 +1,5 @@
 @extends('admin.master_admin')
-@section('title', 'Contact for claim')
+@section('title', 'Award Certificate Request')
 @section('content')
     <div class="container-fluid dashboard-inner-body-container">
         <div class="breadcrumb-content d-sm-flex align-items-center justify-content-between mb-4">
@@ -10,7 +10,7 @@
                 <li><a href="{{route('admin.dashboard')}}">Home</a></li>
                 <li>Categories</li>
             </ul>
-        </div><!-- end breadcrumb-content -->
+        </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="block-card dashboard-card mb-4 px-0">
