@@ -93,7 +93,7 @@ class OrganizationController extends Controller
 
     public function editRequestUpdate($id, $status)
     {
-        $suggest_edit = suggestAnEdit::find($id);
+        $suggest_edit = SuggestAnEdit::find($id);
 
         if ($suggest_edit) {
             $organization = $suggest_edit->organization;

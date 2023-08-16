@@ -34,6 +34,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('suggest/edit/request', [AdminOrganizationController::class, 'suggestEditRequest'])->name('suggest.edit.request');
     Route::post('suggest/request/update/{id}/{status}', [AdminOrganizationController::class, 'editRequestUpdate'])->name('edit.request.update');
     Route::get('award/certificate/request', [AwardController::class, 'awardCertificateRequest'])->name('award.certificate.request');
+    Route::post('award/certificate/update/{id}/{status}', [AwardController::class, 'awardCertificateUpdate'])->name('award.certificate.update');
 });
 
 Route::get('/', [HomeController::class, 'index'])->name('home');

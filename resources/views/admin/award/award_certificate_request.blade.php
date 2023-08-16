@@ -25,7 +25,7 @@
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Status</th>
-                                    <th>Action</th>
+                                    <th class="text-center">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -54,43 +54,38 @@
                                                     class="badge badge-danger">Rejected</span>
                                             @endif
                                         </td>
-                                        <td style="width: 15%">
-                                            {{--                                            @if(!$contact->organization->claimed_mail && !$contact->organization->is_claimed)--}}
-                                            {{--                                                <form class="d-inline" method="post"--}}
-                                            {{--                                                      action="{{ route('admin.claim.status.update', ['id' => $contact->id, 'status' => 'approved']) }}">--}}
-                                            {{--                                                    @csrf--}}
-                                            {{--                                                    <button type="button" class="btn btn-sm btn-primary claim-approve"--}}
-                                            {{--                                                            data-toggle="tooltip" data-placement="top" title="Approve">--}}
-                                            {{--                                                        <i--}}
-                                            {{--                                                            class="fa fa-check" aria-hidden="true"></i></button>--}}
-                                            {{--                                                </form>--}}
+                                        <td class="text-center" style="width: 15%">
+                                            @if($award_certificate_request->award_status == 0 )
+                                                <form class="d-inline" method="post"
+                                                      action="{{ route('admin.award.certificate.update', ['id' => $award_certificate_request->id, 'status' => 'approved']) }}">
+                                                    @csrf
+                                                    <button type="button"
+                                                            class="btn btn-sm btn-primary approve-certificate-request"
+                                                            data-toggle="tooltip" data-placement="top" title="Approve">
+                                                        <i class="fa fa-check" aria-hidden="true"></i></button>
+                                                </form>
 
-                                            {{--                                                <form method="post"--}}
-                                            {{--                                                      action="{{ route('admin.claim.status.update', ['id' => $contact->id, 'status' => 'cancel']) }}"--}}
-                                            {{--                                                      class="d-inline">--}}
-                                            {{--                                                    @csrf--}}
-                                            {{--                                                    <button type="button" class="btn btn-sm btn-danger claim-cancel"--}}
-                                            {{--                                                            data-toggle="tooltip" data-placement="top" title="Cancel"><i--}}
-                                            {{--                                                            class="fa fa-times" aria-hidden="true"></i></button>--}}
-                                            {{--                                                </form>--}}
-                                            {{--                                            @elseif($contact->organization->claimed_mail && !$contact->organization->is_claimed)--}}
-                                            {{--                                                <button type="button" class="btn btn-sm btn-danger"--}}
-                                            {{--                                                        data-toggle="tooltip" data-placement="top" title="Canceled">--}}
-                                            {{--                                                    Cancelled--}}
-                                            {{--                                                </button>--}}
-                                            {{--                                            @elseif($contact->organization->claimed_mail && $contact->organization->is_claimed)--}}
-                                            {{--                                                <button type="button" class="btn btn-sm btn-success"--}}
-                                            {{--                                                        data-toggle="tooltip" data-placement="top" title="Approved">--}}
-                                            {{--                                                    Approved--}}
-                                            {{--                                                </button>--}}
-                                            {{--                                            @endif--}}
-
-                                            <div class="d-inline">
-                                                <button type="submit" class="btn btn-sm btn-info d-inline"
-                                                        data-toggle="tooltip" data-placement="top" title="Details">
-                                                    <i
-                                                        class="fa fa-eye" aria-hidden="true"></i></button>
-                                            </div>
+                                                <form method="post"
+                                                      action="{{ route('admin.award.certificate.update', ['id' => $award_certificate_request->id, 'status' => 'rejected']) }}"
+                                                      class="d-inline">
+                                                    @csrf
+                                                    <button type="button"
+                                                            class="btn btn-sm btn-danger reject-certificate-request"
+                                                            data-toggle="tooltip" data-placement="top" title="Reject"><i
+                                                            class="fa fa-times" aria-hidden="true"></i></button>
+                                                </form>
+                                            @else
+                                                <form method="post"
+                                                      action="{{ route('admin.award.certificate.update', ['id' => $award_certificate_request->id, 'status' => 'deleted']) }}"
+                                                      class="d-inline">
+                                                    @csrf
+                                                    <button type="button"
+                                                            class="btn btn-sm btn-danger delete-certificate-request"
+                                                            data-toggle="tooltip" data-placement="top" title="Delete">
+                                                        Delete
+                                                    </button>
+                                                </form>
+                                            @endif
                                         </td>
                                     </tr>
                                 @endforeach
@@ -104,39 +99,55 @@
     </div>
 @endsection
 @section('js')
-    {{--    <script>--}}
-    {{--        $(document).on('click', 'button.claim-approve', function () {--}}
-    {{--            Swal.fire({--}}
-    {{--                title: 'Are you sure?',--}}
-    {{--                text: "Do you want to approve this business claim?",--}}
-    {{--                icon: 'warning',--}}
-    {{--                showCancelButton: true,--}}
-    {{--                confirmButtonColor: '#3085d6',--}}
-    {{--                cancelButtonColor: '#d33',--}}
-    {{--                confirmButtonText: 'Yes, approve it!'--}}
-    {{--            }).then((result) => {--}}
-    {{--                if (result.isConfirmed) {--}}
-    {{--                    $(this).parent('form').trigger('submit')--}}
-    {{--                }--}}
-    {{--            });--}}
-    {{--        });--}}
+    <script>
+        $(document).on('click', 'button.approve-certificate-request', function () {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "Do you want to approve this award certificate request?",
+                icon: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, approve it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $(this).parent('form').trigger('submit')
+                }
+            });
+        });
 
-    {{--        $(document).on('click', 'button.claim-cancel', function () {--}}
-    {{--            Swal.fire({--}}
-    {{--                title: 'Are you sure?',--}}
-    {{--                text: "Do you want to cancel this business claim?",--}}
-    {{--                icon: 'warning',--}}
-    {{--                showCancelButton: true,--}}
-    {{--                confirmButtonColor: '#3085d6',--}}
-    {{--                cancelButtonColor: '#d33',--}}
-    {{--                confirmButtonText: 'Yes, cancel it!'--}}
-    {{--            }).then((result) => {--}}
-    {{--                if (result.isConfirmed) {--}}
-    {{--                    $(this).parent('form').trigger('submit')--}}
-    {{--                }--}}
-    {{--            });--}}
-    {{--        });--}}
-    {{--    </script>--}}
+        $(document).on('click', 'button.reject-certificate-request', function () {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "Do you want to reject this award certificate request?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, reject it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $(this).parent('form').trigger('submit')
+                }
+            });
+        });
+
+        $(document).on('click', 'button.delete-certificate-request', function () {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "Do you want to delete this award certificate request?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $(this).parent('form').trigger('submit')
+                }
+            });
+        });
+    </script>
 
     <script>
         $(document).ready(function () {
