@@ -34,7 +34,11 @@
                                         <td>{{++$key}}</td>
                                         <td>{{ $award_certificate_request->organization->organization_name }}</td>
                                         <td>
-                                            {{ $award_certificate_request->is_affiliated ? 'Yes' : 'No' }}
+                                            @if($award_certificate_request->is_affiliated)
+                                                <span class="text-success">Yes</span>
+                                            @else
+                                                <span class="text-danger">No</span>
+                                            @endif
                                         </td>
                                         <td>{{$award_certificate_request->requested_user_name}}</td>
                                         <td>{{$award_certificate_request->requested_user_email}}</td>
