@@ -110,11 +110,17 @@ class OrganizationController extends Controller
                 $organization->update();
 
                 alert()->success('success', 'Suggested Request has been approved.');
-            } else {
+            } elseif ($status == 'rejected') {
 
                 $suggest_edit->edit_status = 2;
                 $suggest_edit->update();
+
                 alert()->success('success', 'Suggested Request has been rejected.');
+            } elseif ($status == 'deleted') {
+
+                $suggest_edit->delete();
+
+                alert()->success('success', 'Suggested Request has been deleted.');
             }
             return back();
         }

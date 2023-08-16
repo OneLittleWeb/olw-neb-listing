@@ -29,36 +29,36 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($suggest_edit_requests as $key => $edit_requests)
+                                @foreach($suggest_edit_requests as $key => $edit_request)
                                     <tr>
                                         <td>{{++$key}}</td>
-                                        <td>{{ $edit_requests->organization->organization_name }}</td>
+                                        <td>{{ $edit_request->organization->organization_name }}</td>
                                         <td>
-                                            @if($edit_requests->is_it_closed)
+                                            @if($edit_request->is_it_closed)
                                                 <span class="text-danger">Yes</span>
                                             @else
                                                 <span class="text-success">No</span>
                                             @endif
                                         </td>
                                         <td>
-                                            @if($edit_requests->temporarily_closed)
+                                            @if($edit_request->temporarily_closed)
                                                 <span class="text-danger">Yes</span>
                                             @else
                                                 <span class="text-success">No</span>
                                             @endif
                                         </td>
                                         <td>
-                                            @if($edit_requests->are_you_the_owner)
+                                            @if($edit_request->are_you_the_owner)
                                                 <span class="text-success">Yes</span>
                                             @else
                                                 <span class="text-danger">No</span>
                                             @endif
                                         </td>
                                         <td>
-                                            @if($edit_requests->edit_status == 0)
+                                            @if($edit_request->edit_status == 0)
                                                 <span
                                                     class="badge badge-warning">Pending</span>
-                                            @elseif($edit_requests->edit_status == 1)
+                                            @elseif($edit_request->edit_status == 1)
                                                 <span
                                                     class="badge badge-success">approved</span>
                                             @else
@@ -67,24 +67,38 @@
                                             @endif
                                         </td>
                                         <td class="text-center" style="width: 15%">
-                                            <form class="d-inline" method="post"
-                                                  action="{{ route('admin.edit.request.update', ['id' => $edit_requests->id, 'status' => 'approved']) }}">
-                                                @csrf
-                                                <button type="button"
-                                                        class="btn btn-sm btn-primary approve-suggest-request"
-                                                        data-toggle="tooltip" data-placement="top" title="Approve">
-                                                    <i class="fa fa-check" aria-hidden="true"></i></button>
-                                            </form>
 
-                                            <form method="post"
-                                                  action="{{ route('admin.edit.request.update', ['id' => $edit_requests->id, 'status' => 'reject']) }}"
-                                                  class="d-inline">
-                                                @csrf
-                                                <button type="button"
-                                                        class="btn btn-sm btn-danger reject-suggested-request"
-                                                        data-toggle="tooltip" data-placement="top" title="Reject"><i
-                                                        class="fa fa-times" aria-hidden="true"></i></button>
-                                            </form>
+                                            @if($edit_request->edit_status == 0 )
+                                                <form class="d-inline" method="post"
+                                                      action="{{ route('admin.edit.request.update', ['id' => $edit_request->id, 'status' => 'approved']) }}">
+                                                    @csrf
+                                                    <button type="button"
+                                                            class="btn btn-sm btn-primary approve-suggest-request"
+                                                            data-toggle="tooltip" data-placement="top" title="Approve">
+                                                        <i class="fa fa-check" aria-hidden="true"></i></button>
+                                                </form>
+
+                                                <form method="post"
+                                                      action="{{ route('admin.edit.request.update', ['id' => $edit_request->id, 'status' => 'rejected']) }}"
+                                                      class="d-inline">
+                                                    @csrf
+                                                    <button type="button"
+                                                            class="btn btn-sm btn-danger reject-suggested-request"
+                                                            data-toggle="tooltip" data-placement="top" title="Reject"><i
+                                                            class="fa fa-times" aria-hidden="true"></i></button>
+                                                </form>
+                                            @else
+                                                <form method="post"
+                                                      action="{{ route('admin.edit.request.update', ['id' => $edit_request->id, 'status' => 'deleted']) }}"
+                                                      class="d-inline">
+                                                    @csrf
+                                                    <button type="button"
+                                                            class="btn btn-sm btn-danger delete-suggested-request"
+                                                            data-toggle="tooltip" data-placement="top" title="Delete">
+                                                        Delete
+                                                    </button>
+                                                </form>
+                                            @endif
 
                                             <div class="d-inline">
                                                 <button type="submit" class="btn btn-sm btn-info d-inline"
@@ -130,6 +144,22 @@
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Yes, reject it!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $(this).parent('form').trigger('submit')
+                }
+            });
+        });
+
+        $(document).on('click', 'button.delete-suggested-request', function () {
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "Do you want to delete this suggested request?",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
             }).then((result) => {
                 if (result.isConfirmed) {
                     $(this).parent('form').trigger('submit')
