@@ -211,7 +211,6 @@
     <script>
         function suggestEditDetailsModal(edit_request) {
             $('.suggest-edit-details-modal').modal('show');
-            // document.getElementById('is_it_closed').innerHTML = edit_request.temporarily_closed ? 'Yes' : 'No';
             $('#old_organization_name').text(edit_request.organization.organization_name);
             $('#suggested_organization_name').text(edit_request.organization_name);
             $('#is_it_closed').text(edit_request.is_it_closed ? 'Yes' : 'No');
