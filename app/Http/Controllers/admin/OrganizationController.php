@@ -110,18 +110,18 @@ class OrganizationController extends Controller
                 $organization->organization_short_description = $suggest_edit->organization_short_description;
                 $organization->update();
 
-                alert()->success('success', 'Suggested Request has been approved.');
+                alert()->success('success', 'Suggested request has been approved.');
             } elseif ($status == 'rejected') {
 
                 $suggest_edit->edit_status = 2;
                 $suggest_edit->update();
 
-                alert()->success('success', 'Suggested Request has been rejected.');
+                alert()->success('success', 'Suggested request has been rejected.');
             } elseif ($status == 'deleted') {
 
                 $suggest_edit->delete();
 
-                alert()->success('success', 'Suggested Request has been deleted.');
+                alert()->success('success', 'Suggested request has been deleted.');
             }
             return back();
         }
