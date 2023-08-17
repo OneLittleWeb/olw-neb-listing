@@ -443,7 +443,7 @@
                             <div class="col-sm-3 suggested-modal-content-text">Description</div>
                             <div class="col-sm-9">
                                 <textarea class="form-control" name="organization_short_description" id="organization_short_description"
-                                          rows="3"></textarea>
+                                          rows="3">{{ $organization->organization_short_description }}</textarea>
                             </div>
                         </div>
                         <div class="form-group row">

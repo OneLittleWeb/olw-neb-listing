@@ -25,6 +25,7 @@ class CreateSuggestAnEditsTable extends Migration
             $table->string('organization_website')->nullable();
             $table->text('price_list_url')->nullable();
             $table->text('organization_work_time')->nullable();
+            $table->text('organization_short_description')->nullable();
             $table->text('message')->nullable();
             $table->integer('edit_status')->default(0)->comment('0: Pending, 1: Approved, 2: Rejected');
             $table->softDeletes();

@@ -485,6 +485,7 @@ class OrganizationController extends Controller
             $suggest_an_edit->organization_phone_number = $request->organization_phone_number;
             $suggest_an_edit->organization_website = $request->organization_website;
             $suggest_an_edit->price_list_url = $request->price_list_url;
+            $suggest_an_edit->organization_short_description = $request->organization_short_description;
             $suggest_an_edit->message = $request->message;
 
 
