@@ -30,7 +30,7 @@ class AwardCertificateRequestMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Requested award certificate' . ' - ' . $this->award_certificate->organization['organization_name'])
+        return $this->subject(env('APP_NAME') . ' award certificate - ' . $this->award_certificate->organization['organization_name'])
             ->view('email.award.approved-award-certificate');
     }
 }
