@@ -16,7 +16,7 @@
                 <div class="block-card dashboard-card mb-4 px-0">
                     <div class="block-card-body">
                         <div class="my-table table-responsive">
-                            <table class="table align-items-center table-flush mb-0" id="edit_request_table">
+                            <table class="table align-items-center table-flush mb-0" id="suggest_edit_request_table">
                                 <thead class="thead-light">
                                 <tr>
                                     <th>No</th>
@@ -281,7 +281,7 @@
 
     <script>
         $(document).ready(function () {
-            $('#edit_request_table').DataTable();
+            $('#suggest_edit_request_table').DataTable();
         });
     </script>
 @endsection
