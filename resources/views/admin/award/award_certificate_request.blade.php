@@ -103,7 +103,7 @@
         $(document).on('click', 'button.approve-certificate-request', function () {
             Swal.fire({
                 title: 'Are you sure?',
-                text: "Do you want to approve this award certificate request?",
+                text: "Do you want to approve this award certificate request? and the certificate has been sent to the requested business?",
                 icon: 'question',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
