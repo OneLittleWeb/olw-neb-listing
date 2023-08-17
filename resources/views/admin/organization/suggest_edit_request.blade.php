@@ -174,7 +174,7 @@
                                         <td><span id="organization_phone_number"></span></td>
                                     </tr>
                                     <tr>
-                                        <td><span class="font-weight-bold">Organization Website:</span></td>
+                                        <td><span class="font-weight-bold">Website:</span></td>
                                         <td><span id="old_organization_website"></span></td>
                                         <td><span id="organization_website"></span></td>
                                     </tr>
@@ -184,9 +184,14 @@
                                         <td><span id="price_list_url"></span></td>
                                     </tr>
                                     <tr>
-                                        <td><span class="font-weight-bold">Organization Work Time:</span></td>
+                                        <td><span class="font-weight-bold">Work Time:</span></td>
                                         <td><span id="old_organization_work_time"></span></td>
                                         <td><span id="organization_work_time"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span class="font-weight-bold">Description:</span></td>
+                                        <td><span id="old_organization_description"></span></td>
+                                        <td><span id="organization_description"></span></td>
                                     </tr>
                                     <tr>
                                         <td><span class="font-weight-bold">Message:</span></td>
@@ -226,6 +231,8 @@
             $('#old_organization_work_time').text(edit_request.organization.organization_work_time);
             $('#organization_work_time').text(edit_request.organization_work_time);
             $('#message').text(edit_request.message);
+            $('#old_organization_description').text(edit_request.organization.organization_short_description);
+            $('#organization_description').text(edit_request.organization_short_description);
         }
     </script>
 
