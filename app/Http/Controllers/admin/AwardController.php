@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\AwardCertificateRequestMail;
 use App\Models\AwardCertificateRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Mail;
 
 class AwardController extends Controller
 {
@@ -22,10 +25,38 @@ class AwardController extends Controller
         if ($award_certificate) {
             if ($status == 'approved') {
 
-                $award_certificate->award_status = 1;
-                $award_certificate->update();
+                $organization = $award_certificate->organization;
 
-                alert()->success('success', 'Award certificate request has been approved.');
+                //badges
+
+                $files = File::files(public_path('images/badges'));
+                $images = [];
+                $organization_badge = '';
+
+                foreach ($files as $file) {
+                    $images[] = $file->getRelativePathname();
+
+                    foreach ($images as $image) {
+                        if ($image == $organization->category->name . ' - ' . $organization->city->name . '.png') {
+                            $organization_badge = 'https://nebraskalisting.com/images/badges/' .$organization->category->name . ' - ' . $organization->city->name . '.png';
+                        }
+                    }
+                }
+
+                try {
+                    $award_certificate->award_status = 1;
+                    $award_certificate->update();
+
+                    $award_certificate->organization_badge = '<img src="' . $organization_badge . '" alt="Nebraska Listing Badge"
+                             style="display: block; margin-left: auto; margin-right: auto; width: 40%;">';
+
+                    Mail::to($award_certificate->requested_user_email)->send(new AwardCertificateRequestMail($award_certificate));
+                    alert()->success('success', 'The request for an award certificate has been approved, and the certificate has been sent to the requested business.');
+                } catch (\Exception $e) {
+                    alert()->error('error', 'Something went wrong sending the email to the user. Please try again later.');
+                    return redirect()->back();
+                }
+
             } elseif ($status == 'rejected') {
 
                 $award_certificate->award_status = 2;

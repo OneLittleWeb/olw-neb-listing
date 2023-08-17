@@ -1008,7 +1008,6 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="sidebar mb-0">
-
                         <div class="suggest-edit-button-div">
                             <button type="button" class="btn btn-light suggest-edit-button" data-toggle="modal"
                                     data-target="#suggestEditModal">Suggest an Edit
@@ -1063,20 +1062,6 @@
                                                 <span>{{ $exploded_work_time[1] }}</span></li>
                                         @endif
                                     @endforeach
-{{--                                    <li class="d-flex justify-content-between">{{ $first_day }}--}}
-{{--                                        <span>{{ $first_day_opening_hours . ' - ' . $first_day_closing_hours}}</span></li>--}}
-{{--                                    <li class="d-flex justify-content-between">{{ $second_day }}--}}
-{{--                                        <span>{{ $second_day_opening_hours . ' - ' . $second_day_closing_hours}}</span></li>--}}
-{{--                                    <li class="d-flex justify-content-between">{{ $third_day }}--}}
-{{--                                        <span>{{ $third_day_opening_hours . ' - ' . $third_day_closing_hours}}</span></li>--}}
-{{--                                    <li class="d-flex justify-content-between">{{ $fourth_day }}--}}
-{{--                                        <span>{{ $fourth_day_opening_hours . ' - ' . $fourth_day_closing_hours}}</span></li>--}}
-{{--                                    <li class="d-flex justify-content-between">{{ $fifth_day }}--}}
-{{--                                        <span>{{ $fifth_day_opening_hours . ' - ' . $fifth_day_closing_hours}}</span></li>--}}
-{{--                                    <li class="d-flex justify-content-between">{{ $sixth_day }}--}}
-{{--                                        <span>{{ $sixth_day_opening_hours . ' - ' . $sixth_day_closing_hours}}</span></li>--}}
-{{--                                    <li class="d-flex justify-content-between">{{ $seventh_day }}--}}
-{{--                                        <span>{{ $seventh_day_opening_hours . ' - ' . $seventh_day_closing_hours}}</span></li>--}}
                                 </ul>
                             </div>
                         @endif
@@ -1192,5 +1177,6 @@
             "reviewCount": "{{ $organization->reviews->count() ?? 0}}"
           }
         }
+
     </script>
 @endsection
