@@ -175,7 +175,7 @@
                 <tr>
                     <td align="left" bgcolor="#ffffff"
                         style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-                        <p style="margin: 0;">Thank you for contacting us for the {{ env('APP_NAME') }} Award
+                        <p style="margin: 0;">Thanks for contacting us for the {{ env('APP_NAME') }} Award
                             Certificate. Here is your certificate code. You can place this code anywhere on your
                             website.
                             <br> <br>
