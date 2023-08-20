@@ -74,13 +74,13 @@
             <span>My listings</span>
         </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item {{ (request()->routeIs('admin.reviews.business')) ? 'active' : '' }}">
         <a class="nav-link" href="{{route('admin.reviews.business')}}">
             <i class="la la-star-o font-size-18 mr-1"></i>
             <span>Reviews</span>
         </a>
     </li>
-    <li class="nav-item">
+    <li class="nav-item {{ (request()->routeIs('admin.organization.index')) ? 'active' : '' }}">
         <a class="nav-link" href="{{route('admin.organization.index')}}">
             <i class="la la-plus-circle font-size-18 mr-1"></i>
             <span>Add Listing</span>
