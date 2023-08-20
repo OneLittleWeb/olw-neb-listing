@@ -264,15 +264,6 @@
                         </div><!-- end section-heading -->
                     </div>
                 </div><!-- end col-lg-6 -->
-                <div class="col-lg-6">
-                    <div class="single-video-btn-box text-center">
-                        <a rel="nofollow" class="icon-element icon-element-lg icon-element-white hover-scale mx-auto"
-                           href="https://www.youtube.com/watch?v=GlrxcuEDyF8" data-fancybox="" title="Play Video">
-                            <i class="la la-play"></i>
-                        </a>
-                        <p class="font-size-14 font-weight-medium pt-2">Video Tutorial</p>
-                    </div>
-                </div><!-- end col-lg-6 -->
             </div><!-- end row -->
             <div class="row hiw-info-box-wrap">
                 <div class="col-lg-3 responsive-column">
@@ -630,50 +621,52 @@
 
     <!-- ====START BLOG AREA===== -->
     @if(!is_null($posts))
-    <section class="blog-area section-padding">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-heading text-center">
-                        <div class="section-badge pb-3">
-                            <span class="ribbon ribbon-lg">From Our Blog</span>
-                        </div>
-                        <h2 class="sec__title">Articles You Might <span class="text-color-16">Like.</span></h2>
-                        <p class="sec__desc">
-                            Learn about unique attractions of Nebraska and what the cities have to offer. Activities, foods, spooky places and so on.
-                        </p>
-                    </div><!-- end section-heading -->
-                </div><!-- end col-lg-12 -->
-            </div><!-- end row -->
-            <div class="row padding-top-60px">
-               @foreach($posts as $post)
-                <div class="col-lg-4 responsive-column">
-                    <div class="card-item card-item-layout-5 js-tilt">
-                        <div class="card-image">
-                            <img src="{{$post->thumbnail}}" data-src="{{$post->thumbnail}}"
-                                 class="card__img lazy"
-                                 alt="blog image">
-                            <span class="badge">{{\Carbon\Carbon::parse($post->post_modified)->format('F d, Y')}}</span>
-                        </div><!-- end card-image -->
-                        <div class="card-content">
-                            <h4 class="card-title pt-2">
-                                <a href="{{url('/blog').'/'.$post->post_name}}">{{$post->post_title}}</a>
-                            </h4>
-                        </div><!-- end card-content -->
-                    </div><!-- end card-item -->
-                </div><!-- end col-lg-4 -->
-                @endforeach
-            </div><!-- end row -->
-            <div class="more-btn-box d-flex flex-wrap align-items-center justify-content-between pt-4">
-                <div>
-                    <h4 class="pb-2 font-weight-semi-bold">Stay in the loop.</h4>
-                    <p>View all blog posts and read more about topics you care about</p>
+        <section class="blog-area section-padding">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-heading text-center">
+                            <div class="section-badge pb-3">
+                                <span class="ribbon ribbon-lg">From Our Blog</span>
+                            </div>
+                            <h2 class="sec__title">Articles You Might <span class="text-color-16">Like.</span></h2>
+                            <p class="sec__desc">
+                                Learn about unique attractions of Nebraska and what the cities have to offer.
+                                Activities, foods, spooky places and so on.
+                            </p>
+                        </div><!-- end section-heading -->
+                    </div><!-- end col-lg-12 -->
+                </div><!-- end row -->
+                <div class="row padding-top-60px">
+                    @foreach($posts as $post)
+                        <div class="col-lg-4 responsive-column">
+                            <div class="card-item card-item-layout-5 js-tilt">
+                                <div class="card-image">
+                                    <img src="{{$post->thumbnail}}" data-src="{{$post->thumbnail}}"
+                                         class="card__img lazy"
+                                         alt="blog image">
+                                    <span
+                                        class="badge">{{\Carbon\Carbon::parse($post->post_modified)->format('F d, Y')}}</span>
+                                </div><!-- end card-image -->
+                                <div class="card-content">
+                                    <h4 class="card-title pt-2">
+                                        <a href="{{url('/blog').'/'.$post->post_name}}">{{$post->post_title}}</a>
+                                    </h4>
+                                </div><!-- end card-content -->
+                            </div><!-- end card-item -->
+                        </div><!-- end col-lg-4 -->
+                    @endforeach
+                </div><!-- end row -->
+                <div class="more-btn-box d-flex flex-wrap align-items-center justify-content-between pt-4">
+                    <div>
+                        <h4 class="pb-2 font-weight-semi-bold">Stay in the loop.</h4>
+                        <p>View all blog posts and read more about topics you care about</p>
+                    </div>
+                    <a href="{{url('/blog')}}" class="theme-btn gradient-btn">Read More Post<i
+                            class="la la-arrow-right ml-2"></i></a>
                 </div>
-                <a href="{{url('/blog')}}" class="theme-btn gradient-btn">Read More Post<i
-                        class="la la-arrow-right ml-2"></i></a>
-            </div>
-        </div><!-- end container -->
-    </section><!-- end blog-area -->
+            </div><!-- end container -->
+        </section><!-- end blog-area -->
     @endif
     <!-- ================================
            START BLOG AREA
@@ -695,7 +688,8 @@
                                 See Your Business Scale Up!
                             </h2>
                             <p class="sec__desc text-white line-height-35 mb-3">
-                                Why not take advantage of the extra visibility we are offering! Your competitors are present in every possible channel.
+                                Why not take advantage of the extra visibility we are offering! Your competitors are
+                                present in every possible channel.
                                 <br>Step up and join us.
                             </p>
                         </div><!-- end section-heading -->
