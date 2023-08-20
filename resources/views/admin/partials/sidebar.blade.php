@@ -5,7 +5,7 @@
             </span>
     </li>
     <li>
-        <a class="sidebar-brand" href="{{url('/')}}">
+        <a class="sidebar-brand" href="{{ route('admin.dashboard') }}">
             <img src="{{asset('images/admin/logo.png')}}" alt="logo" style="width: 84%">
         </a>
     </li>
@@ -56,7 +56,7 @@
             <span>Award Certificate Request</span>
         </a>
     </li>
-     <li class="nav-item {{ (request()->routeIs('admin.settings.index')) ? 'active' : '' }}">
+    <li class="nav-item {{ (request()->routeIs('admin.settings.index')) ? 'active' : '' }}">
         <a class="nav-link" href="{{route('admin.settings.index')}}">
             <i class="la la-file-text-o font-size-18 mr-1"></i>
             <span>Site Settings</span>

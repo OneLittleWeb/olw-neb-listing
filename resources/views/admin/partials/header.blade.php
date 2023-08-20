@@ -14,11 +14,11 @@
             </a>
             <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right animated--grow-in py-2"
                  aria-labelledby="userDropdown">
-                <a class="dropdown-item text-color font-size-15" href="dashboard-my-profile.html">
+                <a class="dropdown-item text-color font-size-15" href="#">
                     <i class="la la-user mr-2 text-gray font-size-18"></i>
                     Profile
                 </a>
-                <a class="dropdown-item text-color font-size-15" href="add-listing.html">
+                <a class="dropdown-item text-color font-size-15" href="{{route('admin.organization.index')}}">
                     <i class="la la-plus-circle mr-2 text-gray font-size-18"></i>
                     Add Listing
                 </a>
