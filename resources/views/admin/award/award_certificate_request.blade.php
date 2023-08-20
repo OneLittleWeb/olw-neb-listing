@@ -9,7 +9,7 @@
             </div>
             <ul class="list-items bread-list bread-list-2">
                 <li><a href="{{route('admin.dashboard')}}">Home</a></li>
-                <li>Categories</li>
+                <li>Award Certificate</li>
             </ul>
         </div>
         <div class="row">
