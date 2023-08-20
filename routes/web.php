@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\admin\AwardController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PageController;
@@ -13,18 +12,24 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SitemapController;
 use App\Http\Controllers\admin\ReviewController as AdminReviewController;
 use App\Http\Controllers\admin\OrganizationController as AdminOrganizationController;
+use App\Http\Controllers\admin\HomeController as AdminHomeController;
+use App\Http\Controllers\admin\CategoryController as AdminCategoryController;
+use App\Http\Controllers\admin\CityController as AdminCityController;
 use App\Http\Controllers\admin\ContactUsController;
 use App\Http\Controllers\admin\PlanManageController;
+use App\Http\Controllers\admin\AwardController;
+use App\Http\Controllers\admin\SettingController;
+use App\Http\Controllers\admin\AdminController;
 
 //Admin Panel
 Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
-    Route::get('dashboard', [\App\Http\Controllers\admin\HomeController::class, 'adminDashboard'])->name('dashboard');
-    Route::resource('category', \App\Http\Controllers\admin\CategoryController::class)->except(['show', 'edit', 'create']);
-    Route::resource('city', \App\Http\Controllers\admin\CityController::class)->except(['show', 'edit', 'create']);
+    Route::get('dashboard', [AdminHomeController::class, 'adminDashboard'])->name('dashboard');
+    Route::resource('category', AdminCategoryController::class)->except(['show', 'edit', 'create']);
+    Route::resource('city', AdminCityController::class)->except(['show', 'edit', 'create']);
     Route::resource('organization', AdminOrganizationController::class)->except(['show']);
-    Route::resource('settings', \App\Http\Controllers\admin\SettingController::class)->except(['show']);
+    Route::resource('settings', SettingController::class)->except(['show']);
     Route::resource('plan', PlanManageController::class)->except(['show']);
-    Route::get('logout', [\App\Http\Controllers\admin\AdminController::class, 'logout'])->name('logout');
+    Route::get('logout', [AdminController::class, 'logout'])->name('logout');
     Route::get('business/review', [AdminReviewController::class, 'reviewBusiness'])->name('reviews.business');
     Route::get('review/{slug}', [AdminReviewController::class, 'reviews'])->name('reviews');
     Route::get('contacts', [ContactUsController::class, 'index'])->name('contact.index');
