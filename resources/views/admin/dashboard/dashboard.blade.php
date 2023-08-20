@@ -32,22 +32,7 @@
                     <div class="card-content">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h2 class="card-title font-size-40">1,020</h2>
-                                <p class="card-sub font-size-18 line-height-24">Total Views</p>
-                            </div>
-                            <div class="col-auto font-size-60">
-                                <i class="la la-line-chart text-success"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="card-item dashboard-stat">
-                    <div class="card-content">
-                        <div class="row align-items-center">
-                            <div class="col">
-                                <h2 class="card-title font-size-40">200</h2>
+                                <h2 class="card-title font-size-40">{{ $reviews_count }}</h2>
                                 <p class="card-sub font-size-18 line-height-24">Total Reviews</p>
                             </div>
                             <div class="col-auto font-size-60">
@@ -62,8 +47,23 @@
                     <div class="card-content">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h2 class="card-title font-size-40">120</h2>
-                                <p class="card-sub font-size-18 line-height-24">Bookmarked</p>
+                                <h2 class="card-title font-size-40">{{ $category_count }}</h2>
+                                <p class="card-sub font-size-18 line-height-24">Total Categories</p>
+                            </div>
+                            <div class="col-auto font-size-60">
+                                <i class="la la-line-chart text-success"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6">
+                <div class="card-item dashboard-stat">
+                    <div class="card-content">
+                        <div class="row align-items-center">
+                            <div class="col">
+                                <h2 class="card-title font-size-40">{{ $city_count }}</h2>
+                                <p class="card-sub font-size-18 line-height-24">Total City</p>
                             </div>
                             <div class="col-auto font-size-60">
                                 <i class="la la-bookmark text-warning"></i>
