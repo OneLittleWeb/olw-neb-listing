@@ -28,60 +28,60 @@
                                 </ul>
                             </div>
                         @endif
-{{--                        <form method="post" class="form-box row">--}}
-{{--                            <form class="form-box row" action="{{route('register')}}" method="POST">--}}
-{{--                                @csrf--}}
-{{--                                <div class="col-lg-12">--}}
-{{--                                    <div class="input-box">--}}
-{{--                                        <label class="label-text">Your Name</label>--}}
-{{--                                        <div class="form-group">--}}
-{{--                                            <span class="la la-user form-icon"></span>--}}
-{{--                                            <input class="form-control form-control-styled" type="text" id="name"--}}
-{{--                                                   name="name" placeholder="Your Name" value="{{old('name')}}">--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <div class="col-lg-12">--}}
-{{--                                    <div class="input-box">--}}
-{{--                                        <label class="label-text">Your Email</label>--}}
-{{--                                        <div class="form-group">--}}
-{{--                                            <span class="la la-envelope-o form-icon"></span>--}}
-{{--                                            <input class="form-control form-control-styled" type="email" name="email"--}}
-{{--                                                   placeholder="Your Email" value="{{old('email')}}">--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <div class="col-lg-12">--}}
-{{--                                    <div class="input-box">--}}
-{{--                                        <label class="label-text">Password</label>--}}
-{{--                                        <div class="form-group">--}}
-{{--                                            <span class="la la-lock form-icon"></span>--}}
-{{--                                            <input class="form-control form-control-styled" type="password"--}}
-{{--                                                   name="password"--}}
-{{--                                                   placeholder="Password">--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <div class="col-lg-12">--}}
-{{--                                    <div class="input-box">--}}
-{{--                                        <label class="label-text">Confirm Password</label>--}}
-{{--                                        <div class="form-group">--}}
-{{--                                            <span class="la la-lock form-icon"></span>--}}
-{{--                                            <input class="form-control form-control-styled" type="password"--}}
-{{--                                                   id="password_confirmation"--}}
-{{--                                                   placeholder="Confirm Password" name="password_confirmation">--}}
-{{--                                        </div>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                                <div class="col-lg-12">--}}
-{{--                                    <div class="btn-box">--}}
-{{--                                        <button type="submit" class="theme-btn gradient-btn border-0">Register <i--}}
-{{--                                                class="la la-arrow-right ml-1"></i></button>--}}
-{{--                                        <p class="font-size-14 pt-1">*We'll never share your email with anyone else.</p>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </form>--}}
-{{--                        </form>--}}
+                        <form method="post" class="form-box row">
+                            <form class="form-box row" action="{{route('register')}}" method="POST">
+                                @csrf
+                                <div class="col-lg-12">
+                                    <div class="input-box">
+                                        <label class="label-text">Your Name</label>
+                                        <div class="form-group">
+                                            <span class="la la-user form-icon"></span>
+                                            <input class="form-control form-control-styled" type="text" id="name"
+                                                   name="name" placeholder="Your Name" value="{{old('name')}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="input-box">
+                                        <label class="label-text">Your Email</label>
+                                        <div class="form-group">
+                                            <span class="la la-envelope-o form-icon"></span>
+                                            <input class="form-control form-control-styled" type="email" name="email"
+                                                   placeholder="Your Email" value="{{old('email')}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="input-box">
+                                        <label class="label-text">Password</label>
+                                        <div class="form-group">
+                                            <span class="la la-lock form-icon"></span>
+                                            <input class="form-control form-control-styled" type="password"
+                                                   name="password"
+                                                   placeholder="Password">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="input-box">
+                                        <label class="label-text">Confirm Password</label>
+                                        <div class="form-group">
+                                            <span class="la la-lock form-icon"></span>
+                                            <input class="form-control form-control-styled" type="password"
+                                                   id="password_confirmation"
+                                                   placeholder="Confirm Password" name="password_confirmation">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="btn-box">
+                                        <button type="submit" class="theme-btn gradient-btn border-0">Register <i
+                                                class="la la-arrow-right ml-1"></i></button>
+                                        <p class="font-size-14 pt-1">*We'll never share your email with anyone else.</p>
+                                    </div>
+                                </div>
+                            </form>
+                        </form>
                     </div>
                 </div>
             </div>

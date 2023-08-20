@@ -17,7 +17,7 @@
                     <div class="card-content">
                         <div class="row align-items-center">
                             <div class="col">
-                                <h2 class="card-title font-size-40">10</h2>
+                                <h2 class="card-title font-size-40">{{ $organization_count }}</h2>
                                 <p class="card-sub font-size-18 line-height-24">Active Listings</p>
                             </div>
                             <div class="col-auto font-size-60">
