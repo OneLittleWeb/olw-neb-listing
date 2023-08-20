@@ -4,7 +4,8 @@
     <div class="container-fluid dashboard-inner-body-container">
         <div class="breadcrumb-content d-sm-flex align-items-center justify-content-between mb-4">
             <div class="section-heading">
-                <h2 class="sec__title font-size-24 mb-0">Howdy, {{ auth()->user()->name ?? 'Guest' }}</h2>
+{{--                <h2 class="sec__title font-size-24 mb-0">Howdy, {{ auth()->user()->name ?? 'Guest' }}</h2>--}}
+                <h2 class="sec__title font-size-24 mb-0">Contact Us</h2>
             </div>
             <ul class="list-items bread-list bread-list-2">
                 <li><a href="{{route('admin.dashboard')}}">Home</a></li>
