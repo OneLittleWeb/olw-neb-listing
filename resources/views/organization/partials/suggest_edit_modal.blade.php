@@ -38,7 +38,8 @@
                                 <div class="form-check">
                                     <input class="form-check-input suggest-edit-form-check-input" type="checkbox"
                                            name="is_it_closed"
-                                           id="is_it_closed" value="1" onchange="handleIsClosedChange()">
+                                           id="is_it_closed" value="1"
+                                           onchange="handleIsClosedChange()" {{ $organization->permanently_closed ? 'checked' : '' }}>
                                     <label class="form-check-label suggested-modal-content-text" for="is_it_closed">
                                         Yes, this business is permanently closed
                                     </label>
@@ -51,7 +52,8 @@
                                 <div class="form-check">
                                     <input class="form-check-input suggest-edit-form-check-input" type="checkbox"
                                            name="temporarily_closed"
-                                           id="temporarily_closed" value="1" onchange="handleTemporarilyClosedChange()">
+                                           id="temporarily_closed" value="1"
+                                           onchange="handleTemporarilyClosedChange()" {{ $organization->temporarily_closed ? 'checked' : '' }}>
                                     <label class="form-check-label suggested-modal-content-text"
                                            for="temporarily_closed">
                                         Yes, this business is temporarily closed
@@ -442,7 +444,8 @@
                         <div class="form-group row">
                             <div class="col-sm-3 suggested-modal-content-text">Description</div>
                             <div class="col-sm-9">
-                                <textarea class="form-control" name="organization_short_description" id="organization_short_description"
+                                <textarea class="form-control" name="organization_short_description"
+                                          id="organization_short_description"
                                           rows="3">{{ $organization->organization_short_description }}</textarea>
                             </div>
                         </div>

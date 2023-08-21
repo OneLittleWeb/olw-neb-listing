@@ -42,7 +42,6 @@ class OrganizationController extends Controller
 
             $organizations = Organization::where('city_id', $city->id)
                 ->where('category_id', $category->id)
-                ->where('temporarily_closed', 0)
                 ->where('permanently_closed', 0)
                 ->orderByRaw('CAST(reviews_total_count AS SIGNED) DESC')
                 ->orderByRaw('CAST(rate_stars AS SIGNED) DESC')
@@ -112,7 +111,7 @@ class OrganizationController extends Controller
     public function cityWiseOrganization($city_slug, $organization_slug)
     {
         $city = City::where('slug', $city_slug)->first();
-        $organization = Organization::where('slug', $organization_slug)->where('temporarily_closed', 0)->where('permanently_closed', 0)->first();
+        $organization = Organization::where('slug', $organization_slug)->where('permanently_closed', 0)->first();
 
         if ($city && $organization) {
 
