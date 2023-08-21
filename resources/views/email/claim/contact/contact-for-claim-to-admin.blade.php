@@ -168,8 +168,6 @@
             <![endif]-->
         </td>
     </tr>
-    <!-- end copy block -->
-
 </table>
 </body>
 </html>
