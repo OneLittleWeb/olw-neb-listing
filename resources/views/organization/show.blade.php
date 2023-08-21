@@ -1051,6 +1051,11 @@
                         @if($organization->organization_work_time)
                             <div class="sidebar-widget">
                                 <h3 class="widget-title">Opening Hours</h3>
+                                @if($organization->temporarily_closed)
+                                    <div class="alert alert-danger" role="alert">
+                                        <strong>Temporarily closed</strong>
+                                    </div>
+                                @endif
                                 <div class="stroke-shape mb-4"></div>
                                 <ul class="list-items">
                                     @foreach($organization->organization_work_time_modified as $work_times)
@@ -1177,6 +1182,5 @@
             "reviewCount": "{{ $organization->reviews->count() ?? 0}}"
           }
         }
-
     </script>
 @endsection
