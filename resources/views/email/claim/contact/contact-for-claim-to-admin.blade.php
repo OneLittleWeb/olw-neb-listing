@@ -149,17 +149,12 @@
                             . Please review the business details and approve the request. The user will need to log in to their account to complete the process <a href="{{ route('login') }}">login</a>.</p>
                     </td>
                 </tr>
-                <!-- end copy -->
-
-                <!-- start copy -->
                 <tr>
                     <td align="left" bgcolor="#ffffff"
                         style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px; border-bottom: 3px solid #d4dadf">
                         <p style="margin: 0;">Cheers,<br> {{ env('APP_NAME') }}</p>
                     </td>
                 </tr>
-                <!-- end copy -->
-
             </table>
             <!--[if (gte mso 9)|(IE)]>
             </td>
