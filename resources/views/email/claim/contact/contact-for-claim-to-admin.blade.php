@@ -20,6 +20,7 @@
                 src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'), url(https://fonts.gstatic.com/s/sourcesanspro/v10/toadOcfmlt9b38dHJxOBGFkQc6VGVFSmCnC_l7QZG60.woff) format('woff');
             }
         }
+
         body,
         table,
         td,
@@ -27,14 +28,17 @@
             -ms-text-size-adjust: 100%; /* 1 */
             -webkit-text-size-adjust: 100%; /* 2 */
         }
+
         table,
         td {
             mso-table-rspace: 0pt;
             mso-table-lspace: 0pt;
         }
+
         img {
             -ms-interpolation-mode: bicubic;
         }
+
         a[x-apple-data-detectors] {
             font-family: inherit !important;
             font-size: inherit !important;
@@ -43,6 +47,7 @@
             color: inherit !important;
             text-decoration: none !important;
         }
+
         div[style*="margin: 16px 0;"] {
             margin: 0 !important;
         }
@@ -53,6 +58,7 @@
             padding: 0 !important;
             margin: 0 !important;
         }
+
         table {
             border-collapse: collapse !important;
         }
@@ -128,9 +134,6 @@
             <![endif]-->
         </td>
     </tr>
-    <!-- end hero -->
-
-    <!-- start copy block -->
     <tr>
         <td align="center" bgcolor="#e9ecef">
             <!--[if (gte mso 9)|(IE)]>
@@ -139,14 +142,13 @@
                     <td align="center" valign="top" width="600">
             <![endif]-->
             <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
-
-                <!-- start copy -->
                 <tr>
                     <td align="left" bgcolor="#ffffff"
                         style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
                         <p style="margin: 0;">An user has submitted a contact form to claim a business from <a
                                 href="{{ route('city.wise.organization', ['city_slug' => $organization->city->slug, 'organization_slug' => $organization->slug]) }}">{{ $organization->organization_name }}</a>
-                            . Please review the business details and approve the request. The user will need to log in to their account to complete the process <a href="{{ route('login') }}">login</a>.</p>
+                            . Please review the business details and approve the request. The user will need to log in
+                            to their account to complete the process <a href="{{ route('login') }}">login</a>.</p>
                     </td>
                 </tr>
                 <tr>
