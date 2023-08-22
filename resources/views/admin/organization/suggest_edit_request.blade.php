@@ -33,7 +33,7 @@
                                 @foreach($suggest_edit_requests as $key => $edit_request)
                                     <tr>
                                         <td>{{++$key}}</td>
-                                        <td>{{ $edit_request->organization->organization_name }}</td>
+                                        <td><a href="{{ route('city.wise.organization', ['city_slug' => $edit_request->organization->city->slug, 'organization_slug' => $edit_request->organization->slug]) }}" target="_blank">{{ $edit_request->organization->organization_name }}</a></td>
                                         <td>
                                             @if($edit_request->is_it_closed)
                                                 <span class="text-danger">Yes</span>

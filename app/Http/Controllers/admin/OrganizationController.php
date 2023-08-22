@@ -108,6 +108,8 @@ class OrganizationController extends Controller
                 $organization->organization_website = $suggest_edit->organization_website;
                 $organization->organization_work_time = $suggest_edit->organization_work_time;
                 $organization->organization_short_description = $suggest_edit->organization_short_description;
+                $organization->temporarily_closed = $suggest_edit->temporarily_closed;
+                $organization->permanently_closed = $suggest_edit->is_it_closed;
                 $organization->update();
 
                 alert()->success('success', 'Suggested request has been approved.');
