@@ -6,9 +6,6 @@
     <title>Email Confirmation</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style type="text/css">
-        /**
-         * Google webfonts. Recommended to include the .woff version for cross-client compatibility.
-         */
         @media screen {
             @font-face {
                 font-family: 'Source Sans Pro';
@@ -23,12 +20,6 @@
                 src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'), url(https://fonts.gstatic.com/s/sourcesanspro/v10/toadOcfmlt9b38dHJxOBGFkQc6VGVFSmCnC_l7QZG60.woff) format('woff');
             }
         }
-
-        /**
-         * Avoid browser level font resizing.
-         * 1. Windows Mobile
-         * 2. iOS / OSX
-         */
         body,
         table,
         td,
