@@ -33,7 +33,7 @@
                                 @foreach($award_certificate_requests as $key => $award_certificate_request)
                                     <tr>
                                         <td>{{++$key}}</td>
-                                        <td>{{ $award_certificate_request->organization->organization_name }}</td>
+                                        <td><a href="{{ route('city.wise.organization', ['city_slug' => $award_certificate_request->organization->city->slug, 'organization_slug' => $award_certificate_request->organization->slug]) }}" target="_blank">{{ $award_certificate_request->organization->organization_name }}</a></td>
                                         <td>
                                             @if($award_certificate_request->is_affiliated)
                                                 <span class="text-success">Yes</span>
