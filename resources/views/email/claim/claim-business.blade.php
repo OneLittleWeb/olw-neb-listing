@@ -32,10 +32,6 @@
             mso-table-rspace: 0pt;
             mso-table-lspace: 0pt;
         }
-
-        /**
-         * Better fluid images in Internet Explorer.
-         */
         img {
             -ms-interpolation-mode: bicubic;
         }
