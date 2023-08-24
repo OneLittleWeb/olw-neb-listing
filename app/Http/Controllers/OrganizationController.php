@@ -445,9 +445,7 @@ class OrganizationController extends Controller
             $award_certificate_request->organization_id = $organization->id;
             $award_certificate_request->requested_user_name = $request->requested_user_name;
             $award_certificate_request->requested_user_email = $request->requested_user_email;
-            if (!empty($request->is_affiliated)) {
-                $award_certificate_request->is_affiliated = $request->is_affiliated;
-            }
+            $award_certificate_request->is_affiliated = $request->is_affiliated ?? 0;
             $award_certificate_request->save();
 
             alert()->success('success', 'Your request has been submitted successfully. the administrator will contact you soon.')->autoClose(50000);
