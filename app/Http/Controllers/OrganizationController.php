@@ -434,7 +434,7 @@ class OrganizationController extends Controller
 
         if ($organization) {
 
-            $requested_organization = AwardCertificateRequest::where('organization_id', $organization->id)->exists();
+            $requested_organization = AwardCertificateRequest::where('organization_id', $organization->id)->whereNull('deleted_at')->exists();
 
             if ($requested_organization) {
                 alert()->warning('warning', 'You have already submitted a request for this business. Please wait for the admin to contact you.')->autoClose(50000);
