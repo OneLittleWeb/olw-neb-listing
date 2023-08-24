@@ -112,18 +112,18 @@ class OrganizationController extends Controller
                 $organization->permanently_closed = $suggest_edit->is_it_closed;
                 $organization->update();
 
-                alert()->success('success', 'Suggested request has been approved.');
+                alert()->success('Approved', 'Suggested request has been approved.');
             } elseif ($status == 'rejected') {
 
                 $suggest_edit->edit_status = 2;
                 $suggest_edit->update();
 
-                alert()->success('success', 'Suggested request has been rejected.');
+                alert()->success('Rejected', 'Suggested request has been rejected.');
             } elseif ($status == 'deleted') {
 
                 $suggest_edit->delete();
 
-                alert()->success('success', 'Suggested request has been deleted.');
+                alert()->success('Deleted', 'Suggested request has been deleted.');
             }
             return back();
         }
