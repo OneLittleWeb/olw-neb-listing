@@ -36,9 +36,6 @@
             -ms-interpolation-mode: bicubic;
         }
 
-        /**
-         * Remove blue links for iOS devices.
-         */
         a[x-apple-data-detectors] {
             font-family: inherit !important;
             font-size: inherit !important;
