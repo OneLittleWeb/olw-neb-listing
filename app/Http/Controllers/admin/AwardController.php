@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\AwardCertificateRejectMail;
 use App\Mail\AwardCertificateRequestMail;
 use App\Models\AwardCertificateRequest;
 use Illuminate\Http\Request;
@@ -38,7 +39,7 @@ class AwardController extends Controller
 
                     foreach ($images as $image) {
                         if ($image == $organization->category->name . ' - ' . $organization->city->name . '.png') {
-                            $organization_badge = 'https://nebraskalisting.com/images/badges/' .$organization->category->name . ' - ' . $organization->city->name . '.png';
+                            $organization_badge = 'https://nebraskalisting.com/images/badges/' . $organization->category->name . ' - ' . $organization->city->name . '.png';
                         }
                     }
                 }
@@ -51,7 +52,7 @@ class AwardController extends Controller
                              style="display: block; margin-left: auto; margin-right: auto; width: 40%;">';
 
                     Mail::to($award_certificate->requested_user_email)->send(new AwardCertificateRequestMail($award_certificate));
-                    alert()->success('success', 'The request for an award certificate has been approved, and the certificate has been sent to the requested business.');
+                    alert()->success('Approved', 'The request for an award certificate has been approved, and the certificate has been sent to the requested business.');
                 } catch (\Exception $e) {
                     alert()->error('error', 'Something went wrong sending the email to the user. Please try again later.');
                     return redirect()->back();
@@ -59,15 +60,23 @@ class AwardController extends Controller
 
             } elseif ($status == 'rejected') {
 
-                $award_certificate->award_status = 2;
-                $award_certificate->update();
+                try {
+                    $award_certificate->award_status = 2;
+                    $award_certificate->update();
 
-                alert()->success('success', 'Award certificate request has been rejected.');
+                    Mail::to($award_certificate->requested_user_email)->send(new AwardCertificateRejectMail($award_certificate));
+                    alert()->success('Rejected', 'Award certificate request has been rejected.');
+                } catch (\Exception $e) {
+                    alert()->error('error', 'Something went wrong sending the email to the user. Please try again later.');
+                    return redirect()->back();
+                }
+
+
             } elseif ($status == 'deleted') {
 
                 $award_certificate->delete();
 
-                alert()->success('success', 'Award certificate request has been deleted.');
+                alert()->success('Deleted', 'Award certificate request has been deleted.');
             }
             return back();
         }
