@@ -73,7 +73,7 @@ class HomeController extends Controller
                 $cities = City::all();
                 $categories = Category::all();
                 $organizations = Organization::where('category_id', $search_source_id)
-                    ->where('city_id', $search_city)
+                    ->orWhere('city_id', $search_city)
                     ->orderByRaw('CAST(reviews_total_count AS SIGNED) DESC')
                     ->orderByRaw('CAST(rate_stars AS SIGNED) DESC')
                     ->paginate(20)
