@@ -115,8 +115,6 @@ class OrganizationController extends Controller
 
         if ($city && $organization) {
 
-            dd($city, $organization);
-
             $cities = City::all();
 
             $organization->incrementViewCount();
