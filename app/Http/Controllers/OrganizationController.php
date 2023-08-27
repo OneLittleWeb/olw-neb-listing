@@ -111,8 +111,9 @@ class OrganizationController extends Controller
     public function cityWiseOrganization($city_slug, $organization_slug)
     {
         $city = City::where('slug', $city_slug)->first();
-        dd($city);
         $organization = Organization::where('slug', $organization_slug)->where('permanently_closed', 0)->first();
+
+        dd($organization);
 
         if ($city && $organization) {
 
