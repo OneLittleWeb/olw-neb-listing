@@ -61,7 +61,7 @@
                                                     class="badge badge-warning">Pending</span>
                                             @elseif($edit_request->edit_status == 1)
                                                 <span
-                                                    class="badge badge-success">approved</span>
+                                                    class="badge badge-success">Approved</span>
                                             @else
                                                 <span
                                                     class="badge badge-danger">Rejected</span>
