@@ -63,7 +63,7 @@ class HomeController extends Controller
                 $organization = Organization::find($search_source_id);
 
                 $sourceController = new OrganizationController();
-                return $sourceController->cityWiseOrganization($city->slug, $organization->slug);
+                return $sourceController->cityWiseOrganization($organization->city->slug, $organization->slug);
 
             } elseif ($source == 'categories') {
                 $category = Category::find($search_source_id);
