@@ -20,6 +20,7 @@
                 src: local('Source Sans Pro Bold'), local('SourceSansPro-Bold'), url(https://fonts.gstatic.com/s/sourcesanspro/v10/toadOcfmlt9b38dHJxOBGFkQc6VGVFSmCnC_l7QZG60.woff) format('woff');
             }
         }
+
         body,
         table,
         td,
@@ -27,11 +28,13 @@
             -ms-text-size-adjust: 100%; /* 1 */
             -webkit-text-size-adjust: 100%; /* 2 */
         }
+
         table,
         td {
             mso-table-rspace: 0pt;
             mso-table-lspace: 0pt;
         }
+
         img {
             -ms-interpolation-mode: bicubic;
         }
@@ -82,7 +85,6 @@
 </head>
 <body style="background-color: #e9ecef;">
 
-<!-- start body -->
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
 
     <!-- start logo -->
@@ -170,7 +172,8 @@
                                     <table border="0" cellpadding="0" cellspacing="0">
                                         <tr>
                                             <td align="center" bgcolor="#1a82e2" style="border-radius: 6px;">
-                                                <a href="{{ route('confirm.claim.business', $organization->slug) }}" target="_blank"
+                                                <a href="{{ route('confirm.claim.business', $organization->slug) }}"
+                                                   target="_blank"
                                                    style="display: inline-block; padding: 16px 36px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; color: #ffffff; text-decoration: none; border-radius: 6px;">Confirm
                                                     Business</a>
                                             </td>
@@ -189,7 +192,8 @@
                         style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
                         <p style="margin: 0;">If that doesn't work, copy and paste the following link in your
                             browser:</p>
-                        <p style="margin: 0;"><a href="{{ route('confirm.claim.business', $organization->slug) }}" target="_blank">{{ route('confirm.claim.business', $organization->slug) }}</a>
+                        <p style="margin: 0;"><a href="{{ route('confirm.claim.business', $organization->slug) }}"
+                                                 target="_blank">{{ route('confirm.claim.business', $organization->slug) }}</a>
                         </p>
                     </td>
                 </tr>
@@ -215,7 +219,6 @@
     <!-- end copy block -->
 
 </table>
-<!-- end body -->
 
 </body>
 </html>
