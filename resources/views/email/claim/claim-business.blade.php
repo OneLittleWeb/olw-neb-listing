@@ -61,7 +61,7 @@
             padding: 0 !important;
             margin: 0 !important;
         }
-        
+
         table {
             border-collapse: collapse !important;
         }
