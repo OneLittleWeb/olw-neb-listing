@@ -62,6 +62,8 @@ class HomeController extends Controller
 
                 $organization = Organization::find($search_source_id);
 
+                dd($organization);
+
                 $sourceController = new OrganizationController();
                 return $sourceController->cityWiseOrganization($organization->city->slug, $organization->slug);
 
