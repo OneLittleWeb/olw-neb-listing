@@ -10,7 +10,7 @@
                 <li><a href="{{route('admin.dashboard')}}">Home</a></li>
                 <li>Reviews</li>
             </ul>
-        </div><!-- end breadcrumb-content -->
+        </div>
         <div class="row">
             <div class="col-md-12">
                 <div class="block-card dashboard-card mb-4 px-0">
@@ -49,7 +49,7 @@
                 serverSide: true,
                 ajax: "{{ route('admin.reviews', $business->organization_guid) }}",
                 columns: [
-                    {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                    {data: 'DT_RowIndex', name: 'id'},
                     {data: 'reviewer_name', name: 'reviewer_name'},
                     {data: 'review_text_original', name: 'review_text_original'},
                     {data: 'review_rate_stars', name: 'review_rate_stars'},

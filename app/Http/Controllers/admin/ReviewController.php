@@ -34,7 +34,7 @@ class ReviewController extends Controller
         $business = Organization::where('organization_guid', $slug)->first();
 
         if ($request->ajax()) {
-            $data = Review::where('organization_guid', $slug)->get();
+            $data = Review::where('organization_guid', $slug)->latest();
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->rawColumns(['action', 'organization_name'])
