@@ -34,8 +34,8 @@
                                 </tbody>
                             </table>
                         </div>
-                    </div><!-- end block-card-body -->
-                </div><!-- end block-card -->
+                    </div>
+                </div>
             </div><!-- end col-lg-7 -->
         </div><!-- end row -->
     </div><!-- end dashboard-inner-body-container -->
