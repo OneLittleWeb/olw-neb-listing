@@ -966,12 +966,13 @@
                                     </div>
                                     <div class="col-lg-6">
                                         <div class="input-box">
-                                            <label class="label-text" for="reviewer_email">Email</label>
+                                            <label class="label-text" for="reviewer_email">Email <span
+                                                    class="required">*</span></label>
                                             <div class="form-group">
                                                 <span class="la la-envelope-o form-icon"></span>
                                                 <input class="form-control" type="email" name="reviewer_email"
                                                        id="reviewer_email"
-                                                       placeholder="Email Address" value="{{ old('reviewer_email') }}">
+                                                       placeholder="Email Address" value="{{ old('reviewer_email') }}" required>
                                             </div>
                                         </div>
                                     </div>
