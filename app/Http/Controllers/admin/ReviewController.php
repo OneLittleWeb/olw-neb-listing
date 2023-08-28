@@ -20,8 +20,7 @@ class ReviewController extends Controller
                 })
                 ->addIndexColumn()
                 ->addColumn('action', function ($organization) {
-                    $btn = '<a href="' . route('admin.reviews', $organization->organization_guid) . '" class="edit btn btn-primary btn-sm">All Reviews</a>';
-                    return $btn;
+                    return '<a href="' . route('admin.reviews', $organization->organization_guid) . '" class="edit btn btn-primary btn-sm">All Reviews</a>';
                 })
                 ->rawColumns(['action', 'organization_name'])
                 ->make(true);
