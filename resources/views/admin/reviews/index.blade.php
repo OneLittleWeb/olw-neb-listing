@@ -17,11 +17,13 @@
                 <div class="block-card dashboard-card mb-4 px-0">
                     <div
                         class="block-card-header d-flex flex-wrap align-items-center justify-content-between px-4 border-bottom-0 pb-0">
-                        <h2 class="widget-title pb-0">Reviews -> <span class="text-primary"><a href="{{ route('city.wise.organization', ['city_slug' => $business->city->slug, 'organization_slug' => $business->slug]) }}" target="_blank">{{ $business->organization_name }}</a></span></h2>
+                        <h2 class="widget-title pb-0">Reviews -> <span class="text-primary"><a
+                                    href="{{ route('city.wise.organization', ['city_slug' => $business->city->slug, 'organization_slug' => $business->slug]) }}"
+                                    target="_blank">{{ $business->organization_name }}</a></span></h2>
                     </div>
                     <div class="block-card-body">
                         <div class="my-table table-responsive">
-                            <table class="table table-bordered data_table" id="organization_table">
+                            <table class="table table-bordered data_table" id="organization_reviews_table">
                                 <thead class="thead-light">
                                 <tr>
                                     <th>No</th>
@@ -45,7 +47,7 @@
     <script type="text/javascript">
         $(function () {
             $.fn.dataTable.ext.errMode = 'throw';
-            let table = $('.data_table').DataTable({
+            $('#organization_reviews_table').DataTable({
                 processing: true,
                 serverSide: true,
                 ajax: "{{ route('admin.reviews', $business->organization_guid) }}",

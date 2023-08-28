@@ -44,7 +44,7 @@
     <script type="text/javascript">
         $(function () {
             $.fn.dataTable.ext.errMode = 'throw';
-            let table = $('.data_table').DataTable({
+            $('#organization_table').DataTable({
                 processing: true,
                 serverSide: true,
                 responsive: true,
