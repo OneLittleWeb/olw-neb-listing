@@ -237,7 +237,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Excel' => Maatwebsite\Excel\Facades\Excel::class,
-        'Toastr'  => Brian2694\Toastr\Facades\Toastr::class
+        'Toastr'  => Brian2694\Toastr\Facades\Toastr::class,
+        'Carbon' => Illuminate\Support\Carbon::class,
     ],
 
 ];

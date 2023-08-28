@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Mail\EditRequestApprovedMail;
 use App\Models\Category;
 use App\Models\City;
 use App\Models\Organization;
 use App\Models\SuggestAnEdit;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class OrganizationController extends Controller
 {
