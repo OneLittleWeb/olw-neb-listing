@@ -36,9 +36,9 @@
                         </div>
                     </div>
                 </div>
-            </div><!-- end col-lg-7 -->
-        </div><!-- end row -->
-    </div><!-- end dashboard-inner-body-container -->
+            </div>
+        </div>
+    </div>
 @endsection
 @section('js')
     <script type="text/javascript">
