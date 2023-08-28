@@ -13,7 +13,7 @@ class ReviewController extends Controller
     public function reviewBusiness(Request $request)
     {
         if ($request->ajax()) {
-            $data = Organization::where('reviews_total_count', '!=', null)->orderByDesc('rate_stars')->get();
+            $data = Organization::where('reviews_total_count', '!=', null)->orderByDesc('rate_stars')->latest();
             return Datatables::of($data)
                 ->editColumn('organization_name', function ($organization) {
                     return '<a href="' . route('admin.reviews', $organization->organization_guid) . '">' . $organization->organization_name . '</a>';

@@ -36,9 +36,9 @@
                         </div>
                     </div><!-- end block-card-body -->
                 </div><!-- end block-card -->
-            </div><!-- end col-lg-7 -->
-        </div><!-- end row -->
-    </div><!-- end dashboard-inner-body-container -->
+            </div>
+        </div>
+    </div>
 @endsection
 @section('js')
     <script type="text/javascript">
@@ -47,16 +47,16 @@
             let table = $('.data_table').DataTable({
                 processing: true,
                 serverSide: true,
+                responsive: true,
                 ajax: "{{ route('admin.reviews.business') }}",
                 columns: [
-                    {data: 'DT_RowIndex', name: 'DT_RowIndex'},
+                    {data: 'DT_RowIndex', name: 'id'},
                     {data: 'organization_name', name: 'organization_name'},
                     {data: 'reviews_total_count', name: 'reviews_total_count'},
                     {data: 'rate_stars', name: 'rate_stars'},
                     {data: 'action', name: 'action', orderable: false, searchable: false},
                 ]
             });
-
         });
     </script>
 @endsection
