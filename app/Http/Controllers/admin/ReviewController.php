@@ -57,14 +57,18 @@ class ReviewController extends Controller
                     return $buttons;
                 })
                 ->addColumn('organization_name', function ($row) {
-                    return $row->organization->organization_name;
+                    $url = route('city.wise.organization', [
+                        'city_slug' => $row->organization->city->slug,
+                        'organization_slug' => $row->organization->slug,
+                    ]);
+                    return '<a href="' . $url . '" target="_blank">' . $row->organization->organization_name . '</a>';
                 })
                 ->addColumn('review_date', function ($row) {
                     $reviewDate = $row->review_date ?: $row->created_at;
                     return Carbon::parse($reviewDate)->diffForHumans();
                 })
                 ->addIndexColumn()
-                ->rawColumns(['actions'])
+                ->rawColumns(['actions', 'organization_name'])
                 ->toJson();
         }
         return view('admin.reviews.all_reviews');

@@ -68,19 +68,19 @@
 
             // Attach click event handlers for buttons
             $('#business_reviews_table').on('click', 'a.show-modal', function () {
-                var reviewId = $(this).data('id');
+                let reviewId = $(this).data('id');
                 // Use reviewId to open the show modal
                 $('#showModal').modal('show');
             });
 
             $('#business_reviews_table').on('click', 'a.edit-modal', function () {
-                var reviewId = $(this).data('id');
+                let reviewId = $(this).data('id');
                 // Use reviewId to open the edit modal
                 $('#editModal').modal('show');
             });
 
             $('#business_reviews_table').on('click', 'a.delete-modal', function () {
-                var reviewId = $(this).data('id');
+                let reviewId = $(this).data('id');
                 // Use reviewId to open the delete modal
                 $('#deleteModal').modal('show');
             });
