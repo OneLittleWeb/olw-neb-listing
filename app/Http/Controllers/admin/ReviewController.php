@@ -58,6 +58,9 @@ class ReviewController extends Controller
                 ->addColumn('organization_name', function ($row) {
                     return $row->organization->organization_name;
                 })
+                ->addColumn('review_date', function ($row) {
+                    return $row->review_date ?: $row->created_at;
+                })
                 ->addIndexColumn()
                 ->rawColumns(['actions'])
                 ->toJson();
