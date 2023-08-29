@@ -20,7 +20,7 @@ class ReviewController extends Controller
                 })
                 ->addIndexColumn()
                 ->addColumn('action', function ($organization) {
-                    return '<a href="' . route('admin.reviews', $organization->organization_guid) . '" class="edit btn btn-primary btn-sm">All Reviews</a>';
+                    return '<a href="' . route('admin.reviews', $organization->organization_guid) . '" class="edit btn btn-primary btn-sm">Reviews</a>';
                 })
                 ->rawColumns(['action', 'organization_name'])
                 ->make(true);
@@ -40,6 +40,28 @@ class ReviewController extends Controller
                 ->make(true);
         }
 
-        return view('admin.reviews.index',compact('business'));
+        return view('admin.reviews.index', compact('business'));
+    }
+
+    public function allReviews(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = Review::latest();
+
+            return DataTables::of($data)
+                ->addColumn('actions', function ($row) {
+                    $buttons = '<a href="#" class="btn btn-primary show-modal" data-id="' . $row->id . '">Show</a>';
+                    $buttons .= '<a href="#" class="btn btn-success edit-modal" data-id="' . $row->id . '">Edit</a>';
+                    $buttons .= '<a href="#" class="btn btn-danger delete-modal" data-id="' . $row->id . '">Delete</a>';
+                    return $buttons;
+                })
+                ->addColumn('organization_name', function ($row) {
+                    return $row->organization->organization_name;
+                })
+                ->addIndexColumn()
+                ->rawColumns(['actions'])
+                ->toJson();
+        }
+        return view('admin.reviews.all_reviews');
     }
 }

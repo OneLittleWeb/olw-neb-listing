@@ -10,3 +10,11 @@
 .paging_simple_numbers .pagination {
     justify-content: end;
 }
+
+#business_reviews_table th.actions-column {
+    width: 235px !important;
+}
+
+.actions-column .btn {
+    margin: 0 3px 0 3px;
+}

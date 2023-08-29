@@ -36,6 +36,11 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('contacts/claim', [ContactUsController::class, 'contactForClaimBusiness'])->name('contact.for.claim');
     Route::post('contacts/claim/update/{id}/{status}', [ContactUsController::class, 'ClaimStatusUpdate'])->name('claim.status.update');
 
+    Route::get('reviews', [AdminReviewController::class, 'allReviews'])->name('all.reviews');
+//    Route::get('reviews/show/{id}', [AdminReviewController::class, 'show'])->name('reviews.show');
+//    Route::get('reviews/edit/{id}', [AdminReviewController::class, 'edit'])->name('reviews.edit');
+//    Route::get('reviews/delete/{id}', [AdminReviewController::class, 'delete'])->name('reviews.destroy');
+
     Route::get('suggest/edit/request', [AdminOrganizationController::class, 'suggestEditRequest'])->name('suggest.edit.request');
     Route::post('suggest/request/update/{id}/{status}', [AdminOrganizationController::class, 'editRequestUpdate'])->name('edit.request.update');
     Route::get('award/certificate/request', [AwardController::class, 'awardCertificateRequest'])->name('award.certificate.request');
