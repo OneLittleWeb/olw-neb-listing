@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use App\Models\Organization;
 use App\Models\Review;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Yajra\DataTables\DataTables;
 
@@ -59,7 +60,8 @@ class ReviewController extends Controller
                     return $row->organization->organization_name;
                 })
                 ->addColumn('review_date', function ($row) {
-                    return $row->review_date ?: $row->created_at;
+                    $reviewDate = $row->review_date ?: $row->created_at;
+                    return Carbon::parse($reviewDate)->diffForHumans();
                 })
                 ->addIndexColumn()
                 ->rawColumns(['actions'])
