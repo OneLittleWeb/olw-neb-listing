@@ -1,5 +1,5 @@
 @extends('admin.master_admin')
-@section('title', 'Business')
+@section('title', 'All Reviews')
 @section('content')
     <div class="container-fluid dashboard-inner-body-container">
         <div class="breadcrumb-content d-sm-flex align-items-center justify-content-between mb-4">
