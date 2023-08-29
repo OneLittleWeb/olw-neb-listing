@@ -23,8 +23,8 @@
                                 <thead class="thead-light">
                                 <tr>
                                     <th>No</th>
+                                    <th>Business Name</th>
                                     <th>Reviewer Name</th>
-                                    <th>Business</th>
                                     <th>Review</th>
                                     <th>Rate Stars</th>
                                     <th>Review Date</th>
