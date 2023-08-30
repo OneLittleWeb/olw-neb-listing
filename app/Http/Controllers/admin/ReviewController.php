@@ -51,9 +51,9 @@ class ReviewController extends Controller
 
             return DataTables::of($data)
                 ->addColumn('actions', function ($row) {
-                    $buttons = '<a href="#" class="btn btn-primary show-modal" data-id="' . $row->id . '">Show</a>';
-                    $buttons .= '<a href="#" class="btn btn-success edit-modal" data-id="' . $row->id . '">Edit</a>';
-                    $buttons .= '<a href="#" class="btn btn-danger delete-modal" data-id="' . $row->id . '">Delete</a>';
+                    $buttons = '<a href="#" class="btn btn-primary btn-sm show-modal" data-id="' . $row->id . '">Show</a>';
+                    $buttons .= '<a href="#" class="btn btn-success btn-sm edit-modal" data-id="' . $row->id . '">Edit</a>';
+                    $buttons .= '<a href="#" class="btn btn-danger btn-sm delete-modal" data-id="' . $row->id . '">Delete</a>';
                     return $buttons;
                 })
                 ->addColumn('organization_name', function ($row) {
