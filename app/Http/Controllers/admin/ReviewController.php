@@ -72,8 +72,11 @@ class ReviewController extends Controller
                 })
                 ->filterColumn('source', function ($query, $keyword) {
                     $query->where(function ($query) use ($keyword) {
-                        $query->orWhere('review_id', $keyword === 'google');
-                        $query->orWhere('review_id', '!=', $keyword === 'nebraskalisting');
+                        if ($keyword === 'Google') {
+                            $query->where('review_id', true);
+                        } elseif ($keyword === 'Nebraskalisting') {
+                            $query->where('review_id', false);
+                        }
                     });
                 })
                 ->addIndexColumn()
