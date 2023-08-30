@@ -70,15 +70,6 @@ class ReviewController extends Controller
                 ->addColumn('source', function ($row) {
                     return $row->review_id ? 'Google' : 'Nebraskalisting';
                 })
-                ->filterColumn('source', function ($query, $keyword) {
-                    $query->where(function ($query) use ($keyword) {
-                        if ($keyword === 'Google') {
-                            $query->where('review_id', true);
-                        } elseif ($keyword === 'Nebraskalisting') {
-                            $query->where('review_id', false);
-                        }
-                    });
-                })
                 ->addIndexColumn()
                 ->rawColumns(['actions', 'organization_name'])
                 ->toJson();
