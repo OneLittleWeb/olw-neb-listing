@@ -28,6 +28,7 @@
                                     <th>Review</th>
                                     <th>Rate Stars</th>
                                     <th>Review Date</th>
+                                    <th>Source</th>
                                     <th>Actions</th>
                                 </tr>
                                 </thead>
@@ -56,6 +57,7 @@
                     {data: 'review_text_original', name: 'review_text_original'},
                     {data: 'review_rate_stars', name: 'review_rate_stars'},
                     {data: 'review_date', name: 'review_date'},
+                    {data: 'source', name: 'source'},
                     {
                         data: 'actions',
                         name: 'actions',

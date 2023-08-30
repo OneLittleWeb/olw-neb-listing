@@ -67,6 +67,9 @@ class ReviewController extends Controller
                     $reviewDate = $row->review_date ?: $row->created_at;
                     return Carbon::parse($reviewDate)->diffForHumans();
                 })
+                ->addColumn('source', function ($row) {
+                    return $row->review_id ? 'Google' : 'Nebraskalisting';
+                })
                 ->addIndexColumn()
                 ->rawColumns(['actions', 'organization_name'])
                 ->toJson();
