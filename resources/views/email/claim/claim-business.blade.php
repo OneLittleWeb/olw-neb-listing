@@ -151,7 +151,6 @@
                     </td>
                 </tr>
 
-                <!-- start button -->
                 <tr>
                     <td align="left" bgcolor="#ffffff">
                         <table border="0" cellpadding="0" cellspacing="0" width="100%">
@@ -172,7 +171,6 @@
                         </table>
                     </td>
                 </tr>
-                <!-- end button -->
 
                 <!-- start copy -->
                 <tr>
