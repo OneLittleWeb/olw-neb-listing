@@ -47,7 +47,7 @@
             color: inherit !important;
             text-decoration: none !important;
         }
-        
+
         div[style*="margin: 16px 0;"] {
             margin: 0 !important;
         }
@@ -81,7 +81,6 @@
 
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
 
-    <!-- start logo -->
     <tr>
         <td align="center" bgcolor="#e9ecef">
             <!--[if (gte mso 9)|(IE)]>
@@ -107,7 +106,6 @@
             <![endif]-->
         </td>
     </tr>
-    <!-- end logo -->
 
     <!-- start hero -->
     <tr>
