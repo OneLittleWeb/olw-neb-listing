@@ -41,6 +41,23 @@
             </div>
         </div>
     </div>
+
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="showModal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Review Details</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    ...
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('js')
     <script type="text/javascript">
@@ -71,6 +88,7 @@
             // Attach click event handlers for buttons
             $('#business_reviews_table').on('click', 'a.show-modal', function () {
                 let reviewId = $(this).data('id');
+                console.log(reviewId);
                 // Use reviewId to open the show modal
                 $('#showModal').modal('show');
             });

@@ -133,7 +133,6 @@
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-12">
-
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
