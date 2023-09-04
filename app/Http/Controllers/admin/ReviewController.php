@@ -76,4 +76,16 @@ class ReviewController extends Controller
         }
         return view('admin.reviews.all_reviews');
     }
+
+    public function deleteReview(Request $request)
+    {
+        $review = Review::findOrFail($request->id);
+
+        $review->delete();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Review deleted successfully'
+        ]);
+    }
 }

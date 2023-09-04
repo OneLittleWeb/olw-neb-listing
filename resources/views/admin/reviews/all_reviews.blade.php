@@ -42,7 +42,8 @@
         </div>
     </div>
 
-    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true" id="showModal">
+    <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+         aria-hidden="true" id="showModal">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
                 <div class="modal-header">
@@ -100,9 +101,32 @@
             });
 
             $('#business_reviews_table').on('click', 'a.delete-modal', function () {
-                let reviewId = $(this).data('id');
-                // Use reviewId to open the delete modal
-                $('#deleteModal').modal('show');
+                let review_id = $(this).data('id');
+                let review_delete_url = "{{ route('admin.reviews.destroy', ':id') }}";
+                review_delete_url = review_delete_url.replace(':id', review_id);
+                Swal.fire({
+                    title: 'Are you sure?',
+                    text: "Do you want to delete this review?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Yes, delete it!'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        $.ajax({
+                            type: 'GET',
+                            url: review_delete_url,
+                            success: function (data) {
+                                $('#business_reviews_table').DataTable().ajax.reload();
+                                Swal.fire('Deleted!', 'The review has been deleted.', 'success');
+                            },
+                            error: function (data) {
+                                Swal.fire('Error!', 'An error occurred while deleting the review.', 'error');
+                            }
+                        });
+                    }
+                });
             });
         });
     </script>

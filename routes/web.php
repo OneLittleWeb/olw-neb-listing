@@ -39,7 +39,7 @@ Route::prefix('admin')->name('admin.')->middleware('auth')->group(function () {
     Route::get('reviews', [AdminReviewController::class, 'allReviews'])->name('all.reviews');
 //    Route::get('reviews/show/{id}', [AdminReviewController::class, 'show'])->name('reviews.show');
 //    Route::get('reviews/edit/{id}', [AdminReviewController::class, 'edit'])->name('reviews.edit');
-//    Route::get('reviews/delete/{id}', [AdminReviewController::class, 'delete'])->name('reviews.destroy');
+    Route::get('reviews/delete/{id}', [AdminReviewController::class, 'deleteReview'])->name('reviews.destroy');
 
     Route::get('suggest/edit/request', [AdminOrganizationController::class, 'suggestEditRequest'])->name('suggest.edit.request');
     Route::post('suggest/request/update/{id}/{status}', [AdminOrganizationController::class, 'editRequestUpdate'])->name('edit.request.update');
