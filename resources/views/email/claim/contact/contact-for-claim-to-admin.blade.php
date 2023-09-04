@@ -79,7 +79,6 @@
 </head>
 <body style="background-color: #e9ecef;">
 
-<!-- start body -->
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
     <tr>
         <td align="center" bgcolor="#e9ecef">
