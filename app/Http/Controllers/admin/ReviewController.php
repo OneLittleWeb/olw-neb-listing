@@ -85,7 +85,7 @@ class ReviewController extends Controller
 
         return response()->json([
             'success' => true,
-            'message' => 'The review has been deleted'
+            'message' => 'The review has been deleted successfully.'
         ]);
     }
 }
