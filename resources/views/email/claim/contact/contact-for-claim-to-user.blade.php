@@ -32,14 +32,11 @@
             mso-table-rspace: 0pt;
             mso-table-lspace: 0pt;
         }
-        
+
         img {
             -ms-interpolation-mode: bicubic;
         }
 
-        /**
-         * Remove blue links for iOS devices.
-         */
         a[x-apple-data-detectors] {
             font-family: inherit !important;
             font-size: inherit !important;
