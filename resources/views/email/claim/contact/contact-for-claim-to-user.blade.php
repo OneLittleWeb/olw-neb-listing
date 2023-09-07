@@ -27,10 +27,6 @@
             -ms-text-size-adjust: 100%; /* 1 */
             -webkit-text-size-adjust: 100%; /* 2 */
         }
-
-        /**
-         * Remove extra space added to tables and cells in Outlook.
-         */
         table,
         td {
             mso-table-rspace: 0pt;
