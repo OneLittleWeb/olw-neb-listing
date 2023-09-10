@@ -46,9 +46,6 @@
             text-decoration: none !important;
         }
 
-        /**
-         * Fix centering issues in Android 4.4.
-         */
         div[style*="margin: 16px 0;"] {
             margin: 0 !important;
         }
