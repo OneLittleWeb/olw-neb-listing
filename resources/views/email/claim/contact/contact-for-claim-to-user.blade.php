@@ -57,9 +57,6 @@
             margin: 0 !important;
         }
 
-        /**
-         * Collapse table borders to avoid space between cells.
-         */
         table {
             border-collapse: collapse !important;
         }
