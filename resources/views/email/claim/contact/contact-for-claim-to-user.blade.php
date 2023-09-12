@@ -77,7 +77,6 @@
 </head>
 <body style="background-color: #e9ecef;">
 
-<!-- start body -->
 <table border="0" cellpadding="0" cellspacing="0" width="100%">
 
     <!-- start logo -->
@@ -179,7 +178,6 @@
     <!-- end copy block -->
 
 </table>
-<!-- end body -->
 
 </body>
 </html>
