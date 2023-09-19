@@ -131,7 +131,6 @@
             <![endif]-->
         </td>
     </tr>
-    <!-- end hero -->
 
     <tr>
         <td align="center" bgcolor="#e9ecef">
