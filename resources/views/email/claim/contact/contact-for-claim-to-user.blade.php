@@ -107,7 +107,6 @@
     </tr>
     <!-- end logo -->
 
-    <!-- start hero -->
     <tr>
         <td align="center" bgcolor="#e9ecef">
             <!--[if (gte mso 9)|(IE)]>
