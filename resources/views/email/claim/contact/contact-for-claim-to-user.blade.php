@@ -105,7 +105,6 @@
             <![endif]-->
         </td>
     </tr>
-    <!-- end logo -->
 
     <tr>
         <td align="center" bgcolor="#e9ecef">
