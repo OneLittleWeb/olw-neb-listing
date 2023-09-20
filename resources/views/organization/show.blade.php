@@ -24,7 +24,7 @@
             </div>
         @endif
     </section>
-    <!-- =====END FULL SCREEN SLIDER====== -->
+    <!-- =====END FULL SCREEN SLIDER======= -->
 
     <!-- =====START BREADCRUMB AREA======= -->
     <section class="breadcrumb-area bg-gradient-gray py-5">
