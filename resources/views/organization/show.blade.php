@@ -110,7 +110,7 @@
             </div>
         </div>
     </section>
-    <!-- =======END BREADCRUMB AREA======= -->
+    <!-- ======END BREADCRUMB AREA======= -->
 
     <!-- =======START LISTING DETAIL AREA====== -->
     <section class="listing-detail-area padding-top-60px padding-bottom-100px">
