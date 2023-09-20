@@ -689,7 +689,7 @@
                                         @else
                                             <div class="block-card-body">
                                                 <div class="comments-list">
-                                                    <p class="text-dark">No reviews yet.</p>
+                                                    <p class="text-dark">No reviews yet</p>
                                                 </div>
                                             </div>
                                         @endif
