@@ -1076,7 +1076,7 @@
             </div>
         </div>
     </section>
-    <!-- =======END LISTING DETAIL  AREA======= -->
+    <!-- ======END LISTING DETAIL  AREA======= -->
 @endsection
 @section('js')
     <script src="{{asset('plugins/ratings/src/jquery.star-rating-svg.js')}}"></script>
